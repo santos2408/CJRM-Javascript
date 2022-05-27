@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "House Stark of Winterfell",
+    "region": "The North",
+    "word": "Winter is Coming"
+  },
+  {
+    "id": 2,
+    "name": "House Targaryen of King's Landing",
+    "region": "The Crownlands",
+    "word": "Fire and Blood"
+  },
+  {
+    "id": 3,
+    "name": "House Baratheon of Storm's End",
+    "region": "Stormlands",
+    "word": "Ours is the Fury "
+  }
+]

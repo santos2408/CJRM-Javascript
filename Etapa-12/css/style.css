@@ -1,0 +1,28 @@
+html {
+  
+}
+
+body {
+  background: #BFE2F0;
+  transition: background .3s;
+}
+
+.container {
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h1, label {
+  color: #3a687a;
+}
+
+.time-icon {
+  position: relative;
+  top: -50px;
+  border-radius: 50%;
+  width: 100px;
+  margin-bottom: -50px;
+}
