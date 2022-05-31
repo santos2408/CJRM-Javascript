@@ -13,9 +13,15 @@ console.log(true, false, 'true', 'false')
 const email = "roger.santos33@gmail.com"
 
 const includes = email.includes('@') // true
+// método de array
 // verifica se uma string existe dentro de outra
 // existe? true, não existe? false
 // true ou false é atribuído na variável includes
+
+const contains = menu.classList.contains('class-name')
+// método de DOMTokenList
+// verifica se uma classe existe no domtokemlist
+// true ou false será atribuído na classe contains
 
 const names = ['dio', 'roger', 'robert']
 const arrayIncludes = names.includes('roger') // true
@@ -65,14 +71,15 @@ console.log(name > 'belinha') // true
 // a letra que vem depois é sempre maior que a anterior
 
 console.log(name > 'Roger') // true
-// uma letra minúscula é maior que uma maiúscula, tem prioridade
-// javascript dará prioridade de maior para letras minúsculas
+// uma letra minúscula é maior que uma maiúscula, tem maior prioridade
+// javascript dará prioridade maior para letras minúsculas
 
 console.log(name > 'Belinha') // true
 // letra minúscula é maior que qualquer letra maiúscula
 // letra 'r' vem antes da letra 'b'
 
 console.log('Roger' > 'belinha') // false
+// letra minúscula tem prioridade
 
 console.log(name > 'Sula') // true
 
@@ -86,9 +93,9 @@ console.log(name > 'Sula') // true
 // 'igual' a' e 'diferente de' (ampla)
 
 console.log(age == 25) // true
-console.log(age == '25') // true
+console.log(age == '25') // true *
 console.log(age != 25) // false
-console.log(age != '25') // false
+console.log(age != '25') // false *
 
 // isso acontece porque todo vez que se usa (==) ou (!=) ambos os operadores
 // executam conversão de tipos, a string '25' será convertida para tipo number
@@ -115,13 +122,13 @@ console.log(score + 1)
 console.log(typeof score)
 
 const crazyConvertion = Number('Maçã') // NaN, pois não faz sentido
-const crazyConvertion = String(97) // 97 string
+const crazyConvertion = String(97) // '97' string
 const booleanConvertion = Boolean(10) // true, tipo boolean
 
 // Number(), Boolean(), String() converte explicitamente seus valores
 
 /*
-   - concatenação de string e número terá resultado em string
+   - concatenação de string e número terá resultado uma string
    - função construtura a princípio converte um valor para outro
    - typeof verifica o tipo de dado, em algumas situações não é a melhor escolha
    - tentar converter strings em número ou vice-versa resulta em NaN quando a
@@ -140,4 +147,5 @@ const booleanConvertion = Boolean(10) // true, tipo boolean
    Qualquer um desses valores convertidos para boolean resultam em false
 
    Valores truthy:
-      - Qualquer valor que não seja falsy
+      - É qualquer valor que não seja falsy
+*/

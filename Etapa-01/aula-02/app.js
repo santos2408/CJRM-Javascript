@@ -49,7 +49,7 @@ console.log(fullName[0])
 console.log(fullName.length)
 
 /*
-   Length é uma propriedade de string que exibe o comprimento da mesma, 
+   Length é uma propriedade de string e array que exibe o comprimento da mesma, 
    ou seja, o número de caracteres.
 
    Atenção: espaços em branco também são contados como um caractere.
@@ -289,7 +289,7 @@ const postMessage2 = `O post "${postTitle}", do ${postAuthor}, tem ${postComment
 
 console.log(postMessage2)
 
-// criando templates HTML
+// poder estar criando templates HTML dentro do template strings
 
 const html = `
    <h2>${postTitle}</h2>

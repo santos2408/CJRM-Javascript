@@ -104,8 +104,8 @@ fetch('https://anapioficeandfire.com/api/houses')
 */
 
 const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration
-  const response = await fetch('https://anapioficeandfire.com/api/houses') // retorna objeto response da promise
-  const users = await response.json() // retorna valor resolvido da promise e parseia para JSON
+  const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta
+  const users = await response.json() // retorna promise e await desempacota pegando apenas o json
   return users
 }
 
@@ -115,3 +115,5 @@ const logUsers = async () => {
 }
 
 logUsers()
+
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises

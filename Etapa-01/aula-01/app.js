@@ -11,10 +11,13 @@ console.log(age)
 
 // ===== VARIÁVEL LET =========================
 
-// escopo global e local, pode ser reatribuída e declarada sem valor
-// não pode ser redeclarada
+// escopo global e local
+// pode ser reatribuída com outro valor
+// pode ser declarada sem valor inicial
+// não pode ser redeclarada com o mesmo nome
 
 let age = 25
+let age = 30 // não pode redeclarar
 let currentYear = 2022
 let idade
 

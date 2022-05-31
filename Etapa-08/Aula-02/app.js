@@ -2,7 +2,7 @@
    MÉTODO SORT()
 
    Ordena os itens de um array. Muito útil quando precisamos ordenar itens de 
-   um array em ordem alfabética, crescente ou decrescente, objetos entre outros.
+   um array em ordem alfabética, crescente ou decrescente, objetos, entre outros.
 
    Lembre-se que o método sort altera o array original, diferente de outros 
    métodos. Portanto, caso não deseje que isso acontece, armazene o novo array 
@@ -95,4 +95,4 @@ const booksOnSale = books
    .filter(({ price }) => price > 20)
    .map(({ name, price }) => `O preço do livro "${name}" caiu para ${price} reais.`)
 
-debugger
+// debugger

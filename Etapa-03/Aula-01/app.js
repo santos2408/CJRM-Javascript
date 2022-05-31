@@ -15,6 +15,8 @@
    pegue esses valores e execute determinadas ações com esses valores passados.
    Após isso ela devolve os valores transformados (output)
 
+   A função pode apenas executar uma ação desejada ou retornar um valor.
+
    * Tente sempre declarar funções logo acima de onde elas estão sendo invocadas.
    * Procure nomear as funções com verbos, pois normalmente realizam uma ação.
    * Tecla F2 altera o nome daquele elemento em todo o documento relacionado JS
@@ -99,7 +101,6 @@ showFood()
    Se nenhum valor for passado como argumento para a variável interna da
    função, o JS irá automaticamente definir esse parâmetro da função como
    undefined.
-
 */
 
 const myFunc = function (name = 'Valor não inserido.') {
@@ -108,6 +109,10 @@ const myFunc = function (name = 'Valor não inserido.') {
 
 myFunc('Roger')
 
+/*
+   Caso não seja passado um valor como argumento da myFunc, a variável name 
+   dentro da função irá retornar o seu valor definido como padrão.
+*/
 
 // === RETORNANDO VALORES ===
 

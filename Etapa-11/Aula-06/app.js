@@ -70,24 +70,6 @@ console.log(oi)
 /*
   // ======= TRY / CATCH EM REQUESTS E ERROS PERSONALIZADOS =======
 
-  Quando um erro é lançado em uma aplicação javascript, o código abaixo deste 
-  código que disparou o erro não é executado, e isso pode gerar um poblema, pois 
-  quando o código for lançado, a aplicação irá parar de executar.
-
-  Para eviat isso podemos usar um try...catch, que é uma cláusula que irá tentar 
-  executar um código, se esse código que for tentato executar lançar um erro, nós 
-  poderemos executar um outro código para que o erro lançado não trave a aplicação.
-
-  Em javascript todo objeto de erro tem as propriedades name e message que 
-  armazem o nome e mensagem do erro.
-
-  Nós devemos usar o try...catch quando desejarmos fazer alguma em relação ao 
-  objeto de erro que o catch recebe. Essa cláusula serve para lidarmos com o erro 
-  que o código pode lançar. Se esse não for o caro podemos normalmente utilizar o 
-  if.
-
-  Try...catch exige mais pode de processamento do que condicionais como o if.
-
 */
 
 const getUsers = async () => {

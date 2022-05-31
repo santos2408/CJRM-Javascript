@@ -22,19 +22,19 @@
    Utilizando a requisição no servidor de forma assíncrona, o javascript irá 
    executar essa requisição e passaremos uma função de callback nesse código. 
    O javascript continuará executando o restante do código e quando a resposta 
-   for obtida lá na frente, o javascript irá obter a resposta e executará a 
+   for obtida lá na frente, o javascript irá pegar a resposta e executar a 
    função de callback. Isso permite que a aplicação não pare durante a 
    requisição.
 
    No momento que a requisição é feita, o browser lida com a request fora da 
    thread atual, em outra parte do browser e executa a função de callback quando 
-   os dados forem obtidos. Enquanto a requisição é feita em outro local, a thread 
+   os dados forem obtidos. Enquanto a requisição é feita em outro local a thread 
    principal continua executando os códigos contidos nela.
 */
 
 /* =========== CÓDIGO ASSÍNCRONO NA PRÁTICA =========== */
 
-// SINGLE THREAD
+// CÓDIGO SINGLE THREAD
 console.log(1)
 console.log(2)
 
