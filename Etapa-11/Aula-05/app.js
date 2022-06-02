@@ -90,10 +90,10 @@ fetch('https://anapioficeandfire.com/api/houses')
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
     e longo em seguida o await irá pegar essa promise e retornar o valor resolvido 
-    dela, que é o objeto Response. Após isso as linhas abaixo dele serão 
-    executadas. Ou seja, além de impedir a execução do restando do código antes 
-    de obter a resposta da requisição, o await também irá desempacotar a Promise 
-    para obter apenas a resposta dela.
+    dela (desempacotar) que é o objeto Response. Após isso as linhas abaixo dele 
+    serão executadas. Ou seja, além de impedir a execução do restante do código 
+    antes de obter a resposta da requisição, o await também irá desempacotar a 
+    Promise para obter apenas a resposta dela.
 
   Para obtermos os dados da resposta do request, precisaremos encadear no objeto 
   response o método json() que irá obter esse objeto response, irá parsear para 
@@ -103,14 +103,14 @@ fetch('https://anapioficeandfire.com/api/houses')
   Veja abaixo:
 */
 
-const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration
+const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration / retorna uma promise
   const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta
-  const users = await response.json() // retorna promise e await desempacota pegando apenas o json
-  return users
+  const users = await response.json() // retorna promise e await desempacota pegando apenas a reposta json
+  return users // retorna promise com resposta json
 }
 
 const logUsers = async () => {
-  const users = await getUsers()
+  const users = await getUsers() // desempacota promise e pega json
   console.log(users)
 }
 

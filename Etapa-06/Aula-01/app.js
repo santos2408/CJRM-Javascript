@@ -2,7 +2,7 @@
 
 /*
    Na etapa passada, quando queriamos adicionar um evento de clique no elemento, 
-   nós atrelavamos um listener de evento diretamente em quem seria clicado. Só que
+   nós atrelávamos um listener de evento diretamente em quem seria clicado. Só que
    quando queremos escutar o envio de um formulário, ao invés de atrelarmos o 
    listener de evento no botão de formulário, nós atrelamos ao <form> em geral. 
    Porque no fim das contas o que está sendo enviado é o form e não o botão.

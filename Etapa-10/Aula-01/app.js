@@ -23,7 +23,7 @@ apenas invocarmos a função construtora, ela nos retornará uma data do tipo st
 e não do tipo object, portanto será do tipo string e não terá os métodos e 
 propriedades para utilizarmos. Por isso a importância do 'new'.
 
-Portanto, se invocarmos o construtor Date() como uma função, ele retorna um string 
+Portanto, se invocarmos o construtor Date() como uma função, ele retorna uma string 
 com a data atual. E se chamarmos o construtor Date() de fato como um construtor 
 utilizando o 'new', então ele retornará um novo objeto do tipo Date.
 

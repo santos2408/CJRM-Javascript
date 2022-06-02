@@ -301,11 +301,11 @@ const getCatInfo = () => {
    let age = 4
    const color = 'Preto e Laranja'
 
-   return {name, age, color}
+   return { name, age, color }
 }
 
 // destructuring assignment com objetos
-const {name, age, color} = getCatInfo()
+const { name, age, color } = getCatInfo()
 
 // name // Pintada
 // age // 4
@@ -316,7 +316,7 @@ const {name, age, color} = getCatInfo()
 const myName = ['Roger', 'Santos', 'Campelo']
 
 // destructuring assignment com arrays
-const [firstName, lastName, ...rest] = myName
+const [ firstName, lastName, ...rest ] = myName
 
 /* 
    a variável precedida de reticências "..." significa que o restante dos itens
