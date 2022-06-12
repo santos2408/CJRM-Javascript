@@ -75,7 +75,7 @@ console.log(4)
 
    JSON: JavaScript Object Notation, notação de objetos javascript, é um formato 
    que se parece com um objeto em javascript e é retornado como resposta a 
-   requisição da API através do endpoint.
+   requisição da API através de um endpoint.
 */
 
 // realizando um request para um endpoint na API de Ice and Fire
