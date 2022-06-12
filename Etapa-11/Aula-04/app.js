@@ -33,7 +33,7 @@
   consumirmos esse valor precisamos utilizar o método THEN. Ele é o responsável 
   por receber a resposta de 'sucesso' da promise. Ou seja, assim que invocarmos 
   o método then, passaremos uma função que irá retornar o valor de 'sucesso'. O 
-  then automaticamente irá obter o value da função 'resolve'.
+  then automaticamente irá obter o valor da função 'resolve'.
 
   Caso ocorra um erro na requisiçao, podemos encadear o método CATCH no THEN, 
   também passando uma função como argumento e através dele iremos tratar os dados 

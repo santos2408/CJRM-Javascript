@@ -159,3 +159,31 @@ console.log(showResult(result))
    Atente-se também para criar funções "genéricas" ou seja, que possam ser 
    reutilizadas várias vezes para diferentes valores.
  */
+
+/*
+================================================================================
+============================== CONTEÚDO ADICIONAL ==============================
+
+Nas functions declarations, quando declaramos uma função sem parâmetro e na sua 
+invocação passamos argumentos, existe uma variável implícita dentro da função 
+chamada 'arguments' que armazena todos os argumentos passados na invocação, mesmo 
+que não tenha parâmetros declarados para armazenar esses valores.
+
+Mesmo que seja declarada parâmetros para receber os argumentos, essa variável 
+'arguments' continua existindo implicitamente que armazena todos os argumentos 
+enviados.
+
+Em algumas linguagens de programção esse comportamente irá gerar um erro, mas no 
+javascript é uma possibilidade. Vale lembrar que essa variável 'arguments' só 
+existe quando usamos function declartion, em arrow function não existe.
+
+*/
+
+function funcao () {
+   console.log(arguments) // 1, 2, 3
+}
+
+funcao(1, 2, 3)
+
+
+// =============================================================================
