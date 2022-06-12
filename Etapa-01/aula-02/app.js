@@ -108,9 +108,7 @@ console.log('========================================')
 
 // métodos comuns de string
 
-/*
-   Métodos são funções que pertencem a um objeto ou tipo de dado específico
-*/
+// Métodos são funções que pertencem a um objeto ou tipo de dado específico
 
 /*
    lastIndexOf()
@@ -186,12 +184,8 @@ console.log('========================================')
 const radius = 10
 const pi = 3.14
 
-/*
-   - números decimais são representados utilizando ponto (.)
-
-   - o valor de pi é utilizado na matemática para calcular a área do circulo
-
-*/
+// - números decimais são representados utilizando ponto (.)
+// - o valor de pi é utilizado na matemática para calcular a área do circulo
 
 // === operadores aritméticos ===
 
@@ -305,9 +299,3 @@ console.log(html)
    criada precisa conter variáveis, aspas ou templates html, a template strings
    facilitará a escrita do código e melhorará a leitura do mesmo.
 */
-
-
-
-
-
-

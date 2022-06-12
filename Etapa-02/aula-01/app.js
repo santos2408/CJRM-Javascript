@@ -19,7 +19,7 @@
    que seráo apresentados ao longo do treinamento.
 */
 
-// === FOR LOOP ==========
+// ============ FOR LOOP CLÁSSICO ============
 
 /*
    É o loop mais usado, o mais popular. O propósito de todo loop é executar
@@ -64,6 +64,30 @@ for (let i = 0; i < names.length; i++) {
 }
 
 console.log('===================================')
+
+// ============ FOR IN ============
+
+/*
+   Esse tipo de loop é semelhante ao clássico, no entanto ao invocarmos, ele 
+   irá iterar pelo índice de um array ou chave de um objeto e podemos obter o valor. 
+   Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
+   o for in irá percorrer os índices e obter o valor de cada um, para todos.
+*/
+
+const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
+const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
+
+// percorre os índices
+for (let indice in frutas) {
+   console.log(frutas[indice])
+}
+
+// percorre as chaves
+for (let chave in pessoa) {
+   console.log(pessoa[chave])
+}
+
+// ============ FOR OF ============
 
 // === WHILE LOOP ==========
 

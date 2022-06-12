@@ -23,7 +23,7 @@
 
    Existem pelo menos duas formas de salvar dados em uma aplicação: podemos usar 
    banco de dados, obtendo os dados através de requests ou podemos usar as 
-   ferramentas que o browser fornece, sendo uma dela o Web Storage API. Essa API 
+   ferramentas que o browser fornece, sendo uma delas o Web Storage API. Essa API 
    é útil para armazenar informações simples como strings, numbers, username, 
    cores, etc.
 
@@ -42,20 +42,20 @@
    também a cache API, para armazenar dados para que a aplicação funciona offline.
 
    O local storage NÃO substitui um banco de dados, podemos usa-los em conjunto, 
-   o local storage pode ser usado para fazer uma funcionamento rápido de uma 
-   aplicação ou também o seguinte:
+   ele pode ser usado para fazer um funcionamento rápido de uma aplicação ou 
+   também o seguinte:
 
       - Podemos fazer uma primeira requisição de dados para um banco de dados e 
-      também salvar os dados no local storage, enquanto o usuário utiliza a 
-      aplicação nós usamos o local storage, caso o usuário faça uma atualização 
-      nos dados, aí sim podemos fazer uma nova requisição para o banco de dados 
-      para salvar esses novos dados. Isso evita de consumirmos banda do usuário 
-      em todo request.
+      salvar os dados na primeira vez ou os mais importantes e também salvar os 
+      dados no local storage, enquanto o usuário utiliza a aplicação nós usamos 
+      o local storage, caso o usuário faça uma atualização nos dados, aí sim 
+      podemos fazer uma nova requisição para o banco de dados para salvar esses 
+      novos dados. Isso evita de consumirmos banda do usuário em todo request.
 
-   Vale lembrar que salvar dados dados no browser não é a opção mais segura, 
+   Vale lembrar que salvar dados dados no browser não é a opção mais segura.
 
    * Cookies, indexedDB, cache API e segurança no front-end são assuntos mais 
-   avançados que são mostrados posterioremente.
+   avançados que serão mostrados posterioremente.
 
 */
 
@@ -74,12 +74,12 @@
    propriedade 'proto' que possui alguns métodos e propriedades que podemos usar 
    para interagir com o objeto 'storage'.
 
-   Os dados que entram são armazenados na 'storage' são considerados itens, ou 
-   seja, é um par de chave e valor, semelhante a um objeto javascript. Caso chave 
+   Os dados que entram são armazenados na 'storage' e são considerados itens, ou 
+   seja, é um par de chave e valor, semelhante a um objeto javascript. Cada chave 
    e valor deve ser uma string, semelhante ao que fazemos com JSON. O nome disso 
-   é serialização, que é quando transformamos um valor em algum formato, transferimos 
-   ele para outro lugar e nesse lugar podemos 'destransformar' esse valor para o 
-   seu valor original.
+   é serialização, que é quando transformamos um valor em algum formato, 
+   transferimos ele para outro lugar e nesse lugar podemos 'destransformar' 
+   esse valor para o seu valor original.
 
    Para armazenarmos um item na local storage, utilizamos os métodos da propriedade 
    prototype.
@@ -125,7 +125,7 @@ localStorage.clear() // limpa todos os dados
    também é um objeto) primeiro devemos converter essa array de objetos em uma 
    string, com isso poderemos armazenar esse array convertido dentro de uma 
    storage, em seguida quando obtermos esse 'array' da local storage, ele retornará 
-   uma string e precisaremos parsear de volta para um array, essa téncio é 
+   uma string e precisaremos parsear de volta para um array, essa técnica é 
    conhecida como serialização.
 
    Para convertermos array em strings podemos utilizar um método de um objeto 
@@ -144,4 +144,3 @@ localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para str
 const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo string
 
 console.log(JSON.parse(JSONFromLocalStorage)) // convertendo json para javascript
-

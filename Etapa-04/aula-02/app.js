@@ -1,7 +1,5 @@
 // ====== VARIÁVEIS E ESCOPO DE BLOCO =========================
 
-
-
 /*
    Escopo de bloco é a área em que o valor de uma variável está disponível
    pra gente.

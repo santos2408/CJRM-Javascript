@@ -24,8 +24,8 @@
    3 formas possíveis para obtermos o valor do input, são elas:
    
    1ª FORMA DE OBTER O VALOR DO INPUT: O input contém uma propriedade chamada 
-   'value', é possível passar um valor padrão para ele diretamente pelo HTML por 
-   fins didáticos, mas ela é uma propriedade do input. Recebe o valor que o 
+   'value', é possível passar um valor padrão para ele diretamente pelo HTML 
+   para fins didáticos, mas ela é uma propriedade do input. Recebe o valor que o 
    usuário digitou no input, portanto, através dela conseguimos visualizar o 
    que foi inserido.
 
@@ -50,7 +50,7 @@ form.addEventListener('submit', event => {
 
    usernameInput.value // valor de input através de value, precisa dar query
    form.username.value // procurando input com ID/NAME username dentro do form e obtendo valor
-   event.target.username.value // obtendo valor do input com ID/NAME, ajuda no ReactJS
+   event.target.username.value // obtendo valor do input com ID/NAME, usado no ReactJS
 })
 
 // ========== O EVENTO INPUT ==========
@@ -63,6 +63,9 @@ form.addEventListener('submit', event => {
    liberada do teclado. Em alguns casos é melhor usar o input, pois se quisermos 
    enviar um formulário apertando a tecla 'enter' o evento keyup sempre vai 
    disparar e pode causar um bug indesejado.
+
+   Podemos também utilizar o evento input para momentos em que quisermos criar 
+   uma feature de filtro.
 */
 
 
@@ -105,7 +108,7 @@ form.addEventListener('submit', event => {
    2) /^javascript$/
 
    Se quisermos que a regex aceite apenas a palavra javascript sem que tenha 
-   nada após ou antes dela, devemos usar o acento cicunflexo ^ no início e 
+   nada antes ou após ela, devemos usar o acento cicunflexo ^ no início e 
    cifrão $ no final da regex. Ou seja, o 'match' só irá acontecer se a palavra 
    javascript for o final do valor do input e também o começo do valor do input. 
    Ou seja, se estiver sozinha no campo de texto.
@@ -147,7 +150,7 @@ const form = document.querySelector('.signup-form')
 form.addEventListener('submit', event => {
    event.preventDefault() // 
    
-   console.log(event.target.username.value) // estilo ReacJS
+   console.log(event.target.username.value) // estilo ReactJS
 })
 
 const username = 'rogersantos'

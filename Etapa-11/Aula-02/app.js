@@ -30,7 +30,7 @@
    Em seguida invocamos o método send() para enviarmos a solicitação para o local 
    desejado. Esse método aceita um parâmetro opcional, que é chamado de body 
    parameter, normalmente inserido quando a solicitação for com método 'PUT'. 
-   Mas se a solictação é por meio de 'GET' ou 'HEAD' esse body parameter é ignorado 
+   Mas se a solicitação é por meio de 'GET' ou 'HEAD' esse body parameter é ignorado 
    e o parâmetro será definido implicitamente como null, podemos também inserir 
    esse null explicitamente.
 

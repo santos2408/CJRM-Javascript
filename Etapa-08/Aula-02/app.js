@@ -4,7 +4,7 @@
    Ordena os itens de um array. Muito útil quando precisamos ordenar itens de 
    um array em ordem alfabética, crescente ou decrescente, objetos, entre outros.
 
-   Lembre-se que o método sort altera o array original, diferente de outros 
+   Lembre-se que o método sort ALTERA o array original, diferente de outros 
    métodos. Portanto, caso não deseje que isso acontece, armazene o novo array 
    numa outra constante ou crie uma cópia utilizando o método map.
 
@@ -34,7 +34,8 @@
    função deve retornar o número zero, ou seja, "nada será feito".
 
    Se quisermos que o ordenamento seja feito em ordem decrescente, o segundo 
-   argumento deve vir antes do primeiro.
+   argumento deve vir antes do primeiro, se deseja em ordem crescendo o primeiro 
+   argumento deve vir antes do segundo.
 */
 
 // exemplo 1: ordenando strings
