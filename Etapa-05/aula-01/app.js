@@ -111,6 +111,9 @@ if (true) {
    do aninhamento. Caso a função atual não tenha variável, ela irá procurar
    na função "acima" dela e assim por diante. Esse é o escopo léxico, é a consulta
    de uma variável dentro de escopos de funções aninhadas uma dentro da outra.
+
+   *** PESQUISAR SOBRE CLOSURES
+   
 */
 
 const externalFunc = () => {

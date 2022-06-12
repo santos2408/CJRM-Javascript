@@ -124,6 +124,9 @@ myFunc('Roger')
    Essa operação é realizada com a palavra chave 'return' que retorna
    a operação executada dentro da função e "joga" para fora do escopo dela.
 
+   Funções que realizam uma operação mas não retornam nada, automaticamente irão 
+   retornar 'undefined'
+
    O valor passado como argumento na invocação da função, entra no função
    como parâmetro e é armazenada nessa variável parâmetro, que pode ser operada
    dentro do seu escopo.

@@ -133,6 +133,39 @@ socialNetworks.forEach(socialNetwork => {
 
 ul.innerHTML = HTMLTemplate
 
+/*
+================================================================================
+============================== CONTEÚDO ADICIONAL ==============================
+
+================ IIEE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
+
+Functions expressions invocadas imediatamente após sua declaração é uma forma de 
+proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
+a função entre parênteses e a invocamos ao mesmo tempo.
+
+*/
+
+(function(parameter){
+   console.log('Função invocada automaticamente.')
+})()
+
+/*
+===================== FUNÇÕES FÁBRICA (FACTORY FUNCTIONS) ======================
+
+São funções que simplesmente retornam um objeto.
+
+*/
+
+function criaPessoa(nome, idade, estado) {
+   return {
+      nome,
+      idade,
+      estado
+   }
+}
+
+// =============================================================================
+
 
 
 
