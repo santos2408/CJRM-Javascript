@@ -144,3 +144,13 @@ localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para str
 const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo string
 
 console.log(JSON.parse(JSONFromLocalStorage)) // convertendo json para javascript
+
+// ============= PROGRAMAÇÃO FUNCIONAL  PIPELINE =============
+
+/*
+   Um pipe é um encadeamento de elementos de processamento, como por exemplo 
+   funções, que são organizadas para que o output de uma função seja o input 
+   de uma próxima. Ou seja, o resultado de uma função seja inserido na próxima 
+   função e assim por diante.
+*/
+
