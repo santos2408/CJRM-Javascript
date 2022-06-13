@@ -38,7 +38,7 @@
    aplicação e do browser, cerca de 5mb de armazenamento.
 
    Existem mais formas de salvar dados no browser: cookies, Web Storage API e 
-   indexedDB, para grande volumes de dados como videos, imagens, áudios, etc. E 
+   indexedDB para grande volumes de dados como videos, imagens, áudios, etc. E 
    também a cache API, para armazenar dados para que a aplicação funciona offline.
 
    O local storage NÃO substitui um banco de dados, podemos usa-los em conjunto, 
@@ -129,7 +129,7 @@ localStorage.clear() // limpa todos os dados
    conhecida como serialização.
 
    Para convertermos array em strings podemos utilizar um método de um objeto 
-   global JSON que está embutido na linguagem. Esse método de chamada stringify()
+   global JSON que está embutido na linguagem. Esse método se chama stringify()
    e ao convertermos esse array para string, ele irá retornar um JSON.
 */
 

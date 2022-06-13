@@ -41,7 +41,7 @@ getPokemon()
   quando o código for lançado, a aplicação irá parar de executar.
 
   Para eviar isso podemos usar um try...catch, que é uma cláusula que irá tentar 
-  executar um código, se esse código que for tentato executar lançar um erro, nós 
+  executar um código, se esse código que for tentado executar lançar um erro, nós 
   poderemos executar um outro código para que o erro lançado não trave a aplicação.
 
   Em javascript todo objeto de erro tem as propriedades name e message que 

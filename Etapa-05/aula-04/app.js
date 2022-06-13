@@ -1,7 +1,6 @@
 // === EVENT BUBBLING E EVENT DELEGATION =======================
 
 /*
-
    ===== EVENT BUBBLING ===== 
 
    Nós vimos que quando um 'evento' acontece, o elemento no qual o evento 
@@ -16,8 +15,8 @@
    esse evento irá propagar para o seu elemento pai e assim por diante.
 
    Portanto, ao propagar para o elemento pai, o javascript irá procurar se existe 
-   um listener de 'evento' nesse elemento e se existir um 'evento' nesse pai, 
-   a função de callback desse elemento também será disparada e depois disso esse 
+   um listener de 'evento' nesse elemento e se existir um 'evento' nesse pai a 
+   função de callback desse elemento também será disparada e depois disso esse 
    evento será propagado para o pai desse elemento e assim continuará disparando 
    os eventos de todos.
 
