@@ -54,7 +54,6 @@ console.log(`O resultado é: ${result}`)
 /*
    Funções e métodos são sinônimos, em essência realizam a mesma coisa, é
    possível invocá-las para executar um bloco de código que realiza alguma coisa.
-
    A diferença entra elas é sua forma de invocação e onde é declarada.
 */
 
@@ -79,7 +78,7 @@ console.log(greet)
    algum valor.
 
    Métodos são funções que estão associadas a objetos ou tipo de dados,
-   os métodos são criados dentro de um objeto ou no tipo de dado.
+   os métodos são criados dentro de um objeto ou tipo de dado.
 */
 
 // ===== callbacks e forEach ================================
@@ -139,7 +138,7 @@ ul.innerHTML = HTMLTemplate
 
 ================ IIEE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
 
-Functions expressions invocadas imediatamente após sua declaração é uma forma de 
+Function expressions invocadas imediatamente após sua declaração é uma forma de 
 proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
 a função entre parênteses e a invocamos ao mesmo tempo.
 
