@@ -22,7 +22,8 @@
   tenha sido rejeitada. 
 
   * Os métodos then e catch recebem como argumento uma função que será executada 
-  quando a promise for resolvida com sucesso ou quando for rejeitada. O parâmetro 
+  quando a promise for resolvida com sucesso ou quando for rejeitada, com essa 
+  função podemos tratar a resposta da requisição como quisermos. O parâmetro 
   da função do then recebe a resposta de sucesso e o catch recebe a de erro.
 
   Note que, a FETCH API só rejeita a promise quando acontece um erro de conexão 
@@ -80,13 +81,15 @@ fetch('https://anapioficeandfire.com/api/houses')
   * Toda função assíncrona retorna uma Promise, independente do conteúdo que está 
     dentro dela.
 
-  * Sabemos que o FETCH retorna uma promise e para obter os dados retornado 
+  * Sabemos que o FETCH retorna uma promise e para obter os dados retornados
     nós encadeávamos o método THEN para tratar os dados. Agora não precisaremos 
     disso, nós vamos inserir o 'await' antes da chamada do FETCH.
 
-  * Esse await irá 'aguardar' a resposta da requisição, enquando essa resposta 
+  * Esse await irá 'aguardar' a resposta da requisição, enquanto essa resposta 
     não chegar, o await não deixa o código abaixo dele ser executado. Ou seja, 
-    ele vai se comparar a um código síncrono.
+    ele vai se comparar a um código síncrono. Mas isso acontece apenas dentro da 
+    função assíncrona, ou seja, o await não trava toda a aplicação por causa do 
+    request, por isso estamos usando 'async' na função.
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
     e longo em seguida o await irá pegar essa promise e retornar o valor resolvido 
@@ -97,7 +100,7 @@ fetch('https://anapioficeandfire.com/api/houses')
 
   Para obtermos os dados da resposta do request, precisaremos encadear no objeto 
   response o método json() que irá obter esse objeto response, irá parsear para 
-  um array de objetos javascript (JSON) e retorna-rá uma promise que contém essa 
+  um array de objetos javascript (JSON) e retornará uma promise que contém essa 
   resposta parseada.
 
   Veja abaixo:
@@ -105,12 +108,12 @@ fetch('https://anapioficeandfire.com/api/houses')
 
 const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration / retorna uma promise
   const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta
-  const users = await response.json() // retorna promise e await desempacota pegando apenas a reposta json
-  return users // retorna promise com resposta json
+  const users = await response.json() // json() retorna promise e await desempacota pegando apenas a reposta json
+  return users // retorna apenas o objeto json
 }
 
-const logUsers = async () => {
-  const users = await getUsers() // desempacota promise e pega json
+const logUsers = async () => { // retorna promise porque é async
+  const users = await getUsers() // desempacota promise e pega resposta json
   console.log(users)
 }
 
