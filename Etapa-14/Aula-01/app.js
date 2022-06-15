@@ -56,6 +56,10 @@ const objetoCopia = {
   ]
 }
 
+const arr1 = [1, 2, 3]
+const arr2 = [4, 5, 6]
+const newArray = [...arr1, ...arr2]
+
 /*
 
   EFEITO COLATERAL É QUALQUER MUDANÇA DE ESTADO QUE PODE SER PERCEBIDA DO LADO 
@@ -65,3 +69,61 @@ const objetoCopia = {
   DE FORA DE UMA FUNÇÃO. LOGAR NO CONSOLE. MANIPULAR O DOM.
 
 */
+
+// =============== MAIS SOBRE SPREAD OPERATOR ===============
+
+/*
+  Repare que o spread operator basicamente 'concatena' os itens do array ou 
+  objeto, semelhante ao método 'concat'. Vale lembrar que o 'concat' é um método 
+  antigo do JS e o spread operator veio numa versão mais recente. 
+  
+  Object.assign é um método que realiza a mesma operação que o spread operator, 
+  ele faz uma cópia rasa das propriedades do objeto. Deve receber no mínimo dois 
+  argumentos, o primeiro é o objeto que irá receber as cópias das propriedades e
+  os outros argumentos são os objetos que terão suas propriedades atribuídas ao 
+  novo objeto.
+*/
+
+const obj1 = { prop1: 1, prop2: 2 }
+const obj2 = { pro3: 3, prop4: 4 }
+
+const obj3 = Object.assign({}, obj1, obj2)
+const obj3 = { ...obj1, obj2 }
+
+/*
+  Surge uma dúvida sobre a diferença entre as duas abordagens, já que estão 
+  fazendo a mesma coisa, criando uma cópia rasa dos objetos. A primeira diferença 
+  perceptível é a legibildiade, veja que o spread operator, mesmo se não soubermos 
+  o que ele faz, fica mais explícito sabermos o que está acontecendo, já o 
+  Object.assign() não deixa muito claro o que está acontecendo na operação.
+
+  Outra fator é que o spread operator necessariamente cria um novo objeto, o que é 
+  bom, pois estamos criando um novo ao invés de modificar um já existente, e 
+  repaque que, no exemplo do Object.assign() também estamos criando um novo objeto 
+  mas isso não necessariamente é uma regra, pois podemos inserir num objeto já 
+  existente as propriedades de outro. 
+
+  Isso irá modificar diretamente o objeto já existente, o que talvez não seja a 
+  intenção em determinados momentos.
+*/
+
+const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
+
+// =============== USANDO SPREAD OPERATOR EM STRINGS E FUNÇÕES ===============
+
+/*
+  Um característica do spread operator é que quando estamos espalhando seus itens,
+  o spread operator geralmente precisa ser espalhado em locais em que ele seja 
+  esperado, ou seja, dentro arrays, objetos, funções...
+
+  Existem método que só podem receber números como argumentos, mas é possível 
+  inserir um array passando o spread operator como argumentos dessa função, 
+  isso nos permite inserir arrays em métodos que só aceitam números. Veja:
+*/
+
+const numbers = [1, 2, 3, 4, 5]
+
+Math.min(numbers) // NaN, porque é array e só aceita números 
+
+Math.min(...numbers) // 1 
+Math.max(...numbers) // 5
