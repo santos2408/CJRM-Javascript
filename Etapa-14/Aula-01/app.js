@@ -127,3 +127,19 @@ Math.min(numbers) // NaN, porque é array e só aceita números
 
 Math.min(...numbers) // 1 
 Math.max(...numbers) // 5
+
+/*
+  =============== EXPRESSÕES E INSTRUÇÕES ===============
+  
+  Diferente de um statement (instrução), expressão é um pedaço de código que 
+  resulta em um valor, ela pode ser inserida em qualquer lugar do código em que 
+  um valor é esperado. 1 + 1 = 2, typeof 'oi' = string ou um operador ternário, 
+  são exemplos de expressões que retornam um valor.
+
+  Uma instrução é um pedaço de código que não resulta em um valor. A declaração 
+  de if else, switch ou for loop são exemplos que instrução que não retornam 
+  um valor. Por isso não conseguimos declarar um if como argumento de uma função.
+
+  Em javascript todo pedaço de código que não resulta em um valor, retorna 
+  undefined.
+*/
