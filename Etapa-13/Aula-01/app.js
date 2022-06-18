@@ -1,7 +1,7 @@
 // ABSTRAÇAO: Expor o essencial e ocultar o menos importante.
 
 /*
-   ============= LOCAL STORE =============
+   ============= LOCAL STORAGE =============
    
    Nas etapas anteriores nós construímos 3 aplicações: Quiz Interativo, To-do 
    List e Weather Application. O que essas aplicações tem em comum é que, os 
