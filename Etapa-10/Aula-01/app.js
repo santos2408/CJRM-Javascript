@@ -15,7 +15,7 @@ criando um objeto com seus métodos e propriedades.
 
 Para que um novo objeto do tipo data seja criado a partir de uma função que 
 constrói esse objeto, antes de inserir o construtor precisamos inserir o 
-operador 'new', que irá instanciar a função construturoa. Fazendo isso teremos 
+operador 'new', que irá instanciar a função construtora. Fazendo isso teremos 
 um novo objeto do tipo data.
 
 Se não inserirmos o operador 'new' antes da função construtora, ou seja, se 
