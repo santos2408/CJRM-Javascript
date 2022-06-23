@@ -23,7 +23,7 @@ de dados que o JavaScript tem.
 Existem diversos construtores de objetos no JavaScript, alguns são: 
   - String  - Number  
   - BigInt  - Boolean 
-  - Symbol
+  - Symbol  - Object
 
 Para invocarmos o construtor devemos inserir a palavra chave 'new' antes dele 
 para que um novo objeto do tipo desejado seja criado. Se não inserirmos o 'new' 
@@ -109,7 +109,7 @@ const user2 = {
 }
 
 const user3 = {
-  ...user1,
+  ...user1, // copiando os valores que são padrões para todo objeto
   name: 'Maria',
   email: 'maria@gmail.com',
 }
@@ -131,7 +131,7 @@ const user3 = {
 
   Class é a planta de um objeto, um template que descreve quais serão as propriedades 
   básicas de um objeto quando ele for construído. A class terá o objeto com as 
-  características básicas mas com valores diferentes para cada construção.
+  características básicas mas poderá receber valores diferentes para cada construção.
 
   Todo construtor embutido na linguagem tem a primeira letra do nome maiúscula, 
   então, por convenção, quando formos criar os nossos objetos, declareremos 
@@ -163,13 +163,10 @@ const user3 = {
 // declarando class para construir objeto User
 class User {
   constructor (name, lastName, age) { // criando novo objeto
-    this.name = name, // this referencia esse novo objeto que está sendo craido
+    this.name = name, // this referencia esse novo objeto que está sendo criado
     this.lastName = lastName,
     this.age = age
   }
-
-  // caso a propriedade e o parâmetro tenham o mesmo nome, podemos utilizar o 
-  // shorthand property name para encurtas a declaração
 }
 
 // invocando classe construtora
@@ -203,7 +200,7 @@ class Usuario {
   login () {
     console.log(`${this.name} logou na aplicação.`)
     return this 
-    // retornando o objeto para podermos encadear o addPoint sempre 
+    // retornando o objeto para podermos encadear o método addPoint sempre 
     // que for feito login
 
     /*
@@ -219,7 +216,7 @@ class Usuario {
   
   addPoint () {
     this.points++
-    return `${this.name} agora tem ${this.points > 1 ? 'pontos' : 'ponto'}`
+    return `${this.name} agora tem ${this.points} ${this.points > 1 ? 'pontos' : 'ponto'}`
   }
 }
 
@@ -237,25 +234,24 @@ console.log(usuario)
 
   Isso será usado quando quisermos ter um novo objeto que herda as características 
   de outro mas que tenha características únicas. E para não repetirmos código 
-  desnecessariamente, utilizados a herença de classes para obter as características 
+  desnecessariamente, utilizamos a herença de classes para obter as características 
   que irão se repetir nos objetos.
 
   Para herdarmos propriedades e métodos de uma classe, na declaração da classe 
-  devemos inserir 'extends' e o nome da classe que queremos herdas as características.
+  devemos inserir 'extends' e o nome da classe que queremos herdar as características.
 
-  Quando uma classe não contém um constructor declarado e nós extendemos uma classe 
-  de outra, essa outra classe irá usar o constructor da classe que ela está 
-  herdando. Mas quando criamos um novo constructor na nova classe, o this desse 
-  novo constructor não irá conseguir obter as propriedades da classe herdada, pois 
-  haverão dois constructors entrando em conflito.
+  Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
+  o constructor da classe que ela está herdando. Mas quando criamos um novo 
+  constructor na subclasse, o this desse novo constructor não irá conseguir obter 
+  as propriedades da classe herdada, pois haverão dois constructors entrando em conflito.
 
   O constructor da classe pai só é executado quando não existe um constructor na 
-  classe filho, se passar a existir, o constructor a classe pai não será mais 
+  classe filho, se passar a existir, o constructor da classe pai não será mais 
   executado e o this não conseguirá referenciar o objeto.
 
   Para resolver isso precisaremos receber todos os argumentos inseridos na 
-  invocação da classe e em seguida, dentro da constructor da classe filho 
-  iremos invocar a constructor da classe pai, só que para o JS entender que estamos 
+  invocação da subclasse e em seguida, dentro do constructor da classe filho 
+  iremos invocar o constructor da classe pai, só que para o JS entender que estamos 
   invocando o constructor da classe pai e não do filho, precisaremos trocar o nome 
   'constructor' por 'super'. 
 
@@ -263,10 +259,10 @@ console.log(usuario)
 
 class Mammal {
   constructor (species, name, age) {
-    this.spacies = species
+    this.species = species
     this.name = name
-    this.mammaryGland = true
     this.age = age
+    this.mammaryGland = true
   }
 
   incrementAge () {
@@ -275,21 +271,189 @@ class Mammal {
 }
 
 class Lion extends Mammal{ // Lion (subclasse) herdando propriedades e métodos de Mammal (classe)
-  constructor (species, name, age, manEater) {
+  constructor (species, name, age, manEater) { // constructor da subclasse
     super(species, name, age) // invocando constructor da classe pai e setando propriedades
-    this.manEater = manEater // propriedade única da Lion
+    this.manEater = manEater // propriedade única da subclasse Lion
   }
 
-  eatZebras (animals) {
+  eatZebras (animals) { // método único da subclasse Lion
     return animals.filter(animal => animal.species !== 'zebra')
   }
 }
 
 const zeca = new Mammal('zebra', 'Zeca', 6)
 const pompeu = new Mammal('gnu', 'Pompeu', 5)
-const angus = new Mammal('macaco', 'Cesar', 8)
-const mufase = new Mammal('leão', 'mufasa', 4, false)
+const cesar = new Mammal('macaco', 'Cesar', 8)
+const mufasa = new Lion('leão', 'mufasa', 4, false)
+const scar = new Lion('leão', 'scar', 10, true)
 
-const animals = [zeca, pompeu, angus]
+const animals = [zeca, pompeu, cesar]
 
-console.log(zeca)
+scar.eatZebras(animals)
+console.log(mufasa, scar)
+
+/*
+  =============== MÉTODOS GETTER AND SETTER ===============
+
+  Métodos get e set são outras features de classes. 
+  
+  Quando temos um método numa classe que está claramente obtendo um determinado 
+  valor, nós reconhecemos esse método como um método 'getter', ou seja, esse 
+  método existe para que um valor seja obtido quando ele for invocado.
+
+  Portanto, quando um método é um 'getter' nós podemos usar uma sintaxe de 
+  abreviação inserindo a palavra chave 'get' a esquerda do nome do método. Essa 
+  palavra chave nos permitirá obter o valor da propriedade usando a sintaxe de 
+  propriedade. Também devemos colocar o nome do método em letras minúsculas.
+
+  Com isso, mesmo sendo um método, no momento da invocação desse método podemos 
+  remover a sintaxe de invocação de método e invocá-lo como se estivessemos 
+  chamando uma propriedade, ou seja, sem precisar inserir parênteses.
+
+  Vale lembrar que não podemos ter métodos e propriedades com o mesmo nome, então 
+  se isso estiver ocorrendo, troque os nomes para evitar conflito.
+
+  Dá mesma forma que existem métodos que obtém um valor 'getter', existem também 
+  métodos que setam um valor 'setter', ou seja, que atribuem um valor a uma 
+  propriedade. Para isso usamos a mesma sintaxe de abreviação, mas passamos a 
+  palavra chave 'set' a esquerda do método.
+
+  Pode parecer estranho invocar métodos como se fossem propriedades, e é sim. 
+  Mas quando nos depararmos com um código semelhante em um projeto real, deveremos 
+  saber o que está acontecendo. Então, saber que isso é possível é uma maneira 
+  de evitar consequências no futuro e se for viável poderemos refatorar o código.
+
+*/
+
+class Counter {
+  constructor () {
+    this.count = 0 // propriedade pública
+  }
+
+  get value () { // método get usando sintaxe de abreviação
+    return this.count
+  }
+
+  increment () {
+    this.count++
+  }
+
+  set newValue (aNumber) { // método set usando sintaxe de abreviação
+    this.count = aNumber
+  }
+}
+
+const counter = new Counter()
+
+counter.value // invocando método get usando sintaxe de propriedade
+counter.newValue = 7 // setando um valor usando sintaxe de propriedade
+
+/*
+  =============== ENCAPSULAMENTO ===============
+
+  É um mecanismo de restringir o acesso direto a certas informações de um objeto.
+  Isso é muito importante e existem no mínimo 3 formas de encapsularmos dados em 
+  javascript: com classes, factory functions ou funções construtoras.
+
+  Agora veremos a forma utilizando classes, as outras duas formas veremos em 
+  aulas posteriores.
+
+  Repare que, no código abaixo, mesmo tendo métodos próprios para modificar o valor 
+  da propriedade count, nada impede que, fora da classe, depois que instanciamos 
+  o objeto, modifiquemos e acessemos a propriedade count dentro da classe. Ou seja, 
+  códigos externos à classe podem acessar e modificar propriedades dentro dela.
+
+*/
+
+class Counter {
+  count = 0 // propriedade pública
+
+  get value () { // método get usando sintaxe de abreviação
+    return this.count
+  }
+
+  increment () {
+    this.count++
+  }
+
+  set newValue (aNumber) { // método set usando sintaxe de abreviação
+    this.count = aNumber
+  }
+}
+
+const counter = new Counter()
+
+counter.count = 'Olá' // atribuindo string à count
+console.log(counter.count) // acessando diretamente o valor da count
+
+/*
+  Veja que, o código que escrevemos fora da classe consegue acessar e modificar 
+  o valor da propriedade count dentro da classe. Isso pode parecer normal, mas é 
+  um problema de segurança.
+
+  Isso acontece porque a propriedade count é uma propriedade pública. Normalmente 
+  a propriedade já é pública, mas podemos explicitar isso removendo o 'constructor', 
+  removendo o 'this' e deixando apenas a declaração do nome da propriedade. Esse tipo de 
+  feature que nos permite declarar uma propriedade pública sem precisar declarar 
+  o método constructor é chamada de 'public class fields'.
+
+  Fields é um termo alternativo para 'propriedades dentro de uma classe'. Propriedade 
+  e fieldes significam a mesma coisa nesse contexto.
+
+  Mas se desejarmos que apenas os códigos internos da classe possam acessar e 
+  modificar as propriedades dela, para isso devemos declarar a propriedade como 
+  privada, com isso, qualquer código fora da classe será impedido de acessar ou 
+  modificar propriedades da classe.
+
+  Chamamos a declaração de propriedades privadas de 'class private fields', declarando 
+  uma '#' antes do nome da propriedade a tornará privada e apenas os métodos 
+  internos da classe poderão acessar ou modificar seu valor, códigos externos 
+  não terão acesso.
+
+  Caso deseje inserir um valor dentro da propriedade privada que está sendo recebido 
+  por parâmetro, você pode, abaixo da propriedade privada, criar o método constructor 
+  e reatribuir o valor da propriedade recebendo o valor do parâmetro.
+*/
+
+class Counter {
+  #count = 0 // propriedade privada, precisar usar '#'
+
+  constructor (value) { // atribuindo valor na propriedade privada, pode usar o constructor normalmente
+    this.#count = value
+  }
+
+  get value () { // método get usando sintaxe de abreviação
+    return this.#count
+  }
+
+  increment () {
+    this.#count++
+  }
+
+  set newValue (aNumber) { // método set usando sintaxe de abreviação
+    this.#count = aNumber
+  }
+}
+
+const counter = new Counter()
+
+counter.#count = 'Olá' // não tem permissão para modificar a propriedade
+console.log(counter.count) // não tem permissão para acessar a propriedade
+
+counter.newValue = 5 // modificando propriedades através do método que existe na classe 
+counter.value // acessandro propriedade através do método que existe na classe
+
+/*
+  Em classes que herdam propriedades de outras classes, se as propriedades dessa 
+  subclasse forem públicas, nós não precisamos inserir o método constructor, 
+  invocar o método super para obter as propriedades da classe pai e em seguida 
+  criar as propriedades próprias da subclasse.
+
+  Basta utilizar a sintaxe de propriedade pública removendo o contructor, o this 
+  e deixando apenas a declaração da propriedade. Naturalmente a subclasse está 
+  obtendo as propriedades da classe pai e inserindo propriedades únicas no seu 
+  bloco.
+
+  Vale lembrar que esse tipo de ação só funciona em subclasses, na classe pai 
+  ainda precisaremos do método constructor para criar as propriedades.
+*/

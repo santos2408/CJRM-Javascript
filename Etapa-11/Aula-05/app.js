@@ -64,7 +64,7 @@ fetch('https://anapioficeandfire.com/api/houses')
   baixo dos panos que nos permitem escrever código ainda mais legível que é lido 
   como se fosse um código síncrono.
 
-  Repare que no código anterior, estamos executando a FETCH API, encadeando 
+  Repare que no código anterior estamos executando a FETCH API, encadeando 
   várias promises que tratam do passo a passo para podermos manipular os dados 
   retornados.
 
@@ -93,7 +93,7 @@ fetch('https://anapioficeandfire.com/api/houses')
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
     e longo em seguida o await irá pegar essa promise e retornar o valor resolvido 
-    dela (desempacotar) que é o objeto Response. Após isso as linhas abaixo dele 
+    dela (desempacotar), que é o objeto Response. Após isso as linhas abaixo dele 
     serão executadas. Ou seja, além de impedir a execução do restante do código 
     antes de obter a resposta da requisição, o await também irá desempacotar a 
     Promise para obter apenas a resposta dela.
@@ -107,7 +107,7 @@ fetch('https://anapioficeandfire.com/api/houses')
 */
 
 const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration / retorna uma promise
-  const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta
+  const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta e desempacota
   const users = await response.json() // json() retorna promise e await desempacota pegando apenas a reposta json
   return users // retorna apenas o objeto json
 }

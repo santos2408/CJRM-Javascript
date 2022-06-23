@@ -12,7 +12,7 @@ const numbers = [50, 100, 50]
 
 const sum = (x, y, z) => x + y + z
 
-console.log(sum(...numbers))
+console.log(sum(numbers))
 
 /*
   02
@@ -22,11 +22,6 @@ console.log(sum(...numbers))
   - Utilizando (também) o spread operator, exiba no console o seu nome com 
     apenas a primeira letra maiúscula.
 */
-
-const firstName = 'roger'
-const nameInUpperCase = [firstName[0].toUpperCase(), ...firstName.slice(1)].join('')
-
-console.log(nameInUpperCase)
 
 /*
   03
@@ -41,8 +36,7 @@ const randomNumber = Math.round(Math.random() * 100)
 
 const obj = {
   a: 1,
-  b: 2,
-  ...(randomNumber > 50 ? { c: 3 } : { d: 4 })
+  b: 2
 }
 
 console.log(obj)
@@ -54,25 +48,22 @@ console.log(obj)
     criado permaneça intacto.
 */
 
-const third = obj => {
-  return {
-    ...obj,
-    d: 3
-  }
+const h = w => {
+  w.d = 3
 }
 
-const second = obj => {
-  return third(obj)
+const q = f => {
+  h(f)
 }
 
-const first = obj => {
-  return second(obj)
+const i = b => {
+  q(b)
 }
 
-const object = { k: 't' }
-const object2 = first(object)
+const v = { k: 't' }
 
-console.log(object, object2)
+i(v)
+console.log(v)
 
 /*
   05
@@ -105,13 +96,6 @@ const timestamps = [
   }
 ]
 
-const newTimestamp = timestamps.reduce((acc, timestamp) => {
-  acc[timestamp.date] = timestamp.value
-  return acc
-}, {})
-
-console.log(newTimestamp)
-
 /*
   06
 
@@ -134,23 +118,6 @@ console.log(newTimestamp)
 
 let accumulator = 0
 const oddNumbers = [51, 97, 65, 23]
-
-const forEach = (array, func) => {
-  for (let index = 0; index < array.length; index++) {
-    const item = array[index]
-
-    func(array[index])
-    logResult(item, index, array)
-  }
-}
-
-const logResult = (item, index, array) => {
-  console.log(`"${item}" é o ${index + 1}º item do array [${array.join(', ')}]`)
-}
-
-forEach(oddNumbers, item => accumulator += item)
-
-console.log(accumulator)
 
 /*
   07

@@ -7,8 +7,8 @@ diferentes na memória, portanto não estão ligados por referência, são cópi
 independentes.
 
 Vale lembrar que o spread operator realiza uma 'cópia rasa' ou seja, se o valor 
-de uma propriedade do objeto original é um objeto, a propriedade do clone irá 
-referenciar (apontar) o mesmo objeto.
+de uma propriedade do objeto original é também um objeto, a propriedade do clone 
+irá referenciar (apontar) para o mesmo objeto.
 
 Portanto, o spread copia normalmente as propriedades do objeto, mas se uma dessas 
 propriedades forem algum outro objeto, aí a cópia não será feita, mas sim será 
@@ -18,12 +18,14 @@ aninhados ao invés de serem copiados, são referenciados.
 Então para de fato clonarmos objetos mesmo que eles tenham objetos aninhados, 
 devemos criar um novo objeto com todas as propriedades do objeto original, 
 utilizando 'spread operator', em seguida sobrescrevemos a propriedade que contém 
-um objeto aninhado e atribuímos para ela um novo objeto e espalharmos as propriedades 
+um objeto aninhado e atribuímos para ela um novo objeto e espalhamos as propriedades 
 do objeto aninhado dentro desse novo objeto. Veja o exemplo para ficar mais claro.
 
 Arrays aninhados também são referenciados, porque arrays também são objetos.
 Portanto, caso haja um array no objeto também devemos espalhar os seus elementos 
-para evitarmos uma referência e obter um cópia.
+para evitarmos uma referência e obter um cópia. Isso vale para funções também, 
+como elas são objetos, quando espalhamos as propriedades, ela também será referenciada, 
+então procure reatribuir a propriedade que contém uma função.
 
 Valores que não são primitivos, então são objetos: objetos, arrays, funções...
 Portanto, funções também não sáo copiadas e sim referenciadas, porque também 
@@ -46,7 +48,7 @@ const objeto = {
 
 const objetoCopia = { 
   ...objeto, // espalhando todas as propriedades / criando cópia
-  prop0: () => {}, // cópia da função e não referência
+  prop0: () => {}, // cópia da função e não referência / reescrevendo função
   prop3: { // sobrescrevendo prop3
     ...objeto.prop3 // espalhando propriedades para criar cópia e não referência
   },
@@ -60,7 +62,7 @@ const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
 const newArray = [...arr1, ...arr2]
 
-// repare que o spread opertator é uma forma mais moderna de concaternar array
+// repare que o spread opertator é uma forma mais moderna de concatenar arrays
 
 /*
 
@@ -116,8 +118,8 @@ const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
 /*
   Uma característica do spread operator é que quando estamos espalhando seus itens,
   o spread operator geralmente precisa ser espalhado em locais em que ele seja 
-  esperado, ou seja, dentro de arrays, objetos, funções, não conseguimos espalhar 
-  os itens através do spread operator em qualquer local que quisermos.
+  esperado, ou seja, dentro de arrays, objetos, funções, etc, não conseguimos 
+  espalhar os itens através do spread operator em qualquer local que quisermos.
 
   Existem métodos que só podem receber números como argumentos, mas é possível 
   inserir um array passando o spread operator como argumento dessa função, 
