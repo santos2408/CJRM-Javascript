@@ -31,8 +31,8 @@
 
    O conceito de escopo de bloco demonstra a vantagem de se usar let e const
    ao invés de var, pois a variável 'var' ignora escopo de bloco, ou seja,
-   ela continua como escopo global e mesmo dentro de um bloco de código, 
-   é possível acessá-lá no escopo raiz.
+   ela continua como escopo global e mesmo dentro de um bloco de código é 
+   possível acessá-lá no escopo raiz.
 */
 
 // escopo global, acessada em qualquer lugar.
@@ -97,7 +97,7 @@ let user = {
    logout () {
       console.log('Usuário deslogado.')
    },
-   logBlogPosts (){
+   logBlogPosts () {
       console.log(`${this.name} escreveu os seguintes posts:`)
 
       this.blogPosts.forEach(post => {
@@ -113,7 +113,7 @@ user.logBlogPosts()
    Atenção:
 
    Ao declarar um método que estará usando o this, atente-se ao uso das
-   function declarations, pois apenas com elas o this se comprota desta maneira.
+   function declarations, pois apenas com elas o this se comporta desta maneira.
    Ou seja, referenciando o objeto do contexto.
 
    Se utilizarmos arrow functions, o this irá referenciar o objeto referente ao 
@@ -144,74 +144,3 @@ let user = {
       console.log('Usuário logado.')
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -18,7 +18,9 @@
    dados que tem uma relação entre si.
 
    De alguns métodos apresentados abaixo, atente-se para o método
-   push() e pop(), pois são métodos que modificam o array original.
+   push() e pop(), pois são métodos que modificam o array original. Mas existem 
+   também outros métodos que podem alterar o array original, deve-se ter atenção 
+   quanto a isso, pois pode não ser o desejado.
 
 */
 
@@ -45,12 +47,13 @@ const indexOf25 = ages.indexOf(25)
 console.log(indexOf25)
 // assim como na string, busca a primeira ocorrência do valor inserido
 // caso o valor informado não exista no array, o retorno será -1, sempre.
-// retorna a posição do valor inserido
+// retorna a posição (index) do valor inserido
 
 const moreHeroes = heroes.concat(['Superman', 'Wolverine'])
 console.log(moreHeroes)
 // irá concatenar dois ou mais arrays
 // não modifica o array original
+// no ES6 surgiu o spread operator que realiza a mesma operação
 
 const pushToHeroes = heroes.push('Cyclops', 'Hulk')
 console.log(pushToHeroes) // total de itens
@@ -86,8 +89,22 @@ array1.reverse()
 // inverte a posição dos elementos
 // o primeiro se torna o último e o último se torna o primeiro
 
-// slice...
-// splice...
+const array1 = ['one', 'two', 'three']
+array1.slice(1)
+// retorna uma cópia rasa de um pedaço de um array em um novo array
+// seleciona o item initial e final, sendo o final não incluído no 'corte'
+// os valores iniciais e finais representam o index do item
+// não modifica o array original
+// a partir de qual índice você deseja cortar ?
+// -1 equivale ao último índice/item
+
+const array1 = ['one', 'two', 'three', 'four']
+array1.splice(1, 0, 'banana')
+array1.splice(2, 1, 'segundo')
+// muda o conteúdo de um array, removendo, alterando ou adicionando elementos
+// modifica o array original
+// três argumentos (valor initial, valor de delete, valor de replace)
+
 // every...
 // split
 // Object.keys
@@ -96,9 +113,8 @@ console.log('========================================')
 
 // ===== NULL E UNDEFINED =================================
 
-/*
-   São tipos de dados similares e representam a falta de um valor.
-*/
+
+// São tipos de dados similares e representam a falta de um valor.
 
 /*
    UNDEFINED

@@ -75,7 +75,8 @@ request.send()
    Quando o request é feito sem gerar nenhum erro, o status do request terá '200' 
    como valor. Caso o request ocorra algum erro, o status retornará '404'. 
    Portanto, para assegurarmos que a verificação do request foi obtida com sucesso 
-   e assim podermos fazer algo com ela, nós podemos verificar o status da requisição.
+   e assim podermos fazer algo com ela, nós podemos também verificar o status da 
+   requisição.
 */
 
 request.addEventListener('readystatechange', () => {
