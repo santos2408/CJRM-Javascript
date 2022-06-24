@@ -136,10 +136,3 @@ let nullValue = null
 
 console.log(nullValue, nullValue + 3, `O valor é ${nullValue}`)
 //output: null 3 null
-
-
-
-
-
-
-
