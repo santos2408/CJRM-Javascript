@@ -11,7 +11,8 @@
 
    É possível criar objetos explicitamente, chamados de objetos individuais ou
    objetos literais. Mas o javascript também possui alguns objetos acoplados 
-   nele, por exemplo, objeto Date e objeto Math.
+   nele, por exemplo, objeto Date e objeto Math, além de nos permitir criar 
+   nossos próprios objetos com propriedades e métodos únicos.
    
    Por exemplo:
 
@@ -118,7 +119,7 @@ console.log((user["age"] = 28))
    com arrow functions, mas vale uma atenção nesse fato, pois arrow functions
    mudarão o comportamento no uso do this que veremos mais a frente. Functions
    declarations também podem ser encurtadas para melhor legibilidade, utilizando
-   shorcut.
+   shorcut method name.
 */
 
 let user = {
@@ -144,7 +145,7 @@ name.toUpperCase() // método de String
 // ====== MAIS SOBRE OBJETOS ==============================
 
 /*
-   Além de utilizar um inicializar de objeto, que é uma sintaxe literal para 
+   Além de utilizar um inicializador de objeto, que é uma sintaxe literal para 
    criar objetos, podemos também utilizar o construtor Object() para criarmos 
    objetos.
 
@@ -167,3 +168,17 @@ const person = {
 }
 
 Object.key(person) // output: ["name", "age", "1996"]
+
+/*
+   Object.entries: retorna um array do próprio objeto passado como argumento do 
+   método, esse array irá retornar um array de arrays em que cada array 
+   corresponde a uma propriedade e valor do objeto. Ex:
+*/ 
+
+const person = {
+   name: 'Roger',
+   age: 25,
+   '1996': 1996
+}
+
+Object.entries(person) // output: [ ["name", "Roger"], ["age", "25"], ["1996", "1996"] ]
