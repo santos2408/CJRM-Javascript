@@ -5,7 +5,7 @@
    um array em ordem alfabética, crescente ou decrescente, objetos, entre outros.
 
    Lembre-se que o método sort ALTERA o array original, diferente de outros 
-   métodos. Portanto, caso não deseje que isso acontece, armazene o novo array 
+   métodos. Portanto, caso não deseje que isso aconteça, armazene o novo array 
    numa outra constante ou crie uma cópia utilizando o método map.
 
    Apenas invocando o sort, por padrão ele ordenará os itens por ordem 
@@ -38,17 +38,17 @@
    argumento deve vir antes do segundo.
 */
 
-// exemplo 1: ordenando strings
+// exemplo 1: ordenando strings em ordem alfabética
 const names = ['Christian', 'Alfredo', 'Edson']
 
 names.sort()
 
-// exemplo 2: ordenando números
+// exemplo 2: ordenando números em ordem crescente, considerando apenas a unidades
 const scores = [10, 50, 20, 5, 35, 70, 45]
 
 scores.sort()
 
-// exemplo 1: ordenando objetos
+// exemplo 1: ordenando objetos, precisa dos argumentos para ordenar os itens
 const theBigFamily = [
    { name: 'Lineu', score: 20 },
    { name: 'Nenê', score: 10 },
