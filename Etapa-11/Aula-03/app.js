@@ -53,7 +53,7 @@ getCharacters((error, data) => {
   resposta da API em objetos javascript.
 
   OBS:
-    * Ao criarmos arquivos JSON, não precisamos inserir strings, pois como já 
+    * Ao criarmos arquivos JSON não precisamos inserir strings, pois como já 
       estamos dentro de um arquivo JSON e esse tipo de arquivo só aceita strings, 
       ele já sabe que está sendo inserido strings, então não precisamos especificar 
       isso para ele.
