@@ -68,10 +68,11 @@ console.log('===================================')
 // ============ FOR IN ============
 
 /*
-   Esse tipo de loop é semelhante ao clássico, no entanto ao invocarmos, ele 
+   Esse tipo de loop é semelhante ao clássico, no entanto ao declararmos, ele 
    irá iterar pelo índice de um array ou chave de um objeto e podemos obter o valor. 
    Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
    o for in irá percorrer os índices e obter o valor de cada um, para todos.
+
 */
 
 const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
@@ -88,6 +89,26 @@ for (let chave in pessoa) {
 }
 
 // ============ FOR OF ============
+
+/*
+   Essa estrutura cria um loop que itera em geral sobre objetos iteráveis. Em 
+   arrays irão iterão sobre os itens
+
+*/
+
+const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
+const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
+
+// percorre os elementos
+for (let elemento of frutas) {
+   console.log(elemento)
+}
+
+/*
+   Repare que, diferente do for clássico que podemos controlar até onde o loop 
+   pode ir, declarando um limite, no for in e for of não temos esse controle, 
+   ou seja, eles irão percorrer todos os itens do array ou objeto.
+*/
 
 // === WHILE LOOP ==========
 
