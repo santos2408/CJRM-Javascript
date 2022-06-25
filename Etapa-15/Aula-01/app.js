@@ -7,7 +7,7 @@ O JavaScript é uma linguagem fortemente orientada a objetos sendo baseado em
 prototypes.
 
 Como o JS é uma linguagem multiparadigma, nós podemos programar orientado a objetos, 
-imperativo, funcional ou todas as formas combinados. Combinando os paradigmas em 
+imperativo, funcional ou todas as formas combinadas. Combinando os paradigmas em 
 um código, podemos extrair o melhor de cada estilo.
 
 Para começarmos devemos entender mais sobre os tipos primitivos e referência. 
@@ -15,7 +15,7 @@ Repare que mesmo não sendo objetos, os tipos primitivos contém métodos e prop
 embutidos neles. Isso porque quando acessamos um tipo primitivo, o JS automaticamente 
 insere esse tipo dentro de um objeto equivalente ao tipo de dado.
 
-Sabemos que funções, arrays, objetos literais são todos objetos, mas há outras 
+Sabemos que funções, arrays e objetos literais são todos objetos, mas há outras 
 formas de criarmos objetos, que é usando os construtores embutidos da linguagem. 
 São objetos ou funções que constroem novos objetos, eles são praticamente os tipos 
 de dados que o JavaScript tem.
@@ -41,7 +41,7 @@ apenas retornar o valor convertido.
 Construtores são usados por baixo dos panos pelo JS para agirem como 'wrapper 
 objects' (embrulhar objetos). Repare que é possível invocarmos métodos e propriedades 
 em tipos primitivos mesmo eles não sendo objetos, isso porque quando tratamos 
-um dado primitivo, o JS automaticamente 'embrulha' esse dado dentro de um objeto 
+um dado primitivo o JS automaticamente 'embrulha' esse dado dentro de um objeto 
 equivalente ao seu tipo, trata ele na memória e em seguida remove da memória e 
 converte de novo para seu tipo primitivo. E esse objeto que envolve o tipo contém 
 os métodos e propriedades embutidos nele.
@@ -126,7 +126,7 @@ const user3 = {
   de entendermos melhor o que está acontecendo, pois por baixo dos panos elas estão 
   usando prototypes para construir os objetos.
 
-  Elas foram adicionados como uma tentativa de deixar mais fácil o entendimento 
+  Elas foram adicionadas como uma tentativa de deixar mais fácil o entendimento 
   da sintaxe para se trabalhar com prototypes.
 
   Class é a planta de um objeto, um template que descreve quais serão as propriedades 
@@ -152,7 +152,7 @@ const user3 = {
   this dentro da classe corresponde ao novo objeto que está sendo criado.
 
   Quando objetos são criados através de uma classe, tecnicamente chamamos esses 
-  novos objetos de instância da classe, esse termo é usado para se referir a um 
+  novos objetos de instâncias da classe, esse termo é usado para se referir a um 
   objeto que foi criado por uma classe.
 
   Agora podemos criar quantos objetos quisermos com as mesmas propriedades e 
@@ -161,8 +161,8 @@ const user3 = {
 */
 
 // declarando class para construir objeto User
-class User {
-  constructor (name, lastName, age) { // criando novo objeto
+class User { // criando objeto
+  constructor (name, lastName, age) { // criando as propriedades
     this.name = name, // this referencia esse novo objeto que está sendo criado
     this.lastName = lastName,
     this.age = age
@@ -180,12 +180,15 @@ const user = new User('Roger', 'Santos', 25) // criando instância de User
   nós não iremos criar o método dentro da função constructor.
 
   A função constructor é reservada apenas para as propriedades do objeto, para 
-  criar os métodos devemos criar fora da função constructor, declarando um 
+  inserir os métodos devemos criar fora da função constructor, declarando um 
   método normalmente. Lembre-que também que o bloco de uma classe não é um objeto, 
   portanto não precisamos separar as declarações com vírgula.
 
   Os métodos do objeto gerado ficam armazenados dentro da propriedade prototype 
   que veremos futuramente.
+
+  Dentro da classe, na declarção de métodos utilizamos a intaxe de shortcut 
+  property name
   
 */
 
@@ -257,7 +260,7 @@ console.log(usuario)
 
 */
 
-class Mammal {
+class Mammal { // classe pai
   constructor (species, name, age) {
     this.species = species
     this.name = name
@@ -270,9 +273,9 @@ class Mammal {
   }
 }
 
-class Lion extends Mammal{ // Lion (subclasse) herdando propriedades e métodos de Mammal (classe)
+class Lion extends Mammal{ // Lion (subclasse) herdando propriedades e métodos de Mammal (classe pai)
   constructor (species, name, age, manEater) { // constructor da subclasse
-    super(species, name, age) // invocando constructor da classe pai e setando propriedades
+    super(species, name, age) // invocando constructor da classe pai e obtendo propriedades
     this.manEater = manEater // propriedade única da subclasse Lion
   }
 
@@ -313,7 +316,7 @@ console.log(mufasa, scar)
   Vale lembrar que não podemos ter métodos e propriedades com o mesmo nome, então 
   se isso estiver ocorrendo, troque os nomes para evitar conflito.
 
-  Dá mesma forma que existem métodos que obtém um valor 'getter', existem também 
+  Da mesma forma que existem métodos que obtém um valor 'getter', existem também 
   métodos que setam um valor 'setter', ou seja, que atribuem um valor a uma 
   propriedade. Para isso usamos a mesma sintaxe de abreviação, mas passamos a 
   palavra chave 'set' a esquerda do método.
@@ -411,8 +414,10 @@ console.log(counter.count) // acessando diretamente o valor da count
   não terão acesso.
 
   Caso deseje inserir um valor dentro da propriedade privada que está sendo recebido 
-  por parâmetro, você pode, abaixo da propriedade privada, criar o método constructor 
-  e reatribuir o valor da propriedade recebendo o valor do parâmetro.
+  por parâmetro ou objeto precise de outras propriedades que são únicas, você pode, 
+  abaixo da propriedade privada, criar o método constructor e reatribuir o valor 
+  da propriedade recebendo o valor do parâmetro e trabalhar normalmente com o 
+  constructor
 */
 
 class Counter {
