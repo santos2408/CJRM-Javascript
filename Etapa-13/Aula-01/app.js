@@ -5,9 +5,9 @@
    
    Nas etapas anteriores nós construímos 3 aplicações: Quiz Interativo, To-do 
    List e Weather Application. O que essas aplicações tem em comum é que, os 
-   dados que são inseridos nelas não ficam salvos após recarrergamos a página 
-   da aplicação, ou seja, as informação desaparecem. Isso porque não estamos 
-   salvando as informação em nenhum lugar, ou seja, persistindo os dados.
+   dados que são inseridos nelas não ficam salvos após recarregarmos a página 
+   da aplicação, ou seja, as informações desaparecem. Isso porque não estamos 
+   salvando as informações em nenhum lugar, ou seja, persistindo os dados.
    
    Então sempre que a página é recarregada, ela retorna para o seu estado 
    original. Haverá momentos em que precisaremos persistir dados na aplicação 
@@ -52,7 +52,7 @@
       podemos fazer uma nova requisição para o banco de dados para salvar esses 
       novos dados. Isso evita de consumirmos banda do usuário em todo request.
 
-   Vale lembrar que salvar dados dados no browser não é a opção mais segura.
+   Vale lembrar que salvar dados no browser não é a opção mais segura.
 
    * Cookies, indexedDB, cache API e segurança no front-end são assuntos mais 
    avançados que serão mostrados posterioremente.
@@ -71,7 +71,7 @@
 
    Quando vazio, o objeto 'storage' possui apenas uma propriedade 'length' que 
    armazena 0. Apesar de haver apenas uma propriedade oficialmente, existe uma 
-   propriedade 'proto' que possui alguns métodos e propriedades que podemos usar 
+   propriedade 'prototype' que possui alguns métodos e propriedades que podemos usar 
    para interagir com o objeto 'storage'.
 
    Os dados que entram são armazenados na 'storage' e são considerados itens, ou 
@@ -85,7 +85,7 @@
    prototype.
 
    setItem: insere/altera um item na local storage, recebe dois argumentos 
-   com chave e valor.
+   com chave e valor, todos entre aspas.
 
    getItem: obtém os dados do item especificado, recebe um argumento com o nome 
    da chave que se deseja obter o valor.
@@ -122,15 +122,18 @@ localStorage.clear() // limpa todos os dados
    para string antes de ser armazenado.
 
    Para armazenarmos um array de objetos na local storage (lembrando que um array 
-   também é um objeto) primeiro devemos converter essa array de objetos em uma 
+   também é um objeto) primeiro devemos converter esse array de objetos em uma 
    string, com isso poderemos armazenar esse array convertido dentro de uma 
    storage, em seguida quando obtermos esse 'array' da local storage, ele retornará 
    uma string e precisaremos parsear de volta para um array, essa técnica é 
-   conhecida como serialização.
+   conhecida como serialização, ou seja, transformar um dado em outro valor e 
+   depois "destranformar" para o seu valor original.
 
    Para convertermos array em strings podemos utilizar um método de um objeto 
    global JSON que está embutido na linguagem. Esse método se chama stringify()
-   e ao convertermos esse array para string, ele irá retornar um JSON.
+   e ao convertermos esse array para string, ele irá retornar um JSON. Assim 
+   poderemos inserir o array como valor de um local storage, pois ele só aceita 
+   valores do tipo string.
 */
 
 const myArray = [
