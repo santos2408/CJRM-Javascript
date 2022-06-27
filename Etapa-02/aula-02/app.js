@@ -8,7 +8,9 @@
 
    Para mútliplos statements utilizamos um bloco de código, mas caso o if 
    retorne apenas uma linha podemos utilizar um retorno implícito que diminui 
-   a quantidade de linhas e em alguns casos deixa o código mais legível.
+   a quantidade de linhas e em alguns casos deixa o código mais legível. Vale 
+   lembrar que nem sempre essa é uma prática recomendável devido a problemas de 
+   segurança e entendimento do JS. Dê preferência para if em blocos e evite inline.
 
    Evite também inserir uma atribuição como condição de um if, por exemplo:
    if (x = 1). Na aula de while veremos o uso desse tipo de atribuição.
@@ -88,7 +90,7 @@ if (password < 8) {
    console.log('Essa senha é muito fraca.')
 }
 
-// ===== mais conciso, talvez não tanto legível / retorno implícito =====
+// ===== mais conciso, talvez não tanto legível / retorno implícito / evite =====
 if (password >= 12) console.log('Essa senha é forte')
 if (password >= 8) console.log('Essa senha tem 8 ou mais caracteres') 
 if (password < 8) console.log('Essa senha é muito fraca.')
