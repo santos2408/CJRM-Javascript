@@ -93,7 +93,7 @@ const object = new Object() // objeto wrapper do tipo object
 */
 
 // criando objetos literais com os mesmos métodos e propriedades
-// contém métodos e propriedades iguais, mas valores diferenetes
+// contém métodos e propriedades iguais, mas valores diferentes
 // quanto mais usuários, mais códigos repetidos, mais ilegível fica o código
 const user1 = {
   name: 'Roger',
@@ -156,7 +156,7 @@ const user3 = {
   objeto que foi criado por uma classe.
 
   Agora podemos criar quantos objetos quisermos com as mesmas propriedades e 
-  utilizando apenas uma classe construtora sem ter que criar divernos objetos 
+  utilizando apenas uma classe construtora sem ter que criar diversos objetos 
   para 'users' diferentes.
 */
 
@@ -181,13 +181,13 @@ const user = new User('Roger', 'Santos', 25) // criando instância de User
 
   A função constructor é reservada apenas para as propriedades do objeto, para 
   inserir os métodos devemos criar fora da função constructor, declarando um 
-  método normalmente. Lembre-que também que o bloco de uma classe não é um objeto, 
+  método normalmente. Lembre-se também que o bloco de uma classe não é um objeto, 
   portanto não precisamos separar as declarações com vírgula.
 
   Os métodos do objeto gerado ficam armazenados dentro da propriedade prototype 
   que veremos futuramente.
 
-  Dentro da classe, na declarção de métodos utilizamos a intaxe de shortcut 
+  Dentro da classe, na declaração de métodos utilizamos a sintaxe de shortcut 
   property name
   
 */
@@ -318,7 +318,7 @@ console.log(mufasa, scar)
 
   Da mesma forma que existem métodos que obtém um valor 'getter', existem também 
   métodos que setam um valor 'setter', ou seja, que atribuem um valor a uma 
-  propriedade. Para isso usamos a mesma sintaxe de abreviação, mas passamos a 
+  propriedade. Para isso usamos a mesma sintaxe de abreviação mas passamos a 
   palavra chave 'set' a esquerda do método.
 
   Pode parecer estranho invocar métodos como se fossem propriedades, e é sim. 
@@ -460,5 +460,7 @@ counter.value // acessandro propriedade através do método que existe na classe
   bloco.
 
   Vale lembrar que esse tipo de ação só funciona em subclasses, na classe pai 
-  ainda precisaremos do método constructor para criar as propriedades.
+  ainda precisaremos do método constructor para criar as propriedades. E perceba 
+  também que se quisermos obter os dados através dos parâmetros deveremos ter 
+  de fato o método constructor.
 */
