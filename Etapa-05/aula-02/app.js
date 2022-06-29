@@ -140,8 +140,9 @@ const title2 = document.querySelector('.content-4 h1')
 /*
    Repare abaixo que se adicionarmos um estilo CSS através do método setAttribute,
    esse método irá sobrescrever o estilo atual que o elemento já tem e definirá 
-   apenas o que está sendo passado na hora. Ou seja, não conseguiremos manter
-   diferentes estilos num mesmo elemento. Veja abaixo:
+   apenas o que está sendo passado no setAttribute. Ou seja, não conseguiremos manter
+   diferentes estilos num mesmo elemento, ou seja, o setAttribute define apenas 
+   um atribute para o elemento, não conseguimos adicionar mais de um. Veja abaixo:
 */
 
 title2.setAttribute('style', 'margin: 50px')
