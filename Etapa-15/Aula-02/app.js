@@ -14,14 +14,15 @@ código mais simples possamos lidar com estruturas mais complexas. O async/await
 
 Então o que as classes abstraem? A classe em javascript é uma função construtora. 
 Todo função construtora precisa ser uma function declaration, isso porque quando 
-são criamos com arrow function, um typeError será gerado informando que a função 
+são criadas com arrow function, um typeError será gerado informando que a função 
 não é construtora. Isso porque o this dentro de uma arrow function não referencia 
 o objeto que está sendo criado e sim o this do escopo em que a arrow function foi 
 declarada. Por isso não declaramos funções construtoras com arrow function.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
-de uma função construtora.
+de uma função construtora. Dentro da função construtora não precisamos do método 
+constructor, diferente da classe.
 
 Intuitivamente também declararíamos os métodos dentro da função construtora, 
 semelhante a Class, no entanto esse não é uma boa prática e mais a frente veremos 
@@ -41,24 +42,24 @@ class Student {
     this.email = email
   }
 
-  myFunc = () => this // referencia objeto do escopo onde foi declarada / Objeto Student
+  myFunc = () => this // arrow function referencia objeto do escopo onde foi declarada / Objeto Student
 }
 
 // função construtora
 function Student (name, email) {
-  this.name = name // referencia objeto criado
-  this.email = email // referencia objeto criado
+  this.name = name // referencia objeto criado / Student
+  this.email = email // referencia objeto criado / Student
 
   setTimeout(() => { // arrow function
     console.log(this) // referencia objeto do escopo onde foi declarada / Objeto Student
   }, 1000)
 
-  this.login = function () { // método declarado dentro da função construtora / isso não é bom
+  this.login = function () { // método declarado dentro da função construtora / isso não é bom / função anônima
     return `${this.name} logou na aplicação.`
   }
 }
 
-// arrow function / função construtora
+// arrow function como função construtora / está errado, não referencia o objeto Student
 const Student = (name, email) => {
   this.name = name // referencia objeto do escopo onde foi declarada / Objeto Window
   this.email = email // referencia objeto do escopo onde foi declarada / Objeto Window
@@ -72,13 +73,13 @@ const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
 Como vimos no exemplo anterior, declarar métodos dentro de funções construtoras 
 não é bom para a performance da aplicação, isso porque quando adicionamos métodos 
 dentro de uma função construtora, esse método será declarado em cada novo objeto 
-que a função construtorar criar. Mesmo que os métodos sejam idênticos, eles irão 
+que a função construtora criar. Mesmo que os métodos sejam idênticos, eles irão 
 ocupar dois espaços diferentes na memória, pois cada um vai ocupar um espaço 
 diferente. Com isso a aplicação irá consumir mais memória do que necessário. Mas 
 existe uma forma de evitar isso.
 
 Em javascript todo novo objeto que é criado herda propriedades e métodos do 
-seu prototype, que é um objeto do qual um novo objeto que você criou vai hardar 
+seu prototype, que é um objeto do qual um novo objeto que você criou vai herdar 
 as propriedades e métodos, ou seja, é o objeto que armazena as propriedades e 
 métodos que são herdados pelo novo objeto que criarmos.
 
@@ -91,12 +92,15 @@ automaticamente dentro da propriedade prototype do array.
 Agora repare que, métodos declarados dentro de uma função construtora são 
 armazenados no próprio objeto, ou seja, o método está junto com as propriedades. 
 E isso acontecerá para cada objeto criado e mesmo sendo iguais estão em espaços 
-diferentes na memória.
+diferentes na memória, por esse motivo não devemos declarar métodos dentro da 
+função construtora, pois cada objeto terá o mesmo método consumindo mémória.
 
 Para evitarmos isso é possível declararmos o método uma vez, armazenarmos ele 
 em apenas um espaço na memória e fazer com que todos os objetos que sejam criados 
 pela função construtora consiga acesar o método através da referência dele. Para 
-isso temos que armazená-lo dentro da propriedade prototype do objeto.
+isso temos que armazená-lo dentro da propriedade prototype do objeto, com isso 
+todo objeto criado vai herdar o mesmo método existente que está num espaço da 
+memória, sem a necessidade de criar um para cara objeto criado.
 
 Vale lembrar que cada tipo de objeto contém um prototype, as vezes com métodos e 
 propriedades diferentes para aquele tipo de objeto. Mas não significa que o 
@@ -105,27 +109,27 @@ prototype é criado para cada tipo de objeto, na verdade o prototype é um objet
 Isso significa que se tivermos dois arrays diferentes na memória, eles estarão 
 apontando para o mesmo prototype do objeto Array na memória, isso diminui o 
 consumo de memória. Portanto cada tipo de objeto tem seus métodos armazenados no 
-seu prototype.
+seu prototype. Portanto, os prototypes dos objetos já existem no JS, eles não 
+são criados, mas apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
 prototype do objeto criado, invés de adicionar dentro da própria função construtora.
 
 A propriedade prototype é tanto um getter quanto setter, ou seja, nós conseguimos 
-obter dados dele, ou seja, métodos e também conseguimos inserir dados nele, ou seja, 
-métodos.
+obter dados dele etambém conseguimos inserir dados nele.
 
 */
 
-const Student = (name, email) => {
+function Student (name, email) { // função construtora
   this.name = name
   this.email = email
 }
 
-Student.prototype.login = function () { // setando método no prototype de Student / setter
+Student.prototype.login = function () { // setando método no prototype de Student / setter / função anônima
   return `${this.name} fez login.`
 }
 
-Student.prototype.comment = function () {
+Student.prototype.comment = function () { // setando método no prototype de Student / setter / função anônima
   return `${this.name} comentou no post`
 }
 
@@ -133,7 +137,6 @@ const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
 const alessandra = new Student('Alessandra Carvalho', 'alessandra.pigmentar@gmail.com')
 
 [].includes() === [].__prototype__.includes() // true
-
 Array1.__prototype__ === Array2.__prototype__ // true
 
 roger.login === alessandra.login // true
@@ -146,7 +149,7 @@ roger.comment === alessandra.comment // true
   Pode ter surgido a seguinte dúvida: Você deve ter reparado que para declararmos 
   os métodos dentro da propriedade prototype nós temos que declarar fora da 
   função construtora, sendo assim, quando trabalhando com classes, também é 
-  necessário fazer isso? Não!
+  necessário fazer isso, certo? Não!
 
   Quando estamos trabalhando com classes, os métodos declarados dentro da classe 
   são automaticamente inseridos dentro do prototype do objeto sem precisarmos 
@@ -179,19 +182,21 @@ class Student {
 */
 
 // método estático, ou seja, sendo inserido dentro da função construtora
-Student.formatToDatabase = function (aString) { // function declartion anônima
+Student.formatToDatabase = function (aString) { // function declaration anônima
   return aString
     .toUpperCase()
     .replaceAll(' ', '_')
 }
 
 /*
+
   O método estático não é visível nem dentro do objeto e nem dentro da propriedade 
   prototype, apenas na função construtora. Para visualizarmos ele na função com 
   sintaxe de objeto, podemos usar o método 'dir' do console.
 
   Agora, nós também podemos declarar um método estático dentro de uma classe, 
   para isso usamos a notação 'static' para informar que será um método desse tipo.
+
 */
 
 class Student {
@@ -204,7 +209,7 @@ class Student {
     return `${this.name} comentou`
   }
 
-  static formatToDatabase (aString) { // function declartion com nome
+  static formatToDatabase (aString) { // método estático / function declaration com nome
     return aString
       .toUpperCase()
       .replaceAll(' ', '_')
@@ -220,12 +225,12 @@ class Student {
   declaration, como fizemos dentro da classe, a propriedade 'name' recebe o nome 
   do método que foi declarado.
 
-  Mas quando declaramos o método estático com a sintaxe de function declartion 
+  Mas quando declaramos o método estático com a sintaxe de function declaration 
   completa, ou seja, anônima, estamos explicitando que a função não constém nome.
 
   Isso é problemático porque um erro envolvendo uma função anônima pode retornar 
   uma string em branco como nome da função. Mesmo que o erro indique a linha que 
-  ocorreu, não existe justificativa para trabalhar com function declarion anônima, 
+  ocorreu não existe justificativa para trabalhar com function declaration anônima, 
   a não ser que ela seja atribuída para uma const ou let, pois quando declaramos 
   uma função anônima com const ou let, seu nome é atribuído normalmente.
 
@@ -233,11 +238,11 @@ class Student {
 
 */
 
-Student.formatToDatabase = function (aString) { // function declartion anônima / não recomendado
+Student.formatToDatabase = function (aString) { // function declaration anônima / não recomendado
   // ...
 }
 
-Student.formatToDatabase = function formatToDatabase (aString) { // function declartion com nome / recomendado
+Student.formatToDatabase = function formatToDatabase (aString) { // function declaration com nome / recomendado
   // ...
 }
 
