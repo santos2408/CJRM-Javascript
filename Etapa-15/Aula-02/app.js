@@ -10,7 +10,7 @@ Diferente de outras linguagens, em javscript, tecnicamente não existem classes,
 elas são apenas um sintax sugar, ou seja, uma abstração que é um processo de 
 ocultar certos detalhes de implementação e expor outros para que através de um 
 código mais simples possamos lidar com estruturas mais complexas. O async/await 
-é um exemplo de abstração de promise.
+é um exemplo de abstração de promises.
 
 Então o que as classes abstraem? A classe em javascript é uma função construtora. 
 Todo função construtora precisa ser uma function declaration, isso porque quando 
@@ -25,14 +25,14 @@ de uma função construtora. Dentro da função construtora não precisamos do m
 constructor, diferente da classe.
 
 Intuitivamente também declararíamos os métodos dentro da função construtora, 
-semelhante a Class, no entanto esse não é uma boa prática e mais a frente veremos 
+semelhante a Class, no entanto essa não é uma boa prática e mais a frente veremos 
 como resolver.
 
-* Na maioria da vezes, quando nos depararmos com códigos usando funções construtoras, 
-os métodos provavelmente estão sendo usados com function declarations e não arrow 
+* Na maioria das vezes, quando nos depararmos com códigos usando funções construtoras, 
+os métodos provavelmente estarão sendo usados com function declarations e não arrow 
 functions, isso porque provavelmente o arrow function é mais recente e não funciona 
-em browser mais antigos, portanto os desenvolvedores deixam com function declaration 
-para não quebrar o código para browser antigos.
+em browsers mais antigos, portanto os desenvolvedores deixam com function declaration 
+para não quebrar o código para browsers antigos.
 
 */
 
@@ -75,8 +75,8 @@ não é bom para a performance da aplicação, isso porque quando adicionamos m�
 dentro de uma função construtora, esse método será declarado em cada novo objeto 
 que a função construtora criar. Mesmo que os métodos sejam idênticos, eles irão 
 ocupar dois espaços diferentes na memória, pois cada um vai ocupar um espaço 
-diferente. Com isso a aplicação irá consumir mais memória do que necessário. Mas 
-existe uma forma de evitar isso.
+diferente para cada objeto criado. Com isso a aplicação irá consumir mais memória 
+do que necessário. Mas existe uma forma de evitar isso.
 
 Em javascript todo novo objeto que é criado herda propriedades e métodos do 
 seu prototype, que é um objeto do qual um novo objeto que você criou vai herdar 
@@ -89,7 +89,7 @@ da propriedade prototype e quando invocamos esse método no array, ele verifica
 se esse método existe no array, se nao existir a engine do JS vai procurar 
 automaticamente dentro da propriedade prototype do array.
 
-Agora repare que, métodos declarados dentro de uma função construtora são 
+Agora, repare que métodos declarados dentro de uma função construtora são 
 armazenados no próprio objeto, ou seja, o método está junto com as propriedades. 
 E isso acontecerá para cada objeto criado e mesmo sendo iguais estão em espaços 
 diferentes na memória, por esse motivo não devemos declarar métodos dentro da 
@@ -116,7 +116,7 @@ Faremos isso com a nossa função construtora, vamos adicionar os métodos dentr
 prototype do objeto criado, invés de adicionar dentro da própria função construtora.
 
 A propriedade prototype é tanto um getter quanto setter, ou seja, nós conseguimos 
-obter dados dele etambém conseguimos inserir dados nele.
+obter dados dele e também conseguimos inserir dados nele.
 
 */
 
@@ -153,7 +153,9 @@ roger.comment === alessandra.comment // true
 
   Quando estamos trabalhando com classes, os métodos declarados dentro da classe 
   são automaticamente inseridos dentro do prototype do objeto sem precisarmos 
-  declarar diretamente os métodos no prototype.
+  declarar diretamente os métodos no prototype. Por isso classes são uma abstração 
+  de funções construtoras, com classes nós termos menos trabalho do que usando 
+  funções construtoras diretamente.
 
 */
 
@@ -230,9 +232,9 @@ class Student {
 
   Isso é problemático porque um erro envolvendo uma função anônima pode retornar 
   uma string em branco como nome da função. Mesmo que o erro indique a linha que 
-  ocorreu não existe justificativa para trabalhar com function declaration anônima, 
-  a não ser que ela seja atribuída para uma const ou let, pois quando declaramos 
-  uma função anônima com const ou let, seu nome é atribuído normalmente.
+  onde ele ocorreu, não existe justificativa para trabalhar com function declaration 
+  anônima, a não ser que ela seja atribuída para uma const ou let, pois quando 
+  declaramos uma função anônima com const ou let, seu nome é atribuído normalmente.
 
   Método usando function declaration anônima não é recomendado!
 
@@ -252,4 +254,109 @@ Student.formatToDatabase = function formatToDatabase (aString) { // function dec
   o que é particularmente mais simples e claro do que classes, métodos estáticos 
   e outras features da orientação a objetos.
 
+*/
+
+/*
+
+=============== HERANÇA PROTOTIPAL ===============
+
+Agora veremos como acontece a verdadeira herança do javascript, é necessário
+entendermos como funciona a herança prototipal para sabermos como o javascript 
+compõe objetos, essa é uma das principais características que torna o que o JS
+é hoje.
+
+Quando uma palavra chave class é usada e queremos criar uma subclasse, ou seja, 
+uma classe que herda métodos e propriedades da classe pai mas que também tem 
+propriedades e métodos únicos, nós usamos a palavra chave extends e a invocação 
+do super.
+
+Já com funções construtoras, para fazermos herança entre elas devemos invocar 
+dentro da função construtora o método call(), esse método irá invocar a função 
+construtora que dejamos herdar os métodos e propriedades.
+
+No entanto, isso não é um suficiente, pois precisaremos fazer com que o this da 
+função construtora (pai) seja o mesmo this da função construtora (filha), pois 
+se não fizermos isso, o this da função construtora (filha) irá referenciar o novo 
+objeto criado e não queremos isso, queremos referenciar o pai. Para isso precisamos 
+passar como argumentos do método call o this da função filho que é o próprio objeto 
+criado por ela. Agora o this da função pai será o objeto da função filha.
+
+Portanto, usamos o call() para invocar uma determinada função construtora e forçar
+que o this dessa função invocada armazene o valor que quisermos que ele armazene.
+
+Mas ainda não é só isso, o método call() pode receber também, depois do primeiro 
+método, os valores que a função pai pode receber como parâmetros
+
+Agora, para inserirmos propriedades únicas para a função construtora filha, é só 
+declararmos normalmente abaixo da invocação da call(). A classe pai não receberá 
+essas propriedades, serão exclusivas da classe filha. E para passarmos métodos 
+únicas, passamos dentro do prototype da função.
+
+Para herdarmos os métodos da função pai que se encontram dentro do prototype desse 
+objeto, devemos invocar o método Object.create(), ele irá fazer com que as propriedades 
+do prototype do objeto passado como argumento seja inserido dentro do prototype 
+do objeto desejado.
+
+Essa cadeia de prototypes é o que faz com que um objeto possa acessar propriedades 
+de qualquer outro objeto que esteja nessa cadeira. Essa é a forma com que o JS 
+faz herança e essa é a forma que o diferencia de linguagens em que a herança é 
+baseada em classes. Essa cadeia de protótipos que entram em ação quando usamos 
+a palavra chave 'class' e criamos uma subclasse com 'extends'.
+
+*/
+
+// função construtora
+function Aluno (name, email) {
+  this.name = name
+  this.email = email
+  // depois da invocação da call(), esse this passa a ser o TeacherAssistant
+}
+
+Aluno.prototype.login = function () {
+  return `${this.name} fez login.`
+}
+
+Aluno.prototype.comment = function () {
+  return `${this.name} comentou no post`
+}
+
+// trabalhando com herença em funções construtoras
+function TeacherAssistant (name, email, scheduleWeekPosts) {
+  // invocando construtor Aluno
+  // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this
+  Aluno.call(this, name, email) // this = TeacherAssistant e parâmetros para Aluno
+  this.scheduleWeekPosts = scheduleWeekPosts
+}
+
+// criando novo objeto com as propriedades do prototype do objeto Aluno 
+// e inserindo dentro do prototype do objeto TeacherAssistant
+// TeacherAssistant agora terá acesso aos métodos que estão dentro do prototype de Aluno
+TeacherAssistant.prototype.Object.create(Aluno.prototype)
+
+// método exlusivo de TeacherAssistant
+TeacherAssistant.prototype.giveBadge = function giveBadge ({ name }) {
+  return `${this.name} deu uma medalha para ${name}`
+}
+
+
+const maria = new Aluno('Maria', 'maria@gmail.com')
+const jose = new Aluno('Jose', 'jose@gmail.com')
+const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.com.br', false)
+
+// console.log(maria, jose)
+// console.log(arthurSouza.giveBadge(maria))
+
+/*
+
+  Quando precisaremos usar classes ou funções construtoras ? 
+
+  Usaremos classes quando precisarmos criar objetos específicos que compartilham 
+  métodos,  isso ajudará a economizar mémória. Além de serem mais simples do que 
+  funções construtoras. As funções construtoras eram usadas antes da chegada das 
+  classes, por isso é importante entendermos funções construtoras e herança 
+  prototipas, pois ainda existem códigos usando essas features.
+
+  Usaremos classes quando precisarmos fazer herança, o que pode ser algo raro, 
+  quando estivermos desenvolvendo uma biblioteca ou quando precisarmos economizar 
+  uma quantidade muito baixa de memória, o que não faz muito sentido.
 */

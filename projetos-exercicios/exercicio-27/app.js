@@ -4,17 +4,19 @@
   - Implemente um código assíncrono entre os console.log() abaixo.
 */
 
-console.log('Linha 1')
-console.log('Linha 2')
-console.log('Linha 3')
-console.log('Linha 4')
+// console.log('Linha 1')
+// console.log('Linha 2')
+// console.log('Linha 3')
+// console.log('Linha 4')
 
+// setInterval(() => {
+//   console.log('Olá')
+// }, 2000)
 
-
-console.log('Linha 5')
-console.log('Linha 6')
-console.log('Linha 7')
-console.log('Linha 8')
+// console.log('Linha 5')
+// console.log('Linha 6')
+// console.log('Linha 7')
+// console.log('Linha 8')
 
 /*
   02
@@ -27,6 +29,10 @@ function logGreeting (name) {
   console.log(`olá, ${name}`)
 }
 
+const x = () => {
+  logGreeting('Roger')
+}
+
 // x(logGreeting)
 
 /*
@@ -36,9 +42,11 @@ function logGreeting (name) {
 */
 
 const numbers = [3, 4, 10, 20]
-const lesserThanFive = numbers.filter(num => num < 5)
 
-console.log(lesserThanFive)
+const getLesserThanFive = num => num < 5
+const lesserThanFive = numbers.filter(getLesserThanFive)
+
+// console.log(lesserThanFive)
 
 /*
   04
@@ -47,13 +55,13 @@ console.log(lesserThanFive)
 */
 
 const prices = [12, 19, 7, 209]
-let totalPrice = 0
+let totalPrice = prices.reduce((acc, price) => acc + price, 0)
 
-for (let i = 0; i < prices.length; i++) {
-  totalPrice += prices[i]
-}
+// for (let i = 0; i < prices.length; i++) {
+//   totalPrice += prices[i]
+// }
 
-console.log(`Preço total: ${totalPrice}`)
+// console.log(`Preço total: ${totalPrice}`)
 
 /*
   05
@@ -63,6 +71,11 @@ console.log(`Preço total: ${totalPrice}`)
 */
 
 let car = { color: 'amarelo' }
+let newCar = car
+
+newCar.color = 'azul'
+
+// console.log(car)
 
 /*
   06
@@ -73,6 +86,18 @@ let car = { color: 'amarelo' }
   - Se todos os argumentos forem passados, retorne a string 'A função foi 
     invocada com 3 argumentos'.
 */
+
+const myFunc = (param1, param2, param3) => {
+  const parameters = [param1, param2, param3]
+  const hasUndefinedParameter = parameters.includes(undefined)
+
+  if (hasUndefinedParameter) {
+    return `A função DEVE ser invocada com 3 parâmetros`
+  }
+  return `A função foi invocada com 3 parâmetros`
+}
+
+console.log(myFunc(1, 2, 3))
 
 /*
   07
@@ -100,3 +125,37 @@ let booksBox = {
   spaces: 5,
   booksIn: 0
 }
+
+const getSingularOrPluralWord = (quantity, singular, plural) => {
+  return quantity > 1 ? plural : singular
+}
+
+const checkRemainigSpaces = remainingSpaces => {
+  const bookSingularOrPlural = getSingularOrPluralWord(remainingSpaces, 'livro', 'livros')
+  const fitSingularOrPlural = getSingularOrPluralWord(remainingSpaces, 'cabe', 'cabem')
+  return `Só ${fitSingularOrPlural} mais ${remainingSpaces} ${bookSingularOrPlural}`
+}
+
+booksBox.addBooks = function (quantity) {
+  const isBoxFull = this.booksIn >= this.spaces
+  const remainingSpaces = this.spaces - this.booksIn
+  const hasNotRemainingSpaces = remainingSpaces < quantity
+
+  if (isBoxFull) {
+    return `A caixa já está cheia`
+  }
+
+  if (hasNotRemainingSpaces) {
+    return checkRemainigSpaces(remainingSpaces)
+  }
+  
+  this.booksIn += quantity
+  const bookSingularOrPlural = this.booksIn > 1 ? 'livros' : 'livro'
+  return `Já há ${this.booksIn} ${bookSingularOrPlural} na caixa`
+}
+
+console.log(booksBox.addBooks(2))
+console.log(booksBox.addBooks(2))
+console.log(booksBox.addBooks(2))
+console.log(booksBox.addBooks(1))
+console.log(booksBox.addBooks(1))
