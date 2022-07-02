@@ -47,9 +47,9 @@ converte de novo para seu tipo primitivo. E esse objeto que envolve o tipo cont�
 os métodos e propriedades embutidos nele.
 
 Ou seja, quando estamos manipulando uma string, o JS automaticamente embrulha essa 
-string dentro de um objeto do tipo String, que contém todas as propriedades 
-necessárias para manipular strings e quando terminamos de manipular essa string, 
-ele a converte novamente para tipo primitivo e segue normalmente.
+string dentro de um objeto do tipo String, que contém em seu prototype todas as 
+propriedades necessárias para manipular strings e quando terminamos de manipular 
+essa string, ele a converte novamente para tipo primitivo e segue normalmente.
 
 Quando criamos um novo objeto com um construtor, é criado um 'object wrapper' 
 que envolve um tipo. Vale lembrar que 'null' e 'undefined' não contém 'wrapper 
@@ -185,10 +185,8 @@ const user = new User('Roger', 'Santos', 25) // criando instância de User
   portanto não precisamos separar as declarações com vírgula.
 
   Os métodos do objeto gerado ficam armazenados dentro da propriedade prototype 
-  que veremos futuramente.
-
-  Dentro da classe, na declaração de métodos utilizamos a sintaxe de shortcut 
-  property name
+  que veremos futuramente. Dentro da classe, na declaração de métodos utilizamos 
+  a sintaxe de shortcut property name
   
 */
 
@@ -246,7 +244,8 @@ console.log(usuario)
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
   o constructor da classe que ela está herdando. Mas quando criamos um novo 
   constructor na subclasse, o this desse novo constructor não irá conseguir obter 
-  as propriedades da classe herdada, pois haverão dois constructors entrando em conflito.
+  as propriedades da classe herdada, pois haverão dois constructors entrando em 
+  conflito.
 
   O constructor da classe pai só é executado quando não existe um constructor na 
   classe filho, se passar a existir, o constructor da classe pai não será mais 
@@ -256,7 +255,7 @@ console.log(usuario)
   invocação da subclasse e em seguida, dentro do constructor da classe filho 
   iremos invocar o constructor da classe pai, só que para o JS entender que estamos 
   invocando o constructor da classe pai e não do filho, precisaremos trocar o nome 
-  'constructor' por 'super'. 
+  'constructor' por 'super'. Veja o exemplo abaixo:
 
 */
 
@@ -414,7 +413,7 @@ console.log(counter.count) // acessando diretamente o valor da count
   não terão acesso.
 
   Caso deseje inserir um valor dentro da propriedade privada que está sendo recebido 
-  por parâmetro ou objeto precise de outras propriedades que são únicas, você pode, 
+  por parâmetro ou o objeto precisa de outras propriedades que são únicas, você pode, 
   abaixo da propriedade privada, criar o método constructor e reatribuir o valor 
   da propriedade recebendo o valor do parâmetro e trabalhar normalmente com o 
   constructor

@@ -13,7 +13,10 @@ irá referenciar (apontar) para o mesmo objeto.
 Portanto, o spread copia normalmente as propriedades do objeto, mas se uma dessas 
 propriedades forem algum outro objeto, aí a cópia não será feita, mas sim será 
 referenciado, sendo apontado para o mesmo local na memória. Isso porque objetos 
-aninhados ao invés de serem copiados, são referenciados.
+aninhados ao invés de serem copiados, são referenciados. E para realizarmos uma 
+cópia dessa propriedade que é um objeto, devemos novamente inserir o spread 
+operator. Isso porque o spread operator realiza a cópia apenas na 'primeira camada', 
+e não nos objetos aninhados.
 
 Então para de fato clonarmos objetos mesmo que eles tenham objetos aninhados, 
 devemos criar um novo objeto com todas as propriedades do objeto original, 
@@ -23,9 +26,9 @@ do objeto aninhado dentro desse novo objeto. Veja o exemplo para ficar mais clar
 
 Arrays aninhados também são referenciados, porque arrays também são objetos.
 Portanto, caso haja um array no objeto também devemos espalhar os seus elementos 
-para evitarmos uma referência e obter um cópia. Isso vale para funções também, 
+para evitarmos uma referência e obter uma cópia. Isso vale para funções também, 
 como elas são objetos, quando espalhamos as propriedades, ela também será referenciada, 
-então procure reatribuir a propriedade que contém uma função.
+então procure reatribuir também a propriedade que contém uma função.
 
 Valores que não são primitivos, então são objetos: objetos, arrays, funções...
 Portanto, funções também não sáo copiadas e sim referenciadas, porque também 
@@ -92,7 +95,7 @@ const obj1 = { prop1: 1, prop2: 2 }
 const obj2 = { pro3: 3, prop4: 4 }
 
 const obj3 = Object.assign({}, obj1, obj2) // essa operação gera
-const obj3 = { ...obj1, obj2 } // o mesmo resultado que essa
+const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
 
 /*
   Surge uma dúvida sobre a diferença entre as duas abordagens, já que estão 
@@ -128,7 +131,7 @@ const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
 
 const numbers = [1, 2, 3, 4, 5]
 
-Math.min(numbers) // NaN, porque é array e só aceita números 
+Math.min(numbers) // NaN, porque é array e esse método só aceita números 
 
 Math.min(...numbers) // 1 / espalhando os itens do array com spread operator
 Math.max(...numbers) // 5
@@ -142,7 +145,7 @@ Math.max(...numbers) // 5
   são exemplos de expressões que retornam um valor.
 
   Uma instrução é um pedaço de código que não resulta em um valor. A declaração 
-  de if else, switch ou for loop são exemplos que instrução que não retornam 
+  de if else, switch ou for loop são exemplos d instrução que não retornam 
   um valor. Por isso não conseguimos declarar um if como argumento de uma função.
 
   Em javascript todo pedaço de código que não resulta em um valor, retorna 
