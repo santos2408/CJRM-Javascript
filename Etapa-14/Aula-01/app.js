@@ -8,15 +8,15 @@ independentes.
 
 Vale lembrar que o spread operator realiza uma 'cópia rasa' ou seja, se o valor 
 de uma propriedade do objeto original é também um objeto, a propriedade do clone 
-irá referenciar (apontar) para o mesmo objeto.
+irá referenciar (apontar) para o objeto original.
 
 Portanto, o spread copia normalmente as propriedades do objeto, mas se uma dessas 
 propriedades forem algum outro objeto, aí a cópia não será feita, mas sim será 
 referenciado, sendo apontado para o mesmo local na memória. Isso porque objetos 
 aninhados ao invés de serem copiados, são referenciados. E para realizarmos uma 
-cópia dessa propriedade que é um objeto, devemos novamente inserir o spread 
-operator. Isso porque o spread operator realiza a cópia apenas na 'primeira camada', 
-e não nos objetos aninhados.
+cópia dessa propriedade que é um objeto, devemos criar o novo objeto e novamente 
+inserir o spread operator. Isso porque o spread operator realiza a cópia apenas 
+na 'primeira camada', e não nos objetos aninhados.
 
 Então para de fato clonarmos objetos mesmo que eles tenham objetos aninhados, 
 devemos criar um novo objeto com todas as propriedades do objeto original, 
@@ -42,11 +42,11 @@ console.dir(input)
 */
 
 const objeto = {
-  prop0: () => {},
+  prop0: () => {}, // objeto
   prop1: 'a',
   prop2: 'b',
-  prop3: { a: 'x', b: 'y', c: 'z' },
-  prop4: [1, { x: 2, y: 3 }]
+  prop3: { a: 'x', b: 'y', c: 'z' }, // objeto
+  prop4: [1, { x: 2, y: 3 }] // array + objeto
 }
 
 const objetoCopia = { 
@@ -65,7 +65,7 @@ const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
 const newArray = [...arr1, ...arr2]
 
-// repare que o spread opertator é uma forma mais moderna de concatenar arrays
+// repare que o spread operator é uma forma mais moderna de concatenar arrays
 
 /*
 
@@ -105,10 +105,11 @@ const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
   Object.assign() não deixa muito claro o que está acontecendo na operação.
 
   Outra fator é que o spread operator necessariamente cria um novo objeto, o que é 
-  bom, pois estamos criando um novo ao invés de modificar um já existente, e 
+  bom, pois estamos criando um novo ao invés de modificar um já existente, isso 
+  é chamado de imutabildiade, um conceito fundamental na programaçãp funcional. E 
   repare que, no exemplo do Object.assign() também estamos criando um novo objeto 
   mas isso não necessariamente é uma regra, pois podemos inserir num objeto já 
-  existente as propriedades de outro. 
+  existente as propriedades de outros. 
 
   Isso irá modificar diretamente o objeto já existente, o que talvez não seja a 
   intenção em determinados momentos.
@@ -121,8 +122,13 @@ const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
 /*
   Uma característica do spread operator é que quando estamos espalhando seus itens,
   o spread operator geralmente precisa ser espalhado em locais em que ele seja 
-  esperado, ou seja, dentro de arrays, objetos, funções, etc, não conseguimos 
-  espalhar os itens através do spread operator em qualquer local que quisermos.
+  esperado, ou seja, dentro de arrays, objetos, argumentos de funções, etc, não 
+  conseguimos espalhar os itens através do spread operator em qualquer local que 
+  quisermos.
+
+  Se a quantidade de elementos espalhados como argumento de uma função não 
+  corresponder a quantidade de parâmetros da mesma, os itens que sobrarem serão 
+  ignorados e receberão 'undefined'.
 
   Existem métodos que só podem receber números como argumentos, mas é possível 
   inserir um array passando o spread operator como argumento dessa função, 

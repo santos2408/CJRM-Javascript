@@ -16,11 +16,11 @@ Já com funções construtoras, para fazermos herança entre elas devemos invoca
 dentro da função construtora o método call(), esse método irá invocar a função 
 construtora que dejamos herdar os métodos e propriedades.
 
-No entanto, isso não é um suficiente, pois precisaremos fazer com que o this da 
+No entanto, isso não é suficiente, pois precisaremos fazer com que o this da 
 função construtora (pai) seja o mesmo this da função construtora (filha), pois 
 se não fizermos isso, o this da função construtora (filha) irá referenciar o novo 
 objeto criado e não queremos isso, queremos referenciar o pai. Para isso precisamos 
-passar como argumentos do método call o this da função filho que é o próprio objeto 
+passar como argumentos do método call o this da função filha que é o próprio objeto 
 criado por ela. Agora o this da função pai será o objeto da função filha.
 
 Portanto, usamos o call() para invocar uma determinada função construtora e forçar
@@ -42,7 +42,7 @@ do objeto desejado.
 Essa cadeia de prototypes é o que faz com que um objeto possa acessar propriedades 
 de qualquer outro objeto que esteja nessa cadeira. Essa é a forma com que o JS 
 faz herança e essa é a forma que o diferencia de linguagens em que a herança é 
-baseada em classes. Essa cadeia de protótipos que entram em ação quando usamos 
+baseada em classes. É essa cadeia de protótipos que entram em ação quando usamos 
 a palavra chave 'class' e criamos uma subclasse com 'extends'.
 
 */
@@ -54,11 +54,11 @@ function Aluno (name, email) {
   // depois da invocação da call(), esse this passa a ser o TeacherAssistant
 }
 
-Aluno.prototype.login = function () {
+Aluno.prototype.login = function login () {
   return `${this.name} fez login.`
 }
 
-Aluno.prototype.comment = function () {
+Aluno.prototype.comment = function comment () {
   return `${this.name} comentou no post`
 }
 
@@ -96,7 +96,7 @@ const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.
   métodos,  isso ajudará a economizar mémória. Além de serem mais simples do que 
   funções construtoras. As funções construtoras eram usadas antes da chegada das 
   classes, por isso é importante entendermos funções construtoras e herança 
-  prototipas, pois ainda existem códigos usando essas features.
+  prototipais, pois ainda existem códigos usando essas features.
 
   Usaremos classes quando precisarmos fazer herança, o que pode ser algo raro, 
   quando estivermos desenvolvendo uma biblioteca ou quando precisarmos economizar 
@@ -118,7 +118,7 @@ Quando uma função retorna um objeto sem a necessidade de usar a palavra chave
 criar e compor objetos na aplicação web com um código mais simples comparado a 
 classes, constructors e new.
 
-Com factory functions não precisamos nos preocuper com inserção de 'new', 'this' 
+Com factory functions não precisamos nos preocupar com inserção de 'new', 'this' 
 ou constructor. Pensando em código de larga escala, a compreesensão dele será 
 mais fácil com factory functions do que classes.
 
@@ -132,7 +132,7 @@ Você pode optar por trabalhar com classes ou factory functions. Dê preferênci
 para factory functions. Classes são mais inflexíveis, ao contrário de factory 
 functions.
 
-Uma das vantagens da factory functions, é que invés de o 'this' referenciar o 
+Uma das vantagens da factory functions, é que ao invés de o 'this' referenciar o 
 objeto que está sendo criado, ele irá referenciar quem ele tiver que referenciar. 
 Isso nos tenderá a escrever menos 'this', o que o tornará menos previsível.
 
@@ -156,7 +156,7 @@ class User {
 const createUser = (name, email) => { // escopo léxico
   let counter = 0 // informação privada / só código interno acessa
 
-  return {
+  return { // retorna um objeto
     name,
     email,
     incrementCounter: () => ++counter // closure / combinação de uma função com seu escopo léxico
@@ -176,5 +176,17 @@ const user3 = createUser('Roger', 'roger.santos36@gmail.com')
 
 console.log(user) // Objeto User
 console.log(user.incrementCounter()) // Objeto User
-console.log(user2) // Objeto
-console.log(user2.incrementCounter()) // Objeto
+console.log(user2) // Objeto 'createUser'
+console.log(user2.incrementCounter()) // Objeto 'createUser'
+
+/*
+
+  Para obtermos o prototype de um objeto, não usamos mais a sintaxe 
+  object.__prototype__. Agora usamos Object.getPrototypeOf('object')
+
+  Para charcarmos sem o prototype de um objeto existe dentro prototype de um outro 
+  objeto, usamos o método 'object1'.isPrototypeOf('object2')
+
+  * estudar mais sobre o método call() e aplly()
+
+*/

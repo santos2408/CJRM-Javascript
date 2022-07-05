@@ -6,7 +6,7 @@ constructor, mas isso nos impediria de atribuir os parâmetros do objeto passado
 como argumento da invocação da classe. Por isso precisamos do constructor, para 
 recebermos as propriedades como parâmetro.
 
-Diferente de outras linguagens, em javscript, tecnicamente não existem classes, 
+Diferente de outras linguagens, em javascript, tecnicamente não existem classes, 
 elas são apenas um sintax sugar, ou seja, uma abstração que é um processo de 
 ocultar certos detalhes de implementação e expor outros para que através de um 
 código mais simples possamos lidar com estruturas mais complexas. O async/await 
@@ -30,7 +30,7 @@ como resolver.
 
 * Na maioria das vezes, quando nos depararmos com códigos usando funções construtoras, 
 os métodos provavelmente estarão sendo usados com function declarations e não arrow 
-functions, isso porque provavelmente o arrow function é mais recente e não funciona 
+functions, isso porque provavelmente a arrow function é mais recente e não funciona 
 em browsers mais antigos, portanto os desenvolvedores deixam com function declaration 
 para não quebrar o código para browsers antigos.
 
@@ -97,7 +97,7 @@ função construtora, pois cada objeto terá o mesmo método consumindo mémóri
 
 Para evitarmos isso é possível declararmos o método uma vez, armazenarmos ele 
 em apenas um espaço na memória e fazer com que todos os objetos que sejam criados 
-pela função construtora consiga acesar o método através da referência dele. Para 
+pela função construtora consiga acessar o método através da referência dele. Para 
 isso temos que armazená-lo dentro da propriedade prototype do objeto, com isso 
 todo objeto criado vai herdar o mesmo método existente que está num espaço da 
 memória, sem a necessidade de criar um para cara objeto criado.
@@ -154,7 +154,7 @@ roger.comment === alessandra.comment // true
   Quando estamos trabalhando com classes, os métodos declarados dentro da classe 
   são automaticamente inseridos dentro do prototype do objeto sem precisarmos 
   declarar diretamente os métodos no prototype. Por isso classes são uma abstração 
-  de funções construtoras, com classes nós termos menos trabalho do que usando 
+  de funções construtoras, com classes nós temos menos trabalho do que usando 
   funções construtoras diretamente.
 
 */
