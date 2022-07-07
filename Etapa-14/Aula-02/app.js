@@ -249,20 +249,28 @@ console.log(usuario)
   devemos inserir 'extends' e o nome da classe que queremos herdar as características.
 
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
-  o constructor da classe que ela está herdando. Mas quando criamos um novo 
-  constructor na subclasse, o this desse novo constructor não irá conseguir obter 
-  as propriedades da classe herdada, pois haverão dois constructors entrando em 
-  conflito.
+  o constructor da classe que ela está herdando e consequentemente irá obter as 
+  propriedades da classe pai. Mas quando criamos um novo constructor na subclasse, 
+  a subclasse não irá conseguir mais obter as propriedades da classe pai, isso 
+  porque, existindo dois constructor, eles entram em conflito.
 
   O constructor da classe pai só é executado quando não existe um constructor na 
   classe filho, se passar a existir, o constructor da classe pai não será mais 
-  executado e o this não conseguirá referenciar o objeto.
+  executado. A classe pai é conhecida também como superclass, por isso o nome do 
+  método que a invoca é chamado de 'super'.
 
-  Para resolver isso precisaremos receber todos os argumentos inseridos na 
-  invocação da subclasse e em seguida, dentro do constructor da classe filho 
-  iremos invocar o constructor da classe pai, só que para o JS entender que estamos 
-  invocando o constructor da classe pai e não do filho, precisaremos trocar o nome 
-  'constructor' por 'super'. Veja o exemplo abaixo:
+  Podemos 'sobrescrever' métodos da subclasse que já existem na superclasse, pois 
+  como estão em objetos diferentes, declarar com o mesmo nome não causará problema, 
+  mesmo tendo o mesmo nome cada método terá seu comportamente único.
+
+  Para resolver isso e recebermos as propriedades da classe pai e ainda inserir 
+  propriedades exlusivas da subclasse precisaremos receber todos os argumentos 
+  da classe pai na invocação da subclasse e em seguida, dentro do constructor da 
+  subclasse iremos invocar o constructor da classe pai, só que para o JS entender 
+  que estamos invocando o constructor da classe pai e não do filho, precisaremos 
+  trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors 
+  um para a subclasse e outro para obter as propriedades da classe pai sem evitar 
+  um conflito entre elas. Veja o exemplo abaixo:
 
 */
 
