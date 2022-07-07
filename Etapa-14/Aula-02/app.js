@@ -259,6 +259,9 @@ console.log(usuario)
   executado. A classe pai é conhecida também como superclass, por isso o nome do 
   método que a invoca é chamado de 'super'.
 
+  Não conseguimos usar o this na subclasse sem antes chamar o constructor da 
+  classe pai com super()
+
   Podemos 'sobrescrever' métodos da subclasse que já existem na superclasse, pois 
   como estão em objetos diferentes, declarar com o mesmo nome não causará problema, 
   mesmo tendo o mesmo nome cada método terá seu comportamente único.
