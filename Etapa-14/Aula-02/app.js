@@ -82,7 +82,7 @@ const object = new Object() // objeto wrapper do tipo object
 
   Digamos que precisamos criar alguns objetos 'user' com métodos e propriedades, 
   cada objeto user terá os mesmos métodos e propriedades mas com valores diferentes. 
-  Utilizando objetos literias teremos que criar um objeto para cada usuário, 
+  Utilizando objetos literais teremos que criar um objeto para cada usuário, 
   tornando o código ilegível depois de um tempo.
 
   Quando precisarmos criar um ou outro objeto específico, podemos criar 
@@ -120,11 +120,11 @@ const user3 = {
   características desejadas.
 
   Existem diversas maneiras de construirmos o nosso próprio objeto, usando 
-  factory functions, classes, etc. Antigamente uma das formas era usar prototypes 
-  diretamente, mas com a chegada do ES6 podemos utilizar a palavra chave 'class' 
-  para construir objetos. O nome 'class' é apenas uma abstração para nos facilitar 
-  de entendermos melhor o que está acontecendo, pois por baixo dos panos elas estão 
-  usando prototypes para construir os objetos.
+  funções construtoras, factory functions ou classes, etc. Antigamente uma das 
+  formas era usar prototypes diretamente, mas com a chegada do ES6 podemos utilizar 
+  a palavra chave 'class' para construir objetos. O nome 'class' é apenas uma 
+  abstração para nos facilitar de entendermos melhor o que está acontecendo, pois 
+  por baixo dos panos elas estão usando prototypes para construir os objetos.
 
   Elas foram adicionadas como uma tentativa de deixar mais fácil o entendimento 
   da sintaxe para se trabalhar com prototypes.
@@ -143,8 +143,11 @@ const user3 = {
   o método que irá de fato setar as propriedades do novo objeto.
 
   Quando invocamos a 'new User()', o método 'constructor' será invocado dentro da
-  classe e esse método irá criar e setar as propriedades do novo objeto. A palavra 
-  chave 'new' é a responsável por invocar o método constructor dentro da classe.
+  classe e esse método irá criar o novo objeto, setar as suas propriedades, fazer 
+  o bind do 'this' no novo objeto, para que esse this dentro da classe referencie 
+  o novo objeto criado, irá rodar todo o código dentro do constructor e retornar 
+  o novo objeto. A palavra chave 'new' é a responsável por invocar o método 
+  constructor dentro da classe.
 
   O operador 'new' cria um novo objeto vazio, independente se existe um método 
   constructor ou não dentro de uma classe. O new também faz com que dentro da classe 
@@ -171,22 +174,24 @@ class User { // criando objeto
 
 // invocando classe construtora
 const user = new User('Roger', 'Santos', 25) // criando instância de User
+const user2 = new User('Alessandra', 'Carvalho', 44)
 
 /*
   =============== MÉTODOS EM CLASSES ===============
 
   Uma classe é um template de um objeto e para que todos os objetos que ela crie 
-  contenha um método, precisaremos criar o método dentro dela, mas vale lembrar que, 
-  nós não iremos criar o método dentro da função constructor.
+  contenha um método, precisaremos criar o método dentro dela, mas vale lembrar 
+  que, nós não iremos criar o método dentro da função constructor.
 
   A função constructor é reservada apenas para as propriedades do objeto, para 
   inserir os métodos devemos criar fora da função constructor, declarando um 
   método normalmente. Lembre-se também que o bloco de uma classe não é um objeto, 
   portanto não precisamos separar as declarações com vírgula.
 
-  Os métodos do objeto gerado ficam armazenados dentro da propriedade prototype 
-  que veremos futuramente. Dentro da classe, na declaração de métodos utilizamos 
-  a sintaxe de shortcut property name
+  Repare que, os métodos do objeto gerado ficam armazenados dentro da propriedade 
+  prototype e não dentro do objeto em si, veremos o porquê disso nas próximas aulas. 
+  Dentro da classe, na declaração de métodos utilizamos as function declrations 
+  com sintaxe de shorthand property name.
   
 */
 
@@ -200,11 +205,13 @@ class Usuario {
 
   login () {
     console.log(`${this.name} logou na aplicação.`)
-    return this 
-    // retornando o objeto para podermos encadear o método addPoint sempre 
-    // que for feito login
+    return this // retornando objeto para encadear outro objeto
 
     /*
+      se na invocação do método desejarmos encadear outro método, então 
+      o método anterior deve retornar o próprio objeto, pois assim a invocação
+      encadeada irá conseguir acessar o seu método.
+
       Quando precisarmos encadear invocações de métodos de um objeto criado por 
       uma classe, precisamos fazer com que as invocações dos métodos da classe 
       retornem o próprio objeto (this).
