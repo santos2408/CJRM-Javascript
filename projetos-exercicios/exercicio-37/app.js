@@ -13,13 +13,12 @@ class Animal {
 
 class Rabbit extends Animal {
   constructor (name) {
-    super(name)
+    this.name = name
     this.created = new Date()
   }
 }
 
-let rabbit = new Rabbit('White Rabbit')
-console.log(rabbit)
+// let rabbit = new Rabbit('White Rabbit')
 
 /*
   02
@@ -28,25 +27,11 @@ console.log(rabbit)
     funcione.
 */
 
-class Counter {
-  constructor () {
-    this.value = 0
-  }
+// const counter = new Counter()
 
-  getValue () {
-    return this.value
-  }
-
-  increment () {
-    this.value++
-  }
-}
-
-const counter = new Counter()
-
-counter.getValue()
-counter.increment()
-counter.getValue()
+// counter.getValue()
+// counter.increment()
+// counter.getValue()
 
 /*
   03
@@ -65,12 +50,6 @@ const values = [
   () => {}
 ]
 
-const truthyValue = Boolean(values)
-
-const truthyValues = values.filter(Boolean)
-
-console.log(truthyValues)
-
 /*
   04
 
@@ -81,62 +60,62 @@ console.log(truthyValues)
     funcione.
 */
 
-const getDate = () => {
-  const date = new Date()
-  let hours = date.getHours()
-  let minutes = date.getMinutes()
-  let seconds = date.getSeconds()
+// class Clock {
+//   constructor ({ template }) {
+//     this.template = template
+//   }
 
-  return [ hours, minutes, seconds ]
-}
+//   render () {
+//     const date = new Date()
+//     let hours = date.getHours()
+//     let minutes = date.getMonth()
+//     let seconds = date.getSeconds()
 
-const getFormattedUnits = units => 
-  units.map(unit => unit < 10 ? `0${unit}` : unit)
+//     if (hours < 10) {
+//       hours = `0${hours}`
+//     }
 
-const getFormattedTime = (template, formattedHours) => {
-  return template
-    .split(':')
-    .map((_, index) => formattedHours[index])
-    .join(':')
-}
+//     if (minutes < 10) {
+//       minutes = `0${minutes}`
+//     }
 
-class Clock {
-  constructor ({ template }) {
-    this.template = template
-  }
+//     if (seconds < 10) {
+//       seconds = `0${seconds}`
+//     }
 
-  render () {
-    const [ hours, minutes, seconds ] = getDate()
-    const formattedHours = getFormattedUnits([hours, minutes, seconds])
-    const formattedTime = getFormattedTime(this.template, formattedHours)
-    console.log(formattedTime)
-  }
+//     const formattedTime = this.template
+//       .replace('h', hours)
+//       .replace('m', minutes)
+//       .replace('s', seconds)
 
-  start () {
-    this.render()
-    this.timer = setInterval(() => this.render(), 1000)
-  }
+//     console.log(formattedTime)
+//   }
 
-  stop () {
-    clearInterval(this.timer)
-  }
-}
+//   start () {
+//     this.render()
+//     this.timer = setInterval(() => this.render(), 1000)
+//   }
 
-class ExtendedClock extends Clock {
-  constructor (options) {
-    super(options)
+//   stop () {
+//     clearInterval(this.timer)
+//   }
+// }
+
+// class ExtendedClock extends Clock {
+//   constructor ({ options }) {
+//     super(options)
     
-    let { precision = 1000 } = options
-    this.precision = precision
-  }
+//     let { precision = 1000 } = options
+//     this.precision = precision
+//   }
 
-  start () {
-    this.render()
-    this.timer = setInterval(() => this.render(), this.precision)
-  }
-}
+//   start () {
+//     this.render()
+//     this.timer = setInterval(() => this.render(), this.precision)
+//   }
+// }
 
-const clock = new ExtendedClock({ template: 'h:m:s', precision: 1000 })
+// const clock = ExtendedClock({ template: 'h:m:s', precision: 1000 })
 
 // clock.start()
 
@@ -148,15 +127,7 @@ const clock = new ExtendedClock({ template: 'h:m:s', precision: 1000 })
     caracteres que o textarea contém.
 */
 
-const textArea = document.querySelector('[data-js="textarea"]')
-const paragraph = document.querySelector('[data-js="paragraph"]')
 
-textArea.addEventListener('input', event => {
-  const inputLength = event.target.value.length
-  const textAreaMaxLength = textArea.getAttribute('maxlength')
-  
-  paragraph.textContent = `${inputLength} / ${textAreaMaxLength}`
-})
 
 /*
   06
@@ -184,29 +155,3 @@ textArea.addEventListener('input', event => {
     vídeo de correção dos exercícios um link para a aula de introdução ao 
     reduce e um link para a documentação do método no MDN.
 */
-
-const reduce = (array, func, initialValue) => {
-  let accumulator = initialValue
-
-  for (let index = 0; index < array.length; index++) {
-    const item = array[index]
-    accumulator = func(accumulator, item, index, array)
-  }
-  
-  return accumulator
-}
-
-console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0))
-console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0))
-console.log(
-  reduce(
-    [1, 2],
-    (acc, item) => {
-      acc['number-' + item] = item
-      return acc
-    },
-    {}
-  )
-)
-console.log(reduce([1, 2], (acc, item, index) => acc + index, 0))
-console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0))

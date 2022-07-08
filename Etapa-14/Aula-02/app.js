@@ -481,3 +481,15 @@ counter.value // acessandro propriedade através do método que existe na classe
   também que se quisermos obter os dados através dos parâmetros deveremos ter 
   de fato o método constructor.
 */
+
+/*
+  =============== MUTABILIDADE ===============
+
+  variáveis let indicam mutabilidade, e essa mutabilidade tende a ocultar bugs. 
+  Isso não significa que const são imutáveis, mas quando usamos const no código, 
+  usamos para indicar que não vamos mudar aquele valor, o valor dela permanecerá 
+  o mesmo ao longo da aplicação.
+
+  Fique atento para a mutabilidade de valores, se for necessário alterar o valor 
+  de uma variável, armazena essa alteração em outra variável.
+*/
