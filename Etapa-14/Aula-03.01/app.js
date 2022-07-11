@@ -1,5 +1,5 @@
 /*
-=============== FUNÇÕES CONSTRUTORAS ===============
+=============== FUNÇÕES CONSTRUTORAS (CONSTRUCTOR FUNCIONS) ===============
 
 Relembrando que nós podemos declarar propriedades públicas sem usar o método 
 constructor, mas isso nos impediria de atribuir os parâmetros do objeto passado 
@@ -19,6 +19,12 @@ não é construtora. Isso porque o this dentro de uma arrow function não refere
 o objeto que está sendo criado e sim o this do escopo em que a arrow function foi 
 declarada. Por isso não declaramos funções construtoras com arrow function.
 
+Por exempli: se a função construtora foi criada com arrow function e essa função 
+foi declarada no escopo global, o this dessa arrow function irá referenciar o 
+objeto Window e não o objeto que a função está criando. Se declararmos uma função 
+pai que contém uma função filho, o this da função filho irá referenciar a função 
+pai, porque o this referencia o escopo de onde ela foi declarada.
+
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
 de uma função construtora. Dentro da função construtora não precisamos do método 
@@ -29,10 +35,10 @@ semelhante a Class, no entanto essa não é uma boa prática e mais a frente ver
 como resolver.
 
 * Na maioria das vezes, quando nos depararmos com códigos usando funções construtoras, 
-os métodos provavelmente estarão sendo usados com function declarations e não arrow 
-functions, isso porque provavelmente a arrow function é mais recente e não funciona 
-em browsers mais antigos, portanto os desenvolvedores deixam com function declaration 
-para não quebrar o código para browsers antigos.
+os métodos dentro dela provavelmente estarão sendo usados com function declarations 
+e não arrow functions, isso porque provavelmente a arrow function é mais recente e 
+não funciona em browsers mais antigos, portanto os desenvolvedores deixam com 
+function declaration para não quebrar o código para browsers antigos.
 
 */
 
@@ -61,8 +67,8 @@ function Student (name, email) {
 
 // arrow function como função construtora / está errado, não referencia o objeto Student
 const Student = (name, email) => {
-  this.name = name // referencia objeto do escopo onde foi declarada / Objeto Window
-  this.email = email // referencia objeto do escopo onde foi declarada / Objeto Window
+  this.name = name // referencia objeto do escopo onde função foi declarada / Objeto Window
+  this.email = email // referencia objeto do escopo onde função foi declarada / Objeto Window
 }
 
 const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
