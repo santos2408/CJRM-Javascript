@@ -139,8 +139,3 @@ div.addEventListener('mousemove', event => {
 document.addEventListener('wheel', event => {
    console.log(event.pageX, event.pageY)
 })
-
-
-
-
-

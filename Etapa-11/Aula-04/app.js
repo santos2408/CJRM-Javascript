@@ -19,14 +19,14 @@
     - resolve e reject
   
   Esses parâmetros são funções embutidas na API de promises que recebemos como 
-  parâmetros nessa função. Esses parâmetros podem ter outro nome mas resolve e 
-  reject são convenções usadas globalmente.
+  parâmetros nessa função. Esses parâmetros podem ter outro nome mas 'resolve' e 
+  'reject' são convenções usadas globalmente.
 
   Dentro dessa função geralmente é onde buscamos os dados da requisição e quando 
   obtemos os dados com sucesso nós invocamos a função 'resolve' e passamos os dados 
   obtidos como argumento.
 
-  Caso a operação assíncrona falhe, a função reject será invocada e retornará 
+  Caso a operação assíncrona falhe, a função 'reject' será invocada e retornará 
   o erro como argumento.
 
   A promise incapsula o valor retornado dentro da propriedade fulfilled e para 
@@ -111,7 +111,7 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // bulbasaur
   final retornando uma nova requisição, ou seja, o then irá exibir no console e 
   após isso todo o then retornará uma nova requisição/promise. E nesse then estamos 
   encadeando outro then que irá obter a resposta da requisição do then anterior 
-  e executando o processo novamente. 
+  e executar o processo novamente. 
 
   Vale lembrar que o método CATCH será executado se a função reject dentro da 
   função de criação da promise for invocada ou se o código dentro de algum then 
