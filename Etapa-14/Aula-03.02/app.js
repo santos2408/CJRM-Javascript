@@ -32,15 +32,16 @@ método, os valores que a função pai pode receber como parâmetros
 Agora, para inserirmos propriedades únicas para a função construtora filha, é só 
 declararmos normalmente abaixo da invocação da call(). A classe pai não receberá 
 essas propriedades, serão exclusivas da classe filha. E para passarmos métodos 
-únicas, passamos dentro do prototype da função.
+únicos, passamos dentro do prototype da função.
 
 Para herdarmos os métodos da função pai que se encontram dentro do prototype desse 
 objeto, devemos invocar o método Object.create(), ele irá fazer com que as propriedades 
 do prototype do objeto passado como argumento seja inserido dentro do prototype 
-do objeto desejado.
+do objeto desejado. Isso irá criar uma cadeia de prototypes em que os objetos 
+poderão acessar os métodos de outros objetos.
 
 Essa cadeia de prototypes é o que faz com que um objeto possa acessar propriedades 
-de qualquer outro objeto que esteja nessa cadeira. Essa é a forma com que o JS 
+de qualquer outro objeto que esteja nessa cadeia. Essa é a forma com que o JS 
 faz herança e essa é a forma que o diferencia de linguagens em que a herança é 
 baseada em classes. É essa cadeia de protótipos que entram em ação quando usamos 
 a palavra chave 'class' e criamos uma subclasse com 'extends'.
@@ -64,10 +65,10 @@ Aluno.prototype.comment = function comment () {
 
 // trabalhando com herença em funções construtoras
 function TeacherAssistant (name, email, scheduleWeekPosts) {
-  // invocando construtor Aluno
+  // invocando construtor Aluno e
   // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this
   Aluno.call(this, name, email) // this = TeacherAssistant e parâmetros para Aluno
-  this.scheduleWeekPosts = scheduleWeekPosts
+  this.scheduleWeekPosts = scheduleWeekPosts // propriedade única de TeacherAssistant
 }
 
 // criando novo objeto com as propriedades do prototype do objeto Aluno 
@@ -75,11 +76,10 @@ function TeacherAssistant (name, email, scheduleWeekPosts) {
 // TeacherAssistant agora terá acesso aos métodos que estão dentro do prototype de Aluno
 TeacherAssistant.prototype.Object.create(Aluno.prototype)
 
-// método exlusivo de TeacherAssistant
+// método exclusivo de TeacherAssistant
 TeacherAssistant.prototype.giveBadge = function giveBadge ({ name }) {
   return `${this.name} deu uma medalha para ${name}`
 }
-
 
 const maria = new Aluno('Maria', 'maria@gmail.com')
 const jose = new Aluno('Jose', 'jose@gmail.com')
@@ -96,7 +96,9 @@ const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.
   métodos,  isso ajudará a economizar mémória. Além de serem mais simples do que 
   funções construtoras. As funções construtoras eram usadas antes da chegada das 
   classes, por isso é importante entendermos funções construtoras e herança 
-  prototipais, pois ainda existem códigos usando essas features.
+  prototipais, pois ainda existem códigos usando essas features e sabendo como 
+  funções construtoras funcionam, saberemos o que uma classe está fazendo por 
+  baixo dos panos.
 
   Usaremos classes quando precisarmos fazer herança, o que pode ser algo raro, 
   quando estivermos desenvolvendo uma biblioteca ou quando precisarmos economizar 

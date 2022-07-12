@@ -97,9 +97,9 @@ automaticamente dentro da propriedade prototype do array.
 
 Agora, repare que métodos declarados dentro de uma função construtora são 
 armazenados no próprio objeto, ou seja, o método está junto com as propriedades. 
-E isso acontecerá para cada objeto criado e mesmo sendo iguais estão em espaços 
+E isso acontecerá para cada objeto criado e mesmo sendo iguais, estarão em espaços 
 diferentes na memória, por esse motivo não devemos declarar métodos dentro da 
-função construtora, pois cada objeto terá o mesmo método consumindo mémória.
+função construtora, pois cada objeto terá o mesmo método consumindo memória.
 
 Para evitarmos isso é possível declararmos o método uma vez, armazenarmos ele 
 em apenas um espaço na memória e fazer com que todos os objetos que sejam criados 
@@ -120,6 +120,8 @@ são criados, mas apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
 prototype do objeto criado, invés de adicionar dentro da própria função construtora.
+Assim, um único método estará disponível por refeRência para qualquer objeto que 
+for criado a partir da instância da função construtora.
 
 A propriedade prototype é tanto um getter quanto setter, ou seja, nós conseguimos 
 obter dados dele e também conseguimos inserir dados nele.
@@ -129,6 +131,8 @@ obter dados dele e também conseguimos inserir dados nele.
 function Student (name, email) { // função construtora
   this.name = name
   this.email = email
+
+  // não iremos mais adicionar os métodos aqui e sim dentro do prototype dela
 }
 
 Student.prototype.login = function () { // setando método no prototype de Student / setter / função anônima
@@ -142,6 +146,9 @@ Student.prototype.comment = function () { // setando método no prototype de Stu
 const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
 const alessandra = new Student('Alessandra Carvalho', 'alessandra.pigmentar@gmail.com')
 
+// ============================================================================
+
+// ==== Provando que os prototypes apontam para o mesmo local na memória ====
 [].includes() === [].__prototype__.includes() // true
 Array1.__prototype__ === Array2.__prototype__ // true
 
@@ -149,6 +156,8 @@ roger.login === alessandra.login // true
 roger.comment === alessandra.comment // true
 // método login e comment dentro do prototype de cada objeto
 // referenciando o mesmo método na memória
+
+// ============================================================================
 
 /*
 
@@ -234,7 +243,7 @@ class Student {
   do método que foi declarado.
 
   Mas quando declaramos o método estático com a sintaxe de function declaration 
-  completa, ou seja, anônima, estamos explicitando que a função não constém nome.
+  completa, ou seja, anônima, estamos explicitando que a função não contém nome.
 
   Isso é problemático porque um erro envolvendo uma função anônima pode retornar 
   uma string em branco como nome da função. Mesmo que o erro indique a linha que 
