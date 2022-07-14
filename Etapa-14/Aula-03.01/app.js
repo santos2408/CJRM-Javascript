@@ -93,7 +93,9 @@ Perceba que um array possui apenas algumas propriedades, mas como conseguimos
 acessar o método 'includes' dele ? Isso porque o método 'includes' existe dentro 
 da propriedade prototype e quando invocamos esse método no array, ele verifica 
 se esse método existe no array, se nao existir a engine do JS vai procurar 
-automaticamente dentro da propriedade prototype do array.
+automaticamente dentro da propriedade prototype do array e assim por diante. Se 
+chegar no final e nenhum método foi encontrado nos prototypes, então retornará 
+undefined.
 
 Agora, repare que métodos declarados dentro de uma função construtora são 
 armazenados no próprio objeto, ou seja, o método está junto com as propriedades. 

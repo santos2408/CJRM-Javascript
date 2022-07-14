@@ -127,14 +127,15 @@ const user3 = {
   por baixo dos panos elas estão usando prototypes para construir os objetos.
 
   Elas foram adicionadas como uma tentativa de deixar mais fácil o entendimento 
-  da sintaxe para se trabalhar com prototypes.
+  da sintaxe para se trabalhar com prototypes. Veremos mais a frente o que são 
+  prototypes e o que a abstração 'class' faz por baixa dos panos usando prototype.
 
   Class é a planta de um objeto, um template que descreve quais serão as propriedades 
   básicas de um objeto quando ele for construído. A class terá o objeto com as 
   características básicas mas poderá receber valores diferentes para cada construção.
 
   Todo construtor embutido na linguagem tem a primeira letra do nome maiúscula, 
-  então, por convenção, quando formos criar os nossos objetos, declareremos 
+  então, por convenção, quando formos criar os nossos objetos, declararemos 
   também com letras maiúsculas. Isso é usado para diferenciarmos propositalmente 
   das funções comuns do JS.
 
@@ -190,7 +191,7 @@ const user2 = new User('Alessandra', 'Carvalho', 44)
 
   Repare que, os métodos do objeto gerado ficam armazenados dentro da propriedade 
   prototype e não dentro do objeto em si, veremos o porquê disso nas próximas aulas. 
-  Dentro da classe, na declaração de métodos utilizamos as function declrations 
+  Dentro da classe, na declaração de métodos utilizamos as function declarations 
   com sintaxe de shorthand property name.
   
 */
@@ -413,8 +414,8 @@ console.log(counter.count) // acessando diretamente o valor da count
 
   Isso acontece porque a propriedade count é uma propriedade pública. Normalmente 
   a propriedade já é pública, mas podemos explicitar isso removendo o 'constructor', 
-  removendo o 'this' e deixando apenas a declaração do nome da propriedade. Esse tipo de 
-  feature que nos permite declarar uma propriedade pública sem precisar declarar 
+  removendo o 'this' e deixando apenas a declaração do nome da propriedade. Esse tipo 
+  de feature que nos permite declarar uma propriedade pública sem precisar declarar 
   o método constructor é chamada de 'public class fields'.
 
   Fields é um termo alternativo para 'propriedades dentro de uma classe'. Propriedade 
@@ -422,12 +423,12 @@ console.log(counter.count) // acessando diretamente o valor da count
 
   Mas se desejarmos que apenas os códigos internos da classe possam acessar e 
   modificar as propriedades dela, para isso devemos declarar a propriedade como 
-  privada, com isso, qualquer código fora da classe será impedido de acessar ou 
-  modificar propriedades da classe.
+  privada, com isso qualquer código fora da classe será impedido de acessar ou 
+  modificar propriedades dela.
 
-  Chamamos a declaração de propriedades privadas de 'class private fields', declarando 
-  uma '#' antes do nome da propriedade a tornará privada e apenas os métodos 
-  internos da classe poderão acessar ou modificar seu valor, códigos externos 
+  Chamamos a declaração de propriedades privadas de 'class private fields', 
+  declarando uma '#' antes do nome da propriedade a tornará privada e apenas os 
+  métodos internos da classe poderão acessar ou modificar seu valor, códigos externos 
   não terão acesso.
 
   Caso deseje inserir um valor dentro da propriedade privada que está sendo recebido 

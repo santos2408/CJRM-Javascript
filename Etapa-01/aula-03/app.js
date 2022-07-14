@@ -108,6 +108,7 @@ array1.splice(2, 1, 'segundo')
 // every...
 // split
 // Object.keys
+// shift
 
 console.log('========================================')
 

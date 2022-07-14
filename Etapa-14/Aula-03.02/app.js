@@ -174,6 +174,11 @@ const user3 = createUser('Roger', 'roger.santos36@gmail.com')
     diferentes, no entanto estão sendo criadas dois objetos em espaços diferentes 
     na memória, portanto as variáveis de um objeto não são as mesmas do outro 
     objeto. Isso garante que cada user tenha as suas prórpias informações.
+
+    RUN TIME BINDING: 
+
+    ao invés do valor do this ser determinado com base em onde a função é declarada, 
+    o valor será determinado com base em como ela é invocada.
 */
 
 console.log(user) // Objeto User
@@ -186,9 +191,20 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   Para obtermos o prototype de um objeto, não usamos mais a sintaxe 
   object.__prototype__. Agora usamos Object.getPrototypeOf('object')
 
-  Para charcarmos sem o prototype de um objeto existe dentro prototype de um outro 
+  Para chercarmos se o prototype de um objeto existe dentro prototype de um outro 
   objeto, usamos o método 'object1'.isPrototypeOf('object2')
 
-  * estudar mais sobre o método call() e aplly()
+  * estudar mais sobre o método :
+  
+  call()
+  aplly()
+  Object.create()
+  getPrototypeOf()
+  isPrototypeOf()
+
+  Podemos estabelecer um padrão de nomes de funções. Quando uma função busca um 
+  dado, por exemplo numa API, ela pode ter o nome com a palavra 'fetch', mas quando 
+  a função é executada para obter um valor, ou seja, retornar um valor dela, podemos 
+  colocar a palavra 'get' junto do nome dela, por convenção.
 
 */
