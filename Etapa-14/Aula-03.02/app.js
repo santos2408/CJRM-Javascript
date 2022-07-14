@@ -27,7 +27,7 @@ Portanto, usamos o call() para invocar uma determinada função construtora e fo
 que o this dessa função invocada armazene o valor que quisermos que ele armazene.
 
 Mas ainda não é só isso, o método call() pode receber também, depois do primeiro 
-método, os valores que a função pai pode receber como parâmetros
+parâmetro, os valores que a função pai pode receber como parâmetros
 
 Agora, para inserirmos propriedades únicas para a função construtora filha, é só 
 declararmos normalmente abaixo da invocação da call(). A classe pai não receberá 
@@ -113,7 +113,9 @@ const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.
 Existe uma alternativa mais direta de se compor objetos em aplicações web com 
 javascript puro, ela é chamada de factory functions. Uma factory function é 
 qualquer função que não é uma classe, nem construtor, nem função construtora, mas 
-retorna um novo objeto. Em JS qualquer função pode retornar um objeto.
+retorna um novo objeto. Em JS qualquer função pode retornar um objeto. Quando 
+escrevemos factory functions não precisamos colocar o nome dela com inicial 
+maiúscula.
 
 Quando uma função retorna um objeto sem a necessidade de usar a palavra chave 
 'new' antes da invocação dela, então ela é uma factory function. Com ela podemos 
@@ -173,7 +175,7 @@ const user3 = createUser('Roger', 'roger.santos36@gmail.com')
     repare que createUser está sendo invoado duas vezes para dois objetos 
     diferentes, no entanto estão sendo criadas dois objetos em espaços diferentes 
     na memória, portanto as variáveis de um objeto não são as mesmas do outro 
-    objeto. Isso garante que cada user tenha as suas prórpias informações.
+    objeto. Isso garante que cada user tenha as suas próprias informações.
 
     RUN TIME BINDING: 
 
@@ -192,12 +194,13 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   object.__prototype__. Agora usamos Object.getPrototypeOf('object')
 
   Para chercarmos se o prototype de um objeto existe dentro prototype de um outro 
-  objeto, usamos o método 'object1'.isPrototypeOf('object2')
+  objeto, usamos o método object1.isPrototypeOf('object2')
 
   * estudar mais sobre o método :
   
   call()
   aplly()
+  bind()
   Object.create()
   getPrototypeOf()
   isPrototypeOf()
@@ -206,5 +209,13 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   dado, por exemplo numa API, ela pode ter o nome com a palavra 'fetch', mas quando 
   a função é executada para obter um valor, ou seja, retornar um valor dela, podemos 
   colocar a palavra 'get' junto do nome dela, por convenção.
+
+*/ 
+
+/*
+  ==================== CLOSURES ====================
+
+
+
 
 */

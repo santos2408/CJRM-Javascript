@@ -30,9 +30,9 @@
   na rede, se simplesmente errarmos a URL do endpoint, o objeto response ainda 
   será retornado, no entanto será com status 404 e sem conteúdo.
 
-  Quando a resposta de sucesso é retornada, repare que o status é 200 e tudo 
-  ocorreu bem, mas não há conteúdo de resposta, semelhante ao que contém na 
-  propriedade responseText do XMLHttpRequest.
+  Quando a resposta de sucesso é retornada, repare que o status no objeto é 200 
+  e tudo ocorreu bem, mas não há conteúdo de resposta semelhante ao que contém 
+  na propriedade responseText do XMLHttpRequest.
 
   Ou seja, para obtermos o conteúdo da resposta, devemos executar o método 
   "json" que irá pegar a resposta que o response está armazenando e parsear essa 
@@ -40,7 +40,7 @@
   JSON.parse().
 
   Repare que, o retorno da resposta parseada será também uma "promise", portanto, 
-  invés de armazenarmos essa promise, podemos simplemente retorná-la diretamente 
+  invés de armazenarmos essa promise, podemos simplesmente retorná-la diretamente 
   e assim o método then estará retornando uma promise que será encadeada com outro 
   then. Criando assim um encadeando de promises.
 
@@ -54,7 +54,7 @@
 
 fetch('https://anapioficeandfire.com/api/houses')
   .then(response => response.json()) // paseando response da promise / retorna promise do JSON
-  .then(houses => console.log(houses)) // obtem resposta da promise anterior
+  .then(houses => console.log(houses)) // desempacota e obtem resposta da promise anterior
   .catch(error => console.log(error))
 
 /*
@@ -109,7 +109,7 @@ fetch('https://anapioficeandfire.com/api/houses')
 const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration / retorna uma promise
   const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta e desempacota
   const users = await response.json() // json() retorna promise e await desempacota pegando apenas a reposta json
-  return users // retorna apenas o objeto json
+  return users // retorna apenas o objeto json, mas ainda dentro de uma promise
 }
 
 const logUsers = async () => { // retorna promise porque é async

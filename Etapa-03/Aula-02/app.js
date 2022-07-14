@@ -18,7 +18,9 @@
 
    O valor retornado pode ser uma string, array, boolean, número, expressões,
    como as funções anteriores. Mas não tem como retornar de uma função um bloco
-   de código como um if ou switch ou algo do tipo, pois não são valores.
+   de código como um if ou switch ou algo do tipo, pois não são valores, assim como 
+   mais de um valor, mas para contornar isso podemos retornar varios valores 
+   armazenados num objeto ou array.
 
    Outra diferença entre arrow funcions e funções tradicionais é o binding
    da palavra this que será abordado em aulas posteriores.
@@ -65,14 +67,11 @@ const sayHi = () => 'Oi'
 const greet = sayHi()
 console.log(greet)
 
-/*
-   Para invocarmos uma função, nós declaramos o nome da função seguido de
-   parênteses.
-*/
-
-// métodos
+//Para invocarmos uma função, nós declaramos o nome da função seguido de parênteses.
 
 /*
+   ===== MÉTODOS =====
+
    Para invocarmos um método, utiliza-se a mesma invocação de uma função,
    no entanto o método deve vir precedido de um ponto e deve ser referenciado
    algum valor.
@@ -116,7 +115,8 @@ const logArrayInfo = (socialNetwork, index, array) => {
 
 socialNetworks.forEach(logArrayInfo)
 // não precisa de parênteses para executar a função
-// a execução é implicita
+// a execução é implicita, é passada por referência
+// os parâmetros estão sendo passados implicitamente
 
 // ===== UTILIZANDO CALLBACKS ================================
 
@@ -147,30 +147,3 @@ a função entre parênteses e a invocamos ao mesmo tempo.
 (function(parameter){
    console.log('Função invocada automaticamente.')
 })()
-
-/*
-===================== FUNÇÕES FÁBRICA (FACTORY FUNCTIONS) ======================
-
-São funções que simplesmente retornam um objeto.
-
-*/
-
-function criaPessoa(nome, idade, estado) {
-   return {
-      nome,
-      idade,
-      estado
-   }
-}
-
-// =============================================================================
-
-
-
-
-
-
-
-
-
-
