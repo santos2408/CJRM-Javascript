@@ -59,10 +59,10 @@ objects'.
 
 // criando objetos com constructors
 
-const string = new String('Roger') // objeto wrapper do tipo string
-const number = new Number(10) // objeto wrapper do tipo number
-const array = new Array(1, 2, 3) // objeto wrapper do tipo array
-const object = new Object() // objeto wrapper do tipo object
+const string = new String("Roger"); // objeto wrapper do tipo string
+const number = new Number(10); // objeto wrapper do tipo number
+const array = new Array(1, 2, 3); // objeto wrapper do tipo array
+const object = new Object(); // objeto wrapper do tipo object
 
 /*
   Isso que foi feito logo acima é exatamente o que o javascript faz 
@@ -96,23 +96,23 @@ const object = new Object() // objeto wrapper do tipo object
 // contém métodos e propriedades iguais, mas valores diferentes
 // quanto mais usuários, mais códigos repetidos, mais ilegível fica o código
 const user1 = {
-  name: 'Roger',
-  email: 'roger@gmail.com',
-  login: () => 'O usuário logou',
-  logout: () => 'O usuário deslogou'
-}
+  name: "Roger",
+  email: "roger@gmail.com",
+  login: () => "O usuário logou",
+  logout: () => "O usuário deslogou",
+};
 
 const user2 = {
   ...user1, // copiando os valores que são padrões para todo objeto
-  name: 'Alessandra',
-  email: 'alessandra@gmail.com',
-}
+  name: "Alessandra",
+  email: "alessandra@gmail.com",
+};
 
 const user3 = {
   ...user1, // copiando os valores que são padrões para todo objeto
-  name: 'Maria',
-  email: 'maria@gmail.com',
-}
+  name: "Maria",
+  email: "maria@gmail.com",
+};
 
 /*
   Além dos construtores embutidos na linguagem: Array, Number, String, Object, etc. 
@@ -120,7 +120,7 @@ const user3 = {
   características desejadas.
 
   Existem diversas maneiras de construirmos o nosso próprio objeto, usando 
-  funções construtoras, factory functions ou classes, etc. Antigamente uma das 
+  funções construtoras, factory functions ou classes. Antigamente uma das 
   formas era usar prototypes diretamente, mas com a chegada do ES6 podemos utilizar 
   a palavra chave 'class' para construir objetos. O nome 'class' é apenas uma 
   abstração para nos facilitar de entendermos melhor o que está acontecendo, pois 
@@ -165,24 +165,26 @@ const user3 = {
 */
 
 // declarando class para construir objeto User
-class User { // criando objeto
-  constructor (name, lastName, age) { // criando as propriedades
+class User {
+  // criando objeto
+  constructor(name, lastName, age) {
+    // criando as propriedades
     this.name = name, // this referencia esse novo objeto que está sendo criado
     this.lastName = lastName,
-    this.age = age
+    this.age = age;
   }
 }
 
 // invocando classe construtora
-const user = new User('Roger', 'Santos', 25) // criando instância de User
-const user2 = new User('Alessandra', 'Carvalho', 44)
+const user = new User("Roger", "Santos", 25); // criando instância de User
+const user2 = new User("Alessandra", "Carvalho", 44);
 
 /*
   =============== MÉTODOS EM CLASSES ===============
 
   Uma classe é um template de um objeto e para que todos os objetos que ela crie 
-  contenha um método, precisaremos criar o método dentro dela, mas vale lembrar 
-  que, nós não iremos criar o método dentro da função constructor.
+  contenham um método, precisaremos criar o método dentro dela, mas vale lembrar 
+  que, nós não iremos criar o método dentro da função 'constructor'.
 
   A função constructor é reservada apenas para as propriedades do objeto, para 
   inserir os métodos devemos criar fora da função constructor, declarando um 
@@ -191,22 +193,22 @@ const user2 = new User('Alessandra', 'Carvalho', 44)
 
   Repare que, os métodos do objeto gerado ficam armazenados dentro da propriedade 
   prototype e não dentro do objeto em si, veremos o porquê disso nas próximas aulas. 
-  Dentro da classe, na declaração de métodos utilizamos as function declarations 
+  Dentro da classe, na declaração de métodos utilizamos as 'function declarations'
   com sintaxe de shorthand property name.
   
 */
 
 class Usuario {
-  constructor (name, lastName, age) {
-    this.name = name,
-    this.lastName = lastName,
-    this.age = age,
-    this.points = 0
+  constructor(name, lastName, age) {
+    this.name = name, 
+    this.lastName = lastName, 
+    this.age = age, 
+    this.points = 0;
   }
 
-  login () {
-    console.log(`${this.name} logou na aplicação.`)
-    return this // retornando objeto para encadear outro objeto
+  login() {
+    console.log(`${this.name} logou na aplicação.`);
+    return this; // retornando objeto para encadear outro objeto
 
     /*
       se na invocação do método desejarmos encadear outro método, então 
@@ -219,25 +221,25 @@ class Usuario {
     */
   }
 
-  logout () {
-    return `${this.name} deslogou da aplicação.`
+  logout() {
+    return `${this.name} deslogou da aplicação.`;
   }
-  
-  addPoint () {
-    this.points++
-    return `${this.name} agora tem ${this.points} ${this.points > 1 ? 'pontos' : 'ponto'}`
+
+  addPoint() {
+    this.points++;
+    return `${this.name} agora tem ${this.points} ${this.points > 1 ? "pontos" : "ponto"}`;
   }
 }
 
-const usuario = new Usuario('Roger', 'Santos', 25)
+const usuario = new Usuario("Roger", "Santos", 25);
 
-usuario.login().addPoint()
-console.log(usuario)
+usuario.login().addPoint();
+console.log(usuario);
 
 /*
   =============== HERANÇA ENTRE CLASSES ===============
 
-  Herença entre classes significa fazer com que uma subclasse herde propriedades 
+  Herança entre classes significa fazer com que uma subclasse herde propriedades 
   e métodos de uma outra classe, mas mesmo assim podendo ter as suas próprias 
   propriedades e métodos.
 
@@ -251,7 +253,7 @@ console.log(usuario)
 
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
   o constructor da classe que ela está herdando e consequentemente irá obter as 
-  propriedades da classe pai. Mas quando criamos um novo constructor na subclasse, 
+  propriedades dessa classe pai. Mas quando criamos um novo constructor na subclasse, 
   a subclasse não irá conseguir mais obter as propriedades da classe pai, isso 
   porque, existindo dois constructor, eles entram em conflito.
 
@@ -268,50 +270,54 @@ console.log(usuario)
   mesmo tendo o mesmo nome cada método terá seu comportamente único.
 
   Para resolver isso e recebermos as propriedades da classe pai e ainda inserir 
-  propriedades exlusivas da subclasse precisaremos receber todos os argumentos 
+  propriedades exclusivas da subclasse precisaremos receber todos os argumentos 
   da classe pai na invocação da subclasse e em seguida, dentro do constructor da 
   subclasse iremos invocar o constructor da classe pai, só que para o JS entender 
   que estamos invocando o constructor da classe pai e não do filho, precisaremos 
   trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors 
-  um para a subclasse e outro para obter as propriedades da classe pai sem evitar 
+  um para a subclasse e outro para obter as propriedades da superclass sem evitar 
   um conflito entre elas. Veja o exemplo abaixo:
 
 */
 
-class Mammal { // classe pai
-  constructor (species, name, age) {
-    this.species = species
-    this.name = name
-    this.age = age
-    this.mammaryGland = true
+class Mammal {
+  // superclass
+  constructor(species, name, age) {
+    this.species = species;
+    this.name = name;
+    this.age = age;
+    this.mammaryGland = true;
   }
 
-  incrementAge () {
-    this.age++
-  }
-}
-
-class Lion extends Mammal{ // Lion (subclasse) herdando propriedades e métodos de Mammal (classe pai)
-  constructor (species, name, age, manEater) { // constructor da subclasse
-    super(species, name, age) // invocando constructor da classe pai e obtendo propriedades
-    this.manEater = manEater // propriedade única da subclasse Lion
-  }
-
-  eatZebras (animals) { // método único da subclasse Lion
-    return animals.filter(animal => animal.species !== 'zebra')
+  incrementAge() {
+    this.age++;
   }
 }
 
-const zeca = new Mammal('zebra', 'Zeca', 6)
-const pompeu = new Mammal('gnu', 'Pompeu', 5)
-const cesar = new Mammal('macaco', 'Cesar', 8)
-const mufasa = new Lion('leão', 'mufasa', 4, false)
-const scar = new Lion('leão', 'scar', 10, true)
+class Lion extends Mammal {
+  // Lion (subclasse) herdando propriedades e métodos de Mammal (classe pai)
+  constructor(species, name, age, manEater) {
+    // constructor da subclasse
+    super(species, name, age); // invocando constructor da classe pai e obtendo propriedades
+    this.manEater = manEater; // propriedade única da subclasse Lion
+  }
 
-const animals = [zeca, pompeu, cesar]
+  eatZebras(animals) {
+    // método único da subclasse Lion
+    return animals.filter((animal) => animal.species !== "zebra");
+  }
+}
 
-scar.eatZebras(animals)
-console.log(mufasa, scar)
+const zeca = new Mammal("zebra", "Zeca", 6);
+const pompeu = new Mammal("gnu", "Pompeu", 5);
+const cesar = new Mammal("macaco", "Cesar", 8);
+const mufasa = new Lion("leão", "mufasa", 4, false);
+const scar = new Lion("leão", "scar", 10, true);
+
+const animals = [zeca, pompeu, cesar];
+
+scar.eatZebras(animals);
+console.log(mufasa, scar);
 
 /*
   =============== MÉTODOS GETTER AND SETTER ===============
@@ -347,27 +353,29 @@ console.log(mufasa, scar)
 */
 
 class Counter {
-  constructor () {
-    this.count = 0 // propriedade pública
+  constructor() {
+    this.count = 0; // propriedade pública
   }
 
-  get value () { // método get usando sintaxe de abreviação
-    return this.count
+  get value() {
+    // método get usando sintaxe de abreviação
+    return this.count;
   }
 
-  increment () {
-    this.count++
+  increment() {
+    this.count++;
   }
 
-  set newValue (aNumber) { // método set usando sintaxe de abreviação
-    this.count = aNumber
+  set newValue(aNumber) {
+    // método set usando sintaxe de abreviação
+    this.count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.value // invocando método get usando sintaxe de propriedade
-counter.newValue = 7 // setando um valor usando sintaxe de propriedade
+counter.value; // invocando método get usando sintaxe de propriedade
+counter.newValue = 7; // setando um valor usando sintaxe de propriedade
 
 /*
   =============== ENCAPSULAMENTO ===============
@@ -387,25 +395,27 @@ counter.newValue = 7 // setando um valor usando sintaxe de propriedade
 */
 
 class Counter {
-  count = 0 // propriedade pública
+  count = 0; // propriedade pública
 
-  get value () { // método get usando sintaxe de abreviação
-    return this.count
+  get value() {
+    // método get usando sintaxe de abreviação
+    return this.count;
   }
 
-  increment () {
-    this.count++
+  increment() {
+    this.count++;
   }
 
-  set newValue (aNumber) { // método set usando sintaxe de abreviação
-    this.count = aNumber
+  set newValue(aNumber) {
+    // método set usando sintaxe de abreviação
+    this.count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.count = 'Olá' // atribuindo string à count
-console.log(counter.count) // acessando diretamente o valor da count
+counter.count = "Olá"; // atribuindo string à count
+console.log(counter.count); // acessando diretamente o valor da count
 
 /*
   Veja que, o código que escrevemos fora da classe consegue acessar e modificar 
@@ -439,32 +449,36 @@ console.log(counter.count) // acessando diretamente o valor da count
 */
 
 class Counter {
-  #count = 0 // propriedade privada, precisar usar '#'
+  #count = 0; // propriedade privada, precisa usar '#'
 
-  constructor (value) { // atribuindo valor na propriedade privada, pode usar o constructor normalmente
-    this.#count = value
+  constructor(value) {
+    // atribuindo valor na propriedade privada através de parâmetro
+    // pode usar o constructor normalmente
+    this.#count = value;
   }
 
-  get value () { // método get usando sintaxe de abreviação
-    return this.#count
+  get value() {
+    // método get usando sintaxe de abreviação
+    return this.#count;
   }
 
-  increment () {
-    this.#count++
+  increment() {
+    this.#count++;
   }
 
-  set newValue (aNumber) { // método set usando sintaxe de abreviação
-    this.#count = aNumber
+  set newValue(aNumber) {
+    // método set usando sintaxe de abreviação
+    this.#count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.#count = 'Olá' // não tem permissão para modificar a propriedade
-console.log(counter.count) // não tem permissão para acessar a propriedade
+counter.#count = "Olá"; // não tem permissão para modificar a propriedade
+console.log(counter.count); // não tem permissão para acessar a propriedade
 
-counter.newValue = 5 // modificando propriedades através do método que existe na classe 
-counter.value // acessandro propriedade através do método que existe na classe
+counter.newValue = 5; // modificando propriedades através do método que existe na classe
+counter.value; // acessando propriedade através do método que existe na classe
 
 /*
   Em classes que herdam propriedades de outras classes, se as propriedades dessa 
@@ -479,8 +493,8 @@ counter.value // acessandro propriedade através do método que existe na classe
 
   Vale lembrar que esse tipo de ação só funciona em subclasses, na classe pai 
   ainda precisaremos do método constructor para criar as propriedades. E perceba 
-  também que se quisermos obter os dados através dos parâmetros deveremos ter 
-  de fato o método constructor.
+  também que se quisermos obter dados através dos parâmetros da subclasse, aí 
+  deveremos continuar tendo de fato o método constructor na subclasse também.
 */
 
 /*
@@ -491,6 +505,11 @@ counter.value // acessandro propriedade através do método que existe na classe
   usamos para indicar que não vamos mudar aquele valor, o valor dela permanecerá 
   o mesmo ao longo da aplicação.
 
-  Fique atento para a mutabilidade de valores, se for necessário alterar o valor 
-  de uma variável, armazena essa alteração em outra variável.
+  Fique atento para a mutabilidade de valores, se está recebendo valores em lets 
+  que lá na frente irão ser modificadas, prefira armazenas o resultado das 
+  modificações numa nova 'const' e não reatribuir para as lets existentes.
+
+  Mesmo criando objetos, se você sabe que esse objeto irá ser modificado, recebendo 
+  novos dados, procure declara-lo então como 'let' para indificar explicitamente 
+  que aquele objeto será mutável.
 */

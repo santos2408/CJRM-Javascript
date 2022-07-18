@@ -215,7 +215,29 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 /*
   ==================== CLOSURES ====================
 
+  Quando uma função interna acessa uma variável que foi declarada no escopo 
+  léxico, essa função será conhecida como 'closure'. Closure é a combinação de 
+  uma função com o seu escopo léxico.
 
+  const func = () => {
+    let value = 1
 
+    const funcIntern = () => { // função closure / acessando variavel do seu escopo léxico
+      console.log(value)
+    }
+  }
+
+*/
+
+/*
+  ==================== ESTADOS ====================
+
+  Definir estado não é uma tarefa simples, pois ele é um termo muito amplo, 
+  podendo ser usado em vários contexto. Mas de forma simplificada, estado é um 
+  termo técnico para informações armazenadas, geralmente em um objeto, que podem 
+  ser acessadas em um determinado ponto no tempo.
+
+  Essas informações influenciam o output do que é renderizado na tela. Essa é 
+  uma definição de estado simplificada, é mais complexo do que isso.
 
 */
