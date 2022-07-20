@@ -127,7 +127,7 @@ ou constructor. Pensando em código de larga escala, a compreesensão dele será
 mais fácil com factory functions do que classes.
 
 Ainda conseguimos declarar propriedades privadas dentro de uma factory function. 
-E mesmo que criemos várias objetos com base numa única função, o bloco dessa 
+E mesmo que criemos vários objetos com base numa única função, o bloco dessa 
 função será único para cada objeto criado, pois é aplicado o conceito de closures, 
 que é a combinação de uma função com seu escopo léxico, que é todo escopo que 
 envolve a declaração da função.
@@ -172,7 +172,7 @@ const user2 = createUser('Roger', 'roger.santos36@gmail.com')
 const user3 = createUser('Roger', 'roger.santos36@gmail.com')
 
 /*
-    repare que createUser está sendo invoado duas vezes para dois objetos 
+    repare que createUser está sendo invocado duas vezes para dois objetos 
     diferentes, no entanto estão sendo criadas dois objetos em espaços diferentes 
     na memória, portanto as variáveis de um objeto não são as mesmas do outro 
     objeto. Isso garante que cada user tenha as suas próprias informações.
@@ -198,6 +198,7 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 
   * estudar mais sobre o método :
   
+  this
   call()
   aplly()
   bind()
@@ -217,23 +218,36 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 
   Quando uma função interna acessa uma variável que foi declarada no escopo 
   léxico, essa função será conhecida como 'closure'. Closure é a combinação de 
-  uma função com o seu escopo léxico.
+  uma função com o seu escopo léxico. Funções aninhadas tem acesso a suas 
+  funções externas.
 
-  const func = () => {
-    let value = 1
+  Repare abaixo que a displayName() tem acesso a variável da função externa init(), 
+  a displayName() tem referências do seu estado circundante, portanto, a displayName() 
+  é uma closure porque é uma função agrupada (incluída).
 
-    const funcIntern = () => { // função closure / acessando variavel do seu escopo léxico
-      console.log(value)
-    }
-  }
+
 
 */
+
+const init = () => {
+  let name = 'Roger' // variável local criada pela função init
+
+  function displayName () { 
+    // função interna / é uma closure
+    // está disponível apenas dentro da init
+    console.log(name) // usando variável da função pai dela
+  }
+  displayName()
+
+}
+
+init()
 
 /*
   ==================== ESTADOS ====================
 
   Definir estado não é uma tarefa simples, pois ele é um termo muito amplo, 
-  podendo ser usado em vários contexto. Mas de forma simplificada, estado é um 
+  podendo ser usado em vários contextos. Mas de forma simplificada, estado é um 
   termo técnico para informações armazenadas, geralmente em um objeto, que podem 
   ser acessadas em um determinado ponto no tempo.
 
