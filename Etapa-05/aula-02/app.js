@@ -1,3 +1,12 @@
+/*
+  ======== TÓPICAS DESTA AULA ========
+
+    - ACIONANDO, MODIFICANDO E REMOVENDO CONTEÚDO DO DOM
+    - PROPRIEDADES E MÉTODOS DE ELEMENT
+    - OBTENDO E SETANDO ATRIBUTOS
+
+*/
+
 // === ADICIONANDO E MODIFICANDO CONTEÚDO DA PÁGINA =======================
 
 /*
@@ -80,6 +89,13 @@ const people = ['Roger', 'Maria', 'Jose']
 people.forEach(person => {
    divTitulos.innerHTML += `<p>${person}</p>`
 })
+
+/*
+   ==== clientHeight e clientWidth ====
+
+   A propriedade "clientHeight" e "clientWidth" obtém a altura do elemento em 
+   pixels incluindo o seu padding. Não inclui borders, margins ou scrollbars.
+*/
 
 /*
    É imporante lembrar que essas duas propriedades são conhecidas por serem

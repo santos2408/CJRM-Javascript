@@ -1,3 +1,12 @@
+/*
+  ======== TÓPICAS DESTA AULA ========
+
+    - ARRAYS
+    - MÉTOODS E PROPRIEDADES DE ARRAYS
+    - NULL E UNDEFINED
+
+*/
+
 // ===== ARRAYS =================================
 
 /*
@@ -72,12 +81,13 @@ const numbers = [1, 2, 3, 4, 5, 6]
 numbers.some(number => number % 2 === 0) // true
 // testa a função passada em cada item do array / retorna um boolean
 // se o teste retornar true em pelo menos um item, toda função retorna true
-// recebe mais array e index como parametros opcionais
+// recebe array e index como parametros opcionais
 // pelo menos um item atende a função passada?
 
 const numbers = [10, 20, 30, 40, 50]
 numbers.find(number => number > 30) // item: 40
 // retorna o primeiro elemento que satisfaça a função de teste
+// semelhante ao método some, mas retorna o item e não um boolean
 
 const numbers = [10, 20, 30, 40, 50]
 numbers.findIndex(number => number > 30) // index: 3
@@ -87,28 +97,43 @@ numbers.findIndex(number => number > 30) // index: 3
 const array1 = ['one', 'two', 'three']
 array1.reverse()
 // inverte a posição dos elementos
-// o primeiro se torna o último e o último se torna o primeiro
+// o primeiro se torna o último e o último se torna o primeiro para todos os pares
 
 const array1 = ['one', 'two', 'three']
 array1.slice(1)
 // retorna uma cópia rasa de um pedaço de um array em um novo array
-// seleciona o item initial e final, sendo o final não incluído no 'corte'
+// seleciona o index (initial e final), sendo o final não incluído no 'corte'
 // os valores iniciais e finais representam o index do item
 // não modifica o array original
 // a partir de qual índice você deseja cortar ?
-// -1 equivale ao último índice/item
+// -1 equivale ao último item
 
 const array1 = ['one', 'two', 'three', 'four']
 array1.splice(1, 0, 'banana')
 array1.splice(2, 1, 'segundo')
 // muda o conteúdo de um array, removendo, alterando ou adicionando elementos
 // modifica o array original
-// três argumentos (valor initial, valor de delete, valor de replace)
+// valor inicial: index onde ocorrerá as modificações, 
+// valor de delete: numero de elementos que serao deletados a partir do valor inicial
+// valor de replace: elementos que serao adicionados a partir do valor inicial
 
-// every...
-// split
+const array1 = ['one', 'two', 'three']
+array1.every(item => item === 1)
+// verifica se todos os elementos passam na função de teste passada como argumento
+// se todos passarem no teste, retorna true
+// se ao menos um não passar, toda função retorna false
+
+const array1 = 'roger'
+array1.split('') // separada cada caracter ['r', 'o', 'g', 'e', 'r']
+array1.split(' ') // separa os itens a cada 'espaço' encontrado
+array1.split(':') // separa os itens cada ':' encontrado
+// divida uma string em uma lista ordenada separada com base no padrão passado
+// recebe por argumento um padrão como parâmetro de separação dos itens do elemento
+// no final insere tudo dentro de um array e retorna
+
 // Object.keys
 // shift
+// flat
 
 console.log('========================================')
 

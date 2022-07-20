@@ -1,3 +1,13 @@
+/*
+  ======== TÓPICAS DESTA AULA ========
+
+    - BOOLEANS
+    - OPERADORES DE COMPARAÇÃO
+    - CONVERSÃO DE TIPOS
+    - VALORES TRUTHY E FALSY
+
+*/
+
 // ===== BOOLEANS E OPERADORES DE COMPARAÇÃO =================================
 
 /*

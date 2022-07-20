@@ -3,7 +3,7 @@
 /*
    São estruturas condicionais que executam um bloco de código (statements) 
    apenas se a condição resultar em valor verdadeiro. O bloco de código é 
-   executado apenas uma vez. Por tanto, o if e if else só executarão condições 
+   executado apenas uma vez. Portanto, o if e if else só executarão condições 
    que tenham o valor truthy.
 
    Para mútliplos statements utilizamos um bloco de código, mas caso o if 
@@ -22,7 +22,8 @@
    que o código tenha múltiplas condições diferentes.
 
    É possível ter múltiplas condições encadeadas com else if, mas cuidado pois
-   dificulta um pouco a leitura.
+   dificulta um pouco a leitura, em alguns casos dê preferências para blocos de 
+   if únicos com return, assim evitando if else e else.
 */
 
 const age = 19
@@ -48,11 +49,11 @@ if (simpsons.length >= 5) {
    também seja false, o JS irá pular para o bloco else, se houver.
 
    Em alguns caso o uso de else if pode começar a sujar o código, nesse caso 
-   podemos optar por colocar apenas blocos de if único para cada condição, invés 
-   de interpolar um else if.
+   podemos optar por colocar apenas blocos de if único para cada condição e 
+   retornálos com return, invés de interpolar um else if.
 
-   if (...)
-   if (...)
+   if (... return)
+   if (... return)
 */
 
 const password = 'oi123'
@@ -80,17 +81,20 @@ não fosse executado e caso todos os if's sejam falsy, o último código é exec
 
 if (password >= 12) {
    console.log('Essa senha é forte')
+   return
 }
 
 if (password >= 8) {
    console.log('Essa senha tem 8 ou mais caracteres')
+   return
 }
 
 if (password < 8) {
    console.log('Essa senha é muito fraca.')
+   return
 }
 
-// ===== mais conciso, talvez não tanto legível / retorno implícito / evite =====
+// ===== talvez não tanto legível / retorno implícito / evite =====
 if (password >= 12) console.log('Essa senha é forte')
 if (password >= 8) console.log('Essa senha tem 8 ou mais caracteres') 
 if (password < 8) console.log('Essa senha é muito fraca.')
@@ -128,7 +132,7 @@ if (password < 8) console.log('Essa senha é muito fraca.')
 
    A expressão é lida da esquerda para a direita e o operador && é lido antes 
    do operador ||, independente de sua posição na expressão, o && sempre será
-   analisado primeiro. Ou seja, o operator && tem uma precedência maior do que 
+   analisado primeiro. Ou seja, o operador && tem uma precedência maior do que 
    o ||.
 
    password.length >= 8 || password.length.includes('1') && password.length >= 5
@@ -137,7 +141,8 @@ if (password < 8) console.log('Essa senha é muito fraca.')
 
    Se encontrar um código com diversos operadores lógicos executando uma 
    operação, o mais recomendado é analisar o que está acontecendo e refatorar 
-   ele para boas práticas, deixando mais legível e de fácil manutenção.
+   ele para boas práticas, deixando mais legível e de fácil manutenção, por exemplo 
+   armazenando o curto-circuito numa variável.
 
    true || true = true
    true || false = true

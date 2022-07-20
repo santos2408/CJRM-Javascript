@@ -1,3 +1,11 @@
+/*
+  ======== TÓPICAS DESTA AULA ========
+
+    - VARIÁVEIS
+
+*/
+
+
 // ===== VARIÁVEL VAR =========================
 
 var points = 50

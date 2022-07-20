@@ -1,3 +1,11 @@
+/*
+  ======== TÓPICAS DESTA AULA ========
+
+    - STRINGS
+    - TEMPLATE STRINGS
+    - MÉTODOS E PROPRIEDADES DE STRINGS
+*/
+
 // ===== STRINGS =================================
 
 console.log('Hello, World')
