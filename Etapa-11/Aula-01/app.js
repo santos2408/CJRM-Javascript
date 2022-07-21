@@ -3,7 +3,9 @@
 /*
    O Javascript é uma linguagem síncrona ou seja, ele executa uma instrução 
    por vez de cima para baixo, top-down, uma depois da outra. A linha seguinte 
-   só é executada após a linha anterior terminar de ser executada.
+   só é executada após a linha anterior terminar de ser executada, isso porque 
+   na promogração síncrona, a linha seguinte dapende da finalização da linha 
+   anterior.
    
    Isso caracteriza o javascript como uma linguagem de single-thread, seguindo 
    sempre uma sequência de instruções, uma de cada vez, de forma síncrona.
@@ -12,7 +14,7 @@
    esse processo posteriormente.
 
    Em alguns momentos de uma aplicação podemos ter uma requisição a um banco de 
-   dados, essa requisão pode levar um tempo para obter uma resposta. Programando 
+   dados, essa requisição pode levar um tempo para obter uma resposta. Programando 
    de forma síncrona o javascript só irá continuar a execução do código quando a 
    requisão feita obtiver uma resposta, e dependendo da quantidade de requisições 
    em uma aplicação, isso pode gerar problemas de performance. Esse código da 
@@ -43,9 +45,11 @@ setInterval(() => {
    console.log('callback executada')
 }, 2000)
 
+// CÓDIGO SINGLE THREAD
 console.log(3)
 console.log(4)
-// execução da callback
+
+// execução da callback...
 
 /* =========== O QUE SÃO REQUESTS HTTP =========== */
 
@@ -74,8 +78,8 @@ console.log(4)
    informações que a API ou servidor armazena.
 
    JSON: JavaScript Object Notation, notação de objetos javascript, é um formato 
-   que se parece com um objeto em javascript e é retornado como resposta a 
-   requisição da API através de um endpoint.
+   que se parece com um objeto em javascript mas na verdade é uma string e é 
+   retornado como resposta a requisição da API através de um endpoint.
 */
 
 // realizando um request para um endpoint na API de Ice and Fire
@@ -83,3 +87,16 @@ console.log(4)
 fetch('https://anapioficeandfire.com/api/characters/583')
   .then(response => response.json())
   .then(json => console.log(json))
+
+/*
+
+   CONTEÚDO COMPLEMENTAR PARA ADICIONAR NA AULA:
+   https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
+
+   [X] - Introducing asynchronous JavaScript
+   [ ] - How to use promises
+   [ ] - Implementing a promise-based API
+   [ ] - Introducing workers
+   [ ] - Sequencing animations
+
+*/
