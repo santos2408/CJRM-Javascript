@@ -7,7 +7,7 @@ como argumento da invocação da classe. Por isso precisamos do constructor, par
 recebermos as propriedades como parâmetro.
 
 Diferente de outras linguagens, em javascript, tecnicamente não existem classes, 
-elas são apenas um sintax sugar, ou seja, uma abstração que é um processo de 
+elas são apenas uma sintax sugar, ou seja, uma abstração que é um processo de 
 ocultar certos detalhes de implementação e expor outros para que através de um 
 código mais simples possamos lidar com estruturas mais complexas. O async/await 
 é um exemplo de abstração de promises.
@@ -19,11 +19,12 @@ não é construtora. Isso porque o this dentro de uma arrow function não refere
 o objeto que está sendo criado e sim o this do escopo em que a arrow function foi 
 declarada. Por isso não declaramos funções construtoras com arrow function.
 
-Por exempli: se a função construtora foi criada com arrow function e essa função 
+Por exemplo: se a função construtora foi criada com arrow function e essa função 
 foi declarada no escopo global, o this dessa arrow function irá referenciar o 
 objeto Window e não o objeto que a função está criando. Se declararmos uma função 
 pai que contém uma função filho, o this da função filho irá referenciar a função 
-pai, porque o this referencia o escopo de onde ela foi declarada.
+pai, porque o this referencia o escopo de onde ela foi declarada. Ou seja, o this 
+da função filho é a função pai e o this da função pai é o Objeto window.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
@@ -38,7 +39,8 @@ como resolver.
 os métodos dentro dela provavelmente estarão sendo usados com function declarations 
 e não arrow functions, isso porque provavelmente a arrow function é mais recente e 
 não funciona em browsers mais antigos, portanto os desenvolvedores deixam com 
-function declaration para não quebrar o código para browsers antigos.
+function declaration para não quebrar o código para browsers antigos. Mas podemos 
+usar arrow functions também.
 
 */
 
@@ -77,7 +79,7 @@ const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
 =============== PROTOTYPES ===============
 
 Como vimos no exemplo anterior, declarar métodos dentro de funções construtoras 
-não é bom para a performance da aplicação, isso porque quando adicionamos métodos 
+não é bom para a performace da aplicação, isso porque quando adicionamos métodos 
 dentro de uma função construtora, esse método será declarado em cada novo objeto 
 que a função construtora criar. Mesmo que os métodos sejam idênticos, eles irão 
 ocupar dois espaços diferentes na memória, pois cada um vai ocupar um espaço 
@@ -105,7 +107,7 @@ função construtora, pois cada objeto terá o mesmo método consumindo memória
 
 Para evitarmos isso é possível declararmos o método uma vez, armazenarmos ele 
 em apenas um espaço na memória e fazer com que todos os objetos que sejam criados 
-pela função construtora consiga acessar o método através da referência dele. Para 
+pela função construtora consigam acessar o método através da referência dele. Para 
 isso temos que armazená-lo dentro da propriedade prototype do objeto, com isso 
 todo objeto criado vai herdar o mesmo método existente que está num espaço da 
 memória, sem a necessidade de criar um para cara objeto criado.
@@ -122,7 +124,7 @@ são criados, mas apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
 prototype do objeto criado, invés de adicionar dentro da própria função construtora.
-Assim, um único método estará disponível por refeRência para qualquer objeto que 
+Assim, um único método estará disponível por referência para qualquer objeto que 
 for criado a partir da instância da função construtora.
 
 A propriedade prototype é tanto um getter quanto setter, ou seja, nós conseguimos 
@@ -201,6 +203,20 @@ class Student {
 */
 
 // método estático, ou seja, sendo inserido dentro da função construtora
+
+// pode ser inserido diretamente na declaração da função construtora
+function Student (name, email) { // função construtora
+  this.name = name
+  this.email = email
+
+  formatToDatabase = function (aString) { // function declaration anônima
+    return aString
+      .toUpperCase()
+      .replaceAll(' ', '_')
+  }
+}
+
+// ou pode ser inserido depois que a função construtora foi declarada
 Student.formatToDatabase = function (aString) { // function declaration anônima
   return aString
     .toUpperCase()

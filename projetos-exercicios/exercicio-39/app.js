@@ -18,7 +18,7 @@
 
 const numbers = [50, 100, 50]
 
-const sum = (x, y, z) => x + y + z
+const sum = (...numbers) => numbers.reduce((acc, number) => acc + number, 0)
 
 console.log(sum(...numbers))
 
@@ -36,6 +36,33 @@ console.log(sum(...numbers))
     utilizando a classe "active".
 */
 
+const accordionContainer = document.querySelector('[data-js="accordion"]')
+
+accordionContainer.addEventListener('click', event => {
+  const accordionHeaderId = event.target.dataset.accordionHeader
+  const clickedAccordionHeader = document.querySelector(`[data-accordion-header="${accordionHeaderId}"]`)
+  const accordionItemToBeOpened = document.querySelector(`[data-accordion-body="${accordionHeaderId}"]`)
+  const accordionHeaderToBeClosed = Array
+    .from(document.querySelectorAll('[data-js="accordion-header"]'))
+    .filter(accordionHeader => accordionHeader !== clickedAccordionHeader)
+    .find(accordionHeader => accordionHeader.classList.contains('active'))
+
+  if (!event.target.dataset.accordionHeader) {
+    return
+  }
+
+  if (accordionHeaderToBeClosed) {
+    const accordionHeaderId = accordionHeaderToBeClosed.dataset.accordionHeader
+    const accordionBodyToBeClosed = 
+      document.querySelector(`[data-accordion-body="${accordionHeaderId}"]`)
+
+    accordionHeaderToBeClosed.classList.remove('active')
+    accordionBodyToBeClosed.classList.remove('active')
+  }
+
+  clickedAccordionHeader.classList.toggle('active')
+  accordionItemToBeOpened.classList.toggle('active')
+})
 
 
 /*
@@ -60,8 +87,19 @@ const volkswagenProto = {
   }
 }
 
-// const amarok = carMaker({ name: 'Amarok', color: 'preta' })
-// const jetta = carMaker({ name: 'Jetta', color: 'prata' })
+const carMaker = ({ name, color }) => ({
+  name, 
+  color
+})
+
+const amarok = carMaker({ name: 'Amarok', color: 'preta' })
+const jetta = carMaker({ name: 'Jetta', color: 'prata' })
+
+// carMaker.prototype = Object.create(volkswagenProto)
+
+// console.log(amarok)
+
+
 
 /*
   04
@@ -79,9 +117,22 @@ const volkswagenProto = {
 
 const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, abertas poucas vezes e é focado em quem ainda não é fluente em JS. Ou seja, quem não consegue construir aplicações web com JavaScript puro.'
 
+const getIndexesOfCharacter = (string, selectedCharacter) => {
+  const indexesOfCharacter = []
 
+  for (let index = 0; index < string.length; index++) {
+    const characterOfString = string[index]
+    const hasSameCharacter = characterOfString === selectedCharacter
 
-// console.log(getIndexesOfCharacter(aString, 'b'))
+    if (hasSameCharacter) {
+      indexesOfCharacter.push(index)
+    }
+  }
+
+  return indexesOfCharacter
+}
+
+console.log(getIndexesOfCharacter(aString, 'b'))
 
 /*
   05
@@ -126,7 +177,31 @@ const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, 
       ela já tem + 1 e faça characterIndex receber 0.
 */
 
+const typingEl = document.querySelector('[data-js="typing"]')
+const messages = ['sou fluente em JS', 'construo aplicações web como JavaScript puro']
 
+let messageIndex = 0
+let characterIndex = 0
+let currentMessage = ''
+let currentCharacters = ''
+
+const type = () => {
+  if (messageIndex === messages.length) {
+    messageIndex = 0
+  }
+
+  currentMessage = messages[messageIndex]
+  currentCharacters = currentMessage.slice(characterIndex, characterIndex + 1)
+  characterIndex++
+  typingEl.textContent += currentCharacters
+
+  if (currentCharacters.length === currentMessage.length) {
+    messageIndex++
+    characterIndex = 0
+  }
+}
+
+// setInterval(type, 200)
 
 /*
   06
