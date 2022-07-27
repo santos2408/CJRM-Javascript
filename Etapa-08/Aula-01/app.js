@@ -166,6 +166,9 @@ const premiumUsers = users.filter(user => user.premium)
    causar um resultado indesejado. Por isso, por boas práticas especificamos ele 
    para termos uma representação explícita do tipo de dado que o reduce irá 
    retornar.
+
+   O segundo argumento da função indica qual dado você quer que seja gerado 
+   no final da execução do método.
 */
 
 const allNumbers = [1, 2, 3, 4, 5]
