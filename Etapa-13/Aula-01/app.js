@@ -23,7 +23,7 @@
 
    Existem pelo menos duas formas de salvar dados em uma aplicação: podemos usar 
    banco de dados, obtendo os dados através de requests ou podemos usar as 
-   ferramentas que o browser fornece, sendo uma delas o Web Storage API. Essa API 
+   ferramentas que o browser fornece, sendo uma delas a Web Storage API. Essa API 
    é útil para armazenar informações simples como strings, numbers, username, 
    cores, etc.
 

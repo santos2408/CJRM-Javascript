@@ -2,13 +2,13 @@
 =============== ORIENTAÇÃO A OBJETOS ===============
 
 É uma abordagem, um paradigma para a forma de programar no qual os dados são 
-encapsulados em objetos e esses objetos são trabalhados no decorrear da aplicação.
+encapsulados em objetos e esses objetos são trabalhados no decorrer da aplicação.
 O JavaScript é uma linguagem fortemente orientada a objetos sendo baseado em 
 prototypes.
 
 Como o JS é uma linguagem multiparadigma, nós podemos programar orientado a objetos, 
 imperativo, funcional ou todas as formas combinadas. Combinando os paradigmas em 
-um código, podemos extrair o melhor de cada estilo.
+um código podemos extrair o melhor de cada estilo.
 
 Para começarmos devemos entender mais sobre os tipos primitivos e referência. 
 Repare que mesmo não sendo objetos, os tipos primitivos contém métodos e propriedades 
@@ -49,7 +49,10 @@ os métodos e propriedades embutidos nele.
 Ou seja, quando estamos manipulando uma string, o JS automaticamente embrulha essa 
 string dentro de um objeto do tipo String, que contém em seu prototype todas as 
 propriedades necessárias para manipular strings e quando terminamos de manipular 
-essa string, ele a converte novamente para tipo primitivo e segue normalmente.
+essa string, ele a converte novamente para tipo primitivo e segue normalmente. 
+Isso acontece porque não é possível manipularmos tipos primitivos, mas embrulhando 
+a string uma objeto do tipo String, esse objeto irá conter um prototype com 
+métodos e propriedades que modificam a string, aí sim será possível manipulá-la.
 
 Quando criamos um novo objeto com um construtor, é criado um 'object wrapper' 
 que envolve um tipo. Vale lembrar que 'null' e 'undefined' não contém 'wrapper 
@@ -115,8 +118,8 @@ const user3 = {
 };
 
 /*
-  Além dos construtores embutidos na linguagem: Array, Number, String, Object, etc. 
-  Podemos também criar os nossos próprios construtores de objetos com as 
+  Além dos construtores embutidos na linguagem: Array, Number, String, Object, 
+  etc. Podemos também criar os nossos próprios construtores de objetos com as 
   características desejadas.
 
   Existem diversas maneiras de construirmos o nosso próprio objeto, usando 
@@ -206,7 +209,7 @@ class Usuario {
     this.points = 0;
   }
 
-  login() {
+  login () {
     console.log(`${this.name} logou na aplicação.`);
     return this; // retornando objeto para encadear outro objeto
 
@@ -274,7 +277,7 @@ console.log(usuario);
   da classe pai na invocação da subclasse e em seguida, dentro do constructor da 
   subclasse iremos invocar o constructor da classe pai, só que para o JS entender 
   que estamos invocando o constructor da classe pai e não do filho, precisaremos 
-  trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors 
+  trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors, 
   um para a subclasse e outro para obter as propriedades da superclass sem evitar 
   um conflito entre elas. Veja o exemplo abaixo:
 
@@ -388,14 +391,14 @@ counter.newValue = 7; // setando um valor usando sintaxe de propriedade
   aulas posteriores.
 
   Repare que, no código abaixo, mesmo tendo métodos próprios para modificar o valor 
-  da propriedade count, nada impede que, fora da classe, depois que instanciamos 
+  da propriedade count, nada impede que fora da classe, depois que instanciamos 
   o objeto, modifiquemos e acessemos a propriedade count dentro da classe. Ou seja, 
   códigos externos à classe podem acessar e modificar propriedades dentro dela.
 
 */
 
 class Counter {
-  count = 0; // propriedade pública
+  count = 0; // propriedade pública (public class fields)
 
   get value() {
     // método get usando sintaxe de abreviação
@@ -429,17 +432,17 @@ console.log(counter.count); // acessando diretamente o valor da count
   o método constructor é chamada de 'public class fields'.
 
   Fields é um termo alternativo para 'propriedades dentro de uma classe'. Propriedade 
-  e fieldes significam a mesma coisa nesse contexto.
+  e fields significam a mesma coisa nesse contexto.
 
   Mas se desejarmos que apenas os códigos internos da classe possam acessar e 
   modificar as propriedades dela, para isso devemos declarar a propriedade como 
   privada, com isso qualquer código fora da classe será impedido de acessar ou 
-  modificar propriedades dela.
+  modificar as propriedades dela.
 
   Chamamos a declaração de propriedades privadas de 'class private fields', 
   declarando uma '#' antes do nome da propriedade a tornará privada e apenas os 
-  métodos internos da classe poderão acessar ou modificar seu valor, códigos externos 
-  não terão acesso.
+  métodos internos da classe poderão acessar ou modificar seu valor, códigos 
+  externos não terão acesso.
 
   Caso deseje inserir um valor dentro da propriedade privada que está sendo recebido 
   por parâmetro ou o objeto precisa de outras propriedades que são únicas, você pode, 
@@ -449,7 +452,7 @@ console.log(counter.count); // acessando diretamente o valor da count
 */
 
 class Counter {
-  #count = 0; // propriedade privada, precisa usar '#'
+  #count = 0; // propriedade privada, precisa usar '#' (private class fields)
 
   constructor(value) {
     // atribuindo valor na propriedade privada através de parâmetro

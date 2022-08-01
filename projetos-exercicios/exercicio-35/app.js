@@ -5,6 +5,15 @@
     e retorna o valor da key parseado para objeto javascript.
 */
 
+localStorage.setItem('lista', JSON.stringify(['Banana', 'Maçã', 'Laranja']))
+
+const getLocalStorageKey = localStorageKey => {
+  const JSONFromLocalStorage = localStorage.getItem(localStorageKey)
+  return JSON.parse(JSONFromLocalStorage)
+}
+
+// console.log(getLocalStorageKey('lista'))
+
 /*
   02
 
@@ -21,7 +30,7 @@
 const input = document.querySelector('[data-js="input"]')
 
 input.addEventListener('input', event => {
-  console.log(event.target.value)
+  console.log(event.target.valueAsNumber)
 })
 
 /*
@@ -39,24 +48,20 @@ input.addEventListener('input', event => {
     retornar 60 e a segunda invocação, 10.
 */
 
-function add100 (num) {
-  return num + 100
-}
+const add100 = (num) => num + 100
 
-function divByFive (num) {
-  return num / 5
-}
+const divByFive = (num) => num / 5
 
-function multiplyByThree (num) {
-  return num * 3
-}
+const multiplyByThree = (num) => num * 3
 
-function multiplyFive (num) {
-  return num * 5
-}
+const multiplyFive = (num) => num * 5
 
-function addTen (num) {
-  return num + 10
+const addTen = (num) => num + 10
+
+const combineOperations = (initialValue, arrayOfFuncs) => {
+  return arrayOfFuncs.reduce((acc, func) => {
+    return func(acc)
+  }, initialValue)
 }
 
 // console.log(combineOperations(0, [add100, divByFive, multiplyByThree]))
@@ -101,9 +106,12 @@ const searchAlbum = {
   genre: 'Rock'
 }
 
-if (albums.includes(searchAlbum)) {
-  console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
-}
+const JSONAlbums = JSON.stringify(albums)
+const JSONSearchAlbum = JSON.stringify(searchAlbum)
+
+// if (JSONAlbums.includes(JSONSearchAlbum)) {
+//   console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
+// }
 
 /*
   05
@@ -122,6 +130,11 @@ const obj = {
   prop8: { a: 'x', b: 'y' },
 }
 
+const obj2 = JSON.stringify(obj)
+const newObj = JSON.parse(obj2)
+
+// console.log(newObj)
+
 /*
   06
 
@@ -132,6 +145,18 @@ const obj = {
 
   Dica: pesquise por Object.entries.
 */
+
+const createElement = (elementName, attributes) => {
+  const element = document.createElement(elementName)
+  const attributesAsArray = Object.entries(attributes)
+
+  attributesAsArray.forEach(([ name, value ]) =>
+    element.setAttribute(name, value))
+
+  return element
+}
+
+console.log(createElement('a', { href: 'www.google.com', class: 'vermelho' }))
 
 /*
   07
