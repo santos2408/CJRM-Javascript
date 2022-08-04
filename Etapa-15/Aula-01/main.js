@@ -102,9 +102,9 @@ const firebaseConfig = {
 }
 
 // inicializando o firebase e o firestore
-const app = initializeApp(firebaseConfig)
-const database = getFirestore(app)
-const myCollection = collection(database, 'games')
+const app = initializeApp(firebaseConfig) // firebase
+const database = getFirestore(app) // firestore
+const myCollection = collection(database, 'games') // obtendo collection
 
 getDocs(myCollection)
   .then(querySnapshot => {
