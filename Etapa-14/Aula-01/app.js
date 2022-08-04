@@ -27,17 +27,17 @@ do objeto aninhado dentro desse novo objeto. Veja o exemplo para ficar mais clar
 Arrays aninhados também são referenciados, porque arrays também são objetos.
 Portanto, caso haja um array no objeto também devemos espalhar os seus elementos 
 para evitarmos uma referência e obter uma cópia. Isso vale para funções também, 
-como elas são objetos, quando espalhamos as propriedades, ela também será referenciada, 
-então procure reatribuir também a propriedade que contém uma função.
+como elas são objetos, quando espalhamos as propriedades, elas também serão 
+referenciadas, então procure reatribuir também a propriedade que contém uma função.
 
 Valores que não são primitivos, então são objetos: objetos, arrays, funções...
-Portanto, funções também não sáo copiadas e sim referenciadas, porque também 
+Portanto, funções também não são copiadas e sim referenciadas, porque também 
 são objetos.
 
 Para visualizarmos um elemento como objeto, podemos inserir a palavra chave 'dir' 
-antes do elemento no console, isso irá mostrar a sua forma de objeto.
+na invocação do console, isso irá mostrar a sua forma de objeto.
 
-console.dir(input)
+console.dir(elemento)
 
 */
 
@@ -139,19 +139,19 @@ const numbers = [1, 2, 3, 4, 5]
 
 Math.min(numbers) // NaN, porque é array e esse método só aceita números 
 
-Math.min(...numbers) // 1 / espalhando os itens do array com spread operator
-Math.max(...numbers) // 5
+Math.min(...numbers) // espalhando os itens do array com spread operator
+Math.max(...numbers) // 
 
 /*
   =============== EXPRESSÕES E INSTRUÇÕES ===============
   
-  Diferente de um statement (instrução), expressão é um pedaço de código que 
-  resulta em um valor, ela pode ser inserida em qualquer lugar do código em que 
-  um valor é esperado. 1 + 1 = 2, typeof 'oi' = string ou um operador ternário, 
-  são exemplos de expressões que retornam um valor.
+  Diferente de um statement (instrução/declaração), expressão é um pedaço de 
+  código que resulta em um valor, ela pode ser inserida em qualquer lugar do 
+  código em que um valor é esperado. 1 + 1 = 2, typeof 'oi' = string ou um 
+  operador ternário, são exemplos de expressões que retornam um valor.
 
   Uma instrução é um pedaço de código que não resulta em um valor. A declaração 
-  de if else, switch ou for loop são exemplos d instrução que não retornam 
+  de if else, switch ou for loop são exemplos de instrução que não retornam 
   um valor. Por isso não conseguimos declarar um if como argumento de uma função.
 
   Em javascript todo pedaço de código que não resulta em um valor, retorna 

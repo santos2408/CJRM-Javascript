@@ -1,13 +1,13 @@
 /* 
   ============= INTRODUÇÃO AO FIREBASE ============= 
 
-  Antes de iniciarmos os estaduso sobre o firebase, devemos antes saber o que é 
+  Antes de iniciarmos os estudos sobre o firebase, devemos antes saber o que é 
   um banco de dados. Database é um lugar para armazenarmos informações da aplicação, 
   coletando dados de forma organizada e podendo acessá-los posteriormente. Qualquer 
   tipo de dado por ser armazenado num database.
 
   Diferente do localStorage, que persiste dados apenas no navegador atual do 
-  usuário, em outros dispositivos ou navegaroes os dados não estarão salvos.
+  usuário, em outros dispositivos ou navegadores os dados não estarão salvos.
 
   Em aplicações web é importante persistir dados do lado do servidor, principalmente 
   se esses dados precisarem ser acessados em qualquer lugar e dispositivo. E para 
@@ -31,7 +31,7 @@
   dados precisará ter no futuro, e com o noSQL poderemos adicionar e modificar as 
   estruturas sem grandes dificuldades.
 
-  Firebase não é só um banco de dados, ele é uma plataforma de serviços banck-end, 
+  Firebase não é só um banco de dados, ele é uma plataforma de serviços back-end, 
   ele é conhecido também como BASS (back-end as a service). Além do banco de dados 
   existem outros serviços que podemos implementar na aplicação como autenticação, 
   links dinâmicos, relatório de craches, etc.
@@ -40,10 +40,10 @@
   chamado Firebase.
 
   Utilizar o firebase nos deixa focar primeiro no desenvolvimento da aplicação, 
-  pois não precisaremos contruí-lo, ele já existe. Além disso, o firebase é um 
-  serviço online, não precisamos dele localmente.
+  pois não precisaremos construir a estrutura do banco de dados, ele já existe. 
+  Além disso, o firebase é um serviço online, não precisamos dele localmente.
 
-  ==== ESTRUTURA DO FIREBASE ====
+  ======= ESTRUTURA DO FIREBASE / CONHECENDO O FIRESTORE =======
 
   1 - Instância do Banco de Dados: é container para todas as informações, dentro 
   dele podem haver vários collections, cada collection pode representar um tipo 
@@ -55,7 +55,8 @@
       * Users (Collection)
       * Images (Collection)
       * Videos (Collection)
-  
+      * Games (Coolection)
+
   3 - Documents: Dentro de cada collection podem haver múltiplos documents, 
   cada document repsenta um único 'record', ou seja, uma única gravação das 
   informações, cada document terá um identificador único (id).
@@ -68,11 +69,11 @@
   -> Instância do Banco de Dados (Container)
     ->  Blog posts (Collection)
       -> document (Post1)
-        -> document { title: 'Praia', likes: 20, author: 'Roger' }
+        -> fields { title: 'Praia', likes: 20, author: 'Roger' }
       -> document (Post2)
-        -> -> document { title: 'Festa', likes: 70, author: 'Maria' }
+        -> -> fields { title: 'Festa', likes: 70, author: 'Maria' }
       -> document (Post3)
-        -> -> document { title: 'Viagem', likes: 14, author: 'João' }
+        -> -> fields { title: 'Viagem', likes: 14, author: 'João' }
 
 */
 
@@ -85,7 +86,7 @@
 
 */
 
-// importando funções das url's
+// importando funções dos sdk's
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js'
 import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js'
 
