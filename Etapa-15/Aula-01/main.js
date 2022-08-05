@@ -104,6 +104,9 @@ const firebaseConfig = {
 // inicializando o firebase e o firestore
 const app = initializeApp(firebaseConfig) // firebase
 const database = getFirestore(app) // firestore
+
+// ============= LENDO DADOS DO FIRESTORE ============= 
+
 const myCollection = collection(database, 'games') // obtendo collection
 
 getDocs(myCollection)
@@ -119,6 +122,7 @@ getDocs(myCollection)
             <li>Data de lançamento: ${releaseDate.toDate()}</li>
           </ul>
         </li>`
+
         return acc
     }, '')
 
