@@ -6,8 +6,8 @@ tipo referência e não primitivo. Representam um momento único no tempo. Esse
 objeto contém um número representado em milisegundos contados desde 1 de Janeiro 
 de 1970.
 
-Para começar criaremos um objeto que representa uma data. E para fazermos isso 
-precisaremos usar um date constructor. 
+Para começar criaremos um objeto que represente uma data e para fazermos isso 
+precisaremos usar um date constructor.
 
 Em javascript existem vários construtores, eles basicamente 'constroem' algum 
 tipo de objeto. Pense que ao instanciar uma função construtora, essa função está 
