@@ -46,7 +46,7 @@ console.log(fullName)
 console.log(fullName[0])
 
 /*
-   É possível acessar um caractere específico dentro da string,
+   É possível acessar um caracter específico dentro da string
    inserindo colchetes no fim do nome da variável e dentro inserir
    o valor do index(posição) que deseja acessar.
 
@@ -150,17 +150,19 @@ console.log(lastIndexOfO)
    informado no primeiro argumento até o final da string.
 
 */
+const meuEmail = 'roger.santos36@gmail.com'
 
 const emailSlice1 = meuEmail.slice(0, 5)
 const emailSlice2 = meuEmail.slice(6, 12)
 const emailSlice3 = meuEmail.slice(0, 14)
 const emailSlice4 = meuEmail.slice(14)
-const emailSlice4 = meuEmail.slice(-1) // último caracter
+const emailSlice5 = meuEmail.slice(-1) // último caracter
 
 console.log(emailSlice1)
 console.log(emailSlice2)
 console.log(emailSlice3)
 console.log(emailSlice4)
+console.log(emailSlice5)
 
 /*
    replace() 
@@ -171,7 +173,7 @@ console.log(emailSlice4)
    no primeiro argumento.
 
    Lembre-se que ao executar esse método, apenas a primeira ocorrência do
-   caracter inserido que irá ser substituido, caso haja outras caracteres,
+   caracter inserido que irá ser substituido, caso haja outros caracteres,
    eles não serão alterados. No entanto é possível alterar todas as ocorrências
    do caracter em aulas mais avançadas.
 
@@ -200,7 +202,6 @@ const pi = 3.14
 const area = pi * radius ** 2
 // fórmula para calcular área do círculo
 
-
 const somar = 10 + 5
 const dividir = 8 / 2
 const modulo = 5 % 2 // resto da divisao
@@ -223,20 +224,20 @@ console.log(crazyOperation)
 
 let postLikes = 10
 
-// postLikes = postLikes + 1
+postLikes = postLikes + 1
 
-// postLikes++ (incremento)
-// postLikes-- (decremento)
+postLikes++ // (incremento 1)
+postLikes-- // (decremento 1)
 
 // === operators addition, subtraction, multiplication and division assignment ===
 
-// postLikes = postLikes + valor // expressão inteira
-// postLikes += valor // shorthand (boas práticas)
+postLikes = postLikes + valor // expressão inteira
+postLikes += valor // shorthand (boas práticas)
 
-// postLikes += 10 // addition assignment
-// postLikes -= 5 // subtraction assignment
-// postLikes *= 5 // multiplication assignment
-// postLikes /= 2 // division assignment
+postLikes += 10 // addition assignment
+postLikes -= 5 // subtraction assignment
+postLikes *= 5 // multiplication assignment
+postLikes /= 2 // division assignment
 
 console.log(postLikes)
 
@@ -255,7 +256,7 @@ console.log(10 / 'Olá') // NaN
    sempre retornará uma string
 */
 
-const likesMessage = 'O post tem ' + postLikes + ' likes.'
+const likesMessage = 'O post tem ' + postLikes + ' likes.' // retorna tudo como string
 
 console.log(likesMessage)
 
@@ -278,8 +279,8 @@ const postMessage = 'O post "' + postTitle + '", do ' + postAuthor + ', tem ' + 
    Exemplo abaixo:
 */
 
-console.log('Você manja do filme \"As branquelas\"?')
-// aspas duplas estão sendo interpretadas como caracteres.
+console.log('Você manja do filme \"As branquelas\" ?')
+// as aspas duplas estão sendo interpretadas como caracteres.
 
 // usando template strings/template literals (ES6)
 // mais legível
@@ -291,7 +292,7 @@ const postMessage2 = `O post "${postTitle}", do ${postAuthor}, tem ${postComment
 
 console.log(postMessage2)
 
-// poder estar criando templates HTML dentro do template strings
+// pode-se estar criando templates HTML dentro do template strings
 
 const html = `
    <h2>${postTitle}</h2>
@@ -303,7 +304,7 @@ console.log(html)
 
 /*
    Quando não será interpolado variáveis na string ou usar aspas ou quebras
-   linhas, não precisa utilizar template strings. Mas se a string sendo
+   de linha, não precisa utilizar template strings. Mas se a string sendo
    criada precisa conter variáveis, aspas ou templates html, a template strings
    facilitará a escrita do código e melhorará a leitura do mesmo.
 */

@@ -25,11 +25,12 @@ console.log(age)
 // não pode ser redeclarada com o mesmo nome
 
 let age = 25
+age = 50
 let age = 30 // não pode redeclarar
 let currentYear = 2022
 let idade
 
-console.log(age, currentYear)
+console.log(age, currentYear, idade)
 
 // ===== VARIÁVEL CONST =========================
 
