@@ -37,7 +37,7 @@
 
    'Continue' pula uma iteração em particular e faz o loop continuar a ser 
    executado, se o bloco for true, os blocos seguintes serão ignorados e o loop 
-   passará para a próxima iteração.
+   passará para a próxima iteração, ou seja, para o próximo índice.
 */
 
 const scores = [50, 25, 0, 30, 100, 20, 10]
@@ -76,7 +76,8 @@ for (let i = 0; i < scores.length; i++) {
 
    Ao utilizar switch dentro de funções, o operador BREAK pode ser omitido já
    que o return irá fazer o "papel" dele no lugar, então se o switch retornar
-   um valor em cada case, não precisa colocar o break também.
+   um valor em cada case, não precisa colocar o break também, pode-se inserir no 
+   lugar o 'return'.
 */
 
 const grade = 'B'

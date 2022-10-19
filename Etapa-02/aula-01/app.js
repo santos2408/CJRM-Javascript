@@ -29,7 +29,7 @@
 
    Dentro do loop existem 3 expressões separados por ponto e vírgula. A primeira
    expressão inicializa a variável, normalmente com 0 e é chamada de contador.
-   Por padrão e boas práticas nomea-se com 'i'. 
+   Por padrão e boas práticas nomea-se com 'i' de 'index'. 
 
    A segunda expressão será uma condição que retornará um boolean, que sendo 
    true executará o bloco de código do for e sendo false sairá do loop.
@@ -71,11 +71,11 @@ console.log('===================================')
    Esse tipo de loop é semelhante ao clássico, no entanto ao declararmos, ele 
    irá iterar pelo índice de um array ou chave de um objeto e podemos obter o valor. 
    Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
-   o for in irá percorrer os índices e obter o valor de cada um, para todos.
+   o for in irá percorrer todos os elementos e irá obter seus respectivos índices.
 
 */
 
-const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
+const frutas = ['Banana', 'Maçã', 'Pera', 'Laranja']
 const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
 
 // percorre os índices
@@ -92,7 +92,7 @@ for (let chave in pessoa) {
 
 /*
    Essa estrutura cria um loop que itera em geral sobre objetos iteráveis. Em 
-   arrays irão iterão sobre os itens
+   arrays iterarão sobre os itens
 
 */
 
@@ -107,7 +107,8 @@ for (let elemento of frutas) {
 /*
    Repare que, diferente do for clássico que podemos controlar até onde o loop 
    pode ir, declarando um limite, no for in e for of não temos esse controle, 
-   ou seja, eles irão percorrer todos os itens do array ou objeto.
+   ou seja, eles irão percorrer todos os itens do array ou objeto sem termos a 
+   possibilidade de parar o loop em determinado momento.
 */
 
 // === WHILE LOOP ==========

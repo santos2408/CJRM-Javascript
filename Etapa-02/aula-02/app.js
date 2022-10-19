@@ -10,7 +10,8 @@
    retorne apenas uma linha podemos utilizar um retorno implícito que diminui 
    a quantidade de linhas e em alguns casos deixa o código mais legível. Vale 
    lembrar que nem sempre essa é uma prática recomendável devido a problemas de 
-   segurança e entendimento do JS. Dê preferência para if em blocos e evite inline.
+   segurança e entendimento do JS. Dê preferência para if em blocos e evite o 
+   código inline.
 
    Evite também inserir uma atribuição como condição de um if, por exemplo:
    if (x = 1). Na aula de while veremos o uso desse tipo de atribuição.
@@ -22,7 +23,7 @@
    que o código tenha múltiplas condições diferentes.
 
    É possível ter múltiplas condições encadeadas com else if, mas cuidado pois
-   dificulta um pouco a leitura, em alguns casos dê preferências para blocos de 
+   dificulta um pouco a leitura, em alguns casos dê preferência para blocos de 
    if únicos com return, assim evitando if else e else.
 */
 
@@ -133,7 +134,7 @@ if (password < 8) console.log('Essa senha é muito fraca.')
    A expressão é lida da esquerda para a direita e o operador && é lido antes 
    do operador ||, independente de sua posição na expressão, o && sempre será
    analisado primeiro. Ou seja, o operador && tem uma precedência maior do que 
-   o ||.
+   o operador ||.
 
    password.length >= 8 || password.length.includes('1') && password.length >= 5
 

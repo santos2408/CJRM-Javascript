@@ -30,7 +30,7 @@ const includes = email.includes('@') // true
 
 const contains = menu.classList.contains('class-name')
 // método de DOMTokenList
-// verifica se uma classe existe no domtokemlist
+// verifica se uma classe existe no DOMTokemList
 // true ou false será atribuído na classe contains
 
 const names = ['dio', 'roger', 'robert']
@@ -129,13 +129,15 @@ score = Number(score)
 // função construtora que converte para número
 
 console.log(score + 1)
-console.log(typeof score)
+console.log(typeof score) // exibe o tipo da variável
 
 const crazyConvertion = Number('Maçã') // NaN, pois não faz sentido
 const crazyConvertion = String(97) // '97' string
 const booleanConvertion = Boolean(10) // true, tipo boolean
 
-// Number(), Boolean(), String() converte explicitamente seus valores
+// Number(), Boolean(), String() são funções construtoras que apesar de serem 
+// mais complexas que isso, podem ser usadas para converter explicitamente 
+// seus valores
 
 /*
    - concatenação de string e número terá resultado uma string
