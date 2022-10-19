@@ -30,7 +30,6 @@
    push() e pop(), pois são métodos que modificam o array original. Mas existem 
    também outros métodos que podem alterar o array original, deve-se ter atenção 
    quanto a isso, pois pode não ser o desejado.
-
 */
 
 let heroes = ['Batman', 'Catwoman', 'Iron Man']
@@ -118,16 +117,16 @@ array1.splice(2, 1, 'segundo')
 // valor de replace: elementos que serao adicionados a partir do valor inicial
 
 const array1 = ['one', 'two', 'three']
-array1.every(item => item === 1)
+array1.every(item => item === 1) // false
 // verifica se todos os elementos passam na função de teste passada como argumento
 // se todos passarem no teste, retorna true
 // se ao menos um não passar, toda função retorna false
 
 const array1 = 'roger'
-array1.split('') // separada cada caracter ['r', 'o', 'g', 'e', 'r']
+array1.split('') // separa cada caracter ['r', 'o', 'g', 'e', 'r']
 array1.split(' ') // separa os itens a cada 'espaço' encontrado
-array1.split(':') // separa os itens cada ':' encontrado
-// divida uma string em uma lista ordenada separada com base no padrão passado
+array1.split(':') // separa os itens a cada ':' encontrado
+// divide uma string em uma lista ordenada separada com base no padrão passado
 // recebe por argumento um padrão como parâmetro de separação dos itens do elemento
 // no final insere tudo dentro de um array e retorna
 
