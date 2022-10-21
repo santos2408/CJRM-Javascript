@@ -53,7 +53,7 @@ if (true) {
    }
 }
 
-console.log(`Fora do bloco de código: ${age} ${name} ${test}`) // 25
+console.log(`Fora do bloco de código: ${age} ${name} ${test}`) // 25 '' Oi
 
 // ====== A PALAVRA-CHAVE THIS =========================
 
@@ -117,10 +117,10 @@ user.logBlogPosts()
    Ou seja, referenciando o objeto do contexto.
 
    Se utilizarmos arrow functions, o this irá referenciar o objeto referente ao 
-   local onde o método está sendo invocado. Ou seja, se invocarmos o método no escopo
-   global, onde o javascript define o contexto do this, o this irá referenciar
-   o objeto window, pois a invocação se encontra na raiz. Ele não irá visualizar
-   o objeto literal desejado.
+   local onde o método está sendo invocado. Ou seja, se invocarmos o método no 
+   escopo global, onde o javascript define o contexto do this, o this irá 
+   referenciar o objeto window, pois a invocação se encontra na raiz. Ele não 
+   irá visualizar o objeto literal desejado.
 
    Utilize FUNCTION DECLARATION AO USAR THIS
 */

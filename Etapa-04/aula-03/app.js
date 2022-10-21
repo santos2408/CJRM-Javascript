@@ -6,8 +6,8 @@ let user = {
    email: 'joaocardoso@gmail.com',
    city: 'São Paulo',
    blogPosts: [
-      { title: 'Empadão de Frango', likes: 30 },
-      { title: '4 receitas de purê de batata', likes: 50}
+      { title: 'Empadão de Frango', likes: 30 }, // ***
+      { title: '4 receitas de purê de batata', likes: 50} // ***
    ],
    login () {
       console.log('Usuário logado.')
@@ -151,7 +151,7 @@ console.log(Math.round(randomNumber * 100))
 let scoreOne = 50
 let scoreTwo = scoreOne // cópia do scoreOne
 
-console.log(`scoreOne: ${scoreOne} | scoreTwo: ${scoreTwo}`)
+console.log(`scoreOne: ${scoreOne} | scoreTwo: ${scoreTwo}`) // 50 50
 
 scoreTwo = 100
 

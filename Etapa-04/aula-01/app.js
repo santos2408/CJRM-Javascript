@@ -102,11 +102,11 @@ let user = {
 
 // acessando ou alterando determinada propriedade através da notação de ponto
 console.log(user.favoriteHouses)
-console.log((user.favoriteHouses = ["Tully", "Tyrell", "Mormont"]))
+console.log(user.favoriteHouses = ["Tully", "Tyrell", "Mormont"])
 
 // acessando ou alterando determinada propriedade através da notação de colchetes
 console.log(user["age"])
-console.log((user["age"] = 28))
+console.log(user["age"] = 28)
 
 // ====== ADICIONANDO MÉTODOS A UM OBJETO ==============================
 
