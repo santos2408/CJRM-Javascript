@@ -18,8 +18,8 @@
 
    O valor retornado pode ser uma string, array, boolean, número, expressões,
    como as funções anteriores. Mas não tem como retornar de uma função um bloco
-   de código como um if ou switch ou algo do tipo, pois não são valores, assim como 
-   mais de um valor, mas para contornar isso podemos retornar varios valores 
+   de código como um if ou switch ou algo do tipo, pois não são valores, assim 
+   como mais de um valor, mas para contornar isso podemos retornar varios valores 
    armazenados num objeto ou array.
 
    Outra diferença entre arrow funcions e funções tradicionais é o binding
