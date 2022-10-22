@@ -230,3 +230,4 @@ textos.forEach(texto => {
       texto.classList.add('success')
    }
 })
+
