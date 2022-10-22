@@ -15,6 +15,7 @@
 
    - innerText
    - innerHTML
+   - textContent
 */
 
 // obtendo a referência do elemento
@@ -95,10 +96,8 @@ people.forEach(person => {
 
    A propriedade "clientHeight" e "clientWidth" obtém a altura do elemento em 
    pixels incluindo o seu padding. Não inclui borders, margins ou scrollbars.
-*/
 
-/*
-   É imporante lembrar que essas duas propriedades são conhecidas por serem
+   É importante lembrar que essas duas propriedades são conhecidas por serem
    getters e setters, ou seja, elas podem tanto obter quanto setar os valores.
 
 */
@@ -231,43 +230,3 @@ textos.forEach(texto => {
       texto.classList.add('success')
    }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

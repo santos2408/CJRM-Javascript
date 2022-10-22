@@ -40,7 +40,7 @@ myFunc()
 // console.log(cat) // cat is not defined
 
 /*
-   Mesmo que invocarmos a função previamente, a variável continuará não
+   Mesmo que invoquemos a função previamente, a variável continuará não
    existindo fora do bloco. Devido a essa peculiaridade de escopo, nota-se que
    podemos ter múltiplas funções que tenham os mesmos nomes de variáveis dentro
    dela.
@@ -59,7 +59,7 @@ console.log(dog)
 /*
    Esse tipo de operação é possível pois essas variáveis são "diferentes", 
    porque estão em escopos diferentes. A primeira 'dog' tem escopo global e 
-   a segunda tem um escopo de função. 
+   a segunda tem um escopo de função, ou seja, local. 
    
    const, let e var terão o mesmo resultado.
 */
@@ -92,10 +92,17 @@ if (true) {
    compartamentos diferentes de var. Esse é um dos motivos pelos quais const e 
    let foram adicionados no JS, recomenda-se utilizar apenas const e let de 
    preferência. Veja abaixo:
+
+   Mesmo var escapando sempre, independente da sua localização, dentro de funções 
+   ela não consegurá escapar, essa é uma característica curiosa.
 */
 
-if (true) {
+if (true) { // var escapa
    var dragon = 'Balerion'
+}
+
+const myName = () => { // var não escapa
+   var name = 'Roger'
 }
 
 // console.log(dragon) // balerion
@@ -209,7 +216,7 @@ internalFunc() // internal is not defined
    inserido.
 
    Utilizando o querySelector, o DOM é percorrido e ao encontrar o primeiro
-   seletor passado como parâmetro, ele retorna esse elemento. Se tiverem outros
+   seletor passado como parâmetro, ele retorna esse elemento. Se tivermos outros
    seletores iguais ao passado no parâmetro, eles serão ignorados e só o primeiro
    encontrado será retornado, no caso do querySelector.
 
@@ -232,7 +239,7 @@ console.log(errorDiv)
    passado como argumento do método.
 
    O retorno dessa busca será um "nodeList" que contém a referência do seletor
-   iserido no parâmetro do método.
+   inserido no parâmetro do método.
 
    Esse nodeList se assemelha a um tipo de array mas não é um array, é apenas 
    parecido. Normalmente é conhecido como array-like. Nem todos os métodos de
@@ -241,8 +248,8 @@ console.log(errorDiv)
    ou realizar um loop através de forEach.
 */
 
-const paragraphs = document.querySelectorAll('p')
-const errors = document.querySelectorAll('.error')
+const paragraphs = document.querySelectorAll('p') // nodeList
+const errors = document.querySelectorAll('.error') // nodeList
 
 paragraphs.forEach(paragraph => {
    console.log(paragraph)
@@ -327,65 +334,3 @@ const [ firstName, lastName, ...rest ] = myName
    valor e dependendo do que está sendo desestruturado, a rest poderá ser um 
    array ou um objeto.
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
