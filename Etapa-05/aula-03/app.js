@@ -10,9 +10,7 @@
 
    - A outra relação é entre parents e children, quando temos um elemento pai 
    e dentro dele existem elementos filhos.
-*/
 
-/*
    Digamos que queremos adicionar uma classe CSS em todos os elementos filho 
    do elemento pai. Uma possibilidade seria fazer uma seleção individual de todos
    os filhos e armazenar cada referência em uma constante, no entanto, essa forma 
@@ -57,7 +55,7 @@ const filhos = article.children
 const newFilhos = Array.from(filhos)
 
 /*
-   Vale lembrar que a invocação do método from() não é destrutuiva, ou seja, ela 
+   Vale lembrar que a invocação do método from() não é destrutiva, ou seja, ela 
    não modifica o objeto original. Se visualizarmos a const filhos, veremos que 
    ela ainda é um HTMLCollection, mas a newFilhos não.
 */
@@ -131,7 +129,7 @@ button.addEventListener('click', () => {
    No browser, quando um evento acontece, dentro da função de callback o browser 
    disponibiliza automaticamente um objeto no parâmetro da função passada como 
    argumento do addEventListener. Esse parâmeto da função de callback geralmente 
-   é chamado de 'event' e contém informações sobre o evento que aconteceu. 
+   é chamado de 'event' e contém informações sobre o evento que aconteceu.
 
    Para sabermos o elemento específico onde ocorreu o evento, ou simplesmente 
    onde ocorreu determinado evento, nós utilizamos uma propriedade desse objeto

@@ -23,7 +23,7 @@
    Essa propagação é chamada de 'event bubbling', o evento é iniciado no target 
    do evento, que é o elemento no qual o evento foi adicionado, e esse evento 
    se propaga em direção aos pais desse target para que os callback's de eventos 
-   que esses pais têm, sejam disparados também.
+   que esses pais tenham, sejam disparados também.
 
    Podemos evitar esse tipo de propagação, para isso usamos o método do objeto 
    event chamado 'stopPropagation()'. Essa interrupção nos ajuda a evitar 
@@ -105,7 +105,7 @@ paragraph.addEventListener('copy', () => {
 })
 
 /*
-   MOUSEMOVE EVENT: Esse evento acontece quando o usuário movimentar o mouse 
+   MOUSEMOVE EVENT: Esse evento acontece quando o usuário movimenta o mouse 
    no elemento referenciado.
 
    Dentro desse evento existem algumas propriedades como: offsetX e offsetY
