@@ -54,7 +54,7 @@ console.log(4)
 /* =========== O QUE SÃO REQUESTS HTTP =========== */
 
 /*
-   Em alguns momentos da nossa aplicação, pode ser que desejamos requisitar
+   Em alguns momentos da nossa aplicação, pode ser que desejemos requisitar
    dados de um outro servidor ou API.
 
    Para nos conectarmos a uma API ou banco de dados, precisamos realizar uma 

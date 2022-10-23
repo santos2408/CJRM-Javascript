@@ -6,7 +6,7 @@
 
    Antes do JSON se tornar o padrão usado para troca e armazenamento de informações 
    entre sistemas, o XML que é um outro padrão também para troca de informações 
-   era usado. No entanto, atualmente o objeto de request XMLHttpRequest pode 
+   era usado. No entanto, atualmente, o objeto de request XMLHttpRequest pode 
    trabalhar com qualquer tipo de dado: JSON, XML, entre outros. Esse objeto 
    será usado para que o browser envie um request para o servidor.
 
@@ -37,8 +37,8 @@
    Para descobrirmos se as respostas foram obtidas e como podemos acessar esses 
    dados, devemos 'trackear' o processo da requisição através de um EventListener 
    passando um evento do objeto XMLHttpRequest chamado 'readyStateChange'. Esse 
-   evento é disparado sempre que a propriedade 'readyState' tem uma mudança de 
-   estado.
+   evento é disparado sempre que a propriedade 'readyState' do objeto tem uma 
+   mudança de estado.
 
    readyStateChange: evento que dispara quando o estado de um request é alterado.
    request.readyState: retorna o estado em que um cliente XMLHttpResquest está.
@@ -60,7 +60,7 @@ request.addEventListener('readystatechange', () => {
    }
 })
 
-request.open('GET', 'https://anapioficeandfire.com/api/characters/5833')
+request.open('GET', 'https://anapioficeandfire.com/api/characters/583')
 request.send()
 
 /* 
