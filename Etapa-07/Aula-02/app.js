@@ -14,7 +14,7 @@
    precisamos especificar o window antes do nome da propriedade ou método. 
    Se executarmos a propriedade ou método sem o window precedendo eles, a engine 
    do browser irá automaticamente concluir que essa propriedade ou método é do 
-   objeto window.
+   objeto window, já que tudo está dentro dele.
 
    document.querySelector(''): método do window, veja que o objeto window está 
    sendo omitido no início.
@@ -72,5 +72,3 @@ scrollTo(0, 0)
    eixo Y corresponde ao primeiro pixel do topo da página. Portanto irá levar 
    para o topo.
 */
-
-

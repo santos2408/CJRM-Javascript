@@ -34,7 +34,7 @@
    função deve retornar o número zero, ou seja, "nada será feito".
 
    Se quisermos que o ordenamento seja feito em ordem decrescente, o segundo 
-   argumento deve vir antes do primeiro, se deseja em ordem crescendo o primeiro 
+   argumento deve vir antes do primeiro, se deseja em ordem crescente o primeiro 
    argumento deve vir antes do segundo.
 */
 
@@ -43,7 +43,7 @@ const names = ['Christian', 'Alfredo', 'Edson']
 
 names.sort()
 
-// exemplo 2: ordenando números em ordem crescente, considerando apenas a unidades
+// exemplo 2: ordenando números em ordem crescente, considerando apenas as unidades
 const scores = [10, 50, 20, 5, 35, 70, 45]
 
 scores.sort()

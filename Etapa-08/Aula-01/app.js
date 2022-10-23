@@ -16,7 +16,7 @@
 
    Podemos transformar esses itens em objetos, strings, números etc, lembrando-se
    sempre que o map deve retornar a mesma quantidade de itens do original, mas 
-   seus itens de retorna não necessariamente precisam ter o mesmo tipo de dado 
+   seus itens de retorno não necessariamente precisam ter o mesmo tipo de dado 
    do array original.
 
    Para cada execução da função no item do array original, a função retornará o 
