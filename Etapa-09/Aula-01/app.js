@@ -51,9 +51,7 @@ formSearch.addEventListener('input', event => {
    const todos = Array.from(todosContainer.children)
 
    hideTodos(todos, inputValue)
-   showTodos(todos, inputValue)
-
-   
+   showTodos(todos, inputValue)   
 })
 
 const removeTodo = clickedElement => {
