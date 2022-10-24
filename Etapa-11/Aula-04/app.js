@@ -120,7 +120,7 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // bulbasaur
   Devido a isso, não há necessidade de inserirmos um catch para cada then que 
   for implementado.
 
-  Obs: Repare que na última execução do then, estamos apenas obtendo os dados da 
+  Obs: Repare que, na última execução do then estamos apenas obtendo os dados da 
   requisição e exibindo no console. Como a função não está retornando nada, 
   podemos apenas referenciar o console como parâmetro desse then que o retorno 
   da requisição será inserido como argumento do console implicitamente.
