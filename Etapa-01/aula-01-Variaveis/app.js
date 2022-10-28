@@ -1,11 +1,3 @@
-/*
-  ======== TÓPICAS DESTA AULA ========
-
-    - VARIÁVEIS
-
-*/
-
-
 // ===== VARIÁVEL VAR =========================
 
 var points = 50
@@ -20,7 +12,7 @@ console.log(age)
 // ===== VARIÁVEL LET =========================
 
 // escopo global e local
-// pode ser reatribuída com outro valor
+// pode ser reatribuída com outro valor 
 // pode ser declarada sem valor inicial
 // não pode ser redeclarada com o mesmo nome
 

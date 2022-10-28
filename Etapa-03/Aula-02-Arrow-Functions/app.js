@@ -1,6 +1,7 @@
-// ===== ARROW FUNCIONS ================================
+// ===== ARROW FUNCTIONS ================================
 
 /*
+
    São uma das adições do Javascript moderno, um dos motivos para a sua adição
    na linguagem é para que se tenha uma forma mais curta e concisa para
    implementar funções, economizando muitas linhas de código em aplicações
@@ -19,10 +20,10 @@
    O valor retornado pode ser uma string, array, boolean, número, expressões,
    como as funções anteriores. Mas não tem como retornar de uma função um bloco
    de código como um if ou switch ou algo do tipo, pois não são valores, assim 
-   como mais de um valor, mas para contornar isso podemos retornar varios valores 
+   como mais de um valor, mas para contornar isso podemos retornar vários valores 
    armazenados num objeto ou array.
 
-   Outra diferença entre arrow funcions e funções tradicionais é o binding
+   Outra diferença entre arrow functions e funções tradicionais é o binding
    da palavra this que será abordado em aulas posteriores.
 
 */

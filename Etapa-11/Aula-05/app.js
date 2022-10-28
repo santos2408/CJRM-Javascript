@@ -4,7 +4,7 @@
   Nas aulas anteriores aprendemos como fazer um request HTTP usando o objeto 
   XMLHttpRequest, que pode ser útil quando trabalharmos com código legado em 
   algum projeto. Nós aprendemos a fazer requests utilizando o XMLHttpRequest 
-  para podermos entender como funciona um request por baixo dos panos, todo o 
+  para podermos entender como funciona um request por baixo dos panos e todo o 
   passo a passo para o request retornar uma resposta.
 
   Mas atualmente existe uma forma mais moderna e rápida de realizar requests 
@@ -53,7 +53,7 @@
 */
 
 fetch('https://anapioficeandfire.com/api/houses')
-  .then(response => response.json()) // paseando response da promise / retorna promise do JSON
+  .then(response => response.json()) // parseando response da promise / retorna promise do JSON
   .then(houses => console.log(houses)) // desempacota e obtem resposta da promise anterior
   .catch(error => console.log(error))
 
@@ -92,7 +92,7 @@ fetch('https://anapioficeandfire.com/api/houses')
     request, por isso estamos usando 'async' na função.
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
-    e longo em seguida o await irá pegar essa promise e retornar o valor resolvido 
+    e logo em seguida o await irá pegar essa promise e retornar o valor resolvido 
     dela (desempacotar), que é o objeto Response. Após isso as linhas abaixo dele 
     serão executadas. Ou seja, além de impedir a execução do restante do código 
     antes de obter a resposta da requisição, o await também irá desempacotar a 

@@ -40,7 +40,7 @@ getPokemon()
   código que disparou o erro não é executado, e isso pode gerar um poblema, pois 
   quando o código for lançado, a aplicação irá parar de executar.
 
-  Para eviar isso podemos usar um try...catch, que é uma cláusula que irá tentar 
+  Para evitar isso podemos usar um try...catch, que é uma cláusula que irá tentar 
   executar um código, se esse código que for tentado executar lançar um erro, nós 
   poderemos executar um outro código para que o erro lançado não trave a aplicação.
 
@@ -76,7 +76,7 @@ const getUsers = async () => {
   try {
     const response = await fetch('./json/todoss/.json')
 
-    if (!request.ok) {
+    if (!response.ok) {
       throw new Error('Não foi possível obter os dados')
     }
 

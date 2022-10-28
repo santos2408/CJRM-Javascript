@@ -314,8 +314,15 @@ const getCatInfo = () => {
    return { name, age, color }
 }
 
+const obj = {
+   prop1: {
+      innerProp1: 10
+   }
+}
+
 // destructuring assignment com objetos
 const { name, age, color } = getCatInfo()
+const { prop1: { innerProp1 } } = obj
 
 // name // Pintada
 // age // 4
@@ -327,10 +334,15 @@ const myName = ['Roger', 'Santos', 'Campelo']
 
 // destructuring assignment com arrays
 const [ firstName, lastName, ...rest ] = myName
+const [ firstName, , lastName ] = myName // ignorando item 'Santos'
 
 /* 
    a variável precedida de reticências "..." significa que o restante dos itens
    que sobraram devem ser armazenadas na variável rest. Se sobrar mais de um 
    valor e dependendo do que está sendo desestruturado, a rest poderá ser um 
    array ou um objeto.
+
+   No destructuring de um array, nós devemos respeitar a ordem dos itens, caso 
+   queira ignorar algum item, basta inserir vírgula no local. No caso dos objetos, 
+   não precisamos ignorar a propriedade, basta
 */
