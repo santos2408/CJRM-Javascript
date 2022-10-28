@@ -68,7 +68,6 @@ form.addEventListener('submit', event => {
    uma feature de filtro.
 */
 
-
 // ========== EXPRESSÕES REGULARES (REGEX)==========
 
 /*
