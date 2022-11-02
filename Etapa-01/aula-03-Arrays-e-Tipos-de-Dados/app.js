@@ -66,7 +66,7 @@ console.log(moreHeroes)
 const pushToHeroes = heroes.push('Cyclops', 'Hulk')
 console.log(pushToHeroes) // total de itens
 console.log(heroes) // array modificado
-// adiciona valor ao final do array e retorna o total de itens
+// adiciona item ao final do array e retorna o total de itens
 // modifica o array original (mutação de valores)
 // o valor inserido fica no array original
 
@@ -81,7 +81,7 @@ numbers.some(number => number % 2 === 0) // true
 // testa a função passada em cada item do array / retorna um boolean
 // se o teste retornar true em pelo menos um item, toda função retorna true
 // recebe array e index como parametros opcionais
-// pelo menos um item atende a função passada?
+// pelo menos um item atende a função passada? boolean
 
 const numbers = [10, 20, 30, 40, 50]
 numbers.find(number => number > 30) // item: 40
@@ -98,8 +98,9 @@ array1.reverse()
 // inverte a posição dos elementos
 // o primeiro se torna o último e o último se torna o primeiro para todos os pares
 
-const array1 = ['one', 'two', 'three']
+const array1 = ['one', 'two', 'three', 'four', 'five']
 array1.slice(1)
+array1.slice(2, 4)
 // retorna uma cópia rasa de um pedaço de um array em um novo array
 // seleciona o index (initial e final), sendo o final não incluído no 'corte'
 // os valores iniciais e finais representam o index do item
@@ -112,7 +113,7 @@ array1.splice(1, 0, 'banana')
 array1.splice(2, 1, 'segundo')
 // muda o conteúdo de um array, removendo, alterando ou adicionando elementos
 // modifica o array original
-// valor inicial: index onde ocorrerá as modificações, 
+// valor inicial: index onde ocorrerá as modificações
 // valor de delete: numero de elementos que serao deletados a partir do valor inicial
 // valor de replace: elementos que serao adicionados a partir do valor inicial
 
@@ -130,9 +131,24 @@ array1.split(':') // separa os itens a cada ':' encontrado
 // recebe por argumento um padrão como parâmetro de separação dos itens do elemento
 // no final insere tudo dentro de um array e retorna
 
-// Object.keys
-// shift
-// flat
+const myObj = { a: 1, b: 2, c:3 }
+const myObjArray = Object.keys(myObj) // [ a, b, c ]
+// retorna um array com as 'property names' do objeto passado como argumento]
+// são criados na mesma ordem dos itens do objeto
+
+const shiftMethod = [1, 2, 3, 4, 5]
+const firstElement = shiftMethod.shift()
+// remove o primeiro elemento do array e retorna esse elemento
+// modifica o array original (mutação de valores)
+// se length do array for 0, retorna undefined
+
+const deth1 = [1, 2, 3, [4, 5, 6], [7, 8, 9]]
+const deth2 = [1, 2, 3, [4, 5, 6, [7, 8]], 9, 10]
+
+const resultDeth1 = deth1.flat()
+const reusultDeth2 = deth2.flat(2)
+// cria um novo array com todos os sub-arrays concatenados recursivamente
+// a recursividade é feita com base na 'profundidade' especificada
 
 console.log('========================================')
 
