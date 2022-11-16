@@ -100,7 +100,7 @@ console.log(result, fullName)
    é chamado de argumento.
 
    o método indexOf() busca em que posição se encontra
-   o caracter inserido dentro do seu argumento.
+   o caracter inserido como argumento.
 
 */
 
@@ -175,7 +175,7 @@ console.log(emailSlice5)
    Lembre-se que ao executar esse método, apenas a primeira ocorrência do
    caracter inserido que irá ser substituido, caso haja outros caracteres,
    eles não serão alterados. No entanto é possível alterar todas as ocorrências
-   do caracter em aulas mais avançadas.
+   do caracter em aulas mais avançadas. (Consulte o método replaceAll)
 
    O replace também não altera a string original.
 */
@@ -279,7 +279,7 @@ const postMessage = 'O post "' + postTitle + '", do ' + postAuthor + ', tem ' + 
    Exemplo abaixo:
 */
 
-console.log('Você manja do filme \"As branquelas\" ?')
+console.log("Você manja do filme \"As branquelas\" ?")
 // as aspas duplas estão sendo interpretadas como caracteres.
 
 // usando template strings/template literals (ES6)

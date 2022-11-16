@@ -133,7 +133,18 @@ array1.split(':') // separa os itens a cada ':' encontrado
 
 const myObj = { a: 1, b: 2, c:3 }
 const myObjArray = Object.keys(myObj) // [ a, b, c ]
-// retorna um array com as 'property names' do objeto passado como argumento]
+// retorna um array com as 'property names' do objeto passado como argumento
+// são criados na mesma ordem dos itens do objeto
+
+const myObj = { a: 1, b: 2, c:3 }
+const myObjArray = Object.values(myObj) // [ 1, 2, 3 ]
+// retorna um array com os 'values' do objeto passado como argumento
+// são criados na mesma ordem dos itens do objeto
+
+const myObj = { a: 1, b: 2, c:3 }
+const myObjArray = Object.entries(myObj) // [ [a, 1], [b, 2], [c, 3] ]
+// retorna um array com 'chave e valor' do objeto dentro de um array 
+// cada 'chave e valor' separados por array
 // são criados na mesma ordem dos itens do objeto
 
 const shiftMethod = [1, 2, 3, 4, 5]
@@ -141,6 +152,8 @@ const firstElement = shiftMethod.shift()
 // remove o primeiro elemento do array e retorna esse elemento
 // modifica o array original (mutação de valores)
 // se length do array for 0, retorna undefined
+
+// unshift
 
 const deth1 = [1, 2, 3, [4, 5, 6], [7, 8, 9]]
 const deth2 = [1, 2, 3, [4, 5, 6, [7, 8]], 9, 10]

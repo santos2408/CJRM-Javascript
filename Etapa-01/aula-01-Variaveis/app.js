@@ -17,10 +17,10 @@ console.log(age)
 // não pode ser redeclarada com o mesmo nome
 
 let age = 25
-age = 50
+age = 50 // reatribuíção
 let age = 30 // não pode redeclarar
 let currentYear = 2022
-let idade
+let idade // sem valor
 
 console.log(age, currentYear, idade)
 
