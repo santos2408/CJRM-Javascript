@@ -60,7 +60,7 @@ const salePrices = prices.map(price => price / 2)
    
    Temos um array de objetos que contém o nome do produto e seu preço. 
    Queremos que, se o valor de determinado produto for maior do que 30, ele deve 
-   receber um desconto de 50%, caso seja menor que 30, permancece o mesmo valor.
+   receber um desconto de 50%, caso seja menor que 30, permanece o mesmo valor.
 */
 
 const products = [
