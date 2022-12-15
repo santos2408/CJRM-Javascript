@@ -32,6 +32,11 @@
    thread atual, em outra parte do browser e executa a função de callback quando 
    os dados forem obtidos. Enquanto a requisição é feita em outro local a thread 
    principal continua executando os códigos contidos nela.
+
+   Portanto, uma função assíncrona trabalha de forma "independente" da thread 
+   atual. Quando os dados dessa função são obtidos, então passamos uma função de 
+   callback que será executada após a obtenção desse dados, evitando assim que 
+   todo o código trave.
 */
 
 /* =========== CÓDIGO ASSÍNCRONO NA PRÁTICA =========== */
