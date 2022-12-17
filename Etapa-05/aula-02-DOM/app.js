@@ -1,17 +1,16 @@
 /*
   ======== TÓPICAS DESTA AULA ========
 
-    - ACIONANDO, MODIFICANDO E REMOVENDO CONTEÚDO DO DOM
+    - ADICIONANDO, MODIFICANDO E REMOVENDO CONTEÚDO DO DOM
     - PROPRIEDADES E MÉTODOS DE ELEMENT
     - OBTENDO E SETANDO ATRIBUTOS
-
 */
 
 // === ADICIONANDO E MODIFICANDO CONTEÚDO DA PÁGINA =======================
 
 /*
    Existem propriedades que modificam o texto ou o HTML do elemento obtido com 
-   os querySelector's e getElements... Essas propriedades são:
+   os querySelector's, getElement's, etc. Essas propriedades são:
 
    - innerText
    - innerHTML
@@ -28,11 +27,11 @@ const paragraph1 = document.querySelector('.content-1 p')
 /*
    A propriedade "innerText" obtém o texto do elemento referenciado. Caso queira
    alterar ou adicionar outro texto a esse elemento, basta atribuir um novo valor
-   a ele através do assignment. Veja baixo:
+   a ele através do assignment. Veja abaixo:
 
    Obs: O innerText obtém o texto que é renderizado no documento HTML, diferente 
    do textContent que obtém o texto independente se o texto está visível ou não
-   nas suas propriedaes de estilo. Ou seja, se o texto não está sendo renderizado
+   nas suas propriedades de estilo. Ou seja, se o texto não está sendo renderizado
    no navegador, mas ele existe no documento HTML, o textContent conseguirá 
    pegar esse conteúdo.
 */
@@ -75,7 +74,7 @@ divTitulos.innerHTML += `<h2>Novo H2</h2>`
 /*
    Vale lembrar que caso o elemento selecionado não contenha nenhum HTML dentro
    dele, a atribuição irá criar esse HTML. Caso já exista um HTML dentro desse
-   elemento a atribuição irá alterar. Se atribuição for com addition, ela irá
+   elemento a atribuição irá alterar. Se a atribuição for com addition, ela irá
    adicionar mais esse HTML que está sendo atribuído, como aconteceu no exemplo 
    acima.
 */
@@ -100,6 +99,17 @@ people.forEach(person => {
    É importante lembrar que essas duas propriedades são conhecidas por serem
    getters e setters, ou seja, elas podem tanto obter quanto setar os valores.
 
+*/
+
+/*
+   Pesquisar sobre:
+      offsetHeight / offsetWidth
+      offsetTop / Left, Right / Bottom
+      getBoundingClientRect()
+      innerWidth / innerHeight
+      outerHTML
+      pageYOffset / pageXOffset
+      matchMedia()
 */
 
 // === OBTENDO E SETANDO ATRIBUTOS =======================
@@ -156,16 +166,17 @@ const title2 = document.querySelector('.content-4 h1')
    Repare abaixo que se adicionarmos um estilo CSS através do método setAttribute,
    esse método irá sobrescrever o estilo atual que o elemento já tem e definirá 
    apenas o que está sendo passado no setAttribute. Ou seja, não conseguiremos manter
-   diferentes estilos num mesmo elemento, ou seja, o setAttribute define apenas 
+   diferentes estilos num mesmo elemento, assim o setAttribute define apenas 
    um atribute para o elemento, não conseguimos adicionar mais de um. Veja abaixo:
 */
 
 title2.setAttribute('style', 'margin: 50px')
+// todos os estilos anteriores serão ignorados
 
 /*
    Para adicionar ou modificar diferentes estilos dentro do elemento, utilizamos
    a propriedade "style", usando essa propriedade é possível preservar os estilos 
-   atuais do elemento e ir apenas adicionando outros. Mas podemos também alterar 
+   atuais do elemento e ir apenas adicionando outros. Podemos também alterar 
    ou remover elementos já existentes. Veja abaixo:
 */
 
@@ -180,7 +191,7 @@ title2.style.fontSize = '' // removendo valor
 
 /*
    Vale lembrar que ao passar a propriedade CSS que deseja-se inserir ou alterar,
-   não se deve utilizar hífen para separar os nomes, como o CSS usa. Nessa caso 
+   não se deve utilizar hífen para separar os nomes igual ao CSS. Nessa caso 
    devemos usar camel case, pois só dessa forma o javascript reconhece.
 
    é possível observar que a propriedade "style" é mais eficiente do que o método

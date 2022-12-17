@@ -94,6 +94,16 @@ article.childNodes
    não existir um irmão do element. Essa propriedade retornará null.
 */
 
+/*
+   Pesquisar sobre:
+      - append / prepend
+      - appendChild
+      - insertBefore
+      - removeChild
+      - replaceChild
+      - cloneNode
+*/
+
 // === EVENTOS DE CLIQUE =======================
 
 /*
@@ -155,6 +165,15 @@ lis.forEach(li => {
       clickedElement.style.textDecoration = 'line-through'
    })
 })
+
+/*
+   Pesquisar sobre:
+   - 'options' do eventListener que é passado como terceiro argumento
+   - currentTarget
+   - target
+
+
+*/
 
 // === CRIANDO E REMOVENDO ELEMENTOS DO DOM =======================
 

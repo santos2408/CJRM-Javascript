@@ -15,10 +15,10 @@
    esse evento irá propagar para o seu elemento pai e assim por diante.
 
    Portanto, ao propagar para o elemento pai, o javascript irá procurar se existe 
-   um listener de 'evento' nesse elemento e se existir um 'evento' nesse pai a 
-   função de callback desse elemento também será disparada e depois disso esse 
-   evento será propagado para o pai desse elemento e assim continuará disparando 
-   os eventos de todos.
+   um listener de 'evento' nesse elemento para o qual o evento se propagou e se 
+   existir um 'evento' nesse pai a função de callback desse elemento também será 
+   disparada e depois disso esse evento será propagado para o pai desse elemento 
+   e assim continuará disparando os eventos de todos.
 
    Essa propagação é chamada de 'event bubbling', o evento é iniciado no target 
    do evento, que é o elemento no qual o evento foi adicionado, e esse evento 
@@ -49,7 +49,13 @@ button.addEventListener('click', () => {
    ul.prepend(li)
 })
 
-// código sem a utilização de event delegation
+/*
+   código sem a utilização de event delegation  
+
+   repare que iteremos por cada li e para cada li adicionamos um eventListener, 
+   para aplicações maior esse tipo de abordagem pode resultar em problema de 
+   performance para a aplicação.
+*/
 const lis = document.querySelectorAll('li')
 
 lis.forEach(li => {
@@ -72,7 +78,16 @@ ul.addEventListener('click', () => {
    // comente o stopPropagation() acima
 })
 
-// código com a utilização de event delegation
+/* 
+   código com a utilização de event delegation 
+
+   usando o event delegation, nós colocamos o eventListenr no pai de todos os 
+   elementos que queremos que tenha o event e ao clicarmos em algum item dentro 
+   desse elemento pai poderemos pegar o target específico do elemento clicado.
+   Dessa forma passa a existir apenas um eventListenr invés de vários para todos 
+   os elementos.
+
+*/
 ul.addEventListener('click', event => {
    const clickedElement = event.target
 
@@ -133,9 +148,11 @@ div.addEventListener('mousemove', event => {
    as propriedades de mousemove, offsetX e offsetY. No entanto, esses valores 
    são relativos a toda a página, ou seja, a pageX corresponde ao valor horizontal 
    da esquerda para a direita e a pageY corresponde a posição vertical do topo 
-   para baixo, esses valorem mudam com base na posição atual da barra de rolagem.
+   para baixo, esses valores mudam com base na posição atual da barra de rolagem.
 */
 
 document.addEventListener('wheel', event => {
    console.log(event.pageX, event.pageY)
 })
+
+// mais eventos em: https://developer.mozilla.org/en-US/docs/Web/Events

@@ -119,7 +119,7 @@ const myName = () => { // var não escapa
    na função "acima" dela e assim por diante. Esse é o escopo léxico, é a consulta
    de uma variável dentro de escopos de funções aninhadas uma dentro da outra.
 
-   *** PESQUISAR SOBRE CLOSURES
+   *** PESQUISAR SOBRE CLOSURES ***
    
 */
 
@@ -229,11 +229,6 @@ const paragraph = document.querySelector('p') // só a primeira ocorrência
 const error = document.querySelector('.error') // só a primeira ocorrência
 const errorDiv = document.querySelector('div.error') // só a primeira ocorrência
 
-console.log(h1)
-console.log(paragraph)
-console.log(error)
-console.log(errorDiv)
-
 /*
    querySelectorAll é utilizado para obtermos todas as ocorrências do seletor
    passado como argumento do método.
@@ -242,7 +237,7 @@ console.log(errorDiv)
    inserido no parâmetro do método.
 
    Esse nodeList se assemelha a um tipo de array mas não é um array, é apenas 
-   parecido. Normalmente é conhecido como array-like. Nem todos os métodos de
+   parecido. Normalmente é conhecido como 'array-like'. Nem todos os métodos de
    array são possíveis utilizar numa nodeList. Mas podemos utilizar algumas
    funcionalidades parecidas com array como acessar index através de colchetes 
    ou realizar um loop através de forEach.
@@ -303,7 +298,7 @@ const paragrafo = document.getElementsByTagName('p')
    variáveis distintas.
 
    É uma expressão que possibilita atribuirmos para uma variável uma cópia do 
-   valor de uma propriedade de um objeto.
+   valor de uma propriedade de um objeto ou item de um array.
 */
 
 const getCatInfo = () => {
@@ -344,5 +339,5 @@ const [ firstName, , lastName ] = myName // ignorando item 'Santos'
 
    No destructuring de um array, nós devemos respeitar a ordem dos itens, caso 
    queira ignorar algum item, basta inserir vírgula no local. No caso dos objetos, 
-   não precisamos ignorar a propriedade, basta
+   não precisamos ignorar a propriedade, basta não escrevela no destructuring.
 */

@@ -169,3 +169,20 @@ userOne.age = 30
 
 console.log(userOne, userTwo) // userOne userOne
 // as duas ages foram modificados pois apontam pro mesmo objeto.
+
+/*
+   Se desejássemos criar de fato uma cópia independente de um objeto, evitando 
+   que ele seja copiado por referência, ou seja, que tenha um ponteiro apontando 
+   para o objeto original, podemos usar a sintaxe de spread operator.
+*/
+
+const userThree = { name: 'Santos', age: 26 }
+const userFour = { ...userThree } // cópia independente / sem ponteiro
+
+console.log(userThree, userFour) // { name: 'Santos', age: 26 }, { name: 'Santos', age: 26 }
+
+userFour.name = 'Campelo'
+
+console.log(userThree, userFour) // { name: 'Santos', age: 26 }, { name: 'Campelo', age: 26 }
+
+
