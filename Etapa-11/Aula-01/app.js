@@ -4,7 +4,7 @@
    O Javascript é uma linguagem síncrona ou seja, ele executa uma instrução 
    por vez de cima para baixo, top-down, uma depois da outra. A linha seguinte 
    só é executada após a linha anterior terminar de ser executada, isso porque 
-   na promogração síncrona, a linha seguinte dapende da finalização da linha 
+   na programação síncrona, a linha seguinte dapende da finalização da linha 
    anterior.
    
    Isso caracteriza o javascript como uma linguagem de single-thread, seguindo 

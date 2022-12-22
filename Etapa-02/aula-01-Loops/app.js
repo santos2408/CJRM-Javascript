@@ -92,12 +92,13 @@ for (let chave in pessoa) {
 
 /*
    Essa estrutura cria um loop que itera em geral sobre objetos iteráveis. Em 
-   arrays iterarão sobre os itens
+   arrays iterarão sobre os itens.
+
+   Obs: arrays também são objetos
 
 */
 
 const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
-const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
 
 // percorre os elementos
 for (let elemento of frutas) {

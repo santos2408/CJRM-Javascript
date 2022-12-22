@@ -15,25 +15,28 @@
     - resolve: os dados foram obtidos.
     - reject: promise rejeitada.
 
-  Dentro da promise iremos passar uma função que recebe dois parâmetros: 
+  Dentro da promise iremos passar uma função de callback que recebe dois parâmetros: 
     - resolve e reject
   
   Esses parâmetros são funções embutidas na API de promises que recebemos como 
-  parâmetros nessa função. Esses parâmetros podem ter outro nome mas 'resolve' e 
-  'reject' são convenções usadas globalmente.
+  parâmetros nessa função de callback. Esses parâmetros podem ter qualquer nome 
+  mas 'resolve' e 'reject' são convenções usadas globalmente.
 
-  Dentro dessa função geralmente é onde buscamos os dados da requisição e quando 
-  obtemos os dados com sucesso nós invocamos a função 'resolve' e passamos os dados 
-  obtidos como argumento.
+  Dentro dessa função geralmente é onde buscamos os dados e realizamos a 
+  requisição e quando obtemos os dados com sucesso nós invocamos a função 
+  'resolve' e passamos os dados obtidos como argumento.
 
   Caso a operação assíncrona falhe, a função 'reject' será invocada e retornará 
   o erro como argumento.
 
-  A promise incapsula o valor retornado dentro da propriedade fulfilled e para 
-  consumirmos esse valor precisamos utilizar o método THEN. Ele é o responsável 
+  A promise incapsula o valor retornado dentro da propriedade 'fulfilled' dela e 
+  para consumirmos esse valor precisamos utilizar o método THEN. Ele é o responsável 
   por receber a resposta de 'sucesso' da promise. Ou seja, assim que invocarmos 
   o método then, passaremos uma função que irá retornar o valor de 'sucesso'. O 
   then automaticamente irá obter o valor da função 'resolve'.
+
+  Como a promisse encapsula a resposta e o then obtém essa resposta, nós dizemos 
+  que o then 'desempacota' a promise para pegar a resposta retornada pela promise.
 
   Caso ocorra um erro na requisiçao, podemos encadear o método CATCH no THEN, 
   também passando uma função como argumento e através dele iremos tratar os dados 
@@ -42,12 +45,12 @@
     - quando a função reject é invocada dentro da criação da promise
     - quando algum método then lança um erro
 
-  Lembre-se que o then recebe dois argumentos: erro, success. Portanto o método 
+  Lembre-se que o then recebe dois argumentos: error, success. Portanto o método 
   catch é uma abreviação do THEN que trata apenas do erro do then, ou seja, 
-  separando as obrigações de cada um.
+  separando as obrigações de cada um para ficar mais legível.
 
   Quando invocamos uma resolve ou reject, o código abaixo dela não é lido, pois 
-  elas tem um return implícito, então para certas situação não precisamos inserir 
+  elas tem um return implícito, então para certas situações não precisamos inserir 
   um return após ela.
 
 */
@@ -60,9 +63,9 @@ const getData = () => {
   }) // criando uma nova promise
 }
 
-getData()
-  .then(value => console.log(value))
-  .catch(error => console.log(error))
+getData() // retornou uma promise com a resposta dentro
+  .then(value => console.log(value)) // desempacotou a promise e pegou a resposta
+  .catch(error => console.log(error)) // pega a resposta de erro caso exista
 
 // ==========================================================
 
@@ -89,21 +92,21 @@ const getPokemon = url => new Promise((resolve, reject) => {
   request.send()
 })
 
-getPokemon('https://pokeapi.co/api/v2/pokemon/1')
-  .then(pokemon => console.log(pokemon))
-  .catch(error => console.log(error))
+// getPokemon('https://pokeapi.co/api/v2/pokemon/1')
+  // .then(pokemon => console.log(pokemon))
+  // .catch(error => console.log(error))
 
 // executando e encadeando promises
-getPokemon('https://pokeapi.co/api/v2/pokemon/1') // bulbasaur
+getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
   .then(bulbasaur => {
     console.log(bulbasaur)
-    return getPokemon('https://pokeapi.co/api/v2/pokemon/4') // charmander
+    return getPokemon('https://pokeapi.co/api/v2/pokemon/4') // promise charmander
   })
   .then(charmander => {
     console.log(charmander)
-    return getPokemon('https://pokeapi.co/api/v2/pokemon/7') // squirtle
+    return getPokemon('https://pokeapi.co/api/v2/pokemon/7') // promise squirtle
   })
-  .then(console.log) // retorno implícito = squirtle
+  .then((console.log)) // retorno implícito = squirtle
   .catch(error => console.log(error))
 
 /* 
@@ -118,7 +121,8 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // bulbasaur
   lançar um erro. Nessas duas ocasiões o CATCH será executado.
 
   Devido a isso, não há necessidade de inserirmos um catch para cada then que 
-  for implementado.
+  for implementado. Como são requests sequenciais e não paralelos, quando um 
+  erro é lançado a inovcação dos requests é parado.
 
   Obs: Repare que, na última execução do then estamos apenas obtendo os dados da 
   requisição e exibindo no console. Como a função não está retornando nada, 
@@ -127,8 +131,9 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // bulbasaur
 
   A conclusão que temos utilizando promises, then e catch é que o código fica 
   mais organizado, legível, com boas práticas ES6 e não temos mais o fenômeno
-  de callback helll que sujava o código e atrapalhava a manutenabilidade, mas 
-  repare que, mesmo utilizando promises, dependendo da complexidade do código, 
-  ele pode começar a ficar ilegível. Nas próximas aulas veremos como deixar o 
-  código ainda mais limpo com novas funcionalidades.
+  de callback helll que sujava o código e atrapalhava a manutenabilidade, como 
+  foi apresentado nas aulas anteiores, mas repare que, mesmo utilizando promises, 
+  dependendo da complexidade do código, ele pode começar a ficar ilegível. Nas 
+  próximas aulas veremos como deixar o código ainda mais limpo com novas 
+  funcionalidades.
 */
