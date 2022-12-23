@@ -14,7 +14,7 @@
   A FETCH API utiliza Promises por baixo dos panos, facilitando a escrita do 
   código tanto quando ele for bem sucedido ou mal sucedido na resposta.
 
-  * A invocação do FETCH retorna uma promise, que contém dois resultados
+  * A invocação da FETCH retorna uma promise, que contém dois resultados
   possíveis: resolved ou rejected.
 
   * Para tratarmos o retorno da promise nós invocamos o método THEN, para caso 
@@ -28,26 +28,28 @@
 
   Note que, a FETCH API só rejeita a promise quando acontece um erro de conexão 
   na rede, se simplesmente errarmos a URL do endpoint, o objeto response ainda 
-  será retornado, no entanto será com status 404 e sem conteúdo.
+  será retornado, no entanto será com status 404 e sem conteúdo de respota.
 
   Quando a resposta de sucesso é retornada, repare que o status no objeto é 200 
   e tudo ocorreu bem, mas não há conteúdo de resposta semelhante ao que contém 
   na propriedade responseText do XMLHttpRequest.
 
-  Ou seja, para obtermos o conteúdo da resposta, devemos executar o método 
-  "json" que irá pegar a resposta que o response está armazenando e parsear essa 
-  resposta, retornando um "array de objetos em javascript". Semelhante ao objeto 
-  JSON.parse().
+  Ou seja, para obtermos o conteúdo da resposta, devemos executar o método 'json' 
+  que existe dentro do objeto Response, que irá pegar a resposta que o response 
+  está armazenando e parsear essa resposta, retornando um "array de objetos em 
+  javascript". Esse médoto é semelhante ao que acontece com o objeto JSON.parse().
+  usado em requests com XMLHttpRequest.
 
   Repare que, o retorno da resposta parseada será também uma "promise", portanto, 
   invés de armazenarmos essa promise, podemos simplesmente retorná-la diretamente 
   e assim o método then estará retornando uma promise que será encadeada com outro 
-  then. Criando assim um encadeando de promises.
+  then. Criando assim um encadeando de promises. Na promisse seguinte é que teremos 
+  de fato a resposta da requisição onde poderemos manipulá-la.
 
   Resumo:
 
   Passo 1: Buscamos os dados através da invocação do método FETCH
-  Passo 2: Obtemos a resposta e retornamos uma promise com response.json()
+  Passo 2: Obtemos a resposta e retornamos uma promise com 'response.json()'
   Passo 3: Encadeia um segundo then na promise do primeiro then para fazermos algo com os dados obtidos
 
 */
@@ -87,21 +89,22 @@ fetch('https://anapioficeandfire.com/api/houses')
 
   * Esse await irá 'aguardar' a resposta da requisição, enquanto essa resposta 
     não chegar, o await não deixa o código abaixo dele ser executado. Ou seja, 
-    ele vai se comparar a um código síncrono. Mas isso acontece apenas dentro da 
-    função assíncrona, ou seja, o await não trava toda a aplicação por causa do 
-    request, por isso estamos usando 'async' na função.
+    ele vai se comparar a um código síncrono. Mas essa pausa acontece apenas 
+    dentro do bloco da função assíncrona, ou seja, o await não trava toda a 
+    aplicação por causa do request, por isso estamos usando 'async' na função.
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
     e logo em seguida o await irá pegar essa promise e retornar o valor resolvido 
     dela (desempacotar), que é o objeto Response. Após isso as linhas abaixo dele 
     serão executadas. Ou seja, além de impedir a execução do restante do código 
-    antes de obter a resposta da requisição, o await também irá desempacotar a 
-    Promise para obter apenas a resposta dela.
+    da função antes de obter a resposta da requisição, o await também irá 
+    desempacotar a Promise para obter apenas a resposta/valor resolvido dela.
 
   Para obtermos os dados da resposta do request, precisaremos encadear no objeto 
   response o método json() que irá obter esse objeto response, irá parsear para 
-  um array de objetos javascript (JSON) e retornará uma promise que contém essa 
-  resposta parseada.
+  um array de objetos javascript (JSON) e retornará também uma promise que contém 
+  essa resposta parseada e para obtermos o valor resolvido dessa promise, iremos 
+  também inserir um 'await'.
 
   Veja abaixo:
 */

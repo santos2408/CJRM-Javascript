@@ -8,7 +8,8 @@
    entre sistemas, o XML que é um outro padrão também para troca de informações 
    era usado. No entanto, atualmente, o objeto de request XMLHttpRequest pode 
    trabalhar com qualquer tipo de dado: JSON, XML, entre outros. Esse objeto 
-   será usado para que o browser envie um request para o servidor.
+   será usado para que o browser envie um request para o servidor, atualmente o 
+   mais o comum é o JSON.
 
    // MÉTODO OPEN()
    
@@ -19,7 +20,7 @@
 
    Para obtermos dados de outro lugar, passaremos como argumento do método open() 
    o método 'GET', que é um dos métodos de requisição HTTP. Quando usamos o 'GET' 
-   o servidor entenderá que desejamos apenas OBTER informações de lá. Existe outros 
+   o servidor entenderá que desejamos apenas OBTER informações de lá. Existem 
    métodos como 'GET, 'POST', 'PUT', 'DELETE', 'PATH' entre outros.
 
    O segundo argumento do método open() será o endpoint, uma URL para o qual 

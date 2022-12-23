@@ -47,7 +47,16 @@
 
   Lembre-se que o then recebe dois argumentos: error, success. Portanto o método 
   catch é uma abreviação do THEN que trata apenas do erro do then, ou seja, 
-  separando as obrigações de cada um para ficar mais legível.
+  separando as obrigações de cada um para ficar mais legível. Ex:
+
+  .then((error, success) => {
+    if (error) {
+      console.log('error)
+      return
+    }
+
+    console.log(success)
+  })
 
   Quando invocamos uma resolve ou reject, o código abaixo dela não é lido, pois 
   elas tem um return implícito, então para certas situações não precisamos inserir 
@@ -65,7 +74,7 @@ const getData = () => {
 
 getData() // retornou uma promise com a resposta dentro
   .then(value => console.log(value)) // desempacotou a promise e pegou a resposta
-  .catch(error => console.log(error)) // pega a resposta de erro caso exista
+  .catch(error => console.log(error)) // desempacota a promise e pega a resposta de erro caso exista
 
 // ==========================================================
 
@@ -122,7 +131,7 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
 
   Devido a isso, não há necessidade de inserirmos um catch para cada then que 
   for implementado. Como são requests sequenciais e não paralelos, quando um 
-  erro é lançado a inovcação dos requests é parado.
+  erro é lançado a inovocação dos requests é parado naquele ponto do erro.
 
   Obs: Repare que, na última execução do then estamos apenas obtendo os dados da 
   requisição e exibindo no console. Como a função não está retornando nada, 
@@ -136,4 +145,6 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
   dependendo da complexidade do código, ele pode começar a ficar ilegível. Nas 
   próximas aulas veremos como deixar o código ainda mais limpo com novas 
   funcionalidades.
+
+  Note também que o uso de promises evita o uso de funções de callback.
 */
