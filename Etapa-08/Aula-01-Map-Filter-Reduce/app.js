@@ -199,3 +199,27 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
 }, 0)
 
 // rogerScore === 180
+
+/*
+   Dica:
+
+   Ao lidarmos com arrays numa aplicação, antes podemos pensar nos três princípios 
+   que podemos usar para trabalhar com arrays, isso ajudará a facilitar o caminho 
+   que seguiremos para solucionar o problema, são eles:
+
+   1 - A partir desse array, eu preciso gerar um novo array com a mesma quantidade 
+   de itens do original ?
+
+   2 - A partir desse array, eu preciso gerar um novo array que terá menos itens
+   que o original ?
+
+   3 - A partir desse array, eu preciso gerar um outro valor que não necessariamente 
+   seja array ?
+
+   Lembrando que nem sempre o que queremos fazer num array irá atender a um dos 
+   princípios citados acima, pois em alguns casos não iremos querer retornar um 
+   valor e sim realizar apenas um efeito colateral no código. Efeito colateral é 
+   qualquer mudança de estado que pode ser percebida do lado de fora de uma função 
+   e que não é um valor retornado pela função.
+
+*/

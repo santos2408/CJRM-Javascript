@@ -9,7 +9,8 @@
   informações do outro. Nós estamos pegando pokemons diferentes em cada requisição.
 
   Então podemos remover o await e deixar com que eles sejam requests paralelos. 
-  Fazendo com que eles sejam executados quase que instantaneamente.
+  Fazendo com que eles sejam executados quase que instantaneamente, de forma 
+  independente um do outro.
 
   Agora, para podermos ainda obter o valor das promises, devemos utilizar o 
   método do objeto construtor Promise, chamado all. Ele recebe como argumento 
@@ -17,7 +18,7 @@
   ele retornará uma única promise que com o await obtemos as respostas da promise 
   resolvida.
   
-  Se uma das promises que o promise.all recebeu for rejeitada, a promise que o 
+  Se uma das promises que o Promise.all recebeu for rejeitada, a promise que o 
   promise.all retorna será uma promise rejeitada que contém a mensagem e o erro 
   que causou a rejeição.
 */
@@ -36,12 +37,12 @@ getPokemon()
 /*
   // ======= TRATANDO ERROS COM TRY / CATCH =======
 
-  Quando um erro é lançado em uma aplicação javascript, o código abaixo deste 
-  código que disparou o erro não é executado, e isso pode gerar um poblema, pois 
-  quando o código for lançado, a aplicação irá parar de executar.
+  Quando um erro é lançado em uma aplicação javascript, o código abaixo desta 
+  linha que disparou o erro não é executado, e isso pode gerar um poblema, pois 
+  quando o erro for lançado, a aplicação irá parar de executar.
 
   Para evitar isso podemos usar um try...catch, que é uma cláusula que irá tentar 
-  executar um código, se esse código que for tentado executar lançar um erro, nós 
+  executar um código e se esse código que for tentado executar lançar um erro, nós 
   poderemos executar um outro código para que o erro lançado não trave a aplicação.
 
   Em javascript todo objeto de erro tem as propriedades name e message que 
@@ -52,7 +53,8 @@ getPokemon()
   que o código pode lançar. Se esse não for o caso podemos normalmente utilizar o 
   if.
 
-  Try...catch exige mais poder de processamento do que condicionais como o if.
+  Try...catch exige mais poder de processamento do que condicionais como o if, 
+  portanto use-o em casa que realmente necessite dessa cláusula.
 
 */
 

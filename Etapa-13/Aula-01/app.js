@@ -39,7 +39,7 @@
 
    Existem mais formas de salvar dados no browser: cookies, Web Storage API e 
    indexedDB para grande volumes de dados como videos, imagens, áudios, etc. E 
-   também a cache API, para armazenar dados para que a aplicação funciona offline.
+   também a cache API, para armazenar dados para que a aplicação funcione offline.
 
    O local storage NÃO substitui um banco de dados, podemos usa-los em conjunto, 
    ele pode ser usado para fazer um funcionamento rápido de uma aplicação ou 
@@ -133,7 +133,23 @@ localStorage.clear() // limpa todos os dados
    global JSON que está embutido na linguagem. Esse método se chama stringify()
    e ao convertermos esse array para string, ele irá retornar um JSON. Assim 
    poderemos inserir o array como valor de um local storage, pois ele só aceita 
-   valores do tipo string.
+   valores do tipo string. Portanto:
+
+   JSON.stringfy() => converte array/objeto para JSON (string)
+   JSON.parse() => converte JSON para array/objeto javascript
+
+   Com esses métodos é possível também realizarmos cópias de objetos quando 
+   necessário, mas esse comportamento não é recomendado visto que é uma operação 
+   custosa para a aplicação. E também, em objetos que contém métodos, quando 
+   usamos a stringinificação ou parseamento, eles ignoram os métodos desses objetos, 
+   isso porque funções não são valores JSON válidos.
+
+   Ou seja, além do problema de performance ao criar uma cópia a partir de métodos 
+   JSON, se o objeto convertido tiver qualquer valor que não seja 'string', 'number',
+   'boolean', 'objeto' ou 'array', ele será ignorado pela conversão.
+
+   Portanto, a melhor forma de criar uma cópia de um objeto usando javascript puro 
+   é utilizando o 'spread operator', que veremos nas aulas seguintes.
 */
 
 const myArray = [
@@ -142,11 +158,11 @@ const myArray = [
    {e: 5, f: 6}
 ]
 
-localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para string
+localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para string/JSON
 
-const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo string
+const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo string/JSON
 
-console.log(JSON.parse(JSONFromLocalStorage)) // convertendo json para javascript
+console.log(JSON.parse(JSONFromLocalStorage)) // convertendo json para objeto javascript
 
 // ============= PROGRAMAÇÃO FUNCIONAL PIPELINE =============
 
