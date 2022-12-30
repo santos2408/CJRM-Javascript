@@ -8,7 +8,10 @@ independentes.
 
 Vale lembrar que o spread operator realiza uma 'cópia rasa' ou seja, se o valor 
 de uma propriedade do objeto original é também um objeto, a propriedade do clone 
-irá referenciar (apontar) para o objeto original.
+irá referenciar (apontar) para o objeto original. Ou seja, se o objeto copiado 
+tiver dentro dele outros objetos aninhados, esse objetos aninhados também devem 
+ser feito o 'spread operator' para que sejam copiados, pois mesmo aninhados 
+eles continuarão sendo uma referência do objeto original.
 
 Portanto, o spread copia normalmente as propriedades do objeto, mas se uma dessas 
 propriedades forem algum outro objeto, aí a cópia não será feita, mas sim será 
@@ -41,21 +44,23 @@ console.dir(elemento)
 
 */
 
-const objeto = {
+const objeto = { // objeto
   prop0: () => {}, // objeto
   prop1: 'a',
   prop2: 'b',
   prop3: { a: 'x', b: 'y', c: 'z' }, // objeto
-  prop4: [1, { x: 2, y: 3 }] // array + objeto
+  prop4: [1, { x: 2, y: 3 }] // array/objeto + objeto
 }
+
+// lembrando que array é também um objeto: array = objeto
 
 const objetoCopia = { 
   ...objeto, // espalhando todas as propriedades / criando cópia
-  prop0: () => {}, // cópia da função e não referência / reescrevendo função
+  prop0: () => {}, // cópia da função e não referência / deve-se reescrever a função
   prop3: { // sobrescrevendo prop3
     ...objeto.prop3 // espalhando propriedades para criar cópia e não referência
   },
-  prop4: [
+  prop4: [ // sobreescrevendo prop4
     objeto.prop4[0],
     { ...objeto.prop4[1] } // criando cópia de objeto dentro do array
   ]
@@ -66,6 +71,7 @@ const arr2 = [4, 5, 6]
 const newArray = [...arr1, ...arr2]
 
 // repare que o spread operator é uma forma mais moderna de concatenar arrays
+// no ES5 usávamos o método concat()
 
 /*
 
@@ -84,7 +90,7 @@ const newArray = [...arr1, ...arr2]
   objeto, semelhante ao método 'concat'. Vale lembrar que o 'concat' é um método 
   antigo do JS e o spread operator veio numa versão mais recente. 
   
-  Object.assign é um método que realiza a mesma operação que o spread operator, 
+  Object.assign() é um método que realiza a mesma operação que o spread operator, 
   ele faz uma cópia rasa das propriedades do objeto. Deve receber no mínimo dois 
   argumentos, o primeiro é o objeto que irá receber as cópias das propriedades e
   os outros argumentos são os objetos que terão suas propriedades atribuídas ao 
@@ -109,7 +115,7 @@ const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
   é chamado de imutabildiade, um conceito fundamental na programaçãp funcional. E 
   repare que, no exemplo do Object.assign() também estamos criando um novo objeto 
   mas isso não necessariamente é uma regra, pois podemos inserir num objeto já 
-  existente as propriedades de outros. 
+  existente as propriedades de outros.
 
   Isso irá modificar diretamente o objeto já existente, o que talvez não seja a 
   intenção em determinados momentos.
@@ -156,4 +162,10 @@ Math.max(...numbers) //
 
   Em javascript todo pedaço de código que não resulta em um valor, retorna 
   undefined.
+*/
+
+/*
+
+  [ ] - Imutabilidade
+
 */

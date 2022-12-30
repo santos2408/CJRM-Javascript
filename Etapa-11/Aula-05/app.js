@@ -37,7 +37,7 @@
   Ou seja, para obtermos o conteúdo da resposta, devemos executar o método 'json' 
   que existe dentro do objeto Response, que irá pegar a resposta que o response 
   está armazenando e parsear essa resposta, retornando um "array de objetos em 
-  javascript". Esse médoto é semelhante ao que acontece com o objeto JSON.parse().
+  javascript". Esse método é semelhante ao que acontece com o objeto JSON.parse(),
   usado em requests com XMLHttpRequest.
 
   Repare que, o retorno da resposta parseada será também uma "promise", portanto, 
@@ -89,9 +89,9 @@ fetch('https://anapioficeandfire.com/api/houses')
 
   * Esse await irá 'aguardar' a resposta da requisição, enquanto essa resposta 
     não chegar, o await não deixa o código abaixo dele ser executado. Ou seja, 
-    ele vai se comparar a um código síncrono. Mas essa pausa acontece apenas 
-    dentro do bloco da função assíncrona, ou seja, o await não trava toda a 
-    aplicação por causa do request, por isso estamos usando 'async' na função.
+    ele vai se comparar a um código síncrono. Essa pausa acontece apenas dentro 
+    do bloco da função assíncrona, ou seja, o await não trava toda a aplicação 
+    por causa do request, por isso estamos usando 'async' na função.
 
   * Caso ocorra tudo bem com a requisição, o fetch irá retornar uma promise 
     e logo em seguida o await irá pegar essa promise e retornar o valor resolvido 
@@ -103,7 +103,7 @@ fetch('https://anapioficeandfire.com/api/houses')
   Para obtermos os dados da resposta do request, precisaremos encadear no objeto 
   response o método json() que irá obter esse objeto response, irá parsear para 
   um array de objetos javascript (JSON) e retornará também uma promise que contém 
-  essa resposta parseada e para obtermos o valor resolvido dessa promise, iremos 
+  essa resposta parseada, e para obtermos o valor resolvido dessa promise, iremos 
   também inserir um 'await'.
 
   Veja abaixo:
