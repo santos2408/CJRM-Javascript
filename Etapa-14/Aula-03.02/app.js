@@ -31,7 +31,7 @@ parâmetro, os valores que a função pai pode receber como parâmetros
 
 Agora, para inserirmos propriedades únicas para a função construtora filha, é só 
 declararmos normalmente abaixo da invocação da call(). A classe pai não receberá 
-essas propriedades, serão exclusivas da classe filha. E para passarmos métodos 
+essas propriedades, elas serão exclusivas da função filha. E para passarmos métodos 
 únicos, passamos dentro do prototype da função.
 
 Para herdarmos os métodos da função pai que se encontram dentro do prototype desse 
@@ -74,7 +74,7 @@ function TeacherAssistant (name, email, scheduleWeekPosts) {
 // criando novo objeto com as propriedades do prototype do objeto Aluno 
 // e inserindo dentro do prototype do objeto TeacherAssistant
 // TeacherAssistant agora terá acesso aos métodos que estão dentro do prototype de Aluno
-TeacherAssistant.prototype.Object.create(Aluno.prototype)
+// TeacherAssistant.prototype.Object.create(Aluno.prototype)
 
 // método exclusivo de TeacherAssistant
 TeacherAssistant.prototype.giveBadge = function giveBadge ({ name }) {
@@ -93,16 +93,21 @@ const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.
   Quando precisaremos usar classes ou funções construtoras ? 
 
   Usaremos classes quando precisarmos criar objetos específicos que compartilham 
-  métodos,  isso ajudará a economizar mémória. Além de serem mais simples do que 
+  métodos, isso ajudará a economizar mémória. Além de serem mais simples do que 
   funções construtoras. As funções construtoras eram usadas antes da chegada das 
-  classes, por isso é importante entendermos funções construtoras e herança 
+  classes, por isso é importante entendermos funções construtoras e heranças 
   prototipais, pois ainda existem códigos usando essas features e sabendo como 
   funções construtoras funcionam, saberemos o que uma classe está fazendo por 
   baixo dos panos.
 
-  Usaremos classes quando precisarmos fazer herança, o que pode ser algo raro, 
+  Usaremos classes quando precisarmos fazer heranças, o que pode ser algo raro, 
   quando estivermos desenvolvendo uma biblioteca ou quando precisarmos economizar 
   uma quantidade muito baixa de memória, o que não faz muito sentido.
+
+  No entanto, é valido sabermos como as coisas funcionam e nas próximas aulas 
+  veremos a terceira forma de como criar e compor objetos em JS. Já vimos a 
+  criação de objetos por meio de Classes e Constructor Functions, agora veremos 
+  através de factory functions.
 
 */
 
@@ -123,7 +128,7 @@ criar e compor objetos na aplicação web com um código mais simples comparado 
 classes, constructors e new.
 
 Com factory functions não precisamos nos preocupar com inserção de 'new', 'this' 
-ou constructor. Pensando em código de larga escala, a compreesensão dele será 
+ou 'constructor'. Pensando em código de larga escala, a compreesensão dele será 
 mais fácil com factory functions do que classes.
 
 Ainda conseguimos declarar propriedades privadas dentro de uma factory function. 
@@ -132,7 +137,7 @@ função será único para cada objeto criado, pois é aplicado o conceito de cl
 que é a combinação de uma função com seu escopo léxico, que é todo escopo que 
 envolve a declaração da função.
 
-Você pode optar por trabalhar com classes ou factory functions. Dê preferência 
+Você pode optar por trabalhar com classes ou factory functions, mas dê preferência 
 para factory functions. Classes são mais inflexíveis, ao contrário de factory 
 functions.
 
@@ -160,7 +165,7 @@ class User {
 const createUser = (name, email) => { // escopo léxico
   let counter = 0 // informação privada / só código interno acessa
 
-  return { // retorna um objeto
+  return { // retorna um objeto // caracteriza uma factory function
     name,
     email,
     incrementCounter: () => ++counter // closure / combinação de uma função com seu escopo léxico
@@ -191,20 +196,13 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 /*
 
   Para obtermos o prototype de um objeto, não usamos mais a sintaxe 
-  object.__prototype__. Agora usamos Object.getPrototypeOf('object')
+  object.__prototype__. Essa sintaxe era usada em versões mais antigas do JS 
+  e atualmente ela está em desuso, no entanto ainda funciona para manter códigos 
+  legados funcinando na web. Mas agora, o uso correto para obter o prototype de 
+  um objeto é utilizando o método 'Object.getPrototypeOf('object')'
 
   Para chercarmos se o prototype de um objeto existe dentro prototype de um outro 
   objeto, usamos o método object1.isPrototypeOf('object2')
-
-  * estudar mais sobre o método :
-  
-  this
-  call()
-  aplly()
-  bind()
-  Object.create()
-  getPrototypeOf()
-  isPrototypeOf()
 
   Podemos estabelecer um padrão de nomes de funções. Quando uma função busca um 
   dado, por exemplo numa API, ela pode ter o nome com a palavra 'fetch', mas quando 
@@ -225,20 +223,16 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   a displayName() tem referências do seu estado circundante, portanto, a displayName() 
   é uma closure porque é uma função agrupada (incluída).
 
-
-
 */
 
 const init = () => {
   let name = 'Roger' // variável local criada pela função init
 
-  function displayName () { 
-    // função interna / é uma closure
+  function displayName () { // função interna / é uma closure
     // está disponível apenas dentro da init
     console.log(name) // usando variável da função pai dela
   }
   displayName()
-
 }
 
 init()
@@ -252,6 +246,83 @@ init()
   ser acessadas em um determinado ponto no tempo.
 
   Essas informações influenciam o output do que é renderizado na tela. Essa é 
-  uma definição de estado simplificada, é mais complexo do que isso.
+  uma definição de estado simplificada, é mais complexo do que isso. Geralmente 
+  um objeto que é usado por funções e partes de código durante a aplicação é chamado 
+  de objeto com 'estado compartilhado'.
 
+  Sempre que possível evite expor objetos globais na aplicação, isso porque pode 
+  haver colisão de nomenclatura, que é quando duas váriaveis de mesmo nome são 
+  declaradas no mesmo escopo, isso pode resultar em bugs caso um pedaço de código 
+  na aplicação use essa variável para armazenar um outro valor não esperado.
+
+  Outra coisa é que variáveis globais podem deixar o código imprevisível, visto 
+  que elas não delimitam qual tipo de valor pode ser atribuído a ela. Exemplo:
+
+    let internalExchangeRate = {}
+
+    ...
+
+    internalExchangeRate = 'Oi'
+
+  Repare que a varíavel começou sendo um objeto e durante a aplicação foi foi
+  reatribuída para uma string, como se trata de uma reatribuição, eu posso 
+  sisplesmente mudar a variável de um objeto para uma string e não existe nenhum 
+  tipo de mecanismo que me impeça de fazer isso, esse tipo de reatribuição 
+  acidental pode acontecer ao longo da aplicação.
+
+  Para resolver esse problema, poderíamos pensar em armazenar esse estado 
+  compartilhado em um localStorage, mas lembre-se que localStorage é para 
+  persistir dados mesmo quando fechamos a aplicação e não é isso que queremos.
+  Para armazenar esses dados e evitar que estejam expostos no escopo global, 
+  devemos usar 'closures' e 'IIFE'.
+
+  ================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION ==============
+
+  Antigamente as IIFE eram usadas para fazer com que uma aplicação só tivesse 
+  escopos locais, ou seja, escopos de funções, porque como funções tem escopo 
+  próprio, tudo que fosse escrito dentro delas não sairia dalí. Como o JS hoje 
+  em dia contém um sistema de 'módulos' as IIFF não são mais necessárias para 
+  evitar o escopo global entre arquivos .JS diferentes. Quando se usa o sistema
+  de módulos não precisamos mais pendurar uma variável no escopo global ou usar 
+  IIFE para usar essa variável em dois ou mais arquivos .JS. Caso não usemos 
+  módulos, podemos usar IIFE normalmente.
+
+*/
+
+const state = (() => {
+  let exchangeRate = {}
+
+  return {
+    getExchangeRate: () => exchangeRate,
+    setExchangeRate: newExchangeRate => {
+      exchangeRate = newExchangeRate
+      return exchangeRate
+    }
+  }
+})()
+
+// console.log(state.getExchangeRate())
+// console.log(state.setExchangeRate({ x: 1 }))
+// console.log(state.getExchangeRate())
+
+/*
+  Com a declaração de uma IIFE, agora podemos inserir código dentro dela que 
+  verificam se o objeto que ela irá retornar é realmente o que desejamos, com 
+  isso podemos evitar a reatribuição de valor ao objeto caso ele não corresponda 
+  ao desejado.
+*/
+
+/*
+
+  * estudar mais sobre :
+  
+  this
+  estado
+  call()
+  aplly()
+  bind()
+  Object.create()
+  getPrototypeOf()
+  isPrototypeOf()
+  
 */

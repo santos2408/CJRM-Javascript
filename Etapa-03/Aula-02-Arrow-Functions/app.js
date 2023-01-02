@@ -137,11 +137,13 @@ ul.innerHTML = HTMLTemplate
 ================================================================================
 ============================== CONTEÚDO ADICIONAL ==============================
 
-================ IIEE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
+================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
 
 Function expressions invocadas imediatamente após sua declaração é uma forma de 
 proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
 a função entre parênteses e a invocamos ao mesmo tempo.
+
+Mais sobre IIFE na Etapa-14 - Aula 03.02
 
 */
 

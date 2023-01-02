@@ -1,9 +1,9 @@
 /*
-=============== FUNÇÕES CONSTRUTORAS (CONSTRUCTOR FUNCIONS) ===============
+=============== FUNÇÕES CONSTRUTORAS (CONSTRUCTOR FUNCTIONS) ===============
 
 Relembrando que nós podemos declarar propriedades públicas sem usar o método 
 constructor, mas isso nos impediria de atribuir os parâmetros do objeto passado 
-como argumento da invocação da classe. Por isso precisamos do constructor, para 
+como argumento da invocação da classe. Por isso precisamos do constructor para 
 recebermos as propriedades como parâmetro.
 
 Diferente de outras linguagens, em javascript, tecnicamente não existem classes, 
@@ -22,9 +22,10 @@ declarada. Por isso não declaramos funções construtoras com arrow function.
 Por exemplo: se a função construtora foi criada com arrow function e essa função 
 foi declarada no escopo global, o this dessa arrow function irá referenciar o 
 objeto Window e não o objeto que a função está criando. Se declararmos uma função 
-pai que contém uma função filho, o this da função filho irá referenciar a função 
-pai, porque o this referencia o escopo de onde ela foi declarada. Ou seja, o this 
-da função filho é a função pai e o this da função pai é o Objeto window.
+pai que contém uma arrow function filha, o this da função filha irá referenciar a 
+função pai, porque o this referencia o escopo de onde ela foi declarada. Ou seja, 
+o this da função filha referencia o objeto do this da função pai e o this da 
+função pai é o Objeto window.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
@@ -40,7 +41,10 @@ os métodos dentro dela provavelmente estarão sendo usados com function declara
 e não arrow functions, isso porque provavelmente a arrow function é mais recente e 
 não funciona em browsers mais antigos, portanto os desenvolvedores deixam com 
 function declaration para não quebrar o código para browsers antigos. Mas podemos 
-usar arrow functions também.
+usar arrow functions também, sempre tendo atenção ao binding da palavra 'this'.
+
+* Lembrando também que a constructor function deve ser escrita com a primeira 
+letra maiúscula para diferenciarmos de uma função normal.
 
 */
 
@@ -62,12 +66,12 @@ function Student (name, email) {
     console.log(this) // referencia objeto do escopo onde foi declarada / Objeto Student
   }, 1000)
 
-  this.login = function () { // método declarado dentro da função construtora / isso não é bom / função anônima
+  this.login = function () { // método declarado dentro da função construtora / isso não é recomendado / função anônima
     return `${this.name} logou na aplicação.`
   }
 }
 
-// arrow function como função construtora / está errado, não referencia o objeto Student
+// arrow function como função construtora / está errado, não referencia o objeto Student e sim o Window
 const Student = (name, email) => {
   this.name = name // referencia objeto do escopo onde função foi declarada / Objeto Window
   this.email = email // referencia objeto do escopo onde função foi declarada / Objeto Window
@@ -96,7 +100,7 @@ acessar o método 'includes' dele ? Isso porque o método 'includes' existe dent
 da propriedade prototype e quando invocamos esse método no array, ele verifica 
 se esse método existe no array, se nao existir a engine do JS vai procurar 
 automaticamente dentro da propriedade prototype do array e assim por diante. Se 
-chegar no final e nenhum método foi encontrado nos prototypes, então retornará 
+chegar no final e nenhum método for encontrado nos prototypes, então retornará 
 undefined.
 
 Agora, repare que métodos declarados dentro de uma função construtora são 
@@ -209,7 +213,7 @@ function Student (name, email) { // função construtora
   this.name = name
   this.email = email
 
-  formatToDatabase = function (aString) { // function declaration anônima
+  formatToDatabase = function (aString) { // function declaration anônima / método estático
     return aString
       .toUpperCase()
       .replaceAll(' ', '_')
@@ -217,7 +221,7 @@ function Student (name, email) { // função construtora
 }
 
 // ou pode ser inserido depois que a função construtora foi declarada
-Student.formatToDatabase = function (aString) { // function declaration anônima
+Student.formatToDatabase = function (aString) { // function declaration anônima / método estático
   return aString
     .toUpperCase()
     .replaceAll(' ', '_')

@@ -218,7 +218,18 @@ button.addEventListener('click', () => {
    ul.prepend(li) // adiciona no inicio
 })
 
+/*
+   Existem alguns casos em que quando formos adicionar por exemplo um botão via 
+   JS com a intenção de adicionar um listener de evento nele, não podemos adicionar 
+   ele através de uma template string, isso porque quando adiconamos dessa forma 
+   seriamos obrigados a primeiro adicionar o botão no DOM e depois inserir o 
+   event listener. 
 
+   Para resolver isso precisamos ao invés de inserir o botão via template string, 
+   iremos inserir criando um elemento com 'document.createElement'. Dessa forma 
+   conseguimos adicionar eventos nesse elemento antes mesmo de inserirmos esse 
+   elemento no DOM, isso porque esse elemento será um objeto.
+*/
 
 
 
