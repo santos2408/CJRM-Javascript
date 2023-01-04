@@ -18,8 +18,8 @@
    de forma síncrona o javascript só irá continuar a execução do código quando a 
    requisão feita obtiver uma resposta, e dependendo da quantidade de requisições 
    em uma aplicação, isso pode gerar problemas de performance. Esse código da 
-   requisição que fica travando a aplicação é chamado de código blocante, ou 
-   blocking code.
+   requisição que fica travando a aplicação é chamado de 'código blocante', ou 
+   'blocking code'.
    
    Utilizando a requisição no servidor de forma assíncrona, o javascript irá 
    executar essa requisição e passaremos uma função de callback nesse código. 
@@ -33,10 +33,10 @@
    os dados forem obtidos. Enquanto a requisição é feita em outro local a thread 
    principal continua executando os códigos contidos nela.
 
-   Portanto, uma função assíncrona trabalha de forma "independente" da thread 
+   Portanto, uma função assíncrona trabalha de forma 'independente' da thread 
    atual. Quando os dados dessa função são obtidos, então passamos uma função de 
-   callback que será executada após a obtenção desse dados, evitando assim que 
-   todo o código trave.
+   callback que será executada após a obtenção desse dados para serem tratados, 
+   evitando assim que todo o código trave.
 */
 
 /* =========== CÓDIGO ASSÍNCRONO NA PRÁTICA =========== */
@@ -99,9 +99,5 @@ fetch('https://anapioficeandfire.com/api/characters/583')
    https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
 
    [X] - Introducing asynchronous JavaScript
-   [ ] - How to use promises
-   [ ] - Implementing a promise-based API
-   [ ] - Introducing workers
-   [ ] - Sequencing animations
 
 */

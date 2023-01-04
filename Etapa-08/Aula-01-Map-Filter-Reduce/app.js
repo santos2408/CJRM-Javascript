@@ -223,3 +223,9 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
    e que não é um valor retornado pela função.
 
 */
+
+/*
+
+   reduceRight()
+
+*/

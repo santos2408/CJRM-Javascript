@@ -148,3 +148,10 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
 
   Note também que o uso de promises evita o uso de funções de callback.
 */
+
+/*
+   [ ] - How to use promises
+   [ ] - Implementing a promise-based API
+   [ ] - Introducing workers
+   [ ] - Sequencing animations
+*/

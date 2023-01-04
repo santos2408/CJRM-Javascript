@@ -188,6 +188,19 @@ console.log(emailReplace2)
 
 console.log('========================================')
 
+/*
+   Mais métodos:
+
+   endsWith()
+   startWith()
+   padStart()
+   padEnd()
+   trim()
+   trimStart()
+   trimEnd()
+
+*/
+
 // ===== NUMBERS =================================
 
 // === inteiros e decimais ===
@@ -196,6 +209,16 @@ const pi = 3.14
 
 // - números decimais são representados utilizando ponto (.)
 // - o valor de pi é utilizado na matemática para calcular a área do circulo
+
+/*
+   Métodos de Number():
+
+   parseFloat()
+   parseInt()
+   toFixed()
+   toLocaleString()
+
+*/
 
 // === operadores aritméticos ===
 

@@ -48,7 +48,7 @@ const usernameInput = document.querySelector('#username')
 form.addEventListener('submit', event => {
    event.preventDefault() // prevenindo reload da página
 
-   usernameInput.value // valor de input através de value, precisa dar query
+   usernameInput.value // valor de input através de value, precisa dar query no elemento
    form.username.value // procurando input com ID/NAME username dentro do form e obtendo valor
    event.target.username.value // obtendo valor do input com ID/NAME, usado no ReactJS
 })
@@ -60,12 +60,12 @@ form.addEventListener('submit', event => {
    formulário for modificado.
 
    Pode ser confundido com o keyup, que executa a função quando uma tecla é 
-   liberada do teclado. Em alguns casos é melhor usar o input, pois se quisermos 
+   liberada do teclado. Geralmente é melhor usar o input, pois se quisermos 
    enviar um formulário apertando a tecla 'enter' o evento keyup sempre vai 
    disparar e pode causar um bug indesejado.
 
    Podemos também utilizar o evento input para momentos em que quisermos criar 
-   uma feature de filtro.
+   uma feature de filtragem.
 */
 
 // ========== EXPRESSÕES REGULARES (REGEX)==========
@@ -80,7 +80,7 @@ form.addEventListener('submit', event => {
    ele está de acordo com o padrão estabelecido para ele. Se estiver, o formulário 
    é enviado.
 
-   Regex são usadas em várias linguagem de programação e são uma abreviação para
+   Regex são usadas em várias linguagens de programação e são uma abreviação para
    expressões regulares (regular expression). Regex são padrões usados para dar 
    'match' em combinações de caracteres em strings. O estudo de regex's é muito 
    vasto e denso, com muitas possibilidades.

@@ -153,8 +153,6 @@ const firstElement = shiftMethod.shift()
 // modifica o array original (mutação de valores)
 // se length do array for 0, retorna undefined
 
-// unshift
-
 const deth1 = [1, 2, 3, [4, 5, 6], [7, 8, 9]]
 const deth2 = [1, 2, 3, [4, 5, 6, [7, 8]], 9, 10]
 
@@ -162,6 +160,9 @@ const resultDeth1 = deth1.flat()
 const reusultDeth2 = deth2.flat(2)
 // cria um novo array com todos os sub-arrays concatenados recursivamente
 // a recursividade é feita com base na 'profundidade' especificada
+
+// unshift
+//copyWithin
 
 console.log('========================================')
 

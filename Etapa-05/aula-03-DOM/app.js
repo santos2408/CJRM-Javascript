@@ -231,6 +231,12 @@ button.addEventListener('click', () => {
    elemento no DOM, isso porque esse elemento será um objeto.
 */
 
+/*
+   Estudar mais sobre:
+
+   scrollTo()
+   scrollIntoView()
+*/
 
 
 

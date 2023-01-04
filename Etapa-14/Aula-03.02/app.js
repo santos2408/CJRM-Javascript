@@ -324,5 +324,10 @@ const state = (() => {
   Object.create()
   getPrototypeOf()
   isPrototypeOf()
+  getOwnPropertyDescriptors()
+  Object.freeze()
+  Object.seal()
+  Object.preventExtensions()
+  hasOwnProperty()
   
 */
