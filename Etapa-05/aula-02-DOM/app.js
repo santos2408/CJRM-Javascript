@@ -242,3 +242,9 @@ textos.forEach(texto => {
    }
 })
 
+/*
+   Estudar mais sobre:
+
+   dataset
+*/
+

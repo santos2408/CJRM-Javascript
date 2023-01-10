@@ -4,8 +4,8 @@
   Nas aulas anteriores aprendemos como fazer um request HTTP usando o objeto 
   XMLHttpRequest, que pode ser útil quando trabalharmos com código legado em 
   algum projeto. Nós aprendemos a fazer requests utilizando o XMLHttpRequest 
-  para podermos entender como funciona um request por baixo dos panos e todo o 
-  passo a passo para o request retornar uma resposta.
+  para podermos entender como funciona um request por baixo dos panos e todo 
+  o passo a passo para o request retornar uma resposta.
 
   Mas atualmente existe uma forma mais moderna e rápida de realizar requests 
   http, que é usando a FETCH API, uma interface nativa do Javascript para 
@@ -19,7 +19,7 @@
 
   * Para tratarmos o retorno da promise nós invocamos o método THEN, para caso 
   a resposta tenha sido obtida com sucesso. E o método CATCH para caso a resposta 
-  tenha sido rejeitada. 
+  tenha sido rejeitada.
 
   * Os métodos then e catch recebem como argumento uma função que será executada 
   quando a promise for resolvida com sucesso ou quando for rejeitada, com essa 

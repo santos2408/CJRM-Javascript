@@ -120,10 +120,10 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
 
 /* 
   Como desejamos requests sequenciais, repare que em cada then nós estamos no 
-  final retornando uma nova requisição, ou seja, o then irá exibir no console e 
-  após isso todo o then retornará uma nova requisição/promise. E nesse then estamos 
-  encadeando outro then que irá obter a resposta da requisição do then anterior 
-  e executar o processo novamente. 
+  final retornando uma nova requisição, ou seja, o then está exibindo a resposta
+  ano console e após isso estamos retornando uma nova requisição/promise. E nesse 
+  then estamos encadeando outro then que irá obter a resposta da requisição do 
+  then anterior e executar o processo novamente. 
 
   Vale lembrar que o método CATCH será executado se a função reject dentro da 
   função de criação da promise for invocada ou se o código dentro de algum then 
@@ -141,7 +141,7 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
   A conclusão que temos utilizando promises, then e catch é que o código fica 
   mais organizado, legível, com boas práticas ES6 e não temos mais o fenômeno
   de callback helll que sujava o código e atrapalhava a manutenabilidade, como 
-  foi apresentado nas aulas anteiores, mas repare que, mesmo utilizando promises, 
+  foi apresentado nas aulas anteriores, mas repare que, mesmo utilizando promises, 
   dependendo da complexidade do código, ele pode começar a ficar ilegível. Nas 
   próximas aulas veremos como deixar o código ainda mais limpo com novas 
   funcionalidades.

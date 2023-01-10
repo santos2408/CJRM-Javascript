@@ -171,7 +171,7 @@ lis.forEach(li => {
    - 'options' do eventListener que é passado como terceiro argumento
    - currentTarget
    - target
-
+   - handleEvent (importante)
 
 */
 

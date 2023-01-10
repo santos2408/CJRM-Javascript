@@ -151,9 +151,14 @@ name.toUpperCase() // método de String
 
    Quase todos os objetos são instâncias de Object, portanto a maioria irá 
    herdar métodos e propriedades de Object.prototype.
-*/
 
-// ======== Métodos de Object ========
+   É possível passarmos um objeto como 'callback' de um eventListener em que 
+   dentro existirá um método chamado handleEvent() que será o método que 
+   disparará quando o eventListener for executado. Com isso, dentro desse 
+   objeto passado como argumento podemos utilizar propriedades. Consulte também 
+   a aula-03 da etapa-05 para entender melhor.
+
+   ======== Métodos de Object ========
 
 /*
    Object.keys: retorna um array do próprio objeto passado como argumento do 

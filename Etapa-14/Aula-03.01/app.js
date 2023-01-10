@@ -25,7 +25,7 @@ objeto Window e não o objeto que a função está criando. Se declararmos uma f
 pai que contém uma arrow function filha, o this da função filha irá referenciar a 
 função pai, porque o this referencia o escopo de onde ela foi declarada. Ou seja, 
 o this da função filha referencia o objeto do this da função pai e o this da 
-função pai é o Objeto window.
+função pai será o Objeto Window caso ela esteja declara no escopo global.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
@@ -48,6 +48,7 @@ letra maiúscula para diferenciarmos de uma função normal.
 
 */
 
+// Classe / sintax sugar de função construtora / adição recente
 class Student {
   constructor (name, email) {
     this.name = name
@@ -57,7 +58,7 @@ class Student {
   myFunc = () => this // arrow function referencia objeto do escopo onde foi declarada / Objeto Student
 }
 
-// função construtora
+// função construtora / usada quand não existiam classes no JS
 function Student (name, email) {
   this.name = name // referencia objeto criado / Student
   this.email = email // referencia objeto criado / Student
