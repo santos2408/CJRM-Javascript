@@ -2,7 +2,7 @@
 
 =============== HERANÇA PROTOTIPAL ===============
 
-Agora veremos como acontece a verdadeira herança do javascript, é necessário
+Agora veremos como acontece a verdadeira herança do javascript. É necessário
 entendermos como funciona a herança prototipal para sabermos como o javascript 
 compõe objetos, essa é uma das principais características que torna o que o JS
 é hoje.
@@ -66,7 +66,7 @@ Aluno.prototype.comment = function comment () {
 // trabalhando com herença em funções construtoras
 function TeacherAssistant (name, email, scheduleWeekPosts) {
   // invocando construtor Aluno e
-  // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this
+  // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this dele
   Aluno.call(this, name, email) // this = TeacherAssistant e parâmetros para Aluno
   this.scheduleWeekPosts = scheduleWeekPosts // propriedade única de TeacherAssistant
 }
@@ -182,7 +182,7 @@ const user3 = createUser('Roger', 'roger.santos36@gmail.com')
     na memória, portanto as variáveis de um objeto não são as mesmas do outro 
     objeto. Isso garante que cada user tenha as suas próprias informações.
 
-    RUN TIME BINDING: 
+    RUN TIME BINDING!: 
 
     ao invés do valor do this ser determinado com base em onde a função é declarada, 
     o valor será determinado com base em como ela é invocada.
@@ -201,7 +201,7 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   legados funcinando na web. Mas agora, o uso correto para obter o prototype de 
   um objeto é utilizando o método 'Object.getPrototypeOf('object')'
 
-  Para chercarmos se o prototype de um objeto existe dentro prototype de um outro 
+  Para checarmos se o prototype de um objeto existe dentro prototype de um outro 
   objeto, usamos o método object1.isPrototypeOf('object2')
 
   Podemos estabelecer um padrão de nomes de funções. Quando uma função busca um 
@@ -214,10 +214,10 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 /*
   ==================== CLOSURES ====================
 
-  Quando uma função interna acessa uma variável que foi declarada no escopo 
-  léxico, essa função será conhecida como 'closure'. Closure é a combinação de 
-  uma função com o seu escopo léxico. Funções aninhadas tem acesso a suas 
-  funções externas.
+  Quando uma função interna (uma função que está dentro de outra), acessa uma 
+  variável que foi declarada no escopo léxico dela, essa função será conhecida 
+  como 'closure'. Closure é a combinação de uma função com o seu escopo 
+  léxico. Funções aninhadas tem acesso a suas funções externas, em 'degraus'.
 
   Repare abaixo que a displayName() tem acesso a variável da função externa init(), 
   a displayName() tem referências do seu estado circundante, portanto, a displayName() 
@@ -247,8 +247,8 @@ init()
 
   Essas informações influenciam o output do que é renderizado na tela. Essa é 
   uma definição de estado simplificada, é mais complexo do que isso. Geralmente 
-  um objeto que é usado por funções e partes de código durante a aplicação é chamado 
-  de objeto com 'estado compartilhado'.
+  um objeto que é usado por funções e partes de código durante a aplicação é 
+  chamado de objeto com 'estado compartilhado'.
 
   Sempre que possível evite expor objetos globais na aplicação, isso porque pode 
   haver colisão de nomenclatura, que é quando duas váriaveis de mesmo nome são 
@@ -258,11 +258,11 @@ init()
   Outra coisa é que variáveis globais podem deixar o código imprevisível, visto 
   que elas não delimitam qual tipo de valor pode ser atribuído a ela. Exemplo:
 
-    let internalExchangeRate = {}
+    let internalExchangeRate = {} // variável global armazenando obejto
 
     ...
 
-    internalExchangeRate = 'Oi'
+    internalExchangeRate = 'Oi' // variável sendo reatribuída e virando string!
 
   Repare que a varíavel começou sendo um objeto e durante a aplicação foi foi
   reatribuída para uma string, como se trata de uma reatribuição, eu posso 
@@ -271,7 +271,7 @@ init()
   acidental pode acontecer ao longo da aplicação.
 
   Para resolver esse problema, poderíamos pensar em armazenar esse estado 
-  compartilhado em um localStorage, mas lembre-se que localStorage é para 
+  compartilhado em uma localStorage, mas lembre-se que localStorage é para 
   persistir dados mesmo quando fechamos a aplicação e não é isso que queremos.
   Para armazenar esses dados e evitar que estejam expostos no escopo global, 
   devemos usar 'closures' e 'IIFE'.
@@ -289,25 +289,34 @@ init()
 
 */
 
-const state = (() => {
+const state = (() => { // IIFE
   let exchangeRate = {}
+
+  const checkIfIsAObject = newExchangeRate => typeof newExchangeRate === 'object'
 
   return {
     getExchangeRate: () => exchangeRate,
     setExchangeRate: newExchangeRate => {
-      exchangeRate = newExchangeRate
-      return exchangeRate
-    }
+      const isAObject = checkIfIsAObject(newExchangeRate) // impedindo retribuição de tipo diferente
+
+      if (isAObject) {
+        exchangeRate = newExchangeRate
+        return exchangeRate
+      }
+
+      return 'Desculpe, mas o valor inserido não é um objeto e eu não posso alterar o tipo de dado dessa variável.'
+    }    
   }
 })()
 
 // console.log(state.getExchangeRate())
 // console.log(state.setExchangeRate({ x: 1 }))
+// console.log(state.setExchangeRate(''))
 // console.log(state.getExchangeRate())
 
 /*
   Com a declaração de uma IIFE, agora podemos inserir código dentro dela que 
-  verificam se o objeto que ela irá retornar é realmente o que desejamos, com 
+  verifica se o objeto que ela irá retornar é realmente o que desejamos, com 
   isso podemos evitar a reatribuição de valor ao objeto caso ele não corresponda 
   ao desejado.
 */
@@ -317,8 +326,17 @@ const state = (() => {
   * estudar mais sobre :
   
   this
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+
   estado
+  https://www.freecodecamp.org/news/state-in-javascript-explained-by-cooking-a-simple-meal-2baf10a787ee/
+
   call()
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+
+  closures
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+  
   aplly()
   bind()
   Object.create()

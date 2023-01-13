@@ -3,8 +3,13 @@
 
 Em JavaScript datas são um tipo de objeto, e por serem um objeto eles são um 
 tipo referência e não primitivo. Representam um momento único no tempo. Esse 
-objeto contém um número representado em milisegundos contados desde 1 de Janeiro 
-de 1970.
+objeto contém um número representado em milisegundos contados desde a meia noite 
+de 1 de Janeiro de 1970.
+
+Atualmente a TC39, uma comunidade internacional de programadores Javascript estão 
+desenvolvimento uma nova feature para se trabalhar com datas, chamada de 'Temporal', 
+que será um objeto global que resolverá certos problemas encontrados hoje no 
+objeto Date.
 
 Para começar, criaremos um objeto que represente uma data e para fazermos isso 
 precisaremos usar um date constructor.
@@ -45,18 +50,18 @@ new: cria uma instância do objeto criado pelo usuário ou JavaScript. Ex: Date(
 */
 
 // criando e armazenando um objeto do tipo Date
-const present = new Date() // data atual / objeto date
+const present1 = new Date() // data atual / objeto date
 
 // obtendo as datas através de métodos
-console.log('getFullYear:', present.getFullYear()) // ano completo
-console.log('getMonth:', present.getMonth()) // mês em base 0
-console.log('getDate:', present.getDate()) // dia do mês
-console.log('getDay:', present.getDay()) // dia da semana
-console.log('getHours:', present.getHours()) // horas
-console.log('getMinutes:', present.getMinutes()) // minutos 
-console.log('getSeconds:', present.getSeconds()) // segundos
-console.log('getMilliseconds:', present.getMilliseconds()) // milisegundos
-console.log('getTime:', present.getTime()) // milisegundos passados desde 01/01/1970
+console.log('getFullYear:', present1.getFullYear()) // ano completo
+console.log('getMonth:', present1.getMonth()) // mês em base 0
+console.log('getDate:', present1.getDate()) // dia do mês
+console.log('getDay:', present1.getDay()) // dia da semana
+console.log('getHours:', present1.getHours()) // horas
+console.log('getMinutes:', present1.getMinutes()) // minutos 
+console.log('getSeconds:', present1.getSeconds()) // segundos
+console.log('getMilliseconds:', present1.getMilliseconds()) // milisegundos
+console.log('getTime:', present1.getTime()) // milisegundos passados desde 01/01/1970
 
 // atenção!
 const present = Date() // data atual / mas é apenas uma string
@@ -70,21 +75,23 @@ const present = Date() // data atual / mas é apenas uma string
    comparar duas datas. Veja:
 */
 
+const present2 = new Date()
+
 // data atual
-console.log('present:', present)
+console.log('present:', present2)
 
 // milisegundos passados desde 01/01/1970
-console.log('timestamp:', present.getTime()) // timestamp
+console.log('timestamp:', present2.getTime()) // timestamp
 
 // retorna uma string num padrão com dia da semana, mês, data do dia, ano
-console.log('toDateString:', present.toDateString())
+console.log('toDateString:', present2.toDateString())
 
 // retorna hora, fuso e horário padrão local
 // semelhante a invocação do Date()
-console.log('toTimeString:', present.toTimeString())
+console.log('toTimeString:', present2.toTimeString())
 
 // retorna data em formato numérico padrão americano e horário local.
-console.log('toLocaleString:', present.toLocaleString())
+console.log('toLocaleString:', present2.toLocaleString())
 
 // =========== TIMESTAMPS E COMPARAÇÕES ===========
 
@@ -117,3 +124,26 @@ console.log({ years })
 // Podemos também receber um timestamp aleatório e transformar ele em um objeto de data. 
 const timestamp = new Date(1649954142439)
 console.log(timestamp)
+
+// =========== Métodos ===========
+
+const time = new Date()
+
+Date.now()
+// retorna um valor correspondente ao 'tempo' atual, representado em milisegundos 
+// contados desde 1 de Janeiro de 1970
+
+time.getTimezoneOffset()
+// retorna o deslocamento de fuso horário em minutes do meridiano de Greenwich, 
+// até a localidade atual
+
+time.toLocaleDateString()
+// ...
+
+time.toLocaleString()
+// ...
+
+time.toLocaleTimeString()
+// ...
+
+time.toTimeString()
