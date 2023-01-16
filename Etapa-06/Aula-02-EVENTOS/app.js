@@ -1,13 +1,3 @@
-/*
-   ASSUNTOS:
-
-   - SUBMIT EVENT
-   - KEYUP/KEYDOWN EVENT
-   - INPUT EVENT
-   - REGULAR EXPRESSION
-   - INSERT ADJACENT ELEMENT
-*/
-
 // ========== VALIDAÇÃO DE FORMULÁRIOS ==========
 
 const form = document.querySelector('form')

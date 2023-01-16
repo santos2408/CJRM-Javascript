@@ -236,6 +236,7 @@ button.addEventListener('click', () => {
 
    scrollTo()
    scrollIntoView()
+   removeEventListener()
 */
 
 

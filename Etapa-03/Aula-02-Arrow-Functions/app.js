@@ -1,3 +1,11 @@
+/*
+   referências:
+
+   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+   https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+
+*/
+
 // ===== ARROW FUNCTIONS ================================
 
 /*
@@ -26,6 +34,15 @@
    Outra diferença entre arrow functions e funções tradicionais é o binding
    da palavra this que será abordado em aulas posteriores.
 
+   O nome da função pode ser omitido, nesse caso ela será reconhecida como uma 
+   função anônima. O nome é apenas local para o corpo da função. Vale lembrar 
+   que é recomendado nomear as funções, pois fica mais fácil depurar um código 
+   quando se sabe qual função ocorreu algum erro.
+
+   Como toda função é um objeto, quando não declaramos uma função com nome, 
+   ela recebe uma propriedade 'name' vazia e quando declaramos essa propriedade 
+   recebera o nome da função.
+
 */
 
 // function declaration
@@ -52,6 +69,12 @@ const double = number => number * 2
 const result = double(3)
 console.log(`O resultado é: ${result}`)
 
+/*
+   Functions expressions não contém hoisting, portanto não podemos invocá-las 
+   antes da sua declaração, diferente das function declarations que é possível.
+
+*/
+
 // ===== DIFERENÇA DE MÉTODO E FUNÇÃO ================================
 
 /*
@@ -68,7 +91,7 @@ const sayHi = () => 'Oi'
 const greet = sayHi()
 console.log(greet)
 
-//Para invocarmos uma função, nós declaramos o nome da função seguido de parênteses.
+// Para invocarmos uma função, nós declaramos o nome da função seguido de parênteses.
 
 /*
    ===== MÉTODOS =====
@@ -116,7 +139,7 @@ const logArrayInfo = (socialNetwork, index, array) => {
 
 socialNetworks.forEach(logArrayInfo)
 // não precisa de parênteses para executar a função
-// a execução é implicita, é passada por referência
+// a execução é implicita, dizemos que ela é passada por referência
 // os parâmetros estão sendo passados implicitamente
 
 // ===== UTILIZANDO CALLBACKS ================================
