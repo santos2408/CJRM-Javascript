@@ -87,18 +87,19 @@
 */
 
 // importando funções dos sdk's
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js'
-import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js'
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"
+import { getFirestore  } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"
 
 // objeto contendo a configuração do firebase para a aplicação
 const firebaseConfig = {
-  apiKey: 'AIzaSyDte0hL0LHxTRlOB7r5Sc5qmMUse1WJ864',
-  authDomain: 'testing-firebase-5ed97.firebaseapp.com',
-  projectId: 'testing-firebase-5ed97',
-  storageBucket: 'testing-firebase-5ed97.appspot.com',
-  messagingSenderId: '474232893970',
-  appId: '1:474232893970:web:57dc954fa890610050decb',
-  measurementId: 'G-P2N4FN0015'
+  apiKey: "AIzaSyDQPNObgws7ZSnHh8uHjmkKWGRrKBUhvF4",  
+  authDomain: "testing-firebase-d7a43.firebaseapp.com",  
+  projectId: "testing-firebase-d7a43",  
+  storageBucket: "testing-firebase-d7a43.appspot.com",  
+  messagingSenderId: "289086234793",  
+  appId: "1:289086234793:web:10e883d7d6ede1544049b8",  
+  measurementId: "G-W3G3F8BWHD"
 }
 
 // inicializando o firebase e o firestore

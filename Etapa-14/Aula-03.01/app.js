@@ -23,9 +23,10 @@ Por exemplo: se a função construtora foi criada com arrow function e essa fun�
 foi declarada no escopo global, o this dessa arrow function irá referenciar o 
 objeto Window e não o objeto que a função está criando. Se declararmos uma função 
 pai que contém uma arrow function filha, o this da função filha irá referenciar a 
-função pai, porque o this referencia o escopo de onde ela foi declarada. Ou seja, 
-o this da função filha referencia o objeto do this da função pai e o this da 
-função pai será o Objeto Window caso ela esteja declara no escopo global.
+função pai, porque o this de uma arrow function referencia o escopo de onde ela 
+foi declarada. Ou seja, o this da função filha referencia o mesmo objeto do this 
+da função pai e o this da função pai será o Objeto Window caso ela esteja declara 
+no escopo global.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
@@ -43,6 +44,10 @@ não funciona em browsers mais antigos, portanto os desenvolvedores deixam com
 function declaration para não quebrar o código para browsers antigos. Mas podemos 
 usar arrow functions também, sempre tendo atenção ao binding da palavra 'this'.
 
+Pela constructor function ser uma feature antiga do JS, não é recomendado 
+utilziar arrow function dentro dela, visto que arrow function é uma feature 
+recente.
+
 * Lembrando também que a constructor function deve ser escrita com a primeira 
 letra maiúscula para diferenciarmos de uma função normal.
 
@@ -58,7 +63,7 @@ class Student {
   myFunc = () => this // arrow function referencia objeto do escopo onde foi declarada / Objeto Student
 }
 
-// função construtora / usada quand não existiam classes no JS
+// função construtora / era usada quando não existiam classes no JS para abstraí-las
 function Student (name, email) {
   this.name = name // referencia objeto criado / Student
   this.email = email // referencia objeto criado / Student
@@ -72,7 +77,7 @@ function Student (name, email) {
   }
 }
 
-// arrow function como função construtora / está errado, não referencia o objeto Student e sim o Window
+// arrow function como função construtora / está errado pois o 'this' não referencia o objeto Student e sim o Window
 const Student = (name, email) => {
   this.name = name // referencia objeto do escopo onde função foi declarada / Objeto Window
   this.email = email // referencia objeto do escopo onde função foi declarada / Objeto Window
@@ -88,13 +93,18 @@ não é bom para a performace da aplicação, isso porque quando adicionamos mé
 dentro de uma função construtora, esse método será declarado em cada novo objeto 
 que a função construtora criar. Mesmo que os métodos sejam idênticos, eles irão 
 ocupar dois espaços diferentes na memória, pois cada um vai ocupar um espaço 
-diferente para cada objeto criado. Com isso a aplicação irá consumir mais memória 
-do que necessário. Mas existe uma forma de evitar isso.
+diferente para cada objeto criado. 
+
+E esse é um comportamento que não faz sentido, pois se todos os objetos terão 
+o mesmo método, não há motivos para criar esse mesmo método para cada objeto 
+criado. Com isso a aplicação irá consumir mais memória do que necessário. 
+Mas existe uma forma de evitar isso.
 
 Em javascript todo novo objeto que é criado herda propriedades e métodos do 
 seu prototype, que é um objeto do qual um novo objeto que você criou vai herdar 
 as propriedades e métodos, ou seja, é o objeto que armazena as propriedades e 
-métodos que são herdados pelo novo objeto que criarmos.
+métodos que são herdados pelo novo objeto que criarmos. Portanto, como tudo em
+JS é um 'objeto', todos esses objetos herdam um objeto prototype.
 
 Perceba que um array possui apenas algumas propriedades, mas como conseguimos 
 acessar o método 'includes' dele ? Isso porque o método 'includes' existe dentro 
@@ -114,8 +124,9 @@ Para evitarmos isso é possível declararmos o método uma vez, armazenarmos ele
 em apenas um espaço na memória e fazer com que todos os objetos que sejam criados 
 pela função construtora consigam acessar o método através da referência dele. Para 
 isso temos que armazená-lo dentro da propriedade prototype do objeto, com isso 
-todo objeto criado vai herdar o mesmo método existente que está num espaço da 
-memória, sem a necessidade de criar um para cara objeto criado.
+todo objeto criado por essa função construtora herdará os métodos e propriedades
+existentes no prototype e que está num espaço da memória, sem a necessidade de 
+criar o mesmo método para cara objeto criado.
 
 Vale lembrar que cada tipo de objeto contém um prototype, as vezes com métodos e 
 propriedades diferentes para aquele tipo de objeto. Mas não significa que o 
@@ -124,8 +135,8 @@ prototype é criado para cada tipo de objeto, na verdade o prototype é um objet
 Isso significa que se tivermos dois arrays diferentes na memória, eles estarão 
 apontando para o mesmo prototype do objeto Array na memória, isso diminui o 
 consumo de memória. Portanto cada tipo de objeto tem seus métodos armazenados no 
-seu prototype. Portanto, os prototypes dos objetos já existem no JS, eles não 
-são criados, mas apenas referenciados.
+seu prototype. Portanto, todos os prototypes dos objetos já existem no JS, eles 
+não são criados toda vez que criamos um novo objeto, mas são apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
 prototype do objeto criado, invés de adicionar dentro da própria função construtora.
@@ -133,7 +144,7 @@ Assim, um único método estará disponível por referência para qualquer objet
 for criado a partir da instância da função construtora.
 
 A propriedade prototype é tanto um getter quanto setter, ou seja, nós conseguimos 
-obter dados dele e também conseguimos inserir dados nele.
+obter dados dela e também conseguimos inserir dados nela.
 
 */
 
@@ -144,11 +155,11 @@ function Student (name, email) { // função construtora
   // não iremos mais adicionar os métodos aqui e sim dentro do prototype dela
 }
 
-Student.prototype.login = function () { // setando método no prototype de Student / setter / função anônima
+Student.prototype.login = function () { // acessando e setando método no prototype de Student / setter / função anônima
   return `${this.name} fez login.`
 }
 
-Student.prototype.comment = function () { // setando método no prototype de Student / setter / função anônima
+Student.prototype.comment = function () { // acessando e setando método no prototype de Student / setter / função anônima
   return `${this.name} comentou no post`
 }
 
@@ -163,7 +174,7 @@ Array1.__prototype__ === Array2.__prototype__ // true
 
 roger.login === alessandra.login // true
 roger.comment === alessandra.comment // true
-// método login e comment dentro do prototype de cada objeto
+// método login e comment dentro do prototype de cada objeto criado
 // referenciando o mesmo método na memória
 
 // ============================================================================
@@ -180,6 +191,12 @@ roger.comment === alessandra.comment // true
   declarar diretamente os métodos no prototype. Por isso classes são uma abstração 
   de funções construtoras, com classes nós temos menos trabalho do que usando 
   funções construtoras diretamente.
+
+  Ou seja, ao declarar um método dentro da classe, a classe automaticamente 
+  já faz esse trabalho de inserir o método dentro do prototype do objeto. Isso 
+  explica muito bem o conceito de abstração: "processo de ocultar certos detalhes 
+  de implementação e expor outros para que através de um código mais simples 
+  possamos lidar com estruturas mais complexas"
 
 */
 

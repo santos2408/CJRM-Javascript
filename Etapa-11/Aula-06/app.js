@@ -15,12 +15,16 @@
   Agora, para podermos ainda obter o valor das promises, devemos utilizar o 
   método do objeto construtor Promise, chamado all. Ele recebe como argumento 
   um array de promises e quando todas essas promises recebidas forem resolvidas 
-  ele retornará uma única promise que com o await obtemos as respostas da promise 
-  resolvida.
+  ele retornará uma única promise que terá como resultado um array com as respostas 
+  de cada promise resolvida, e usando o await podemos desempacotar essa resposta 
+  e obter esse array com as respostas de cada promise.
   
-  Se uma das promises que o Promise.all recebeu for rejeitada, a promise que o 
-  promise.all retorna será uma promise rejeitada que contém a mensagem e o erro 
-  que causou a rejeição.
+  Se uma das promises que o Promise.all recebeu for rejeitada, o array das respostas 
+  das promises será retornado normalmente mas aquela promise que deu erro será 
+  retornada com uma mensagem de erro informando o que causou a rejeição. Ex:
+
+  [ promise1, promise2, promise3 ]
+  [ promise1, promise2 com erro, promise3]
 */
 
 const getPokemon = async () => {
@@ -45,6 +49,15 @@ getPokemon()
   executar um código e se esse código que for tentado executar lançar um erro, nós 
   poderemos executar um outro código para que o erro lançado não trave a aplicação.
 
+  O cláusa try...catch é composta de um bloco 'try', um bloco 'catch' e um 
+  terceiro bloco opcional chamado 'finally'. O código dentro do 'try' é executado 
+  primeiro, e se ele lançar alguma exceção (erro), o bloco do 'catch' será 
+  executado, caso nenhum erro ocorra o bloco do 'catch' será ignorado.
+
+  O bloco do 'finally' sempre será executado antes do controle de fluxo do 
+  código sair da estrutura de execução do try...catch. Independente se foi 
+  lançado um erro ou não.
+
   Em javascript todo objeto de erro tem as propriedades name e message que 
   armazenam o nome e mensagem do erro.
 
@@ -59,15 +72,15 @@ getPokemon()
 */
 
 try {
-  console.log(oi)
-} catch (error) {
+  console.log(oi) // lançando erro porque variável 'oi' não está definida
+} catch (error) { // captura o objeto de erro
   if (error.name === 'ReferenceError' && error.message === 'oi is not defined') {
     const oi = 'const oi criada'
     console.log(oi)
   }
 }
 
-console.log(oi)
+// console.log(oi)
 
 /*
   // ======= TRY / CATCH EM REQUESTS E ERROS PERSONALIZADOS =======
@@ -76,7 +89,7 @@ console.log(oi)
 
 const getUsers = async () => {
   try {
-    const response = await fetch('./json/todoss/.json')
+    const response = await fetch('./json/todos.json')
 
     if (!response.ok) {
       throw new Error('Não foi possível obter os dados')
