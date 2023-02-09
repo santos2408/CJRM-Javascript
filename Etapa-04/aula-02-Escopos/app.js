@@ -83,6 +83,11 @@ console.log(`Fora do bloco de código: ${age} ${name} ${test}`) // 25 '' Oi
 
    Como estamos referenciando o objeto através do this, é possível acessar
    suas propriedades normalmente com notação de ponto ou colchetes.
+
+   quando a função não é uma arrow function, o this dentro dela irá referenciar 
+   o objeto em que ela foi invocada, por exemplo: container.show()
+
+   o this dentro da função show irá referenciar o objeto 'container'
 */
 
 let user = {

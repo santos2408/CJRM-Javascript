@@ -163,6 +163,7 @@ const reusultDeth2 = deth2.flat(2)
 
 // unshift
 //copyWithin
+// fill
 
 console.log('========================================')
 

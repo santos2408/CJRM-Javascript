@@ -7,16 +7,16 @@
    comportamento de execução do mesmo.
 
    Ao utilizar loops é possível percorrer uma determinada cadeia de dados, por
-   exemplo um array, e executar um código para cada item dentro desse array, para
-   que algum código seja executado. Loop é um tipo de controle de fluxo.
+   exemplo um array, e executar um código para cada item dentro desse array para
+   que alguma ação seja feita. Loop é um tipo de controle de fluxo.
 
    Em alguns pontos do código é desejado verificar se uma condição é verdadeira,
    e portanto, seja executado determinado código com base no resultado dessa
-   condição. Esse tipo de verificação é chamado de estrutura condicional ou
-   conditional statement.
+   condição. Esse tipo de verificação é chamado de 'estrutura condicional' ou
+   'conditional statement.'
 
    Existe algumas variações e tipos diferentes de loops e estruturas condicionais
-   que seráo apresentados ao longo do treinamento.
+   que serão apresentados ao longo do treinamento.
 */
 
 // ============ FOR LOOP CLÁSSICO ============
@@ -27,12 +27,12 @@
    chaves { } é chamado de bloco de código, o código de dentro corresponde
    apenas aquele bloco.
 
-   Dentro do loop existem 3 expressões separados por ponto e vírgula. A primeira
+   Dentro do loop existem 3 expressões separadas por ponto e vírgula. A primeira
    expressão inicializa a variável, normalmente com 0 e é chamada de contador.
    Por padrão e boas práticas nomea-se com 'i' de 'index'. 
 
    A segunda expressão será uma condição que retornará um boolean, que sendo 
-   true executará o bloco de código do for e sendo false sairá do loop.
+   'true' executará o bloco de código do for e sendo false sairá do loop.
 
    A terceira expressão será um incremento, que será executada sempre
    no final de cada execução do bloco de código.
@@ -43,8 +43,6 @@ for (let i = 0; i < 5; i++) {
 }
 
 console.log('Loop concluído')
-
-console.log('===================================')
 
 /*
    É possível percorrer um array simples ou vindo de um banco de dados onde
@@ -63,30 +61,36 @@ for (let i = 0; i < names.length; i++) {
    console.log(HTMLTemplate)
 }
 
-console.log('===================================')
-
 // ============ FOR IN ============
 
 /*
    Esse tipo de loop é semelhante ao clássico, no entanto ao declararmos, ele 
-   irá iterar pelo índice de um array ou chave de um objeto e podemos obter o valor. 
+   irá iterar pelo 'índice' de um array ou 'chave' de um objeto e podemos obter o valor. 
    Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
    o for in irá percorrer todos os elementos e irá obter seus respectivos índices.
+
+   Quando desejar percorrer por um objeto, experimente usar o for loop.
 
 */
 
 const frutas = ['Banana', 'Maçã', 'Pera', 'Laranja']
 const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
 
-// percorre os índices
+// percorrendo os índices com for..in
 for (let indice in frutas) {
    console.log(frutas[indice])
 }
 
-// percorre as chaves
+// percorre as chaves com for..in
 for (let chave in pessoa) {
    console.log(pessoa[chave])
 }
+
+// percorrendo os índices com for loop
+for (let i = 0; i < frutas.length; i++) {
+   console.log(frutas[i])
+}
+
 
 // ============ FOR OF ============
 
@@ -128,6 +132,14 @@ for (let elemento of frutas) {
    pois sem ele o loop irá executar o bloco infinitamente. Nesse caso, o incremento
    é inserido no final da declaração depois de toda execução do bloco de código.
 
+   Vale lembrar também que não necessariamente precisamos usar um contador para 
+   utilizar o 'while loop', o que precisamos é que a expressão testada resulte 
+   em um Boolean, portanto, essa expressão testada deve ter seus valores alterados 
+   sempre que ela entra no loop. Ex: Caso essa expressão esteja dentro de uma 
+   variável, essa variável deve estar fora do loop e dentro dele algum código 
+   deve alterar o seu valor, para que quando o loop testar a expressão novamente, 
+   ele teste o novo valor da variável e verifique se aidna é true ou false.
+
    Da mesma forma do for, é possível iterar sobre um array
 
 */
@@ -138,5 +150,3 @@ while (i < 5) {
    console.log(`Dentro do loop: ${i}`)
    i++
 }
-
-

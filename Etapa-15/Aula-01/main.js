@@ -89,7 +89,8 @@
 // importando funções dos sdk's
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"
 import { getFirestore  } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"
 
 // objeto contendo a configuração do firebase para a aplicação
 const firebaseConfig = {
@@ -106,27 +107,55 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig) // firebase
 const database = getFirestore(app) // firestore
 
-// ============= LENDO DADOS DO FIRESTORE ============= 
-
-const myCollection = collection(database, 'games') // obtendo collection
-
-getDocs(myCollection)
+getDocs(collection(database, "games"))
   .then(querySnapshot => {
-    const gamesLis = querySnapshot.docs.reduce((acc, doc) => {
-      const { title, developedBy, releaseDate} = doc.data()
-
-      acc += `
+    const gameLis = querySnapshot.docs.reduce((accumulator, doc) => {
+      const { title, developedBy, createdAt} = doc.data()
+  
+      accumulator += `
         <li class="my-4">
-          <h5>${title}</h5>          
+          <h5>${title}</h5>
+      
           <ul>
-            <li>Desenvolvedora: ${developedBy}</li>
-            <li>Data de lançamento: ${releaseDate.toDate()}</li>
+            <li>Desenvolvido por ${developedBy}</li>
+            <li>Adicionado no banco em ${createdAt}</li>
           </ul>
         </li>`
-
-        return acc
+      
+      return accumulator
     }, '')
 
     const gamesList = document.querySelector('[data-js="games-list"]')
-    gamesList.innerHTML = gamesLis
+    gamesList.innerHTML = gameLis
   })
+
+// const querySnapshot = await getDocs(collection(database, "games"));
+// querySnapshot.forEach((doc) => {
+//   // doc.data() is never undefined for query doc snapshots
+//   console.log(doc.data());
+// });
+
+// ============= LENDO DADOS DO FIRESTORE ============= 
+
+// const myCollection = collection(database, 'games') // obtendo collection
+
+// getDocs(myCollection)
+//   .then(querySnapshot => {
+//     const gamesLis = querySnapshot.docs.reduce((acc, doc) => {
+//       const { title, developedBy, releaseDate} = doc.data()
+
+//       acc += `
+//         <li class="my-4">
+//           <h5>${title}</h5>          
+//           <ul>
+//             <li>Desenvolvedora: ${developedBy}</li>
+//             <li>Data de lançamento: ${releaseDate.toDate()}</li>
+//           </ul>
+//         </li>`
+
+//         return acc
+//     }, '')
+
+//     const gamesList = document.querySelector('[data-js="games-list"]')
+//     gamesList.innerHTML = gamesLis
+//   })

@@ -190,3 +190,17 @@ funcao(1, 2, 3)
 
 
 // =============================================================================
+
+/*
+   Funções variádicas são funções que podem receber um número indefinido de 
+   argumentos, ela é flexível...
+
+*/
+
+/*
+   Estudar:
+
+   [ ] - função variádica
+   [ ] - rest parameters x spread operators
+
+*/
