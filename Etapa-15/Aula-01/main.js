@@ -87,75 +87,81 @@
 */
 
 // importando funções dos sdk's
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js'
 import { getFirestore  } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"
+import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
 
 // objeto contendo a configuração do firebase para a aplicação
 const firebaseConfig = {
-  apiKey: "AIzaSyDQPNObgws7ZSnHh8uHjmkKWGRrKBUhvF4",  
-  authDomain: "testing-firebase-d7a43.firebaseapp.com",  
-  projectId: "testing-firebase-d7a43",  
-  storageBucket: "testing-firebase-d7a43.appspot.com",  
-  messagingSenderId: "289086234793",  
-  appId: "1:289086234793:web:10e883d7d6ede1544049b8",  
-  measurementId: "G-W3G3F8BWHD"
+  apiKey: 'AIzaSyDQPNObgws7ZSnHh8uHjmkKWGRrKBUhvF4',  
+  authDomain: 'testing-firebase-d7a43.firebaseapp.com',  
+  projectId: 'testing-firebase-d7a43',  
+  storageBucket: 'testing-firebase-d7a43.appspot.com',  
+  messagingSenderId: '289086234793',  
+  appId: '1:289086234793:web:10e883d7d6ede1544049b8',  
+  measurementId: 'G-W3G3F8BWHD'
 }
 
 // inicializando o firebase e o firestore
 const app = initializeApp(firebaseConfig) // firebase
 const database = getFirestore(app) // firestore
+const collectionGames = collection(database, 'games')
 
-getDocs(collection(database, "games"))
+const gamesList = document.querySelector('[data-js="games-list"]')
+
+// ============= LENDO/OBTENDO DADOS DO FIRESTORE ============= 
+
+/*
+  o método getDocs realiza uma requisição/query ao banco de dados, nesse caso está 
+  fazendo essa requisição assim que a página é carregada e está buscando os 
+  dados contidos nesse banco.
+
+  A getDocs recebe como argumento uma collection que retorna todos os documents 
+  contidos dentro dessa collection. O resultado retornado pela getDocs é uma 
+  promise contendo um 'querySnapshot', que é uma 'fotografia' ( ou representação )
+  de como o collection solicitado no banco de dados se encontra no momento em 
+  que o request foi executado. 
+
+  Se repararmos, a 'querySnapshot' retornada contém em seu prototype um método 
+  nativo dela chamado forEach em que cada iteração retornará um document do 
+  collection, com isso podemos acessar os documents daquele collection. No 
+  entanto, esse tipo de abordagem é estranha, pois estamos usando um forEach 
+  não em um array e sim num objeto, não é errado mas é estranho.
+
+  No entanto, podemos usar encontrar a propriedade 'docs' que retorna um array 
+  com os documents do collection e aí sim nele podemos encadear um forEach nativo 
+  do Javascript para poder realizar a iteração.
+
+*/
+
+getDocs(collectionGames)
   .then(querySnapshot => {
-    const gameLis = querySnapshot.docs.reduce((accumulator, doc) => {
-      const { title, developedBy, createdAt} = doc.data()
+    const gamesLis = querySnapshot.docs.reduce((accumulator, doc) => {
+      const { title, developedBy, createdAt } = doc.data()
   
       accumulator += `
-        <li class="my-4">
+        <li class='my-4' data-id='${doc.id}'>
           <h5>${title}</h5>
       
-          <ul>
+          <ul class='mb-2'>
             <li>Desenvolvido por ${developedBy}</li>
-            <li>Adicionado no banco em ${createdAt}</li>
+            <li>Adicionado no banco em ${createdAt.toDate()}</li>
           </ul>
+
+          <button type='button' class='btn btn-danger' data-remove='${doc.id}'>Remover</button>
         </li>`
       
       return accumulator
     }, '')
 
-    const gamesList = document.querySelector('[data-js="games-list"]')
-    gamesList.innerHTML = gameLis
+    gamesList.innerHTML = gamesLis
   })
+  .catch(console.log)
 
-// const querySnapshot = await getDocs(collection(database, "games"));
-// querySnapshot.forEach((doc) => {
-//   // doc.data() is never undefined for query doc snapshots
-//   console.log(doc.data());
-// });
+/*
+  Nas próximas aulas veremos os problemas de segurança que o uso de innerHTML 
+  apresenta, como por enquanto nós temos controle total sobre as 'lis' que são 
+  inseridas na 'ul' e não estamos enviando informações para o banco de dados, 
+  por enquanto usaremos innerHTML.
 
-// ============= LENDO DADOS DO FIRESTORE ============= 
-
-// const myCollection = collection(database, 'games') // obtendo collection
-
-// getDocs(myCollection)
-//   .then(querySnapshot => {
-//     const gamesLis = querySnapshot.docs.reduce((acc, doc) => {
-//       const { title, developedBy, releaseDate} = doc.data()
-
-//       acc += `
-//         <li class="my-4">
-//           <h5>${title}</h5>          
-//           <ul>
-//             <li>Desenvolvedora: ${developedBy}</li>
-//             <li>Data de lançamento: ${releaseDate.toDate()}</li>
-//           </ul>
-//         </li>`
-
-//         return acc
-//     }, '')
-
-//     const gamesList = document.querySelector('[data-js="games-list"]')
-//     gamesList.innerHTML = gamesLis
-//   })
+*/

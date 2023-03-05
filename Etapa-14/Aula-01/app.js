@@ -45,11 +45,11 @@ console.dir(elemento)
 */
 
 const objeto = { // objeto
-  prop0: () => {}, // objeto
+  prop0: () => {}, // função / objeto
   prop1: 'a',
   prop2: 'b',
   prop3: { a: 'x', b: 'y', c: 'z' }, // objeto
-  prop4: [1, { x: 2, y: 3 }] // array/objeto + objeto
+  prop4: [1, { x: 2, y: 3 }] // array / objeto + objeto
 }
 
 // lembrando que array é também um objeto: array = objeto
@@ -112,7 +112,7 @@ const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
 
   Outra fator é que o spread operator necessariamente cria um novo objeto, o que é 
   bom, pois estamos criando um novo ao invés de modificar um já existente, isso 
-  é chamado de imutabildiade, um conceito fundamental na programaçãp funcional. E 
+  é chamado de imutabilidade, um conceito fundamental na programação funcional. E 
   repare que, no exemplo do Object.assign() também estamos criando um novo objeto 
   mas isso não necessariamente é uma regra, pois podemos inserir num objeto já 
   existente as propriedades de outros.
@@ -167,5 +167,13 @@ Math.max(...numbers) //
 /*
 
   [ ] - Imutabilidade
+  [ ] - Mutabilidade
+  [ ] - return early
+
+  const to = promise => promise
+    .then(result => [null, result])
+    .catch(error => [error])
+
+  o código acima é a mesma coisa que escrever um try catch!
 
 */

@@ -159,6 +159,10 @@ console.log(showResult(result))
    dessa função serão na maioria das vezes dados dinâmicos. Ou seja, que mudam 
    conforme as condições da aplicação. Analise isto quando for refatorar.
 
+   No primeiro momento não se importe em repetir código, apenas faça funcionar 
+   primeiro, pois para criarmos boas abstrações, primeiro precisamos de exemplos 
+   de casos de uso, depois que tudo estiver pronto, aí sim refatoramos.
+
    Atente-se também para criar funções "genéricas" ou seja, que possam ser 
    reutilizadas várias vezes para diferentes valores.
  */
