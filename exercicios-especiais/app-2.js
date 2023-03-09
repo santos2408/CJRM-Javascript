@@ -143,3 +143,27 @@ const wrongDataFormat = [
     }
   }
 */
+
+/*
+  07
+
+  - Através do array abaixo, gere um objeto com a frequência de idades das 
+    pessoas;
+  - Ou seja, se o array contém 3 pessoas com 18 anos, o objeto gerado deve ter 
+    uma propriedade 18 com o valor 3, se o array contém 2 pessoas com 19 anos,
+    o objeto gerado deve ter uma propriedade 19 com o valor 2 e assim por 
+    diante.
+  
+  Resultado desejado: { 18: 3, 19: 2, 20: 1 }
+
+  Dica: pesquise por Computed Property Names.
+*/
+
+const people = [
+  { id: 5 , name: 'Angelica', age: 18, federativeUnit: 'Pernambuco' },
+  { id: 81, name: 'Thales', age: 19, federativeUnit: 'São Paulo' },
+  { id: 47, name: 'Ana Carolina', age: 18, federativeUnit: 'Alagoas' },
+  { id: 87, name: 'Felipe', age: 18, federativeUnit: 'Minas Gerais' },
+  { id: 9 , name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
+  { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
+]

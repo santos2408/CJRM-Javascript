@@ -71,8 +71,8 @@
 
    Quando vazio, o objeto 'storage' possui apenas uma propriedade 'length' que 
    armazena 0. Apesar de haver apenas uma propriedade oficialmente, existe uma 
-   propriedade 'prototype' que possui alguns métodos e propriedades que podemos usar 
-   para interagir com o objeto 'storage'.
+   propriedade 'prototype' que possui alguns métodos e propriedades que podemos 
+   usar para interagir com o objeto 'storage'.
 
    Os dados que entram são armazenados na 'storage' e são considerados itens, ou 
    seja, é um par de chave e valor, semelhante a um objeto javascript. Cada chave 
@@ -104,10 +104,11 @@ age = localStorage.setItem('age', '26') // alterando valor
 /*
    ============= REMOVENDO DADOS =============
 
-   Podemos remover um item específico ou remover todos de uma vez.
+   Podemos remover um item específico ou remover todos de uma vez usando os 
+   métodos:
 
-   removeItem: remove item específico
-   clear: remove todos os itens da local storage
+   removeItem(): remove item específico passando a sua 'chave'
+   clear(): remove todos os itens da local storage
 
 */
 
@@ -119,21 +120,24 @@ localStorage.clear() // limpa todos os dados
 
    Os dados que armazenamos na local storage devem sempre ser strings, mesmo se 
    passarmos um number como valor de uma chave, esse number será convertido 
-   para string antes de ser armazenado.
+   para string antes de ser armazenado, já que ele é convertido para string, 
+   escreve entre aspas direto mesmo que seja um número, assim mantém a consistência.
 
    Para armazenarmos um array de objetos na local storage (lembrando que um array 
    também é um objeto) primeiro devemos converter esse array de objetos em uma 
    string, com isso poderemos armazenar esse array convertido dentro de uma 
    storage, em seguida quando obtermos esse 'array' da local storage, ele retornará 
    uma string e precisaremos parsear de volta para um array, essa técnica é 
-   conhecida como serialização, ou seja, transformar um dado em outro valor e 
-   depois "destranformar" para o seu valor original.
+   conhecida como 'serialização', ou seja, transformar um dado em outro valor e 
+   depois 'destranformar' para o seu valor original.
 
    Para convertermos array em strings podemos utilizar um método de um objeto 
    global JSON que está embutido na linguagem. Esse método se chama stringify()
    e ao convertermos esse array para string, ele irá retornar um JSON. Assim 
    poderemos inserir o array como valor de um local storage, pois ele só aceita 
-   valores do tipo string. Portanto:
+   valores do tipo string. 
+   
+   Portanto:
 
    JSON.stringfy() => converte array/objeto para JSON (string)
    JSON.parse() => converte JSON para array/objeto javascript
@@ -141,7 +145,7 @@ localStorage.clear() // limpa todos os dados
    Com esses métodos é possível também realizarmos cópias de objetos quando 
    necessário, mas esse comportamento não é recomendado visto que é uma operação 
    custosa para a aplicação. E também, em objetos que contém métodos, quando 
-   usamos a stringinificação ou parseamento, eles ignoram os métodos desses objetos, 
+   usamos a stringnificação ou parseamento, eles ignoram os métodos desses objetos, 
    isso porque funções não são valores JSON válidos.
 
    Ou seja, além do problema de performance ao criar uma cópia a partir de métodos 
@@ -158,11 +162,10 @@ const myArray = [
    {e: 5, f: 6}
 ]
 
-localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para string/JSON
+localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para JSON/string
 
-const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo string/JSON
-
-console.log(JSON.parse(JSONFromLocalStorage)) // convertendo json para objeto javascript
+const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo/retornando string/JSON
+const JSONToJavascriptObject = JSON.parse(JSONFromLocalStorage) // convertendo json para objeto javascript
 
 // ============= PROGRAMAÇÃO FUNCIONAL PIPELINE =============
 

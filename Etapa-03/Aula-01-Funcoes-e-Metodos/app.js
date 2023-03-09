@@ -199,6 +199,20 @@ funcao(1, 2, 3)
    Funções variádicas são funções que podem receber um número indefinido de 
    argumentos, ela é flexível...
 
+   Criar funções e nomeá-las podem ser etapas distintas, em alguns casos não 
+   temos ideia do que o bloco da função irá fazer e com isso pode se tornar mais 
+   difícil definir um nome para ela. Portanto, procure escrever primeiro a função 
+   com um nomero genérico, ex: 'x' e depois quando bloco da função estiver pronto, 
+   aí sim defina um nome para ela com base no código presente no bloco. Isso 
+   evitará perda de tempo no momento da criação das funções.
+   
+   Observe o que o código está fazendo e defina um nome apropriado. Se a função 
+   estiver fazendo diversas operações diferentes ou estiver exibindo ou escondendo
+   algo, tente aplicar um nome genêrico como "handle...", "show..." ou "hide".
+
+   Use e abuse de 'conole.log', sempre que escrever uma ou mais linhas de código, 
+   verifique se o código está se comportando da maneira esperada por você.
+
 */
 
 /*

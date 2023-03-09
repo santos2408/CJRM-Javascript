@@ -20,20 +20,20 @@
 // obtendo a referência do elemento
 const paragraph1 = document.querySelector('.content-1 p')
 
-// console.log(paragraph1)
-
 // ==== innerText ====
 
 /*
    A propriedade "innerText" obtém o texto do elemento referenciado. Caso queira
    alterar ou adicionar outro texto a esse elemento, basta atribuir um novo valor
-   a ele através do assignment. Veja abaixo:
+   a ele através do assignment.
 
    Obs: O innerText obtém o texto que é renderizado no documento HTML, diferente 
    do textContent que obtém o texto independente se o texto está visível ou não
    nas suas propriedades de estilo. Ou seja, se o texto não está sendo renderizado
    no navegador, mas ele existe no documento HTML, o textContent conseguirá 
    pegar esse conteúdo.
+
+   Veja abaixo:
 */
 
 // obtendo texto do elemento
@@ -77,11 +77,20 @@ divTitulos.innerHTML += `<h2>Novo H2</h2>`
    elemento a atribuição irá alterar. Se a atribuição for com addition, ela irá
    adicionar mais esse HTML que está sendo atribuído, como aconteceu no exemplo 
    acima.
-*/
 
-/*
    Podemos também gerar um template HTML recebendo os valores através de um 
-   array que veio de um banco de dados. Veja baixo:
+   array que veio de um banco de dados. Vale lembrar que o uso de innerHTML pode 
+   gerar problemas de vulnerabilidade a ataques XSS, em aulas futuras veremos como 
+   evitar o uso de innerHTML e contar essa situação. Portanto, evite usar innerHTML 
+   quando você não tiver total controle do conteúdo que está sendo inserido nele.
+
+   Por exemplo: inserir o conteúdo de um input que foi enviado pelo usuário 
+   através da innerHTML, isso fará com que o que o usuário tenha escrito no input 
+   o innerHTML irá parsear esse conteúdo para HTML, portanto, se o usuário 
+   escrever um código malicioso no input, ele estará entrando na sua aplicação e
+   banco de dados.
+   
+   Veja baixo:
 */
 
 const people = ['Roger', 'Maria', 'Jose']
@@ -99,17 +108,27 @@ people.forEach(person => {
    É importante lembrar que essas duas propriedades são conhecidas por serem
    getters e setters, ou seja, elas podem tanto obter quanto setar os valores.
 
-*/
-
-/*
    Pesquisar sobre:
-      offsetHeight / offsetWidth
-      offsetTop / Left, Right / Bottom
       getBoundingClientRect()
       innerWidth / innerHeight
       outerHTML
       pageYOffset / pageXOffset
       matchMedia()
+
+   ==== offsetHeight e offsetWidth ====
+
+   Essas duas propriedades são read-only e retornam a altura ou largura de um 
+   elemento incluindo padding, borders e scroolbars. Elas não incluem a altura 
+   de pseudo-elements como ::after e ::before. Se o elemento estive com display: 
+   none, então as propriedades retornarão valor 0.
+
+   ==== offsetTop, offsetLeft, offsetRight, offsetBottom ====
+
+   ...
+
+   ==== innerWidth e innerHeight ====
+
+   ...
 */
 
 // === OBTENDO E SETANDO ATRIBUTOS =======================
@@ -155,14 +174,12 @@ mensagem.setAttribute('class', 'success')
 
 // === MODIFICANDO ESTILOS CSS (INLINE) =======================
 
-/*
-   Existem algumas desvantangens em utilzar "setAttribute" para definir um
-   estilo CSS para o elemento selecionado.
-*/
-
 const title2 = document.querySelector('.content-4 h1')
 
 /*
+   Existem algumas desvantangens em utilzar "setAttribute" para definir um
+   estilo CSS para o elemento selecionado.
+
    Repare abaixo que se adicionarmos um estilo CSS através do método setAttribute,
    esse método irá sobrescrever o estilo atual que o elemento já tem e definirá 
    apenas o que está sendo passado no setAttribute. Ou seja, não conseguiremos manter
@@ -177,7 +194,9 @@ title2.setAttribute('style', 'margin: 50px')
    Para adicionar ou modificar diferentes estilos dentro do elemento, utilizamos
    a propriedade "style", usando essa propriedade é possível preservar os estilos 
    atuais do elemento e ir apenas adicionando outros. Podemos também alterar 
-   ou remover elementos já existentes. Veja abaixo:
+   ou remover elementos já existentes. 
+   
+   Veja abaixo:
 */
 
 // voltando para o valor padrão
@@ -195,9 +214,8 @@ title2.style.fontSize = '' // removendo valor
    devemos usar camel case, pois só dessa forma o javascript reconhece.
 
    é possível observar que a propriedade "style" é mais eficiente do que o método
-   setAttribute para trabalhar com estilos em cima do elemento.
-
-   Para removermos um estilo basta atribuirmos uma string vazia para a propriedade.
+   setAttribute para trabalhar com estilos em cima do elemento. Para removermos 
+   um estilo basta atribuirmos uma string vazia para a propriedade.
 */
 
 // === OBTENDO, ADICIONANDO, REMOVENDO =======================
@@ -212,11 +230,15 @@ title2.style.fontSize = '' // removendo valor
 
    classList.toggle(): método de classList que alterna os valores da classe
    dependendo se ela existe ou não.
+
+   Pesquisar sobre:
+      DOMTokenList
 */
 
 const texto = document.querySelector('.erro')
 
 // propriedade que visualiza todas as classes do elemento
+// retorna um DOMTokenList
 texto.classList
 
 // adiciona uma classe no elemento
@@ -243,16 +265,10 @@ textos.forEach(texto => {
 })
 
 /*
-   Estudar mais sobre:
-
-   dataset
-*/
-
-/*
 Observação:
 
    Classes CSS foram criadas para manipular estilos. O código fica mais organizado
-   as deixamos as apenas para o CSS. Portanto, evite referenciar um elemento do 
+   deixando-as apenas para o CSS. Portanto, evite referenciar um elemento do 
    DOM utilizando classes ou ID's.
 
    o attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
@@ -268,17 +284,21 @@ Observação:
 
    Então, para não gerar variáveis globais desnecessárias, o ideal é usar o 
    attributo 'data' para manipulação de DOM via JS, e usar IDs somente para 
-   inputs, por conta da acessibilidade do atributo for das labels ou quando 
+   inputs, por conta da acessibilidade do atributo 'for' das 'labels' ou quando 
    você quiser fazer âncoras na sua página, aí você também precisa do ID. Para 
-   todos os outros casos, evite. 
+   todos os outros casos, evite.
    
    Outra questão de organização é que se você comparar, lado a lado, duas 
    versões do mesmo arquivo .html, uma com 'data' e class e outra apenas com 
    class, verá que ao bater o olho no arquivo com data-js e class, você distingue 
    rapidamente quais elementos estão sendo manipulados pelo JavaScript. Isso não 
-   é possível ao bater o olho na versão do arquivo que usa apenas class.
+   é possível ao bater o olho na versão do arquivo que usa apenas class para 
+   estilos e manipulação javascript.
 
    A forma mais confiável de identificar elementos e manipulá-los em JavaScript 
    (puro) é usar o atributo 'data'
+
+   Estudar mais sobre:
+      dataset
 */
 

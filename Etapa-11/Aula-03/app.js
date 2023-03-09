@@ -54,7 +54,7 @@ getCharacters((error, data) => {
 
   Portanto, um request geralmente retornará um formato de dado JSON em forma de 
   string, que para o javascript conseguir manipular é necessário convertê-lo para 
-  objeto javascript. Esse conversão é feita utilizando um objeto nativo do JS 
+  objeto javascript. Essa conversão é feita utilizando um objeto nativo do JS 
   chamado 'JSON' e a partir dele invocamos o método 'parse' para realizar essa 
   conversão de JSON que é uma string para objeto javascript.
 
@@ -83,7 +83,7 @@ const getCharacters = (url, callback) => {
     const isRequestNotOk = request.readyState === 4
     
     if (isRequestOk) {
-      const data = JSON.parse(request.responseText) // parseando json
+      const data = JSON.parse(request.responseText) // parseando json/string para objeto javascript
       callback(null, data)
       return
     }
