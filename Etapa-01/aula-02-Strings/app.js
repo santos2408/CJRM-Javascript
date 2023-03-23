@@ -40,7 +40,20 @@ console.log(fullName)
    Vale lembrar que para criar um espaço entre as strings, é necessário
    inserir uma nova string com um espaço "em branco" para que seja criado
    o espaço entre elas.
-*/
+
+   Números somados com string serão concatenados e convertidos para string, mas 
+   se usarmos outros operadores como divisão ou multiplicação, mesmo que os 
+   números sejam do tipo string a operação será realizada.
+
+   */
+
+   '100' / 2 === 50
+   '100' / '2' === 50
+   '100' + 10 === '10010'
+   '100' - 10 === 90
+   '100' - '100' === 0
+
+// ==============================================
 
 // acessando caracteres
 console.log(fullName[0])
@@ -109,8 +122,6 @@ const index = email.indexOf('@')
 // pegará a primeira ocorrência do caracter
 
 console.log(index)
-
-console.log('========================================')
 
 // ===== ALGUNS MÉTODOS DE STRINGS =================================
 
@@ -186,8 +197,6 @@ const emailReplace2 = meuEmail.replace('roger', 'alessandra')
 console.log(emailReplace1)
 console.log(emailReplace2)
 
-console.log('========================================')
-
 /*
    Mais métodos:
 
@@ -206,6 +215,7 @@ console.log('========================================')
 // === inteiros e decimais ===
 const radius = 10
 const pi = 3.14
+const exponencial = 2e4 // 2 elevado a 4
 
 // - números decimais são representados utilizando ponto (.)
 // - o valor de pi é utilizado na matemática para calcular a área do circulo
@@ -225,8 +235,10 @@ const pi = 3.14
 const area = pi * radius ** 2
 // fórmula para calcular área do círculo
 
-const somar = 10 + 5
-const dividir = 8 / 2
+const somar = 10 + 5 // somar
+const dividir = 10 - 5 // subtrair
+const multiplicar = 2 * 2 // multiplicar
+const dividir = 8 / 2 // divisão
 const modulo = 5 % 2 // resto da divisao
 const potencia = 5 ** 2 // cinco elevado a 2
 
@@ -242,6 +254,9 @@ console.log(crazyOperation)
 // 2º expoentes ou raízes
 // 3º multiplicação, divisão e módulo
 // 4º adição e subtração
+
+// caso haja operadores de mesmo ordem, segue a ordem de operação
+// da esquerda para a direita
 
 // === operadores de incremento e decremento ===
 

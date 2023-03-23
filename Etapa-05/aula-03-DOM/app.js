@@ -232,11 +232,100 @@ button.addEventListener('click', () => {
 */
 
 /*
+
+   === REMOVER EVENT LISTENER =======================
+
+   Em alguns casos pode ser interessante removermos o escutador de eventos do 
+   código, isso porque estaremos liberando o espaço que aquele esscutador ocupa 
+   na memória, em aplicações menores e mais simples esse tipo de ação surtirá 
+   pouco ou nenhum efeito, mas é uma boa prática. Vale lembrar também que o seu 
+   uso não se destina apenas a performance mas em determinadas aplicações pode 
+   ser que você precise realizar essa ação.
+
+   Para removermos um escutador de evento, a primeira coisa que devemos observar 
+   é em que momento esse escutador deve ser removido. A ação de remoção do evento 
+   é executado a partir da invocação do método 'removeEventListener()'.
+
+   Esse método recebe dois argumentos:
+      1ª: tipo de evento a ser removido (click, submit, mousemove)
+      2ª: exata função usada como callback do escutador de evento
+
+   * Vale lembrar que os eventos são cumulativos, ou seja, podemos inserir mais 
+   de um tipo de evento num mesmo objeto, por isso a necessidade de inserirmos 
+   como primeiro argumento o tipo de evento desejado para ser removido.
+
+   * Vale lembrar que a função que deve ser passada como segundo argumento deve 
+   ser a que foi usada exatamente no escutador de evento. Atente-se, pois não devemos 
+   passar a mesma declaração da função e sim passar a referência dela, ou seja, 
+   se escrevermos o mesmo bloco na função isso contará como uma NOVO função e não 
+   aquela mesma função que foi usada no listener. Ou seja, deve-se considerar 
+   a função que foi usada no eventListener e não escrever o mesmo bloco achando 
+   que será igual. Lembrando que funções são objetos.
+
+   Para isso recomenda-se armazenar a função usada no listener de evento em uma 
+   constante e depois referenciá-la no removeEventListener, aí sim estará sendo 
+   passada a exata função usada.
+
+   === DOCUMENT FRAGMENT =======================
+
+   Em alguns casos podemos nos deparar com a inserção de elements no DOM repetidas 
+   vezes. Por exemplo: criação e inserção de li no DOM a cada iteração num array.
+   E isso não é uma boa prática, isso porque, a cada execução da função de callback 
+   o DOM será manipulado e a cada manipulação no DOM o navegador faz um 'reflow' e 
+   'repaint', ou seja, ele precisa redesenhar os elementos e recalcular o fluxo 
+   dos mesmos. 
+   
+   Isso pode prejudicar a performance do navegador e do computador, visto que, 
+   quanto mais manipulação de DOM a aplicação executa, mais o navegador irá 
+   exigir do processador do usuário devido ao 'reflow' e 'repaint'.
+
+   No entanto, existe uma abordagem mais performática, que irá manipulador o DOM
+   apenas uma única vez mesmo que várias elementos esteja sendo inserido dentro 
+   dele. Ao invés de inserir os elementos diretamente no DOM, nós iremos inserir 
+   eles dentro de um fragmento de documento 'ocumentFragment()'.
+
+   O documentFragment é um nó do DOM, um elemento do DOM vazio que podemos colocar 
+   nele elementos que queremos inserir no DOM. Porém, ele é um nó do DOM que só 
+   existe na memória, ele não será inserido no DOM. Devido a ele existir apenas 
+   na memória, nós podemos adicionar outros nós do DOM como filhos dele (document 
+   fragmente) e essa inserção de nós no document fragment não fará o navegador 
+   precisar redesenhar os elementos e recalcular o fluxo do DOM, isso acontece 
+   porque ele não está no DOM e sim na memória. Digamos que ele pode ser usado 
+   como um 'reservatório temporário' de elementos que serão inserido no DOM 
+   de uma só vez.
+
+   Lembrando que ser um nó do DOM não significa que o nó esteja inserido no DOM, 
+   ele pode existir mas não estar inserido no DOM.
+
+   Após armazenarmos os nós no document fragmente, podemos depois inserir do 
+   document fragment no DOM, com isso, todos os nós filhos que 'document fragment' 
+   contém serão inserido no DOM e esses nós serão inserido de uma só vez, isso 
+   fará que o navegador realize o 'repaint' e 'reflow' uma única vez também.
+
+   Após a inserção dos filhos do documentFragment no DOM, o documentFragment 
+   continuará na memória, mas ele estará vazio, visto que seus filhos foram 
+   inseridos no DOM.
+
+   Portanto, quando precisarmos inserir elementos no DOM, essa abordagem usando 
+   documentFragment será uma abordagem mais performática para o processamento. 
+   Lembrando tambaém que o documentFragment não contém parentNode, isso porque 
+   ele foi feito para ser o pai dos elementos adicionados nele, foi apenas para 
+   isso que ele foi criado.
+
+   documentFrament() -> método de document
+
+
+
+   
+*/
+
+/*
    Estudar mais sobre:
 
    scrollTo()
    scrollIntoView()
    removeEventListener()
+   getComputedStyles()
 */
 
 

@@ -225,6 +225,15 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
 */
 
 /*
+   Os métodos 'map', 'filter' e 'reduce' são consideradas 'Higher-Order Functions', 
+   ou seja, 'funções de ordem superior'. São funções que recebem outras funções 
+   como argumento ou retornam uma função como valor. Elas nos permitem escrever 
+   códigos mais abstratos, reutilizáveis e com propósitos gerais que podem ser 
+   aplicados em diferentes casos de uso.
+
+*/
+
+/*
 
    reduceRight()
 

@@ -162,6 +162,16 @@ Math.max(...numbers) //
 
   Em javascript todo pedaço de código que não resulta em um valor, retorna 
   undefined.
+
+  Evite o uso de ternário quando você não estiver aproveitando o valor retornado 
+  por ele, se você quer usar ternário apenas para executar uma ação da sua 
+  condicional e não vai usar o valor que ele retorna, então evite usá-lo. Visto 
+  que o ternário sempre retornará um valor, se 'true' à esquerda dos dois pontos e 
+  se false à direita dos dois pontos.
+
+  Se não aproveitamos o valor que o ternário retorna, não faz sentido usá-lo, 
+  portanto devemos usar ternário quando baseado numa condição precisamos obter 
+  um valor e não apenas executar a sua condicional.
 */
 
 /*

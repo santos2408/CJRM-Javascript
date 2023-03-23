@@ -159,3 +159,23 @@ if (password >= 12 && password.includes('1')) {
 } else {
    console.log('Essa senha é muito fraca.')
 }
+
+/*
+   ============= OPTIONAL CHAINING =============
+
+   A optional chaining (encadeamento opcional) tem como propósito nos ajudar a 
+   evitar problemas com 'null' e 'undefined' quando precisamos trabalhar com 
+   objetos. Ou seja, evitamos lançamento de erro caso alguma propriedade ou 
+   método no código tenha sido encadeado em 'null' ou 'undefined'
+
+   Para executarmos o 'opcional chaining' nós devemos inserir um 'ponto de 
+   interrogação (?)' antes da invocação de um método no valor que suspeitamos 
+   que possa ser 'null'. Por exemplo:
+
+   element?.remove()
+
+   Se 'element' armazenar 'null' ou 'undefined', o Javascript não irá ler o 
+   método 'remove()' e toda expressão retornará 'undefined'.
+
+   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+*/

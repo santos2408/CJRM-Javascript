@@ -2,8 +2,21 @@
   ======== TÓPICAS DESTA AULA ========
 
     - ARRAYS
-    - MÉTOODS E PROPRIEDADES DE ARRAYS
+    - MÉTODOS E PROPRIEDADES DE ARRAYS
     - NULL E UNDEFINED
+
+*/
+
+/*
+   ===== TIPOS DE DADOS =================================
+
+   - String
+   - Number
+   - Boolean
+   - Null
+   - Undefined
+   - Symbol
+   - BigInt
 
 */
 

@@ -163,17 +163,17 @@ let userTwo = userOne // tentando criar uma cópia, mas como é um objeto tipo
 // referencia, está sendo copiado o ponteiro da userOne, portanto estão 
 // apontando para o mesmo local.
 
-console.log(userOne, userTwo) // userOne userOne
+console.log(userOne, userTwo) // userOne = userTwo
 
 userOne.age = 30
 
-console.log(userOne, userTwo) // userOne userOne
-// as duas ages foram modificados pois apontam pro mesmo objeto.
+console.log(userOne, userTwo) // userOne = userTwo
+// as duas 'ages' foram modificados pois apontam pro mesmo objeto.
 
 /*
    Se desejássemos criar de fato uma cópia independente de um objeto, evitando 
    que ele seja copiado por referência, ou seja, que tenha um ponteiro apontando 
-   para o objeto original, podemos usar a sintaxe de spread operator.
+   para o objeto original, podemos usar a sintaxe de 'spread operator'.
 */
 
 const userThree = { name: 'Santos', age: 26 }
@@ -182,6 +182,7 @@ const userFour = { ...userThree } // cópia independente / sem ponteiro
 console.log(userThree, userFour) // { name: 'Santos', age: 26 }, { name: 'Santos', age: 26 }
 
 userFour.name = 'Campelo'
+// alterando apenas a cópia
 
 console.log(userThree, userFour) // { name: 'Santos', age: 26 }, { name: 'Campelo', age: 26 }
 

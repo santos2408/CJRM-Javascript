@@ -20,6 +20,10 @@
    disparada e depois disso esse evento será propagado para o pai desse elemento 
    e assim continuará disparando os eventos de todos.
 
+   Isso acontece porque, se você está clicando num elemento específico e ele 
+   está dentro de outro elemento, isso significa que você também clicou no 
+   elemento (hierarquicamente) acima dele.
+
    Essa propagação é chamada de 'event bubbling', o evento é iniciado no target 
    do evento, que é o elemento no qual o evento foi adicionado, e esse evento 
    se propaga em direção aos pais desse target para que os callback's de eventos 
@@ -27,7 +31,9 @@
 
    Podemos evitar esse tipo de propagação, para isso usamos o método do objeto 
    event chamado 'stopPropagation()'. Essa interrupção nos ajuda a evitar 
-   comportamentos inesperados quando se trata de propagação de eventos.
+   comportamentos inesperados quando se trata de propagação de eventos. Fazendo 
+   com que apenas aquele elemento clicado execute o evento e caso seus pais 
+   tenham eventos atrelados também, não ocorrerá nada com eles.
    
    ===== EVENT DELEGATION ===== 
 
@@ -36,12 +42,13 @@
    temos muitos itens iguais que receberão eventos pois como podemos ver no 
    código abaixo que está iterando sobre as li's, adicionar eventos em cada 
    elemento individualmente pode começar a apresentar problemas de performance 
-   na aplicação.
+   na aplicação e pode também não ser uma boa prática.
 */
 
 const ul = document.querySelector('ul')
 const button = document.querySelector('button')
 
+// evento de clique padrão
 button.addEventListener('click', () => {
    const li = document.createElement('li')
 
@@ -50,19 +57,19 @@ button.addEventListener('click', () => {
 })
 
 /*
-   código sem a utilização de event delegation  
+   === código SEM a utilização de event delegation ===
 
-   repare que iteremos por cada li e para cada li adicionamos um eventListener, 
-   para aplicações maior esse tipo de abordagem pode resultar em problema de 
-   performance para a aplicação.
+   Repare que iteramos por cada 'li' e para cada 'li' adicionamos um eventListener. 
+   Para aplicações maiores esse tipo de abordagem pode resultar em problema de 
+   performance.
 */
 const lis = document.querySelectorAll('li')
-
+/*
 lis.forEach(li => {
-   li.addEventListener('click', event => {
+   li.addEventListener('click', event => { // função de callback
       const clickedElement = event.target
 
-      // comprovando a propagação de eventos
+      // comprovando a propagação de eventos*
       console.log('clicou na li')
 
       // interrompendo propagação do evento
@@ -71,32 +78,50 @@ lis.forEach(li => {
       clickedElement.remove()
    })
 })
+*/
 
-// comprovando a propagação de eventos
+// comprovando a propagação de eventos*
 ul.addEventListener('click', () => {
    console.log('Evento propagado a partir do target da li')
    // comente o stopPropagation() acima
 })
 
-/* 
-   código com a utilização de event delegation 
+/*
+   Na comprovação da propagação do evento vemos que mesmo clicando no elemento
+   'li' e disparando o seu evento, o evento atrelado ao elemento 'ul' também 
+   foi disparado, isso porque o evento da 'li' se propagou para seus elementos 
+   pai.
+*/
 
-   usando o event delegation, nós colocamos o eventListenr no pai de todos os 
+/* 
+   === código COM a utilização de event delegation ===
+
+   usando o event delegation, nós colocamos o eventListener no pai de todos os 
    elementos que queremos que tenha o event e ao clicarmos em algum item dentro 
    desse elemento pai poderemos pegar o target específico do elemento clicado.
-   Dessa forma passa a existir apenas um eventListenr invés de vários para todos 
+   Dessa forma passa a existir apenas um eventListener invés de vários para todos 
    os elementos.
 
 */
+
 ul.addEventListener('click', event => {
    const clickedElement = event.target
 
    if (clickedElement.tagName === 'LI') {
       clickedElement.remove()
    }
+
+   if (clickedElement.tagName === 'SPAN') {
+      clickedElement.parentElement.remove() // removendo LI
+      clickedElement.remove() // removendo SPAN
+   }
 })
 
 /*
+   a propriedade 'target' refere-se ao exato elemento onde ocorreu o clique do 
+   mouse. Já a propriedade 'currentTarget' refere-se ao elemento onde o evento 
+   está atrelado.
+
    Repare que no código com a utilização de event delegation, ao invés de 
    adicionarmos um evento em cada 'li', nós adicionamos um evento no elemento 
    pai que é a 'ul' e a partir dela obtemos o target do evento, e com esse target 

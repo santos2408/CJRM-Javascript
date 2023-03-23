@@ -209,8 +209,17 @@ funcao(1, 2, 3)
    Observe o que o código está fazendo e defina um nome apropriado. Se a função 
    estiver fazendo diversas operações diferentes ou estiver exibindo ou escondendo
    algo, tente aplicar um nome genêrico como "handle...", "show..." ou "hide".
+   
+   Geralmente, quando um callback de listener de evento é um container para várias
+   ações diferentes que irão acontecer na aplicação, pode ser interessante que 
+   o nome dessa função comece com 'handle'
 
-   Use e abuse de 'conole.log', sempre que escrever uma ou mais linhas de código, 
+   Evite quebrar o código em funções muito cedo, quanto mais você puder ter uma 
+   visão macro do código antes da refatoração, mais rápido tenderemos a ter uma 
+   percepção do design que queremos que a refatoração tenha e dos problemas que 
+   queremos que seja mais eficiente em resolver.
+
+   Use e abuse de 'console.log', sempre que escrever uma ou mais linhas de código, 
    verifique se o código está se comportando da maneira esperada por você.
 
 */

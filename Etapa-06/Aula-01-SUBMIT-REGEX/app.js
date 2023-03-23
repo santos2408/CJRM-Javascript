@@ -170,6 +170,10 @@ const result2 = username.search(pattern) // método de string
    retorna o index inicial onde o 'match' aconteceu.
 
    Recomenda-se utilizar o método test()
+   
+   Estudar:
+   
+   getComputedStyle()
 */
 
 
