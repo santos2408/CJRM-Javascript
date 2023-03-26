@@ -1,34 +1,75 @@
-// === 3 ESCOPOS EM JAVASCRIPT QUE DEVE-SE CONHECER =======================
-
 /*
+   === 3 ESCOPOS EM JAVASCRIPT QUE DEVE-SE CONHECER =======================
+
    Escopos podem ser definidos como a visibilidade de uma variável, dependendo
-   de onde é declarada uma variável, outras partes do código poderão ou não
-   acessar esse valor declarado. Iremos observar 3 tipos de escopos, são eles:
+   de onde é declarada uma variável outras partes do código poderão ou não
+   acessar esse valor declarado.
    
-   - Escopo de Funções
-   - Escopo de Bloco
-   - Escopo Léxico
+   Escopo é o contexto atual de execução em que valores e expressões estão 
+   visiveis ou que podem ser referenciados. Se uma variável ou expressão não 
+   estiver no escopo atual ela não estará disponível para uso.
+
+   Escopos também podem ser colocados em uma hierarquia, portanto, escopos filhos 
+   podem acessar o escopo de seu pai mas o escopo pai não consegue acessar o 
+   escopo do filho.
+
+   Iremos observar 3 tipos de escopos, são eles:
+
+   - Escopo Global: o escopo padrão para todo código rodando em 'script mode'
+   - Escopo de Módulo: escopo para código rodando em 'module mode'
+   - Escopo de Função: escopo criado com uma função
+
+   Há também o caso de variáveis declaradas com 'let' ou 'const' que pertencerão 
+   à um escopo adicional chamado de 'escopo de bloco', que é criado com um par 
+   de chaves {}. Os escopos de bloco bloqueiam as 'let' e 'const' mas não 'var'.
+   Portanto, 'var' declaradas dentro de um escopo de bloco ainda poderão ser a
+   acessadas fora do bloco. ( evite esse comportamento não usando 'var' )
+
+   Há também o chamado 'escopo léxico' que tem a ver com o escopo de funções 
+   aninhadas e está relacionado com as 'closures' que veremos mais a frente.
+
+   Variáveis declaradas fora de um 'escopo de função' ou 'escopo de bloco' estarão 
+   no 'escopo global', fazendo com que possam ser acessadas por qualquer "operação", 
+   pois estarão visiveis para todos.
 */
 
-// ESCOPO DE FUNÇÕES
+// =============================================================================
 
+/*
+   ====== ESCOPO DE FUNÇÕES ======
+
+   É um escopo criado por uma função, ou seja, todo bloco de uma função é um 
+   escopo único, variáveis declaradas dentro da função não podem ser acessadas 
+   do lado de fora da função ou dentro de outras funções. Mas como mencionado 
+   acima, devido a hierarquia, o escopo da função consegue acessar uma variável 
+   fora dele, mas se essa informação estiver dentro de outro bloco, aí não 
+   será possível.
+
+   Escopos de funções não deixam escapar nenhuma informação dela, portanto, 
+   para obter seus valores é preciso retornar esse valor da função.
+
+*/
+
+const idade = 26
+
+// escopo de função
 function getMessage () {
    let message = 'Olá'
 
-   message // 'Oi'
+   message // 'Olá'
+   idade // 26
 }
 
 message // NOT DEFINED
+
 
 /*
    Com base na função acima, repare que é possível acessarmos o resultado da
    variável dentro da função normalmente. Mas se tentarmos acessar essa variável
    fora do bloco da função, obteremos um erro, pois essa 'message' só é visualizada
-   dentro do bloco da função. Para conserguirmos visualizar essa variável fora
+   dentro do bloco da função. Para conseguirmos visualizar essa variável fora
    do escopo de função, devemos retornar essa variável.
 */
-
-// ==================================================
 
 function myFunc () {
    let cat = 'Zeca'
@@ -46,15 +87,13 @@ myFunc()
    dela.
 */
 
-// ==================================================
-
 const dog = 'Pastor-alemão'
 
 function dogWatch () {
-   var dog = 'Samoieda'
+   var dog = 'Samoieda' // não escapa do bloco
 }
 
-console.log(dog)
+console.log(dog) // Pastor-alemão
 
 /*
    Esse tipo de operação é possível pois essas variáveis são "diferentes", 
@@ -64,15 +103,16 @@ console.log(dog)
    const, let e var terão o mesmo resultado.
 */
 
-// ==================================================
-
-// ESCOPO DE BLOCO
+// =============================================================================
 
 /*
+   ====== ESCOPO DE BLOCO ======
+
    Vale lembrar que escopos de bloco não necessariamente estão relacionados
-   a funções, todo tipo de bloco são considerados.
+   a funções, todo tipo de bloco são considerados. Ou seja, são blocos envoltos 
+   de chaves {}.
    
-   Por exemplo: for, if, while...
+   Exemplos de blocos: for, if, while, switch...
 */
 
 if (true) {
@@ -80,46 +120,66 @@ if (true) {
    // console.log(dragon) // Balerion
 }
 
-// console.log(dragon) // dragon is not defined
-
-// ==================================================
-
-/*
-   Se alterarmos let dragon para var, repare que a var passará a ser
-   vista do lado de fora do bloco, ou seja, ela irá "escapar" do bloco, pois
-   a var tem escopo global, independente de onde se encontra, a não ser que 
-   esteja num escopo de função, aí não irá escapar. Const e let têm
-   compartamentos diferentes de var. Esse é um dos motivos pelos quais const e 
-   let foram adicionados no JS, recomenda-se utilizar apenas const e let de 
-   preferência. Veja abaixo:
-
-   Mesmo var escapando sempre, independente da sua localização, dentro de funções 
-   ela não consegurá escapar, essa é uma característica curiosa.
-*/
-
-if (true) { // var escapa
-   var dragon = 'Balerion'
+for (let i = 0; i < 10; i++) {
+   let counter = 0 // só existe nesse bloco
+   // console.log(counter) // 0
 }
 
-const myName = () => { // var não escapa
-   var name = 'Roger'
+// console.log(dragon) // dragon is not defined
+
+/*
+   Se alterarmos 'let dragon' para 'var', repare que a 'var' passará a ser
+   vista do lado de fora do bloco, ou seja, ela irá "escapar" do bloco, pois
+   a 'var' terá escopo global, a não ser que esteja num escopo de função, aí não 
+   irá escapar. 'Const' e 'let' têm comportamentos diferentes de 'var'. Esse é um 
+   dos motivos pelos quais 'const' e 'let' foram adicionados no JS, recomenda-se 
+   utilizar apenas 'const' e 'let' de preferência. Veja abaixo:
+
+   Mesmo 'var' escapando de escopos de bloco, dentro de escopos de funções ela 
+   não conseguirá escapar, essa é uma característica curiosa dela.
+*/
+
+if (true) { 
+   var dragon = 'Balerion' // 'var' escapa
+   const age = 20 // 'const' não escapa
+   let country = 'USA' // 'let' não escapa
+}
+
+const show = () => {
+   var dragon = 'Balerion' 
+   const age = 20
+   let country = 'USA'
+   // 'var', 'let' e 'const' NÃO escapam
 }
 
 // console.log(dragon) // balerion
 
-// ==================================================
-
-// ESCOPO LÉXICO
+// =============================================================================
 
 /*
+   ====== ESCOPO LÉXICO ======
+
    Quando tivermos funções aninhadas, ou seja, uma dentro da outra é possível
-   acessarmos variáveis que estiverem "escaladas" ou seja. Uma função interna
+   acessarmos variáveis que estiverem 'aninhadas'. Uma função interna
    pode acessar a variável que se encontra na função anterior a ela dentro
    do aninhamento. Caso a função atual não tenha variável, ela irá procurar
-   na função "acima" dela e assim por diante. Esse é o escopo léxico, é a consulta
-   de uma variável dentro de escopos de funções aninhadas uma dentro da outra.
+   na função 'acima' dela e assim por diante. Esse é o 'escopo léxico', é a 
+   consulta de uma variável dentro de 'escopo de funções' aninhadas uma dentro 
+   da outra.
 
+   Léxico refere-se ao fato de que o 'escopo léxico' usa o local onde uma variável 
+   é declarada dentro do código para determinar onde essa variável está disponível. 
+   Funções aninhadas têm acesso a variáveis declaradas em seu escopo externo.
+
+   Uma 'closure' é uma combinação de uma função agrupada (anexada) com referências 
+   ao seu estado circundante, escopo léxico. Uma 'closure' dá acesso ao escopo 
+   de uma 'função externa' a partir de uma 'função interna'. 
+
+   As 'closures' são criadas toda vez que uma função é criada, no momento da sua 
+   criação.
+   
    *** PESQUISAR SOBRE CLOSURES ***
+   *** CLOSURES NO LIVRO PÁGINA 175
    
 */
 
@@ -144,20 +204,18 @@ const externalFunc = () => {
 externalFunc() // SAPIENS
 internalFunc() // internal is not defined
 
-// === DOCUMENT OBJECT MODEL =======================
-
-// MDN - MOZILLA DEVELOPER NETWORK
-
 /*
+   === DOCUMENT OBJECT MODEL =======================
+
+   MDN - MOZILLA DEVELOPER NETWORK
+   
    Na página do MDN podemos encontrar a documentação do Javascript e consultar
    todas as funcionalidades da linguagem e guias da linguagem. Dê preferência
    para pesquisas em inglês, pois resultam em conteúdos mais completos. E atenção
    a barra de pesquisa da página, pois o resultado pode não ser o desejado.
-*/
 
-// INTERAGINDO COM O BROWSER
-
-/*
+   INTERAGINDO COM O BROWSER
+   
    Com a interação com o browser, podemos adicionar conteúdos na página,
    modificar estilos CSS, reagir a eventos, criar interações como pop-ups, 
    entre outras coisas.
@@ -167,9 +225,12 @@ internalFunc() // internal is not defined
    é passado pelo DOM - DOCUMENT OBJECT MODEL.
 */
 
-// O QUE É O DOM - DOCUMENT OBJECT MODEL
+// 
 
 /*
+
+   O QUE É O DOM? - DOCUMENT OBJECT MODEL
+
    O DOM é criado pelo browser, ele não faz parte da linguagem javascript em si.
    Quando um HTML é carregado no browser, o browser cria o DOM para que seja
    possível interagirmos com o documento HTML através do código javascript.
@@ -186,7 +247,7 @@ internalFunc() // internal is not defined
    Dentro do DOM a página HTML é descrita dentro de uma "árvore hierárquica",
    chamada de "árvore de nodes". A raiz dessa página é a tag HTML, chamada de
    "root node". Dentro da tag HTML temos a tag HEAD, BODY, TITLE, H1, P entre outras. 
-   Essas tags internas são consideradas nós do dom e são chamadas de "node elements".
+   Essas tags internas são consideradas 'nós' do dom e são chamadas de "node elements".
    Os textos que existirem dentro das node elements também serão considerados nós.
    São chamados de "text nodes". Resumo:
 
@@ -198,30 +259,25 @@ internalFunc() // internal is not defined
    o DOM para alcançarmos essa árvore de "nodes" e obtemos a referência do "node" 
    desejado para podermos executar métodos e propriedades e realizar alterações 
    nesse "node".
-*/
 
-// === QUERY SELECTOR E QUERY SELECTOR ALL =======================
+   === QUERY SELECTOR E QUERY SELECTOR ALL =======================
 
-/*
    A ação de buscar e selecionar um elemento do DOM é chamada de query do DOM,
    ou seja, é feita uma consulta do DOM em busca de um elemento.
-*/
+   
+   querySelector é o método do objeto document mais recomendado para realizar 
+   consultas no DOM. Dentro da invocação do método nós passamos como parâmetro 
+   uma string com o seletor CSS do elemento que queremos obter. O resultado dessa 
+   expressão resultará numa referência para o seletor inserido.
 
-/*
-   querySelector é o método mais recomendado para realizar consultas no DOM.
-   Dentro da invocação do método nós passamos como parâmetro uma string com 
-   o selector CSS do elemento que queremos obter.
-
-   O resultado dessa expressão resultará numa referência para o seletor
-   inserido.
-
-   Utilizando o querySelector, o DOM é percorrido e ao encontrar o primeiro
+   Utilizando querySelector o DOM é percorrido e ao encontrar o primeiro
    seletor passado como parâmetro, ele retorna esse elemento. Se tivermos outros
-   seletores iguais ao passado no parâmetro, eles serão ignorados e só o primeiro
+   seletores iguais ao passado no parâmetro eles serão ignorados e só o primeiro
    encontrado será retornado, no caso do querySelector.
 
    É possível também copiarmos a referência do elemento diretamente na árvore
-   do DOM e colar no parâmetro do método.
+   do DOM e colar no parâmetro do método ( usado mais para fins de debug 
+   diretamente no browser )
 */
 
 const h1 = document.querySelector('h1') // só a primeira ocorrência
@@ -252,9 +308,9 @@ paragraphs.forEach(paragraph => {
 
 console.log(errors)
 
-// === OUTRAS MANEIRAS DE FAZER QUERYE'S NO DOM =======================
-
 /*
+   === OUTRAS MANEIRAS DE FAZER QUERYE'S NO DOM =======================
+
    Existem maneiras alternativas de obter queries do DOM para obter referências
    dos elementos buscados.
 
@@ -269,7 +325,7 @@ console.log(errors)
    através de colchetes, mas não é possível utilizar um forEach para iterá-lo. 
    Para podermos iterá-lo, será preciso converter o HTMLCollection em array, o 
    que será visto nas aulas posteriores. HTMLCollection possui menos métodos e 
-   propriedades do que nodeList.
+   propriedades do que nodeList, ambos são conhecido como 'array-like'.
 
    3) O método "getElementsByTagName" obtém um HTMLCollection de todas as tags
    inseridas como string no argumento do método.
@@ -290,12 +346,12 @@ const texto = document.getElementsByClassName('error')
 // 3) obter elementos através do nome da tag
 const paragrafo = document.getElementsByTagName('p')
 
-// === DESTRUCTURING ASSIGNMENT =======================
-
 /*
-   Essa sintaxe é uma expressão Javascript que faz com que seja possível 
-   desempacotar valores de arrays ou propriedades de objeto dentro de 
-   variáveis distintas.
+   === DESTRUCTURING ASSIGNMENT =======================
+
+   Desestruturação por atribuição, essa sintaxe é uma expressão Javascript que 
+   faz com que seja possível desempacotar valores de arrays ou propriedades de 
+   objetos dentro de variáveis distintas.
 
    É uma expressão que possibilita atribuirmos para uma variável uma cópia do 
    valor de uma propriedade de um objeto ou item de um array.
@@ -306,7 +362,7 @@ const getCatInfo = () => {
    let age = 4
    const color = 'Preto e Laranja'
 
-   return { name, age, color }
+   return { name, age, color } // retorna um objeto
 }
 
 const obj = {
@@ -316,12 +372,13 @@ const obj = {
 }
 
 // destructuring assignment com objetos
-const { name, age, color } = getCatInfo()
+const { name, age, color } = getCatInfo() // desestruturando objeto
 const { prop1: { innerProp1 } } = obj
 
 // name // Pintada
 // age // 4
 // color // Preto e Laranha
+// innerProp1 // 10
 
 // ============================================
 
@@ -333,21 +390,20 @@ const [ firstName, , lastName ] = myName // ignorando item 'Santos'
 
 /* 
    a variável precedida de reticências "..." significa que o restante dos itens
-   que sobraram devem ser armazenadas na variável rest. Se sobrar mais de um 
+   que sobraram devem ser armazenadas na variável 'rest'. Se sobrar mais de um 
    valor e dependendo do que está sendo desestruturado, a rest poderá ser um 
    array ou um objeto.
 
    No destructuring de um array, nós devemos respeitar a ordem dos itens, caso 
-   queira ignorar algum item, basta inserir vírgula no local. No caso dos objetos, 
-   não precisamos ignorar a propriedade, basta não escrevela no destructuring.
-*/
+   queira ignorar algum item, basta inserir vírgula no local onde essa variável 
+   seria inserida. No caso dos objetos, não precisamos ignorar a propriedade, 
+   basta não escreve-la no destructuring.
 
-/*
-Observação:
+   Observação:
 
    Classes CSS foram criadas para manipular estilos. O código fica mais organizado
-   as deixamos as apenas para o CSS. Portanto, evite referenciar um elemento do 
-   DOM utilizando classes ou ID's.
+   deixando-as apenas para o CSS. Portanto, evite referenciar um elemento do DOM 
+   utilizando classes ou ID's.
 
    o attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
    variável global que aponta para o elemento que tem aquele ID. Se na marcação 
@@ -367,10 +423,10 @@ Observação:
    todos os outros casos, evite. 
    
    Outra questão de organização é que se você comparar, lado a lado, duas 
-   versões do mesmo arquivo .html, uma com 'data' e class e outra apenas com 
-   class, verá que ao bater o olho no arquivo com data-js e class, você distingue 
-   rapidamente quais elementos estão sendo manipulados pelo JavaScript. Isso não 
-   é possível ao bater o olho na versão do arquivo que usa apenas class.
+   versões do mesmo arquivo .html, uma com 'data' e 'class' e outra apenas com 
+   'class', verá que, ao bater o olho no arquivo com 'data' e 'class', você 
+   distingue rapidamente quais elementos estão sendo manipulados pelo JavaScript. 
+   Isso não é possível ao bater o olho na versão do arquivo que usa apenas 'class'.
 
    A forma mais confiável de identificar elementos e manipulá-los em JavaScript 
    (puro) é usar o atributo 'data'

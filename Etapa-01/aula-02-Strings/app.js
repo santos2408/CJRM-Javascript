@@ -260,12 +260,25 @@ console.log(crazyOperation)
 
 // === operadores de incremento e decremento ===
 
+// conhecido também como operadores unários
+
 let postLikes = 10
 
 postLikes = postLikes + 1
 
-postLikes++ // (incremento 1)
-postLikes-- // (decremento 1)
+postLikes++ // (incremento de 1)
+postLikes-- // (decremento de 1)
+
+--postLikes // (pré incremento de 1)
+++postLikes // (pré decremento de 1)
+
+/*
+   é possível converter um valor do tipo string para um tipo number inserindo 
+   o sinal de soma ou subtração antes do valor. Ex:
+*/
+
+-'28' === -28
++'28' === 28
 
 // === operators addition, subtraction, multiplication and division assignment ===
 

@@ -174,6 +174,7 @@ const result2 = username.search(pattern) // método de string
    Estudar:
    
    getComputedStyle()
+   setValidity
 */
 
 
