@@ -6,6 +6,13 @@
    ou seja, propriedades e também contém algumas ações, ou seja, métodos 
    disponíveis que podem ser executados neles.
 
+   Um objeto é um conjunto não ordenado de propriedades, cada uma das quais 
+   tendo um nome e valor. Objetos são dinâmicos, são mutáveis e manipulados por 
+   referência e não por valor.
+
+   Qualquer valor em JavaScript que não seja uma 'string', 'number', 'true, 'false', 
+   'null' ou 'undefined' é um objeto.
+
    Objetos em Javascript irão possibilitar que criemos estruturas de dados
    que representam certos elementos do código ou das aplicações web.
 
@@ -13,6 +20,11 @@
    objetos literais. Mas o javascript também possui alguns objetos acoplados 
    nele, por exemplo, objeto Date e objeto Math, além de nos permitir criar 
    nossos próprios objetos com propriedades e métodos únicos.
+
+   Um nome de propriedade é um identificador JS ou uma 'string' literal (a string 
+   vazia é permitida). Um valor de propriedade é qualquer expressão JS, o valor 
+   da expressão (pode ser um valor primitivo ou um valor de objeto) se torna o
+   valor da propriedade.
    
    Por exemplo:
 
@@ -49,14 +61,15 @@
 
    A atribuição de um valor a uma chave é feita através de dois pontos. Caso
    queira adicionar mais propriedades nesse objeto, elas devem ser separadas por
-   vírgula. Lembre-se que a última propriedade não precisa ter vírgula no final.
+   vírgula. Lembre-se que a última propriedade não precisa ter vírgula no final, 
+   visto que essa vírgula é ignorada pelo JS.
 
    É possível declarar as propriedades de forma inline, no entanto, atente-se
    para a dificuldade que possa ter em ler o código. Por convenção, declara-se
    as propriedades em novas linhas para manter a legibilidade do código.
 
-   Se quando for utilizar as propriedades do objeto a chave do objeto e a sua 
-   propriedade tiver o mesmo nome, é possível utilizar uma feature chamada 
+   Se quando for utilizar as propriedades do objeto a chave(identificador) do objeto 
+   e e seu valor tiverem o mesmo nome, é possível utilizar uma feature chamada 
    "shorthand property names" para eliminar essa redundância, podemos apenas 
    deixar o nome da propriedade que automaticamente o JS irá saber que o valor 
    tem o mesmo nome da chave. Veja abaixo:
@@ -72,7 +85,7 @@
    return { name: name, age: age }
 
    // depois
-   return { name, age }
+   return { name, age } // shorthand property name
 
 */
 
@@ -115,30 +128,33 @@ console.log(user["age"] = 28)
    funções, mas dentro de objetos são chamados de métodos. 
 
    Também é composto de uma propriedade composta de um par com chave e valor. Os
-   métodos são escritos com function declarations, podendo ser escritas também
-   com arrow functions, mas vale uma atenção nesse fato, pois arrow functions
-   mudarão o comportamento no uso do this que veremos mais a frente. Functions
-   declarations também podem ser encurtadas para melhor legibilidade, utilizando
-   shorcut method name.
+   métodos são escritos com 'function declarations', podendo ser escritas também
+   com 'arrow functions', mas vale uma atenção nesse fato, pois 'arrow functions'
+   mudarão o comportamento no uso do 'this' que veremos mais a frente. 'Functions
+   declarations' também podem ser encurtadas para melhor legibilidade, utilizando
+   a técnica de 'shorcut method name'.
 */
 
-let user = {
+let userr = {
   name: "Roger",
   age: "25",
   city: "Rio de Janeiro",
   email: "roger.santos36@gmail.com",
   favoriteHouses: ["Stark", "Lannister", "Targaryen"],
+
   login: function () { // declaração normal
     console.log("Usuário logado.")
+    console.log(this)
   },
-  logout () { // declaração com shorcut
+
+  logout () { // declaração com shorcut method name
     console.log("Usuário deslogado.")
   },
 }
 
-user.login() // método de user
-user.logout() // método de user
-name.toUpperCase() // método de String
+userr.login() // método de user
+userr.logout() // método de user
+userr.name.toUpperCase() // método de String
 
 // estudar 
 
@@ -156,23 +172,30 @@ name.toUpperCase() // método de String
    dentro existirá um método chamado handleEvent() que será o método que 
    disparará quando o eventListener for executado. Com isso, dentro desse 
    objeto passado como argumento podemos utilizar propriedades. Consulte também 
-   a aula-03 da etapa-05 para entender melhor.
+   a aula-03 da etapa-05 para entender melhor.   
+*/
 
-   ======== Métodos de Object ========
+const callbackObject = {
+   // handleEvent: {}
+}
+
+button.addEventListener('click', callbackObject)
 
 /*
+   ======== MÉTODOS DE OBJECT ========
+
    Object.keys: retorna um array do próprio objeto passado como argumento do 
    método, esse array irá retornar de forma ordenada os nomes das propriedades 
    desse objeto em formato de string. Ex:
 */ 
 
-const person = {
+const personn = {
    name: 'Roger',
    age: 25,
    '1996': 1996
 }
 
-Object.key(person) // output: ["name", "age", "1996"]
+Object.key(personn) // output: ["name", "age", "1996"]
 
 /*
    Object.entries: retorna um array do próprio objeto passado como argumento do 
@@ -187,3 +210,10 @@ const person = {
 }
 
 Object.entries(person) // output: [ ["name", "Roger"], ["age", "25"], ["1996", "1996"] ]
+
+/*
+   PESQUISAR SOBRE MAIS MÉTODOS DE OBJECT
+
+   ...
+
+*/

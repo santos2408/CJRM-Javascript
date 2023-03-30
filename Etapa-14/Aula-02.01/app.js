@@ -321,3 +321,10 @@ const animals = [zeca, pompeu, cesar]
 
 scar.eatZebras(animals)
 console.log(mufasa, scar)
+
+/*
+  PESQUISAR SOBRE:
+
+  dataTransfer()
+
+*/

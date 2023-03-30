@@ -8,10 +8,26 @@
    entre sistemas, o XML que é um outro padrão também para troca de informações 
    era usado. No entanto, atualmente, o objeto de request XMLHttpRequest pode 
    trabalhar com qualquer tipo de dado: JSON, XML, entre outros. Esse objeto 
-   será usado para que o browser envie um request para o servidor, atualmente o 
-   mais o comum é o JSON.
+   será usado para que o browser envie um request para o servidor ou receba uma 
+   resposta dele, atualmente o mais comum é o JSON.
 
-   // MÉTODO OPEN()
+   Cada instância da classe XMLHttpRequest representa um único par de 
+   requisição/resposta. É possível também reutilizarmos um objeto XMLHttpRequest
+   já existente, mas ao fazer isso vai cancelar qualquer requisição pendente por 
+   meio desse objeto.
+
+   A requisição HTTP consiste em 4 partes:
+      - o método ou 'verbo' da requisição HTTP
+      - a URL que está sendo solicitada
+      - um conjunto opcional de cabeçalhos de pedido
+      - um corpo de requisição opcional
+
+   A resposta HTPP consiste em 3 partes:
+      - um código de status númerico e textual indicando o sucesso ou falha da requisição
+      - um conjunto de cabeçados de resposta
+      - o corpo da resposta
+
+   ======= MÉTODO OPEN() =======
    
    Para iniciarmos a requisição invocaremos o método open(), esse método irá 
    iniciar uma requisição recém-criada ou reinicializará uma já existente. Repare
@@ -26,14 +42,14 @@
    O segundo argumento do método open() será o endpoint, uma URL para o qual 
    queremos enviar o request e obter os dados.
 
-   // MÉTODO SEND()
+   ======= MÉTODO SEND() =======
 
    Em seguida invocamos o método send() para enviarmos a solicitação para o local 
-   desejado. Esse método aceita um parâmetro opcional, que é chamado de body 
-   parameter, normalmente inserido quando a solicitação for com método 'PUT'. 
-   Mas se a solicitação é por meio de 'GET' ou 'HEAD' esse body parameter é ignorado 
-   e o parâmetro será definido implicitamente como null, podemos também inserir 
-   esse null explicitamente.
+   desejado. Esse método aceita um parâmetro opcional, que é chamado de 'body 
+   parameter', normalmente inserido quando a solicitação for com método 'PUT'. 
+   Mas se a solicitação é por meio de 'GET' ou 'HEAD' esse 'body parameter' é 
+   ignorado e o parâmetro será definido implicitamente como null, podemos também 
+   inserir esse null explicitamente.
 
    Para descobrirmos se as respostas foram obtidas e como podemos acessar esses 
    dados, devemos 'trackear' o processo da requisição através de um EventListener 
@@ -52,7 +68,7 @@
       - 4: DONE
 */
 
-const request = new XMLHttpRequest()
+const request = new XMLHttpRequest() // instanciando
 
 request.addEventListener('readystatechange', () => {
    // verificando o estado do XMLHttpRequest para ver se foi finalizado
@@ -65,13 +81,13 @@ request.open('GET', 'https://anapioficeandfire.com/api/characters/583')
 request.send()
 
 /* 
-   STATUS DE REQUEST
+   ======= STATUS DE REQUEST =======
 
    Ao verificarmos se a resposta foi obtida através do readyState === 4 ficamos 
    sabendo se tudo ocorreu bem. No entanto, só isso não é o suficiente, porque 
    mesmo que a requisição venha a ocorrer algum tipo de erro, por exemplo um 
    endpoint inválido, mesmo assim o request passará por todos os status de resposta
-   chegando no último que é o 4.
+   chegando no último que é o 4 (DONE).
 
    Quando o request é feito sem gerar nenhum erro, o status do request terá '200' 
    como valor. Caso o request ocorra algum erro, o status retornará '404'. 
