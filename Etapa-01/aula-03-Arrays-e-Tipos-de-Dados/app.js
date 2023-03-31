@@ -1,14 +1,11 @@
 /*
-  ======== TÓPICAS DESTA AULA ========
+  ======== TÓPICOS DESTA AULA ========
 
     - ARRAYS
     - MÉTODOS E PROPRIEDADES DE ARRAYS
     - NULL E UNDEFINED
 
-*/
-
-/*
-   ===== TIPOS DE DADOS =================================
+   ===== TIPOS DE DADOS PRIMITIVOS =================================
 
    - String
    - Number
@@ -18,11 +15,8 @@
    - Symbol
    - BigInt
 
-*/
-
-// ===== ARRAYS =================================
-
-/*
+   ===== ARRAYS =================================
+   
    Arrays são utilizados para armazenar uma lista de dados que geralmente
    tem uma relação entre si, arrays são tipos de dados que se enquadram
    como objetos.
@@ -42,7 +36,7 @@
    De alguns métodos apresentados abaixo, atente-se para o método
    push() e pop(), pois são métodos que modificam o array original. Mas existem 
    também outros métodos que podem alterar o array original, deve-se ter atenção 
-   quanto a isso, pois pode não ser o desejado.
+   quanto a isso, pois pode não ser o comportamento que você deseja.
 */
 
 let heroes = ['Batman', 'Catwoman', 'Iron Man']
@@ -67,14 +61,14 @@ console.log(joinHeroes)
 const indexOf25 = ages.indexOf(25)
 console.log(indexOf25)
 // assim como na string, busca a primeira ocorrência do valor inserido
-// caso o valor informado não exista no array, o retorno será -1, sempre.
+// caso o valor informado não exista no array o retorno será sempre -1.
 // retorna a posição (index) do valor inserido
 
 const moreHeroes = heroes.concat(['Superman', 'Wolverine'])
 console.log(moreHeroes)
 // irá concatenar dois ou mais arrays
 // não modifica o array original
-// no ES6 surgiu o spread operator que realiza a mesma operação
+// no ES6 surgiu o spread operator que realiza a mesma operação (recomendado)
 
 const pushToHeroes = heroes.push('Cyclops', 'Hulk')
 console.log(pushToHeroes) // total de itens
@@ -175,27 +169,25 @@ const reusultDeth2 = deth2.flat(2)
 // a recursividade é feita com base na 'profundidade' especificada
 
 // unshift
-//copyWithin
+// copyWithin
 // fill
 
 console.log('========================================')
 
-// ===== NULL E UNDEFINED =================================
-
-
-// São tipos de dados similares e representam a falta de um valor.
 
 /*
-   UNDEFINED
+   ===== NULL E UNDEFINED =================================
+   
+   São tipos de dados similares e representam a falta de um valor.
+   
+   === UNDEFINED ===
 
-   valores que não são atribuídos a uma variável são atribuídos
-   automaticamente pelo javascript como undefined.
+   Valores que não são atribuídos a uma variável são atribuídos automaticamente 
+   pelo javascript como undefined. Não é possível realizar operações com variáveis 
+   undefined, caso tente o valor retornado será NaN ( Not a Number )
 
-   Não é possível realizar operações com variáveis undefined,
-   caso tente o valor retornado será NaN ( Not a Number )
-
-   Ao inserir undefined como variável dentro de uma string,
-   o valor retornado será uma string. Ex:
+   Ao inserir undefined como variável dentro de uma string, o valor retornado 
+   será uma string. Ex:
 
    `${variavelUndefined}` === 'undefined'
 
@@ -206,15 +198,13 @@ console.log(emptiness, emptiness + 3, `O valor é ${emptiness}`)
 // output: undefined NaN undefined
 
 /*
-   NULL
+   === NULL ===
 
    Esse dado deve ser atribuído de forma proposital, quando quisermos
    indicar intencionalmente que não existe um valor para a variável.
 
-   O null será interpretado como valor 0 em operações matemáticas.
-
-   Ao inserir null como variável dentro de uma string,
-   o valor retornado será uma string
+   O null será interpretado como valor 0 em operações matemáticas. Ao inserir 
+   null como variável dentro de uma string, o valor retornado será uma string
 */
 
 let nullValue = null

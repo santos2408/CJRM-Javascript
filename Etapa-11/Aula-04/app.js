@@ -32,11 +32,11 @@
   A promise incapsula o valor retornado dentro da propriedade 'fulfilled' dela e 
   para consumirmos esse valor precisamos utilizar o método THEN. Ele é o responsável 
   por receber a resposta de 'sucesso' da promise. Ou seja, assim que invocarmos 
-  o método then, passaremos uma função que irá retornar o valor de 'sucesso'. O 
-  then automaticamente irá obter o valor da função 'resolve'.
+  o método then, passaremos uma função que irá obter e retornar o valor de 'sucesso'. 
+  O then automaticamente irá obter o valor da função 'resolve'.
 
   Como a promisse encapsula a resposta e o then obtém essa resposta, nós dizemos 
-  que o then 'desempacota' a promise para pegar a resposta retornada pela promise.
+  que o then 'desempacota' a promise para pegar a resposta retornada por ela.
 
   Caso ocorra um erro na requisiçao, podemos encadear o método CATCH no THEN, 
   também passando uma função como argumento e através dele iremos tratar os dados 
@@ -73,7 +73,7 @@ const getData = () => {
 }
 
 getData() // retornou uma promise com a resposta dentro
-  .then(value => console.log(value)) // desempacotou a promise e pegou a resposta
+  .then(value => console.log(value)) // desempacota a promise e pega a resposta
   .catch(error => console.log(error)) // desempacota a promise e pega a resposta de erro caso exista
 
 // ==========================================================
@@ -90,10 +90,12 @@ const getPokemon = url => new Promise((resolve, reject) => {
     if (isRequestOk) { // checking status
       const data = JSON.parse(request.responseText) // convertendo para JSON
       resolve(data.name)
+      // não precasa de return pois a resolve já contem um implícito
     }
   
     if (isRequestNotOk) {
       reject('Não foi possível obter os dados da API')
+      // não precasa de return pois a resolve já contem um implícito
     }
   })
   
@@ -121,7 +123,7 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
 /* 
   Como desejamos requests sequenciais, repare que em cada then nós estamos no 
   final retornando uma nova requisição, ou seja, o then está exibindo a resposta
-  ano console e após isso estamos retornando uma nova requisição/promise. E nesse 
+  no console e após isso estamos retornando uma nova requisição/promise. E nesse 
   then estamos encadeando outro then que irá obter a resposta da requisição do 
   then anterior e executar o processo novamente. 
 
@@ -140,9 +142,9 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
 
   A conclusão que temos utilizando promises, then e catch é que o código fica 
   mais organizado, legível, com boas práticas ES6 e não temos mais o fenômeno
-  de callback helll que sujava o código e atrapalhava a manutenabilidade, como 
+  de callback hell que sujava o código e atrapalhava a manutenabilidade dele, como 
   foi apresentado nas aulas anteriores, mas repare que, mesmo utilizando promises, 
-  dependendo da complexidade do código, ele pode começar a ficar ilegível. Nas 
+  dependendo da complexidade do código ele pode começar a ficar ilegível. Nas 
   próximas aulas veremos como deixar o código ainda mais limpo com novas 
   funcionalidades.
 

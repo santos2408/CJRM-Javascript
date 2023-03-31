@@ -235,6 +235,7 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
 
 /*
 
+   Computed Property Names
    reduceRight()
 
 */
