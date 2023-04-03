@@ -1,6 +1,6 @@
-/* =========== JAVASCRIPT ASSÍNCRONO =========== */
-
 /*
+   =========== JAVASCRIPT ASSÍNCRONO ===========
+
    O Javascript é uma linguagem síncrona ou seja, ele executa uma instrução 
    por vez de cima para baixo, top-down, uma depois da outra. A linha seguinte 
    só é executada após a linha anterior terminar de ser executada, isso porque 
@@ -29,8 +29,8 @@
    requisição.
 
    No momento que a requisição é feita, o browser lida com a request fora da 
-   thread atual, em outra parte do browser e executa a função de callback quando 
-   os dados forem obtidos. Enquanto a requisição é feita em outro local a thread 
+   thread atual em outra parte do browser e executa a função de callback quando 
+   os dados são obtidos. Enquanto a requisição é feita em outro local a thread 
    principal continua executando os códigos contidos nela.
 
    Portanto, uma função assíncrona trabalha de forma 'independente' da thread 
@@ -56,9 +56,9 @@ console.log(4)
 
 // execução da callback...
 
-/* =========== O QUE SÃO REQUESTS HTTP =========== */
-
 /*
+   =========== O QUE SÃO REQUESTS HTTP ===========
+
    Em alguns momentos da nossa aplicação, pode ser que desejemos requisitar
    dados de um outro servidor ou API.
 
@@ -67,7 +67,7 @@ console.log(4)
    estão nessa API.
 
    Quando essa requisição é realizada para uma API, o request será feito 
-   para um endpoint disponibilizado pela API para podermos nos conectarmos com ela.
+   para um endpoint disponibilizado pela API para podermos nos conectar com ela.
 
    A resposta dessa requisição será geralmente em formato JSON, que é um padrão 
    usado para troca e armazenamento de informações entre sistemas, que é suportado 

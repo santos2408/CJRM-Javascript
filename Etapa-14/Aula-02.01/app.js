@@ -58,11 +58,12 @@ acontece quase que instantaneamente e é imperceptível.
 
 Quando criamos um novo objeto com um construtor, é criado um 'object wrapper' 
 que envolve um tipo. Vale lembrar que 'null' e 'undefined' não contém 'wrapper 
-objects'.
+objects' e podemos também criar nossos próprios 'wrapper objects' além dos que 
+já existem nativamente na linguagem.
 
 */
 
-// criando objetos com constructors
+// criando objetos com 'constructors'
 
 const string = new String('Roger') // objeto wrapper do tipo string
 const number = new Number(10) // objeto wrapper do tipo number
@@ -71,13 +72,12 @@ const object = new Object() // objeto wrapper do tipo object
 
 /*
   Isso que foi feito logo acima é exatamente o que o javascript faz 
-  automaticamente quando tratamos com algum dado primitivo.
-*/
+  automaticamente quando tratamos com algum dado primitivo que esteja usando 
+  ao método ou propriedade.
 
-/*
   =============== INTRODUÇÃO A CLASSES ===============
 
-  Em alguns momentos do nosso código será mais recomendado criarmos objetos 
+  Em alguns momentos do nosso código será recomendado criarmos objetos 
   através de construtores do que objetos literais. Veja o caso de uso a seguir 
   mostrando que utilizar construtores em casos como esse é a melhor opção.
 
@@ -131,6 +131,8 @@ const user3 = {
   abstração para nos facilitar de entendermos melhor o que está acontecendo, pois 
   por baixo dos panos elas estão usando prototypes para construir os objetos.
 
+  =============== CLASSES ===============
+
   As classes foram adicionadas como uma tentativa de deixar mais fácil o entendimento 
   da sintaxe para se trabalhar com prototypes. Veremos mais a frente o que são 
   prototypes e o que a abstração 'class' faz por baixa dos panos usando prototype.
@@ -175,7 +177,7 @@ class User {
   // setando as propriedades do novo objeto
   constructor (name, lastName, age) {
     // criando as propriedades
-    this.name = name, // this referencia esse novo objeto que está sendo criado
+    this.name = name, // this referencia esse novo objeto que está sendo criado (User)
     this.lastName = lastName,
     this.age = age
   }
@@ -245,9 +247,10 @@ console.log(usuario)
 /*
   =============== HERANÇA ENTRE CLASSES ===============
 
-  Herança entre classes significa fazer com que uma subclasse herde propriedades 
+  Herança entre classes significa fazer com que uma classe herde propriedades 
   e métodos de uma outra classe, mas mesmo assim podendo ter as suas próprias 
-  propriedades e métodos.
+  propriedades e métodos. A classe que estiver herdando uma outra classe passará 
+  a ser chamada de subclasse.
 
   Isso será usado quando quisermos ter um novo objeto que herde as características 
   de outro mas que tenha características únicas. E para não repetirmos código 
@@ -259,35 +262,37 @@ console.log(usuario)
 
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
   o constructor da classe que ela está herdando e consequentemente irá obter as 
-  propriedades dessa classe pai. Mas quando criamos um novo constructor na subclasse, 
-  a subclasse não irá conseguir mais obter as propriedades da classe pai, isso 
-  porque, existindo dois constructor, eles entram em conflito.
+  propriedades dessa classe herdade. 
+  
+  Quando criamos um novo constructor na subclasse, a subclasse não conseguirá 
+  obter as propriedades da classe herdada, isso porque, existindo dois constructor, 
+  eles entram em conflito.
 
   Não conseguimos usar o this na subclasse sem antes chamar o constructor da 
-  classe pai com super()
+  classe herdada com super()
 
-  O constructor da classe pai só é executado quando não existe um constructor na 
-  classe filho, se passar a existir, o constructor da classe pai não será mais 
-  executado. A classe pai é conhecida também como superclass, por isso o nome do 
-  método que a invoca é chamado de 'super'.
+  O constructor da classe herdada só é executado quando não existe um constructor 
+  na classe filho, se passar a existir, o constructor da classe herdada não será 
+  mais executado. A classe herdada é conhecida também como superclass, por isso o 
+  nome do método que a invoca é chamado de 'super'.
 
   Podemos 'sobrescrever' métodos da subclasse que já existem na superclasse, pois 
   como estão em objetos diferentes, declarar com o mesmo nome não causará problema, 
   mesmo tendo o mesmo nome cada método terá seu comportamente único.
 
-  Para resolver isso e recebermos as propriedades da classe pai e ainda inserir 
+  Para resolver isso e recebermos as propriedades da classe herdada e ainda inserir 
   propriedades exclusivas da subclasse precisaremos receber todos os argumentos 
-  da classe pai na invocação da subclasse e em seguida, dentro do constructor da 
-  subclasse iremos invocar o constructor da classe pai, só que para o JS entender 
-  que estamos invocando o constructor da classe pai e não do filho, precisaremos 
+  da classe herdada na invocação da subclasse e em seguida, dentro do constructor da 
+  subclasse iremos invocar o constructor da classe herdada, só que para o JS entender 
+  que estamos invocando o constructor da classe herdada e não da subclasse, precisaremos 
   trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors, 
   um para a subclasse e outro para obter as propriedades da superclass para evitar 
-  um conflito entre elas. Veja o exemplo abaixo:
+  um conflito entre elas, ou seja, o método 'super' invoca o constructor da classe 
+  herdada.
 
 */
 
-// superclass
-class Mammal {
+class Mammal { // superclass / classe pai / será herdada
   constructor(species, name, age) {
     this.species = species
     this.name = name
@@ -300,9 +305,9 @@ class Mammal {
   }
 }
 
-class Lion extends Mammal { // Lion (subclasse / classe filha) herdando propriedades e métodos de Mammal (superclass / classe pai)
+class Lion extends Mammal { // subclasse / classe filha / herdando propriedades e métodos de Mammal (superclass / classe pai)
   constructor(species, name, age, manEater) { // constructor da subclasse
-    super(species, name, age) // invocando constructor da classe pai com 'super' e obtendo e setando propriedades
+    super(species, name, age) // invocando constructor da classe herdada com 'super' e obtendo e setando propriedades
     this.manEater = manEater // propriedade única da subclasse Lion
   }
 

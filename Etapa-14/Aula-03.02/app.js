@@ -108,10 +108,6 @@ const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.
   veremos a terceira forma de como criar e compor objetos em JS. Já vimos a 
   criação de objetos por meio de Classes e Constructor Functions, agora veremos 
   através de factory functions.
-
-*/
-
-/*
   
 =============== FACTORY FUNCTIONS E COMPOSIÇÃO DE OBJETOS ===============
 
