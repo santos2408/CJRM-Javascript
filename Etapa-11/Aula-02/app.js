@@ -94,6 +94,10 @@ request.send()
    Portanto, para assegurarmos que a verificação do request foi obtida com sucesso 
    e assim podermos fazer algo com ela, nós podemos também verificar o status da 
    requisição.
+
+   Geralmente nas API's da internet, o status da requisição é verificado 
+   através de uma propriedade "ok" do objeto retornado. Continuam se 
+   comportando implicitamente da mesma forma mas o seu retorno é um boolean.
 */
 
 request.addEventListener('readystatechange', () => {

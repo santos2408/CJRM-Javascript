@@ -1,6 +1,6 @@
-// === PARENTS, CHILDREN AND SIBLINGS =======================
-
 /*
+   === PARENTS, CHILDREN AND SIBLINGS =======================
+
    Começaremos a ver as relações dos nós do DOM, ou seja, as relações entre nós 
    diferentes dentro de uma árvore de nós de um documento HTML.
 
@@ -23,7 +23,6 @@
    utilizamos algumas propriedades específicas para esse tipo de seleção.
 
    As propriedades disponíveis para realizar esse tipo de seleção são:
-
       - element.children
       - element.parentElement
       - element.previousElementSibling
@@ -37,14 +36,14 @@ const article = document.querySelector('article')
 const filhos = article.children
 
 /*
-   Obs: Note que se visualizarmos a const filhos que contém a referência dos 
+   Obs: Note que, se visualizarmos a const filhos que contém a referência dos 
    filhos do article, será retornado um HTMLCollection contendo todos os filhos 
    do elemento pai.
 
    Sabemos que um HTMLCollection não é compatível com o método forEach apesar de 
-   ser com o for loop, portanto, para iterarmos em cada filho com o objetivo de 
-   adicionar classes em cada um, precisaremos converter esse HTMLCollection em 
-   um array. 
+   ser com o for loop, portanto, para iterarmos em cada filho utilizadn forEach 
+   com o objetivo de adicionar classes em cada um, precisaremos converter esse 
+   HTMLCollection em um array. 
    
    Essa conversão é feita inserindo o HTMLCollection como um argumento do método
    from() da função construtora Array. Esse método retornará um novo valor
@@ -66,7 +65,7 @@ newFilhos.forEach(element => {
 })
 
 /*
-   É possível também obtermos a referência de um elemento qualquer, e através 
+   É possível também obtermos a referência de um elemento qualquer e através 
    dele obter a referência do pai desse elemento, ou do próximo irmão, ou até 
    mesmo do irmão anterior a ele. Veja:
 */
@@ -92,21 +91,13 @@ article.childNodes
 /*
    Ao utilizar a propriedade previousElementSibling ou nextElementSibling, se 
    não existir um irmão do element. Essa propriedade retornará null.
-*/
 
-/*
    Pesquisar sobre:
-      - append / prepend
-      - appendChild
-      - insertBefore
-      - removeChild
       - replaceChild
       - cloneNode
-*/
 
-// === EVENTOS DE CLIQUE =======================
+   === EVENTOS DE CLIQUE =======================
 
-/*
    Na maior parte das vezes as manipulações e modificações que fazemos são
    reações a ações do usuário na página. Por exemplo, se o usuário clicar em 
    um botão, nós podemos exibir um menu, deletar um elemento, ou exibir pop-up.
@@ -117,11 +108,9 @@ article.childNodes
 
    A atividade proposta será criar uma to-do list simples, onde iremos reagir 
    as ações do usuário de adicionar uma nova tarefa, riscar as tarefas já
-   realizadas, entre outras funcionalidades que podem ser implementadas na 
-   frente.
-*/
+   realizadas, entre outras funcionalidades que podem ser implementadas 
+   posteriormente.
 
-/*
    addEventListener é um método que escuta um evento em um elemento específico.
    Esse método recebe como argumento o tipo do evento: 'mouse', 'click, 
    'scroll' e muitos outros. E também uma função de callback que será executada 
@@ -173,11 +162,8 @@ lis.forEach(li => {
    - target
    - handleEvent (importante)
 
-*/
+   === CRIANDO E REMOVENDO ELEMENTOS DO DOM =======================
 
-// === CRIANDO E REMOVENDO ELEMENTOS DO DOM =======================
-
-/*
    O método remove() remove o elemento referenciado do DOM.
 
    Como visto em aulas anteriores, é possível adicionar um elemento HTML no DOM 
@@ -193,6 +179,10 @@ lis.forEach(li => {
 
    element.prepend() é um método semelhante ao append() mas a adição é feita no 
    início, como primeiro filho.
+
+   element.appendChild() é um método que adiciona um node no final da lista de 
+   um parent node especificado. Diferente do append() que também permite string 
+   objects, o appendChild aceita apenas objetos node.
 */
 
 const ul = document.querySelector('ul')
@@ -221,22 +211,19 @@ button.addEventListener('click', () => {
 /*
    Existem alguns casos em que quando formos adicionar por exemplo um botão via 
    JS com a intenção de adicionar um listener de evento nele, não podemos adicionar 
-   ele através de uma template string, isso porque quando adiconamos dessa forma 
-   seriamos obrigados a primeiro adicionar o botão no DOM e depois inserir o 
+   ele através de uma template string, isso porque quando adicionamos dessa forma 
+   seriamos obrigados a primeiro adicionar o botão no DOM e só depois inserir o 
    event listener. 
 
-   Para resolver isso precisamos ao invés de inserir o botão via template string, 
+   Para resolver isso precisamos ao em vez de inserir o botão via template string, 
    iremos inserir criando um elemento com 'document.createElement'. Dessa forma 
    conseguimos adicionar eventos nesse elemento antes mesmo de inserirmos esse 
    elemento no DOM, isso porque esse elemento será um objeto.
-*/
-
-/*
 
    === REMOVER EVENT LISTENER =======================
 
    Em alguns casos pode ser interessante removermos o escutador de eventos do 
-   código, isso porque estaremos liberando o espaço que aquele esscutador ocupa 
+   código, isso porque estaremos liberando o espaço que aquele escutador ocupa 
    na memória, em aplicações menores e mais simples esse tipo de ação surtirá 
    pouco ou nenhum efeito, mas é uma boa prática. Vale lembrar também que o seu 
    uso não se destina apenas a performance mas em determinadas aplicações pode 
@@ -279,47 +266,41 @@ button.addEventListener('click', () => {
    quanto mais manipulação de DOM a aplicação executa, mais o navegador irá 
    exigir do processador do usuário devido ao 'reflow' e 'repaint'.
 
-   No entanto, existe uma abordagem mais performática, que irá manipulador o DOM
-   apenas uma única vez mesmo que várias elementos esteja sendo inserido dentro 
+   No entanto, existe uma abordagem mais performática, que irá manipular o DOM
+   apenas uma única vez mesmo que várias elementos estejam sendo inseridos dentro 
    dele. Ao invés de inserir os elementos diretamente no DOM, nós iremos inserir 
-   eles dentro de um fragmento de documento 'ocumentFragment()'.
+   eles dentro de um fragmento de documento 'documentFragment()'.
 
    O documentFragment é um nó do DOM, um elemento do DOM vazio que podemos colocar 
    nele elementos que queremos inserir no DOM. Porém, ele é um nó do DOM que só 
    existe na memória, ele não será inserido no DOM. Devido a ele existir apenas 
    na memória, nós podemos adicionar outros nós do DOM como filhos dele (document 
-   fragmente) e essa inserção de nós no document fragment não fará o navegador 
+   fragment) e essa inserção de nós no document fragment não fará o navegador 
    precisar redesenhar os elementos e recalcular o fluxo do DOM, isso acontece 
    porque ele não está no DOM e sim na memória. Digamos que ele pode ser usado 
-   como um 'reservatório temporário' de elementos que serão inserido no DOM 
-   de uma só vez.
+   como um 'reservatório temporário' de elementos que serão inseridos no DOM de 
+   uma só vez.
 
    Lembrando que ser um nó do DOM não significa que o nó esteja inserido no DOM, 
    ele pode existir mas não estar inserido no DOM.
 
-   Após armazenarmos os nós no document fragmente, podemos depois inserir do 
+   Após armazenarmos os nós no document fragment, podemos depois inserir o 
    document fragment no DOM, com isso, todos os nós filhos que 'document fragment' 
-   contém serão inserido no DOM e esses nós serão inserido de uma só vez, isso 
+   contém serão inseridos no DOM e esses nós serão inseridos de uma só vez, isso 
    fará que o navegador realize o 'repaint' e 'reflow' uma única vez também.
 
    Após a inserção dos filhos do documentFragment no DOM, o documentFragment 
    continuará na memória, mas ele estará vazio, visto que seus filhos foram 
-   inseridos no DOM.
+   transferidos para o DOM.
 
    Portanto, quando precisarmos inserir elementos no DOM, essa abordagem usando 
    documentFragment será uma abordagem mais performática para o processamento. 
-   Lembrando tambaém que o documentFragment não contém parentNode, isso porque 
+   Lembrando também que o documentFragment não contém parentNode, isso porque 
    ele foi feito para ser o pai dos elementos adicionados nele, foi apenas para 
    isso que ele foi criado.
 
    documentFrament() -> método de document
 
-
-
-   
-*/
-
-/*
    Estudar mais sobre:
 
    scrollTo()

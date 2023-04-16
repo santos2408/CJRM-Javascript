@@ -1,6 +1,6 @@
-// ===== CONTROLE DE FLUXO =========================
-
 /*
+   ===== CONTROLE DE FLUXO ===================
+
    Em alguns momentos do código será necessário decidir quais ações devem ser
    executadas e qual pedaço de código é preciso executar repetidas vezes. Devido
    a isso, é necessário utilizar um controle de fluxo do código para direcionar o
@@ -17,11 +17,9 @@
 
    Existe algumas variações e tipos diferentes de loops e estruturas condicionais
    que serão apresentados ao longo do treinamento.
-*/
 
-// ============ FOR LOOP CLÁSSICO ============
+   ============ FOR LOOP CLÁSSICO ============
 
-/*
    É o loop mais usado, o mais popular. O propósito de todo loop é executar
    o pedaço de um código repetidas vezes. Todo código que se encontra entre
    chaves { } é chamado de bloco de código, o código de dentro corresponde
@@ -47,8 +45,8 @@ console.log('Loop concluído')
 /*
    É possível percorrer um array simples ou vindo de um banco de dados onde
    não sabemos a quantidade de itens que existe dentro dele. Utilizando
-   a propriedade length, é possível iterar sobre todos os itens mesmo não
-   sabendo a quantidade dele.
+   a propriedade length é possível iterar sobre todos os itens mesmo não
+   sabendo a quantidade deles.
 
    Podemos também criar um template de código HTML para iterar os itens dentro
    de uma tag HTML.
@@ -61,15 +59,15 @@ for (let i = 0; i < names.length; i++) {
    console.log(HTMLTemplate)
 }
 
-// ============ FOR IN ============
-
 /*
+   ============ FOR IN ============
+
    Esse tipo de loop é semelhante ao clássico, no entanto ao declararmos, ele 
    irá iterar pelo 'índice' de um array ou 'chave' de um objeto e podemos obter o valor. 
    Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
    o for in irá percorrer todos os elementos e irá obter seus respectivos índices.
 
-   Quando desejar percorrer por um objeto, experimente usar o for loop.
+   Quando desejar percorrer por um objeto, experimente usar o for in.
 
 */
 
@@ -86,15 +84,14 @@ for (let chave in pessoa) {
    console.log(pessoa[chave])
 }
 
-// percorrendo os índices com for loop
+// percorrendo os índices com for loop clássico
 for (let i = 0; i < frutas.length; i++) {
    console.log(frutas[i])
 }
 
-
-// ============ FOR OF ============
-
 /*
+   ============ FOR OF ============
+
    Essa estrutura cria um loop que itera em geral sobre objetos iteráveis. Em 
    arrays iterarão sobre os itens.
 
@@ -116,9 +113,9 @@ for (let elemento of frutas) {
    possibilidade de parar o loop em determinado momento.
 */
 
-// === WHILE LOOP ==========
-
 /*
+   === WHILE LOOP ==========
+
    Igual ao for, tendo como diferença apenas a sintaxe, ou seja, a forma
    de escrevê-lo.
 

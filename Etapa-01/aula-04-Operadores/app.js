@@ -1,42 +1,36 @@
 /*
-  ======== TÓPICAS DESTA AULA ========
+   ======== TÓPICAS DESTA AULA ========
 
     - BOOLEANS
     - OPERADORES DE COMPARAÇÃO
     - CONVERSÃO DE TIPOS
     - VALORES TRUTHY E FALSY
 
-*/
+   ===== BOOLEANS E OPERADORES DE COMPARAÇÃO =================================
 
-// ===== BOOLEANS E OPERADORES DE COMPARAÇÃO =================================
-
-/*
    Booleans representam dois valores especiais em javascript: true e false.
    São usados para verificar uma condição do código, ou seja, quando
    for necessário checar se um pedaço de código é verdadeiro ou falso.
 */
 
-// Booleans e Comparações
-console.log(true, false, "true", "false");
-
 // Alguns métodos que retornam true ou false
 const email = "roger.santos33@gmail.com";
 
 const includes = email.includes("@"); // true
-// método de array
+// método de array, também funciona em strings
 // verifica se uma string existe dentro de outra
 // existe? true, não existe? false
 // true ou false é atribuído na variável includes
-
-const contains = menu.classList.contains("class-name");
-// método de DOMTokenList
-// verifica se uma classe existe no DOMTokemList
-// true ou false será atribuído na classe contains
 
 const names = ["dio", "roger", "robert"];
 const arrayIncludes = names.includes("roger"); // true
 // também funciona em arrays
 // includes tentará dar um match no valor passado como argumento em algum item do array
+
+const contains = menu.classList.contains("class-name");
+// método de DOMTokenList
+// verifica se uma classe existe no DOMTokenList
+// true ou false será atribuído na classe contains
 
 // Operadores de Comparação
 
@@ -145,9 +139,7 @@ const booleanConvertion = Boolean(10); // true, tipo boolean
    - typeof verifica o tipo de dado, em algumas situações não é a melhor escolha
    - tentar converter strings em número ou vice-versa resulta em NaN quando a
    conversão não fizer sentido
-*/
-
-/*
+   
    Valores falsy:
       - false
       - 0

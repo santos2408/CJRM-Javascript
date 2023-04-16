@@ -1,16 +1,16 @@
 /*
-  Variáveis evitam repetição (DRY - Don't repeat yourself)
+  Variáveis evitam repetição (DRY - Don't Repeat Yourself)
 
   Podem iniciar com $, _, ou letras. Podem conter números mas não podem começar 
-  por eles e também e case sensitive, o Javascript diferencia letras maiúsculas 
+  por eles e também é case sensitive, o Javascript diferencia letras maiúsculas 
   de minúsculas. Existem algumas palavras que são reservadas do javacript e que 
   não podemos usar como nome de variável.
 
-  Procure usar a técnica camel case (firstName) separadas os nomes por letra 
+  Procure usar a técnica camel case (firstName) separando os nomes por letra 
   maiúscula.
 
   Caso as variáveis declaradas contenham o mesmo nome (var, let ou const), é 
-  possível sequencialas sem a necessidade de declaração o seu nome em todas as 
+  possível sequencialas sem a necessidade de declaração o seu tipo em todas as 
   declarações. Ex:
 
   const nome = 'Roger'
@@ -22,7 +22,7 @@
 
 /* ===== VARIÁVEL VAR =========================
   
-  A declaração 'var' declara uma variável, opacionalmente é possível atribuir à 
+  A declaração 'var' declara uma variável, opcionalmente é possível atribuir à 
   ela um valor em sua inicialização.
 
 */
@@ -75,11 +75,11 @@ const score = 100
   tomadas na hora de programar, essas práticas são conhecidas como 'clean code' 
   e qualidade de código.
 
-  Evite nomear variáveis, objetos ou funções com acrônimos, trava-linguas, 
+  - Evite nomear variáveis, objetos ou funções com acrônimos, trava-linguas, 
   abreviações ou siglas. O ideal é que eles tenham nomes que possam ser 
   pronunciados e pesquisados.
 
-  Evite também deixá-las ambíguas, ou seja, que possam acabar confundindo e 
+  - Evite também deixá-las ambíguas, ou seja, que possam acabar confundindo e 
   deixando o programador com dúvidas sobre o que ela realmente armazena, isso 
   gerará pistas falsas que pode fazer com que você ou outro programador tire 
   conclusões equivocadas.
@@ -93,7 +93,7 @@ const yyyymmdd = '12/12/2012'
 const jp // Japao? Joao Paulo?
 const l // linha? lista? lugar?
 
-const maleUsersList = { // se tem list no nome porque que é um objeto ? não deveria ser um array ?
+const maleUsersList = { // se tem 'list' no nome porque que é um objeto ? não deveria ser um array ?
   // ...
 }
 
@@ -110,7 +110,7 @@ const maleUsers {
 /*
 
   Utilize nomes que revelam uma intenção, seja explícito com os nomes, se 
-  necessário, não economize no tamanho do nome. Isso evita que no futuro você 
+  necessário não economize no tamanho do nome. Isso evita que no futuro você 
   ou outros programadores tenham dificuldades em entender o que a variável 
   significa.
 
