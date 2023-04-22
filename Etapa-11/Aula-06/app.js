@@ -13,11 +13,13 @@
   independente um do outro.
 
   Agora, para podermos ainda obter o valor das promises, devemos utilizar o 
-  método do objeto construtor Promise, chamado all. Ele recebe como argumento 
-  um array de promises e quando todas essas promises recebidas forem resolvidas 
-  ele retornará uma única promise que terá como resultado um array com as respostas 
-  de cada promise resolvida, e usando o await podemos desempacotar essa resposta 
-  e obter esse array com as respostas de cada promise.
+  método do objeto construtor Promise, chamado all. 
+  
+  O método Promise.all() recebe como argumento um array de promises e quando 
+  todas essas promises recebidas forem resolvidas ele retornará uma única promise 
+  que terá como resultado um array com as respostas de cada promise resolvida, 
+  e usando o await podemos desempacotar essa resposta e obter esse array com as 
+  respostas de cada promise.
   
   Se uma das promises que o Promise.all recebeu for rejeitada, o array das respostas 
   das promises será retornado normalmente mas aquela promise que deu erro será 
@@ -28,7 +30,8 @@
 */
 
 const getPokemon = async () => {
-  const bulbasaur = fetch('https://pokeapi.co/api/v2/pokemon/1')
+  // requests paralelos
+  const bulbasaur = await fetch('https://pokeapi.co/api/v2/pokemon/1')
   const charmander = fetch('https://pokeapi.co/api/v2/pokemon/4')
   const squirtle = fetch('https://pokeapi.co/api/v2/pokemon/7')
 
@@ -42,7 +45,7 @@ getPokemon()
   // ======= TRATANDO ERROS COM TRY / CATCH =======
 
   Quando um erro é lançado em uma aplicação javascript, o código abaixo desta 
-  linha que disparou o erro não é executado, e isso pode gerar um poblema, pois 
+  linha que disparou o erro não é executado, e isso pode gerar um problema, pois 
   quando o erro for lançado, a aplicação irá parar de executar.
 
   Para evitar isso podemos usar um try...catch, que é uma cláusula que irá tentar 
@@ -62,12 +65,12 @@ getPokemon()
   armazenam o nome e mensagem do erro.
 
   Nós devemos usar o try...catch quando desejarmos fazer alguma coisa em relação ao 
-  objeto de erro que o catch recebe. Essa cláusula serve para lidarmos com o erro 
+  objeto de erro que o catch recebe. Essa cláusula serve para lidarmos com os erros
   que o código pode lançar. Se esse não for o caso podemos normalmente utilizar o 
   if.
 
   Try...catch exige mais poder de processamento do que condicionais como o if, 
-  portanto use-o em casa que realmente necessite dessa cláusula.
+  portanto use-o em casos que realmente necessite dessa cláusula.
 
 */
 
@@ -80,18 +83,13 @@ try {
   }
 }
 
-// console.log(oi)
-
-/*
-  // ======= TRY / CATCH EM REQUESTS E ERROS PERSONALIZADOS =======
-
-*/
+// ======= TRY / CATCH EM REQUESTS E ERROS PERSONALIZADOS =======
 
 const getUsers = async () => {
   try {
     const response = await fetch('./json/todos.json')
 
-    if (!response.ok) {
+    if (!response.ok) { // se request der errado, lance um erro
       throw new Error('Não foi possível obter os dados')
     }
 
@@ -105,5 +103,13 @@ const logUsers = async () => {
   const users = await getUsers()
   console.log(users)
 }
+
+/*
+  Repaque que o código acima, mesmo que a requisição dê errado, o código irá 
+  lançar uma mensagem de erro mas o restante do código da aplicação continuará 
+  funcionando. O erro não impedirá o funcionamento da aplicação, diferente do 
+  caso não estarmos usando try...catch, em que se ocorrer um erro, todo a 
+  aplicação irá parar de funcionar e o código quebrará.
+*/
 
 logUsers()

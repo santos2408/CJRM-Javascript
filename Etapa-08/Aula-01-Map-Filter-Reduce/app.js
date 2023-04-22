@@ -1,5 +1,5 @@
 /*
-   MÉTODO MAP()
+   ============ MÉTODO MAP() ============
 
    Já vimos algumas formas de iterar sobre arrays, por exemplo, for, while, 
    forEach, find, some. Esses três últimos executam uma função de callback para 
@@ -11,8 +11,8 @@
    MAP(): é utilizado quando desejamos gerar um novo array com a mesma quantidade 
    de itens do array original, só que com cada item transformado. Ele funciona 
    percorrendo cada item do array original executando alguma transformação 
-   passada dentro de uma função que será passada por argumento dentro dele. Então 
-   ele retornará um novo array com os itens transformados.
+   passada dentro de uma função que ele recebe como argumento. Então ele retornará 
+   um novo array com os itens transformados.
 
    Podemos transformar esses itens em objetos, strings, números etc, lembrando-se
    sempre que o map deve retornar a mesma quantidade de itens do original, mas 
@@ -27,11 +27,12 @@
    retorna um novo array com os itens do array original modificados.
 
    Como argumento do map nós vamos inserir uma função que irá executar uma ação 
-   em cada item do array original. Essa função pode receber 3 parâmetros: ITEM, 
-   INDEX e ARRAY.
-
-   Desses 3 parâmetros o único obrigatório é o ITEM, o restante fica a seu 
-   critério e necessidade.
+   em cada item do array original e a cada execução, o resultado é armazenado 
+   num novo array que será retornado no final quando todos os itens tiverem sido 
+   executados. 
+   
+   Essa função pode receber 3 parâmetros: ITEM, INDEX e ARRAY. Desses 3 parâmetros 
+   o único obrigatório é o ITEM, o restante fica a seu critério e necessidade.
 
    Atenção: Para o map retornar um novo array, a função passada como argumento 
    deve retornar um valor. Diferente do forEach que não retorna um valor.
@@ -92,23 +93,25 @@ const saleProducts = products.map(product => {
    objeto do array products, portanto o objeto do array original será modificado 
    e não é isso que queremos. Nós queremos usar o map para criar um novo array 
    com novos itens modificados.
-*/
 
-/*
-   MÉTODO FILTER()
+   Sempre prefira esse tipo de comportamento, evite a mutabilidade de valores, 
+   sempre prefira armazenar a modificação de um valor em outra variável e deixar 
+   o original intacto.
+
+   ============ MÉTODO FILTER() ============
 
    Similar ao MAP, também recebe uma função como argumento e executa essa função 
    em cada item do array original. Usaremos esse método quando baseados numa 
    condição precisamos obter um novo array com apenas alguns itens do array 
-   original.
+   original, ou seja, filtrados.
 
    Pode receber também 3 valores como argumento e apenas o primeiro valor que é 
    o item atual sendo iterado que é obrigatório.
 
    A função passada como argumento deve sempre retornar um valor booleano. Caso 
    esse valor seja true, ele será inserido no novo array, se for false será 
-   ignorado pelo método. Ou seja, o filter irá criar e inserir o item no array 
-   apenas se esse item sendo iterado retornar true.
+   ignorado pelo método. Ou seja, o filter irá inserir o item no novo array 
+   apenas se se função que está tratando este item retornar true.
 
    Não modifica o array original.
 
@@ -135,10 +138,10 @@ const users = [
 const premiumUsers = users.filter(user => user.premium)
 
 /*
-   MÉTODO REDUCE()
+   ============ MÉTODO REDUCE() ============
 
    Também recebe uma função por argumento e executa essa função para cada item 
-   do array. Nós usamos o reduce quando, baseado no array original, precisaremos 
+   do array. Nós usamos o reduce quando, baseado no array original, precisamos 
    reduzir o array a algum outro tipo de dado como uma string, number, literal 
    object ou um novo array.
 
@@ -148,10 +151,11 @@ const premiumUsers = users.filter(user => user.premium)
    A função recebe como parâmetro um 'accumulator' e 'item'. Também 
    podendo receber o 'index' e 'array' de forma opcional.
 
-   No exemplo abaixo a função é executada para cada item do array e 
-   apenas na primeira vez que a função for executada, o parâmetro 'accumulator' 
-   receberá o segundo argumento do reduce que é o '0'. O parâmetro 'item' recebe 
-   o primeiro item do array e a função retornará o resultado da expressão.
+   No exemplo abaixo a função é executada para cada item do array e apenas na 
+   primeira vez que a função for executada, o parâmetro 'accumulator' receberá o 
+   segundo argumento do reduce que é o '0' que será o valor inicial do accumulator. 
+   O parâmetro 'item' recebe o primeiro item do array e a função retornará o 
+   resultado da expressão.
 
    O resultado da expressão será atribuído implicitamente no parâmetro 
    'accumulator', depois disso a função será executada novamente e o parâmetro 
@@ -222,9 +226,6 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
    qualquer mudança de estado que pode ser percebida do lado de fora de uma função 
    e que não é um valor retornado pela função.
 
-*/
-
-/*
    Os métodos 'map', 'filter' e 'reduce' são consideradas 'Higher-Order Functions', 
    ou seja, 'funções de ordem superior'. São funções que recebem outras funções 
    como argumento ou retornam uma função como valor. Elas nos permitem escrever 

@@ -72,22 +72,25 @@
    e e seu valor tiverem o mesmo nome, é possível utilizar uma feature chamada 
    "shorthand property names" para eliminar essa redundância, podemos apenas 
    deixar o nome da propriedade que automaticamente o JS irá saber que o valor 
-   tem o mesmo nome da chave. Veja abaixo:
+   tem o mesmo nome da chave. 
 
-   Isso só vale para chave e valor com o mesmo nome.
-
-   let cat = {
-      name: 'Pintada',
-      age: 4
-   }
-
-   // antes
-   return { name: name, age: age }
-
-   // depois
-   return { name, age } // shorthand property name
+   Lembre-se também que se um objeto contém mais de uma propriedade com o mesmo 
+   nome, a última propriedade irá sobrescrever todas as outras.
+   
+   Veja abaixo:
 
 */
+
+let cat = {
+   name: 'Pintada',
+   age: 4
+}
+
+return { name: name, age: age } // antes
+return { name, age } // shorthand property name / depois
+// Isso só vale para chave e valor com o mesmo nome.
+
+// ===================================================================
 
 // declaração de objeto literal
 let user = {
@@ -156,14 +159,12 @@ userr.login() // método de user
 userr.logout() // método de user
 userr.name.toUpperCase() // método de String
 
-// estudar 
-
-// ====== MAIS SOBRE OBJETOS ==============================
-
 /*
+   ====== MAIS SOBRE OBJETOS ==============================
+
    Além de utilizar um inicializador de objeto, que é uma sintaxe literal para 
-   criar objetos, podemos também utilizar o construtor Object() para criarmos 
-   objetos.
+   criar objetos, ou seja, é uma expressão que descreve a inicialização de um 
+   objetom podemos também utilizar o construtor Object() para criarmos objetos.
 
    Quase todos os objetos são instâncias de Object, portanto a maioria irá 
    herdar métodos e propriedades de Object.prototype.
@@ -173,6 +174,8 @@ userr.name.toUpperCase() // método de String
    disparará quando o eventListener for executado. Com isso, dentro desse 
    objeto passado como argumento podemos utilizar propriedades. Consulte também 
    a aula-03 da etapa-05 para entender melhor.   
+
+   https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 */
 
 const callbackObject = {
@@ -182,7 +185,7 @@ const callbackObject = {
 button.addEventListener('click', callbackObject)
 
 /*
-   ======== MÉTODOS DE OBJECT ========
+   ================= MÉTODOS DE OBJECT =================
 
    Object.keys: retorna um array do próprio objeto passado como argumento do 
    método, esse array irá retornar de forma ordenada os nomes das propriedades 
@@ -212,8 +215,22 @@ const person = {
 Object.entries(person) // output: [ ["name", "Roger"], ["age", "25"], ["1996", "1996"] ]
 
 /*
-   PESQUISAR SOBRE MAIS MÉTODOS DE OBJECT
+   ================= COMPUTED PROPERTY NAMES =================
 
-   ...
+   A sintaxe de inicialização de um objeto também suporta o 'computed property 
+   names'. Isso nos permite colocar uma expressão dentro dos colchetes que será 
+   computada e usada como nome da propriedade.
 
 */
+
+let i = 0;
+const a = {
+  [`numero${++i}`]: i, // numero1: 0
+  [`numero${++i}`]: i, // numero2: 1
+  [`numero${++i}`]: i, // numero3: 2
+}
+
+const items = ["A", "B", "C"];
+const obj = {
+  [items]: "Hello", // { A,B,C: 'Hello' }
+}
