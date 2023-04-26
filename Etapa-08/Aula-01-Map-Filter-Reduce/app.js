@@ -232,11 +232,8 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
    códigos mais abstratos, reutilizáveis e com propósitos gerais que podem ser 
    aplicados em diferentes casos de uso.
 
-*/
-
-/*
-
-   Computed Property Names
+   PESQUISAR SOBRE:
+   
    reduceRight()
 
 */

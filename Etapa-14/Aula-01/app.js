@@ -179,11 +179,12 @@ Math.max(...numbers) //
   [ ] - Imutabilidade
   [ ] - Mutabilidade
   [ ] - return early
+  [ ] - Optional chaining (?.)
 
   const to = promise => promise
     .then(result => [null, result])
     .catch(error => [error])
 
-  o código acima é a mesma coisa que escrever um try catch!
+  o código acima é a mesma coisa que escrever um try catch! Pesquisa sobre!
 
 */
