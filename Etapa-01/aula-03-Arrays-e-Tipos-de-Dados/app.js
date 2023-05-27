@@ -138,17 +138,17 @@ array1.split(':') // separa os itens a cada ':' encontrado
 // recebe por argumento um padrão como parâmetro de separação dos itens do elemento
 // no final insere tudo dentro de um array e retorna
 
-const myObj = { a: 1, b: 2, c:3 }
+const myObj = { a: 1, b: 2, c: 3 }
 const myObjArray = Object.keys(myObj) // [ a, b, c ]
 // retorna um array com as 'property names' do objeto passado como argumento
 // são criados na mesma ordem dos itens do objeto
 
-const myObj = { a: 1, b: 2, c:3 }
+const myObj = { a: 1, b: 2, c: 3 }
 const myObjArray = Object.values(myObj) // [ 1, 2, 3 ]
 // retorna um array com os 'values' do objeto passado como argumento
 // são criados na mesma ordem dos itens do objeto
 
-const myObj = { a: 1, b: 2, c:3 }
+const myObj = { a: 1, b: 2, c: 3 }
 const myObjArray = Object.entries(myObj) // [ [a, 1], [b, 2], [c, 3] ]
 // retorna um array com 'chave e valor' do objeto dentro de um array 
 // cada 'chave e valor' separados por array
@@ -171,6 +171,7 @@ const reusultDeth2 = deth2.flat(2)
 // unshift
 // copyWithin
 // fill
+// at
 
 console.log('========================================')
 

@@ -73,7 +73,7 @@ const object = new Object() // objeto wrapper do tipo object
 /*
   Isso que foi feito logo acima é exatamente o que o javascript faz 
   automaticamente quando tratamos com algum dado primitivo que esteja usando 
-  ao método ou propriedade.
+  métodos ou propriedades do seu tipo.
 
   =============== INTRODUÇÃO A CLASSES ===============
 
@@ -127,11 +127,13 @@ const user3 = {
   Existem diversas maneiras de construirmos o nosso próprio objeto, usando 
   'funções construtoras', 'factory functions' ou 'classes'. Antigamente uma das 
   formas era usar prototypes diretamente, mas com a chegada do ES6 podemos utilizar 
-  a palavra chave 'class' para construir objetos. O nome 'class' é apenas uma 
-  abstração para nos facilitar de entendermos melhor o que está acontecendo, pois 
-  por baixo dos panos elas estão usando prototypes para construir os objetos.
+  a palavra chave 'class' para construir objetos. 
+  
+  O nome 'class' é apenas uma abstração para nos facilitar de entendermos melhor 
+  o que está acontecendo, pois por baixo dos panos elas estão usando prototypes 
+  para construir os objetos.
 
-  =============== CLASSES ===============
+  =============== CONSTRUINDO OBJETOS COM CLASSES ===============
 
   As classes foram adicionadas como uma tentativa de deixar mais fácil o entendimento 
   da sintaxe para se trabalhar com prototypes. Veremos mais a frente o que são 
@@ -142,7 +144,7 @@ const user3 = {
   características básicas mas poderá receber valores diferentes para cada construção.
 
   Todo construtor embutido na linguagem tem a primeira letra do nome maiúscula, 
-  então, por convenção, quando formos criar os nossos objetos, declararemos 
+  então, por convenção, quando formos criar os nossos próprios objetos, declararemos 
   também com letras maiúsculas. Isso é usado para diferenciarmos propositalmente 
   das funções comuns do JS.
 
@@ -175,11 +177,11 @@ const user3 = {
 // declarando class para construir objeto User
 class User {
   // setando as propriedades do novo objeto
-  constructor (name, lastName, age) {
+  constructor(name, lastName, age) {
     // criando as propriedades
     this.name = name, // this referencia esse novo objeto que está sendo criado (User)
-    this.lastName = lastName,
-    this.age = age
+      this.lastName = lastName,
+      this.age = age
   }
 }
 
@@ -202,19 +204,19 @@ const user2 = new User("Alessandra", "Carvalho", 44)
   Repare que, os métodos do objeto gerado ficam armazenados dentro da propriedade 
   prototype e não dentro do objeto em si, veremos o porquê disso nas próximas aulas. 
   Dentro da classe, na declaração de métodos utilizamos as 'function declarations'
-  com sintaxe de shorthand property name.
+  com sintaxe de 'shorthand property name'.
   
 */
 
 class Usuario {
   constructor(name, lastName, age) {
-    this.name = name, 
-    this.lastName = lastName, 
-    this.age = age, 
-    this.points = 0
+    this.name = name,
+      this.lastName = lastName,
+      this.age = age,
+      this.points = 0
   }
 
-  login () {
+  login() {
     console.log(`${this.name} logou na aplicação.`)
     return this // retornando objeto para encadear outro método
 
@@ -223,17 +225,17 @@ class Usuario {
       o método anterior deve retornar o próprio objeto, pois assim a invocação
       encadeada irá conseguir acessar o seu método, é o que está acontecendo acima.
 
-      Quando precisarmos encadear invocações de métodos de um objeto criado por 
-      uma classe, precisamos fazer com que as invocações dos métodos da classe 
-      retornem o próprio objeto (this).
+      Ou seja, Quando precisarmos encadear invocações de métodos de um objeto 
+      criado por uma classe, precisamos fazer com que as invocações dos métodos 
+      da classe retornem o próprio objeto (this).
     */
   }
 
-  logout () {
+  logout() {
     return `${this.name} deslogou da aplicação.`
   }
 
-  addPoint () {
+  addPoint() {
     this.points++
     return `${this.name} agora tem ${this.points} ${this.points > 1 ? "pontos" : "ponto"}`
   }
@@ -258,37 +260,47 @@ console.log(usuario)
   que irão se repetir nos objetos.
 
   Para herdarmos propriedades e métodos de uma classe, na declaração da classe 
-  devemos inserir 'extends' e o nome da classe que queremos herdar as características.
+  devemos inserir a palavra chave 'extends' e o nome da classe que queremos 
+  herdar as características.
 
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
   o constructor da classe que ela está herdando e consequentemente irá obter as 
   propriedades dessa classe herdade. 
   
   Quando criamos um novo constructor na subclasse, a subclasse não conseguirá 
-  obter as propriedades da classe herdada, isso porque, existindo dois constructor, 
-  eles entram em conflito.
+  obter as propriedades da classe herdada, isso porque, existindo dois constructor's, 
+  eles entram em conflito. Para resolver esse problema, como não podem haver dois 
+  constructor's existindo (na subclasse e na superclass), na subclass nós iremos 
+  invocar o método 'super', esse método irá invocar o método 'constructor' da 
+  superclass e assim, dentro da subclass, será criada as mesmas propriedades 
+  da superclass.
 
-  Não conseguimos usar o this na subclasse sem antes chamar o constructor da 
-  classe herdada com super()
+  Lembre-se que, não conseguiremos usar o this na subclass sem antes chamar o 
+  constructor da classe herdada (supercclas) utilizando o método 'super'.
 
-  O constructor da classe herdada só é executado quando não existe um constructor 
-  na classe filho, se passar a existir, o constructor da classe herdada não será 
-  mais executado. A classe herdada é conhecida também como superclass, por isso o 
-  nome do método que a invoca é chamado de 'super'.
+  O constructor da classe herdada (superclass) só é executado quando não existe 
+  um constructor na classe filho, se passar a existir, o constructor da classe 
+  herdada (superclass) não será mais executado. A classe herdada (superclass) 
+  é conhecida também como superclass, por isso o nome do método que a invoca é 
+  chamado de 'super'.
+  
+  Ou seja: "invoque o método constructor da superclass, chamando através do 
+  método super!"
 
-  Podemos 'sobrescrever' métodos da subclasse que já existem na superclasse, pois 
+  Podemos 'sobrescrever' métodos da subclass que já existem na supeclass, pois 
   como estão em objetos diferentes, declarar com o mesmo nome não causará problema, 
-  mesmo tendo o mesmo nome cada método terá seu comportamente único.
+  mesmo contendo nomes iguais cada método terá seu comportamente único.
 
-  Para resolver isso e recebermos as propriedades da classe herdada e ainda inserir 
-  propriedades exclusivas da subclasse precisaremos receber todos os argumentos 
-  da classe herdada na invocação da subclasse e em seguida, dentro do constructor da 
-  subclasse iremos invocar o constructor da classe herdada, só que para o JS entender 
-  que estamos invocando o constructor da classe herdada e não da subclasse, precisaremos 
-  trocar o nome 'constructor' por 'super'. Assim nós teremos dois constructors, 
-  um para a subclasse e outro para obter as propriedades da superclass para evitar 
-  um conflito entre elas, ou seja, o método 'super' invoca o constructor da classe 
-  herdada.
+  Para resolver isso e recebermos as propriedades da classe herdada (superclass) 
+  e ainda inserir propriedades exclusivas da subclass, precisaremos receber todos 
+  os argumentos da classe herdada (superclass) na invocação da subclass e em seguida, 
+  dentro do constructor da subclass iremos invocar o constructor da classe herdada
+  (superclass) utilizando o método 'super', só que para o JS entender que estamos 
+  invocando o constructor da classe herdada (superclass) e não da subclass, 
+  precisaremos trocar o nome 'constructor' por 'super'. Assim nós teremos dois 
+  constructors, um para a subclass e outro para obter as propriedades da superclass 
+  para evitar um conflito entre elas, ou seja, o método 'super' invoca o constructor 
+  da classe herdada (superclass).
 
 */
 
@@ -305,13 +317,13 @@ class Mammal { // superclass / classe pai / será herdada
   }
 }
 
-class Lion extends Mammal { // subclasse / classe filha / herdando propriedades e métodos de Mammal (superclass / classe pai)
-  constructor(species, name, age, manEater) { // constructor da subclasse
-    super(species, name, age) // invocando constructor da classe herdada com 'super' e obtendo e setando propriedades
-    this.manEater = manEater // propriedade única da subclasse Lion
+class Lion extends Mammal { // subclass / classe filha / herdando propriedades e métodos de Mammal (superclass / classe pai)
+  constructor(species, name, age, manEater) { // constructor da subclass
+    super(species, name, age) // invocando constructor da superclass com 'super' e obtendo e setando propriedades
+    this.manEater = manEater // propriedade única da subclass Lion
   }
 
-  eatZebras(animals) { // método único da subclasse Lion
+  eatZebras(animals) { // método único da subclass Lion
     return animals.filter((animal) => animal.species !== 'zebra')
   }
 }
@@ -331,5 +343,5 @@ console.log(mufasa, scar)
   PESQUISAR SOBRE:
 
   dataTransfer()
-
+  shorthand property names: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
 */

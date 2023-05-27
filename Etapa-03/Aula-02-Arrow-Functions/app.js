@@ -1,14 +1,10 @@
 /*
-   referências:
+  referências:
 
-   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-   https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+  https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 
-*/
-
-// ===== ARROW FUNCTIONS ================================
-
-/*
+  ===== ARROW FUNCTIONS ================================
 
    São uma das adições do Javascript moderno, um dos motivos para a sua adição
    na linguagem é para que se tenha uma forma mais curta e concisa para
@@ -25,7 +21,7 @@
    palavra chave return e deixar a arrow function apenas com uma linha.
    O javascript entenderá o código e retornará o valor da função implicitamente.
 
-   O valor retornado pode ser uma string, array, boolean, número, expressões,
+   O valor retornado pode ser uma string, array, boolean, número ou expressões,
    como as funções anteriores. Mas não tem como retornar de uma função um bloco
    de código como um if ou switch ou algo do tipo, pois não são valores, assim 
    como mais de um valor, mas para contornar isso podemos retornar vários valores 
@@ -37,16 +33,21 @@
    O nome da função pode ser omitido, nesse caso ela será reconhecida como uma 
    função anônima. O nome é apenas local para o corpo da função. Vale lembrar 
    que é recomendado nomear as funções, pois fica mais fácil depurar um código 
-   quando se sabe qual função ocorreu algum erro.
+   quando se sabe qual função ocorreu algum erro. 
+
+   Quando ocorre ao algum erro relacionado ao código no console, geralmente, 
+   se o erro for numa determinada função, se essa função estiver nomeada, o 
+   console do browser irá exibir o nome dela e isso facilitará a localização 
+   dela no código.
 
    Como toda função é um objeto, quando não declaramos uma função com nome, 
-   ela recebe uma propriedade 'name' vazia e quando declaramos essa propriedade 
-   recebera o nome da função.
+   ela recebe uma propriedade 'name' vazia e quando declaramos um nome, essa 
+   propriedade recebe o nome da função.
 
 */
 
 // function declaration
-function double (number) {
+function double(number) {
    return number * 2
 }
 
@@ -65,7 +66,6 @@ const double = (number) => {
 // forma simplificada
 const double = number => number * 2
 
-
 const result = double(3)
 console.log(`O resultado é: ${result}`)
 
@@ -73,14 +73,12 @@ console.log(`O resultado é: ${result}`)
    Functions expressions não contém hoisting, portanto não podemos invocá-las 
    antes da sua declaração, diferente das function declarations que é possível.
 
-*/
+   // ===== DIFERENÇA DE MÉTODO E FUNÇÃO ================================
 
-// ===== DIFERENÇA DE MÉTODO E FUNÇÃO ================================
-
-/*
    Funções e métodos são sinônimos, em essência realizam a mesma coisa, é
    possível invocá-las para executar um bloco de código que realiza alguma coisa.
    A diferença entra elas é sua forma de invocação e onde é declarada.
+
 */
 
 const name = 'Roger'
@@ -88,7 +86,7 @@ const name = 'Roger'
 // funções
 const sayHi = () => 'Oi'
 
-const greet = sayHi()
+const greet = sayHi() // invocando função
 console.log(greet)
 
 // Para invocarmos uma função, nós declaramos o nome da função seguido de parênteses.
@@ -102,11 +100,9 @@ console.log(greet)
 
    Métodos são funções que estão associadas a objetos ou tipo de dados,
    os métodos são criados dentro de um objeto ou tipo de dado.
-*/
 
-// ===== callbacks e forEach ================================
+   ===== callbacks e forEach ================================
 
-/*
    É possível também inserir uma função como argumento, essa operação
    é chamada de função de callback ou apenas callback.
 */
@@ -139,7 +135,7 @@ const logArrayInfo = (socialNetwork, index, array) => {
 
 socialNetworks.forEach(logArrayInfo)
 // não precisa de parênteses para executar a função
-// a execução é implicita, dizemos que ela é passada por referência
+// a execução é implícita, dizemos que ela é passada por referência
 // os parâmetros estão sendo passados implicitamente
 
 // ===== UTILIZANDO CALLBACKS ================================
@@ -157,19 +153,16 @@ socialNetworks.forEach(socialNetwork => {
 ul.innerHTML = HTMLTemplate
 
 /*
-================================================================================
-============================== CONTEÚDO ADICIONAL ==============================
+   ================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
 
-================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
+   Function expressions invocadas imediatamente após sua declaração é uma forma de 
+   proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
+   a função entre parênteses e a invocamos ao mesmo tempo.
 
-Function expressions invocadas imediatamente após sua declaração é uma forma de 
-proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
-a função entre parênteses e a invocamos ao mesmo tempo.
-
-Mais sobre IIFE na Etapa-14 - Aula 03.02
+   Mais sobre IIFE na Etapa-14 - Aula 03.02
 
 */
 
-(function(parameter){
+(function (parameter) {
    console.log('Função invocada automaticamente.')
 })()

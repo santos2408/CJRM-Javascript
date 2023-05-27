@@ -113,3 +113,11 @@ const logUsers = async () => {
 */
 
 logUsers()
+
+/*
+  estudar sobre:
+
+  Promises.allSettled()
+  Promises.all()
+
+*/

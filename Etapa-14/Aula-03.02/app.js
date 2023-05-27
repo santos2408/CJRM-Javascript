@@ -320,6 +320,9 @@ const state = (() => { // IIFE
 /*
 
   * estudar mais sobre :
+
+  iife
+  https://developer.mozilla.org/en-US/docs/Glossary/IIFE
   
   this
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this

@@ -25,8 +25,9 @@ objeto Window e não o objeto que a função está criando. Se declararmos uma f
 pai que contém uma arrow function filha, o this da função filha irá referenciar a 
 função pai, porque o this de uma arrow function referencia o escopo de onde ela 
 foi declarada. Ou seja, o this da função filha referencia o mesmo objeto do this 
-da função pai e o this da função pai será o Objeto Window caso ela esteja declara 
-no escopo global.
+da função pai e o this da função pai será o Objeto Window caso ela esteja declarada
+como arrow function, caso contrário, se for uma função construtora, ela irá 
+referenciar o objeto que está sendo craido.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
 função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
@@ -44,7 +45,7 @@ não funciona em browsers mais antigos, portanto os desenvolvedores deixam com
 function declaration para não quebrar o código para browsers antigos. Mas podemos 
 usar arrow functions também, sempre tendo atenção ao binding da palavra 'this'.
 
-Pela constructor function ser uma feature antiga do JS, não é recomendado 
+* Devido a constructor function ser uma feature antiga do JS, não é recomendado 
 utilziar arrow function dentro dela, visto que arrow function é uma feature 
 recente.
 
@@ -83,9 +84,12 @@ const Student = (name, email) => {
   this.email = email // referencia objeto do escopo onde função foi declarada / Objeto Window
 }
 
+// ao criar funções construtoras, prefira sempre o estilo de function declaration
+
 const roger = new Student('Roger Santos', 'roger.santos36@gmail.com')
 
 /*
+
 =============== PROTOTYPES ===============
 
 Como vimos no exemplo anterior, declarar métodos dentro de funções construtoras 
@@ -97,8 +101,8 @@ diferente para cada objeto criado.
 
 E esse é um comportamento que não faz sentido, pois se todos os objetos terão 
 o mesmo método, não há motivos para criar esse mesmo método para cada objeto 
-criado. Com isso a aplicação irá consumir mais memória do que necessário. 
-Mas existe uma forma de evitar isso.
+criado. Com isso a aplicação irá consumir mais memória do que necessário. Mas 
+existe uma forma de evitar isso.
 
 Em javascript todo novo objeto que é criado herda propriedades e métodos do 
 seu prototype, que é um objeto do qual um novo objeto que você criou vai herdar 
@@ -139,7 +143,7 @@ seu prototype. Portanto, todos os prototypes dos objetos já existem no JS, eles
 não são criados toda vez que criamos um novo objeto, mas são apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
-prototype do objeto criado, invés de adicionar dentro da própria função construtora.
+prototype do objeto criado, em vez de adicionar dentro da própria função construtora.
 Assim, um único método estará disponível por referência para qualquer objeto que 
 for criado a partir da instância da função construtora.
 
@@ -176,8 +180,6 @@ roger.login === alessandra.login // true
 roger.comment === alessandra.comment // true
 // método login e comment dentro do prototype de cada objeto criado
 // referenciando o mesmo método na memória
-
-// ============================================================================
 
 /*
 
@@ -291,11 +293,11 @@ class Student {
   anônima, a não ser que ela seja atribuída para uma const ou let, pois quando 
   declaramos uma função anônima com const ou let, seu nome é atribuído normalmente.
 
-  Método usando function declaration anônima não é recomendado!
+  Método usando function declaration anônima não é recomendado! Nomeie-as!
 
 */
 
-Student.formatToDatabase = function (aString) { // function declaration anônima / não recomendado
+Student.formatToDatabase = function (aString) { // function declaration anônima / não recomendado!
   // ...
 }
 
