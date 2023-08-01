@@ -7,15 +7,15 @@ let user = {
    city: 'São Paulo',
    blogPosts: [
       { title: 'Empadão de Frango', likes: 30 }, // ***
-      { title: '4 receitas de purê de batata', likes: 50} // ***
+      { title: '4 receitas de purê de batata', likes: 50 } // ***
    ],
-   login () {
+   login() {
       console.log('Usuário logado.')
    },
-   logout () {
+   logout() {
       console.log('Usuário deslogado.')
    },
-   logBlogPosts () {
+   logBlogPosts() {
       console.log(`${this.name} escreveu os seguintes posts:`)
 
       this.blogPosts.forEach(post => {
@@ -130,7 +130,7 @@ console.log(Math.round(randomNumber * 100))
    na memória que podem ser acessados rapidamente quando necessário.
 
    Os espaços na "stack" são limitados, portanto não comportam "valores complexos" 
-   como são os objetos. Devido a isso os objetos são armazenados em outro local
+   como são os objetos. Devido a isso, os objetos são armazenados em outro local
    diferente da "stack", que são chamados de "heap" que é um amontoado de maior
    espaço disponível para armazenar objetos maiores e mais complexos.
 
@@ -143,7 +143,7 @@ console.log(Math.round(randomNumber * 100))
    no "heap". Portanto quando chamamos um objeto que está no "heap", essa chamada
    entra na "stack" localiza o ponteiro e puxa o objeto da "heap".
 
-   Portanto, valores no "heap" são acessados através de ponteiros e valores
+   Portanto, valores na "heap" são acessados através de ponteiros e valores
    na "stack" são acessados através do nome da variável.
 */
 
@@ -153,7 +153,7 @@ let scoreTwo = scoreOne // cópia do scoreOne
 
 console.log(`scoreOne: ${scoreOne} | scoreTwo: ${scoreTwo}`) // 50 50
 
-scoreTwo = 100
+scoreTwo = 100 // reatribuindo valor
 
 console.log(`scoreOne: ${scoreOne} | scoreTwo: ${scoreTwo}`) // 50 100
 
@@ -161,7 +161,7 @@ console.log(`scoreOne: ${scoreOne} | scoreTwo: ${scoreTwo}`) // 50 100
 let userOne = { name: 'Roger', age: 25 }
 let userTwo = userOne // tentando criar uma cópia, mas como é um objeto tipo
 // referencia, está sendo copiado o ponteiro da userOne, portanto estão 
-// apontando para o mesmo local.
+// apontando para o mesmo local. Estão referenciando o mesmo objeto na memória
 
 console.log(userOne, userTwo) // userOne = userTwo
 

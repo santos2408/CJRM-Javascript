@@ -1,14 +1,14 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js'
-import { getFirestore  } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
 import { collection, getDocs, addDoc, serverTimestamp, doc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDQPNObgws7ZSnHh8uHjmkKWGRrKBUhvF4',  
-  authDomain: 'testing-firebase-d7a43.firebaseapp.com',  
-  projectId: 'testing-firebase-d7a43',  
-  storageBucket: 'testing-firebase-d7a43.appspot.com',  
-  messagingSenderId: '289086234793',  
-  appId: '1:289086234793:web:10e883d7d6ede1544049b8',  
+  apiKey: 'AIzaSyDQPNObgws7ZSnHh8uHjmkKWGRrKBUhvF4',
+  authDomain: 'testing-firebase-d7a43.firebaseapp.com',
+  projectId: 'testing-firebase-d7a43',
+  storageBucket: 'testing-firebase-d7a43.appspot.com',
+  messagingSenderId: '289086234793',
+  appId: '1:289086234793:web:10e883d7d6ede1544049b8',
   measurementId: 'G-W3G3F8BWHD'
 }
 
@@ -17,13 +17,13 @@ const database = getFirestore(app)
 const collectionGames = collection(database, 'games')
 
 const gamesList = document.querySelector('[data-js="games-list"]')
-const formAddGame=  document.querySelector('[data-js="add-game-form"]')
+const formAddGame = document.querySelector('[data-js="add-game-form"]')
 const buttonUnsub = document.querySelector('[data-js="unsub"]')
 
 const sanitize = string => DOMPurify.sanitize(string)
 
 const getFormattedDate = createdAt => new Intl
-  .DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short'})
+  .DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
   .format(createdAt.toDate())
 
 const renderGame = docChange => {
@@ -73,7 +73,7 @@ const renderGamesList = snapshot => {
 }
 
 const to = promise => promise
-  .then(result => [null, result]) 
+  .then(result => [null, result])
   .catch(error => [error])
 
 const addGame = async event => {
@@ -84,7 +84,7 @@ const addGame = async event => {
     developedBy: sanitize(event.target.developer.value),
     createdAt: serverTimestamp()
   }))
-  
+
   if (error) {
     return console.log(error)
   }
@@ -102,7 +102,7 @@ const deleteGame = async event => {
   }
 
   const [error] = await to(deleteDoc(doc(database, 'games', idRemoveButton)))
-  
+
   if (error) {
     return console.log(error)
   }

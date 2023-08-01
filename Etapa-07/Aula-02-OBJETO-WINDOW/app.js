@@ -1,6 +1,6 @@
-// ============ OBJETO WINDOW ============
-
 /*
+   =============================== OBJETO WINDOW ===============================
+
    window é um objeto que existe no escopo global de uma aplicação. Em javascript 
    sempre existe um objeto global em que todos os métodos e propriedades que são 
    executados estão "pendurados", variando de acordo com o ambiente onde a 
@@ -20,9 +20,9 @@
    sendo omitido no início.
 
    console.log(''): método de window com objeto window sendo omitido
-*/
 
-/* 
+   =============================================================================
+
    outerWidth: essa propriedade obtém a largura total da janela
    do browser em que o HTML está sendo exibido.
 
@@ -77,8 +77,8 @@ scrollTo(0, 0)
    Observação:
 
    Classes CSS foram criadas para manipular estilos. O código fica mais organizado
-   as deixamos as apenas para o CSS. Portanto, evite referenciar um elemento do 
-   DOM utilizando classes ou ID's.
+   deixando-as apenas para o CSS. Portanto, evite referenciar um elemento do DOM
+   utilizando classes ou ID's.
 
    o attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
    variável global que aponta para o elemento que tem aquele ID. Se na marcação 
@@ -104,6 +104,6 @@ scrollTo(0, 0)
    é possível ao bater o olho na versão do arquivo que usa apenas class.
 
    A forma mais confiável de identificar elementos e manipulá-los em JavaScript 
-   (puro) é usar o atributo 'data'
+   (puro) é usar o atributo 'data'.
 
 */

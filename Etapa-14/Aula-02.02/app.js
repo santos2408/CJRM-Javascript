@@ -28,7 +28,6 @@
   Mas quando nos depararmos com um código semelhante em um projeto real, deveremos 
   saber o que está acontecendo. Então, saber que isso é possível é uma maneira 
   de evitar consequências no futuro e se for viável poderemos refatorar o código.
-
 */
 
 class Counter {

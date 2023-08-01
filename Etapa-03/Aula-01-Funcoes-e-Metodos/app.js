@@ -232,5 +232,6 @@ funcao(1, 2, 3)
 
    [ ] - função variádica
    [ ] - rest parameters x spread operators
+   [ ] - first-class objects
 
 */

@@ -10,7 +10,7 @@
    quando esse evento é disparado.
 
    Nesse momento deve-se saber que quando um evento acontece ele é propagado 
-   a partir do target no qual ele aconteceu até o topo do DOM. Por exemplo, se 
+   a partir do target no qual ele aconteceu, até o topo do DOM. Por exemplo, se 
    clicarmos num elemento 'li' que contém um 'evento' atrelado a ele. Ao clicar, 
    esse evento irá propagar para o seu elemento pai e assim por diante.
 
@@ -43,6 +43,11 @@
    código abaixo que está iterando sobre as li's, adicionar eventos em cada 
    elemento individualmente pode começar a apresentar problemas de performance 
    na aplicação e pode também não ser uma boa prática.
+
+   Com isso, nós podemos aproveitar o event bubling para usar o evento delagation.
+   Ou seja, podemos atrelar um evento num elemento pai que contém uma lista de 
+   filhos, qualquer filho que for clicado, o pai também estará sendo clicado, 
+   devido a sua hierarquia.
 */
 
 const ul = document.querySelector('ul')
@@ -59,12 +64,12 @@ button.addEventListener('click', () => {
 /*
    === código SEM a utilização de event delegation ===
 
-   Repare que iteramos por cada 'li' e para cada 'li' adicionamos um eventListener. 
-   Para aplicações maiores esse tipo de abordagem pode resultar em problema de 
-   performance.
+   Repare abaixo que iteramos por cada 'li' e para cada 'li' adicionamos um 
+   eventListener. Para aplicações maiores esse tipo de abordagem pode resultar 
+   em problema de performance.
 */
 const lis = document.querySelectorAll('li')
-/*
+
 lis.forEach(li => {
    li.addEventListener('click', event => { // função de callback
       const clickedElement = event.target
@@ -78,7 +83,6 @@ lis.forEach(li => {
       clickedElement.remove()
    })
 })
-*/
 
 // comprovando a propagação de eventos*
 ul.addEventListener('click', () => {

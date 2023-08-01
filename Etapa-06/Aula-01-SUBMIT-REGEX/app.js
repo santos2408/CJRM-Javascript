@@ -1,6 +1,6 @@
-// ========== O EVENTO SUBMIT ==========
-
 /*
+   ============================== O EVENTO SUBMIT ==============================
+
    Na etapa passada, quando queriamos adicionar um evento de clique no elemento, 
    nós atrelávamos um listener de evento diretamente em quem seria clicado. Só que
    quando queremos escutar o envio de um formulário, ao invés de atrelarmos o 
@@ -12,7 +12,7 @@
 
    O listener de evento específico para formulários é o evento 'submit'. Esse 
    evento será disparado quando o botão do form for clicado, se o input estiver 
-   selecionado ou se o usuário presisonar a tecla 'enter'.
+   selecionado ou se o usuário pressisonar a tecla 'enter'.
 
    Um comportamento padrão do evento 'submit' é que sempre que o formulário é 
    enviado, o evento 'submit' recarrega toda a página HTML. Em muitos casos esse 
@@ -53,24 +53,22 @@ form.addEventListener('submit', event => {
    event.target.username.value // obtendo valor do input com ID/NAME, usado no ReactJS
 })
 
-// ========== O EVENTO INPUT ==========
-
 /*
+   ============================== O EVENTO INPUT ==============================
+
    O evento input executa a sua função de callback quando o valor input do 
    formulário for modificado.
 
    Pode ser confundido com o keyup, que executa a função quando uma tecla é 
-   liberada do teclado. Geralmente é melhor usar o input, pois se quisermos 
+   liberada do teclado. Geralmente é melhor usar o evento input, pois se quisermos 
    enviar um formulário apertando a tecla 'enter' o evento keyup sempre vai 
    disparar e pode causar um bug indesejado.
 
    Podemos também utilizar o evento input para momentos em que quisermos criar 
    uma feature de filtragem.
-*/
 
-// ========== EXPRESSÕES REGULARES (REGEX)==========
+   ======================= EXPRESSÕES REGULARES (REGEX) =======================
 
-/*
    Quando os usuários inserem informações nos formulários, geralmente esperamos 
    que essas informações deem 'match' com certos padrões de preenchimento do 
    input, para analisarmos a quantidade de caracteres, ou se o caracter é inválido 
@@ -141,14 +139,14 @@ form.addEventListener('submit', event => {
    todos dentro de no mínimo 6 e máximo 10 caracteres.
 */
 
-// ========== TESTANDO PADRÕES REGEX ==========
+// ========================== TESTANDO PADRÕES REGEX ==========================
 
 const form = document.querySelector('.signup-form')
 // const usernameInput = document.querySelector('#username')
 
 form.addEventListener('submit', event => {
    event.preventDefault() // 
-   
+
    console.log(event.target.username.value) // estilo ReactJS
 })
 
@@ -170,14 +168,34 @@ const result2 = username.search(pattern) // método de string
    retorna o index inicial onde o 'match' aconteceu.
 
    Recomenda-se utilizar o método test()
-   
-   Estudar:
-   
-   getComputedStyle()
-   setValidity
+
+   ============================ GET COMPUTED STYLES ============================
+
+   Window.getComputedStyles() é um método que retorna um objeto contendo os 
+   valores de todas as propriedades CSS de um elemento, isso depois de aplicada 
+   todas as folhas de estilo ativas e resolvido qualquer computação desses 
+   valores.
+
+   É retornado um objeto do tipo 'CSSStyleDeclaration' que atualiza automaicamente 
+   quando o estilo do elemento é alterado.
+
+   Diferença entre getComputedStyle e element.style
+
+   * O objeto retornado é 'read-only', devendo ser usado apenas para inspecionar 
+   estilos de um elemento, incluindo aqueles setadas numa tag <style> ou vindo 
+   de uma folha de estilo externa.
+
+   * O objeto 'element.style' deve ser usado para setar estilos num elemento, ou 
+   inspecionar estilos aplicados diretamente pela manipulação de JS.
+
+   */
+
+getComputedStyle(element)
+getComputedStyle(element, pseudoElt)
+
+/*
+   ============================ SET VALIDITY ============================
 */
-
-
 
 
 

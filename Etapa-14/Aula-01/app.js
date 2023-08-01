@@ -1,4 +1,15 @@
 /*
+
+==== GLOSSÁRIO ================================================================
+
+- imutabilidade / mutabilidade
+- efeito colateral
+- spread operator
+- return early / optional chaining
+
+===============================================================================
+
+
 =============== SPREAD OPERATOR ===============
 
 O spread operator espalha os elementos de um objeto ou array em outro local.
@@ -38,7 +49,7 @@ Portanto, funções também não são copiadas e sim referenciadas, porque tamb�
 são objetos.
 
 Para visualizarmos um elemento como objeto, podemos inserir a palavra chave 'dir' 
-na invocação do console, isso irá mostrar a sua forma de objeto.
+na invocação do console, isso mostrará a sua forma de objeto.
 
 console.dir(elemento)
 
@@ -54,8 +65,8 @@ const objeto = { // objeto
 
 // lembrando que array é também um objeto: array = objeto
 
-const objetoCopia = { 
-  ...objeto, // espalhando todas as propriedades / criando cópia
+const objetoCopia = {
+  ...objeto, // espalhando todas as propriedades / criando cópia do objeto acima
   prop0: () => {}, // cópia da função e não referência / deve-se reescrever a função
   prop3: { // sobrescrevendo prop3
     ...objeto.prop3 // espalhando propriedades para criar cópia e não referência
@@ -75,17 +86,34 @@ const newArray = [...arr1, ...arr2]
 
 /*
 
-  EFEITO COLATERAL É QUALQUER MUDANÇA DE ESTADO QUE PODE SER PERCEBIDA DO LADO 
-  DE FORA DE UMA FUNÇÃO E QUE NÃO É UM VALOR RETORNADO PELA FUNÇÃO.
+  Efeito colateral é qualquer mudança de estado que pode ser percebida do lado 
+  de fora de uma função e que não é um valor retornado pela função. São ações 
+  que vão além do cálculo e retorno de um valor pela função. No paradigma 
+  funcional, evite efeitos colaterais, pois eles podem tornar o código mais 
+  difícil de entender, testar e depurar.
 
-  EXEMPLO: MODIFICAR ALGUMA VARIÁVEL OU PROPRIEDADE DE OBJETO QUE ESTÁ DO LADO 
-  DE FORA DE UMA FUNÇÃO. LOGAR NO CONSOLE. MANIPULAR O DOM.
+  Efeitos colaterais podem incluir alterações em variáveis globais, modificações 
+  no estado do documento html ou do navegador, requisições de rede, manipulação 
+  de arquivos, interação com o ambiente externo, modificar alguma variável ou 
+  propriedade de objeto que está do lado de fora de uma função, logar no console,
+  manipular o DOM...
 
-*/
+  O objetivo de evitar efeitos colaterais é construir funções puras, que dependem 
+  apenas de seus argumentos de entrada e retornam resultados calculados sem 
+  modificar o estado externo. Tornando o código mais previsível, modular e seguro.
 
-// =============== MAIS SOBRE SPREAD OPERATOR ===============
+  Claro que nem sempre é possível evitar os efeitos colaterais, mas procure 
+  minimizá-los e controlá-los, isolando-os em partes específicas do código 
+  quando necessário.
 
-/*
+  artigos:
+
+  https://javascript.plainenglish.io/how-to-avoid-side-effects-using-pure-functions-in-javascript-366acaafb60c#:~:text=How%20do%20we%20avoid%20side,requirements%20of%20a%20quality%20function.
+  https://blog.greenroots.info/what-are-pure-functions-and-side-effects-in-javascript
+  https://davidwalsh.name/preventing-sideeffects-javascript
+
+  // =============== MAIS SOBRE SPREAD OPERATOR ===============
+
   Repare que o spread operator basicamente 'concatena' os itens do array ou 
   objeto, semelhante ao método 'concat'. Vale lembrar que o 'concat' é um método 
   antigo do JS e o spread operator veio numa versão mais recente. 
@@ -123,9 +151,9 @@ const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
 
 const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
 
-// =============== USANDO SPREAD OPERATOR EM STRINGS E FUNÇÕES ===============
-
 /*
+  =============== USANDO SPREAD OPERATOR EM STRINGS E FUNÇÕES ===============
+  
   Uma característica do spread operator é que quando estamos espalhando seus itens,
   o spread operator geralmente precisa ser espalhado em locais em que ele seja 
   esperado, ou seja, dentro de arrays, objetos, argumentos de funções, etc, não 
@@ -156,8 +184,8 @@ Math.max(...numbers) //
   código em que um valor é esperado. 1 + 1 = 2, typeof 'oi' = string ou um 
   operador ternário, são exemplos de expressões que retornam um valor.
 
-  Uma instrução é um pedaço de código que não resulta em um valor. A declaração 
-  de if else, switch ou for loop são exemplos de instrução que não retornam 
+  Uma instruçãoé um pedaço de código que não resulta em um valor. A declaração 
+  de if else, switch ou for loop são exemplos de instruções que não retornam 
   um valor. Por isso não conseguimos declarar um if como argumento de uma função.
 
   Em javascript todo pedaço de código que não resulta em um valor, retorna 
@@ -165,26 +193,24 @@ Math.max(...numbers) //
 
   Evite o uso de ternário quando você não estiver aproveitando o valor retornado 
   por ele, se você quer usar ternário apenas para executar uma ação da sua 
-  condicional e não vai usar o valor que ele retorna, então evite usá-lo. Visto 
+  condicional e não vai usar o valor que ele retorna, então EVITE usá-lo. Visto 
   que o ternário sempre retornará um valor, se 'true' à esquerda dos dois pontos e 
-  se false à direita dos dois pontos.
+  se 'false' à direita dos dois pontos.
 
   Se não aproveitamos o valor que o ternário retorna, não faz sentido usá-lo, 
   portanto devemos usar ternário quando baseado numa condição precisamos obter 
-  um valor e não apenas executar a sua condicional.
-*/
-
-/*
+  o valor retornado pelo mesmo e não apenas executar a sua condicional.
 
   [ ] - Imutabilidade
   [ ] - Mutabilidade
   [ ] - return early
   [ ] - Optional chaining (?.)
+  [ ] - efeito colateral
 
   const to = promise => promise
     .then(result => [null, result])
     .catch(error => [error])
 
-  o código acima é a mesma coisa que escrever um try catch! Pesquisa sobre!
+  o código acima é a mesma coisa que escrever um try catch! Pesquisar sobre!
 
 */

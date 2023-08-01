@@ -31,9 +31,9 @@ getCharacters((error, data) => {
   console.log(data)
 })
 
-/* =========== TRABALHANDO COM JSON (JAVASCRIPT OBJECT NOTATION) =========== */
-
 /*
+  =========== TRABALHANDO COM JSON (JAVASCRIPT OBJECT NOTATION) ===========
+  
   JSON é um formato para troca de dados que a maioria das API's retornam quando 
   um request é feito para ela. O formato dessa resposta é um JSON e ele se parece 
   com um array com diversos objetos, mas não são objetos, na verdade são 'strings' 
@@ -45,12 +45,13 @@ getCharacters((error, data) => {
 
   Para ser possível acessarmos as informações do JSON dentro do JavaScript, nós 
   precisamos converter essas strings em objetos. Dentro do JavaScript existe um 
-  objeto criado justamente para esse tipo de situação, chamado JSON.
+  objeto criado justamente para esse tipo de situação, chamado 'JSON'.
 
-  Para convertemos a resposta para objeto inserimos o objeto JSON, que é conhecido 
-  como um objeto embutido do javascript, que veremos mais detalhes a frente, e 
-  invocamos o método parse, passamos a resposta do request da API como argumento, 
-  assim convertemos a resposta da API em objeto nativo do javascript.
+  Para convertermos a resposta para objeto javascript, devemos usar o objeto 
+  JSON, que é conhecido como um objeto embutido do javascript, que veremos mais 
+  detalhes a frente, e invocamos o método parse, passamos a resposta do request 
+  da API como argumento, assim convertemos a resposta da API em objeto nativo do 
+  javascript. Ex: JSON.parse(response)
 
   Portanto, um request geralmente retornará um formato de dado JSON em forma de 
   string, que para o javascript conseguir manipular é necessário convertê-lo para 
@@ -97,11 +98,11 @@ const getCharacters = (url, callback) => {
   request.send()
 }
 
-/* =========== Callback Hell (Pyramid of Doom) =========== */
-
 /* 
+  =========== Callback Hell (Pyramid of Doom) ===========
+
   Repare que esse código abaixo tem um formato de pirâmide, essa maneira é pouco 
-  prática, ilegível e de difícil manutenção. Quando temos várias requests é isso 
+  prática, ilegível e de difícil manutenção. Quando temos vários requests é isso 
   que acontece, na próxima aula veremos como evitar esse tipo de situação.
 */
 

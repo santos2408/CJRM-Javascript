@@ -70,9 +70,8 @@ theBigFamily.sort((item1, item2) => {
 // código refatorado
 theBigFamily.sort((item1, item2) => item2.score - item1.score)
 
-// ============== ENCADEANDO MÉTODOS ==============
-
 /* 
+   // ============== ENCADEANDO MÉTODOS ==============
 
    Podemos encadear métodos de array, prestando atenção sempre no que a 
    expressão retorna para podermos inserir o método adequado.

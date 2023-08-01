@@ -6,7 +6,7 @@
    acessar esse valor declarado.
    
    Escopo é o contexto atual de execução em que valores e expressões estão 
-   visiveis ou que podem ser referenciados. Se uma variável ou expressão não 
+   visíveis ou que podem ser referenciados. Se uma variável ou expressão não 
    estiver no escopo atual ela não estará disponível para uso.
 
    Escopos também podem ser colocados em uma hierarquia, portanto, escopos filhos 
@@ -23,7 +23,7 @@
    à um escopo adicional chamado de 'escopo de bloco', que é criado com um par 
    de chaves {}. Os escopos de bloco bloqueiam as 'let' e 'const' mas não 'var'.
    Portanto, 'var' declaradas dentro de um escopo de bloco ainda poderão ser a
-   acessadas fora do bloco. ( evite esse comportamento não usando 'var' )
+   acessadas fora do bloco. ( evite esse comportamento, evite utilizar 'var' )
 
    Há também o chamado 'escopo léxico' que tem a ver com o escopo de funções 
    aninhadas e está relacionado com as 'closures' que veremos mais a frente.
@@ -31,11 +31,7 @@
    Variáveis declaradas fora de um 'escopo de função' ou 'escopo de bloco' estarão 
    no 'escopo global', fazendo com que possam ser acessadas por qualquer "operação", 
    pois estarão visiveis para todos.
-*/
 
-// =============================================================================
-
-/*
    ====== ESCOPO DE FUNÇÕES ======
 
    É um escopo criado por uma função, ou seja, todo bloco de uma função é um 
@@ -53,7 +49,7 @@
 const idade = 26
 
 // escopo de função
-function getMessage () {
+function getMessage() {
    let message = 'Olá'
 
    message // 'Olá'
@@ -71,7 +67,7 @@ message // NOT DEFINED
    do escopo de função, devemos retornar essa variável.
 */
 
-function myFunc () {
+function myFunc() {
    let cat = 'Zeca'
    let age = 3
    var color = 'cinza'
@@ -89,7 +85,7 @@ myFunc()
 
 const dog = 'Pastor-alemão'
 
-function dogWatch () {
+function dogWatch() {
    var dog = 'Samoieda' // não escapa do bloco
 }
 
@@ -101,11 +97,7 @@ console.log(dog) // Pastor-alemão
    a segunda tem um escopo de função, ou seja, local. 
    
    const, let e var terão o mesmo resultado.
-*/
 
-// =============================================================================
-
-/*
    ====== ESCOPO DE BLOCO ======
 
    Vale lembrar que escopos de bloco não necessariamente estão relacionados
@@ -139,27 +131,24 @@ for (let i = 0; i < 10; i++) {
    não conseguirá escapar, essa é uma característica curiosa dela.
 */
 
-if (true) { 
+if (true) {
    var dragon = 'Balerion' // 'var' escapa
    const age = 20 // 'const' não escapa
    let country = 'USA' // 'let' não escapa
 }
 
 const show = () => {
-   var dragon = 'Balerion' 
-   const age = 20
-   let country = 'USA'
-   // 'var', 'let' e 'const' NÃO escapam
+   var dragon = 'Balerion' // não escapa
+   const age = 20 // não escapa
+   let country = 'USA' // não escapa
 }
 
 // console.log(dragon) // balerion
 
-// =============================================================================
-
 /*
    ====== ESCOPO LÉXICO ======
 
-   Quando tivermos funções aninhadas, ou seja, uma dentro da outra é possível
+   Quando tivermos funções aninhadas, ou seja, uma dentro da outra, é possível
    acessarmos variáveis que estiverem 'aninhadas'. Uma função interna
    pode acessar a variável que se encontra na função anterior a ela dentro
    do aninhamento. Caso a função atual não tenha variável, ela irá procurar
@@ -175,12 +164,14 @@ const show = () => {
    ao seu estado circundante, escopo léxico. Uma 'closure' dá acesso ao escopo 
    de uma 'função externa' a partir de uma 'função interna'. 
 
+   Em resumo, closures permitem que funções internas acessem variáveis e funções 
+   de seus escopos externos, mesmo após a execução do escopo externo ter sido 
+   concluída. O escopo léxico define a visibilidade e a acessibilidade das 
+   variáveis e funções com base na estrutura de aninhamento de blocos e funções 
+   no código.
+
    As 'closures' são criadas toda vez que uma função é criada, no momento da sua 
    criação.
-   
-   *** PESQUISAR SOBRE CLOSURES ***
-   *** CLOSURES NO LIVRO PÁGINA 175
-   
 */
 
 const externalFunc = () => {
@@ -205,7 +196,7 @@ externalFunc() // SAPIENS
 internalFunc() // internal is not defined
 
 /*
-   === DOCUMENT OBJECT MODEL =======================
+   =========================== DOCUMENT OBJECT MODEL ===========================
 
    MDN - MOZILLA DEVELOPER NETWORK
    
@@ -223,11 +214,6 @@ internalFunc() // internal is not defined
    Esse é um dos motivos pelo qual o javascript foi originalmente criado, para
    tornar a experiência de uso de uma página mais interativa. Tudo que fazemos 
    é passado pelo DOM - DOCUMENT OBJECT MODEL.
-*/
-
-// 
-
-/*
 
    O QUE É O DOM? - DOCUMENT OBJECT MODEL
 
@@ -240,9 +226,6 @@ internalFunc() // internal is not defined
    modela esse documento. Esse objeto é o "document", que contém diversas
    propriedades e métodos do documento HTML que podem ser usados para interagir
    com esse documento carregado no browser.
-
-   Dentro do documento javascript poderemos acessar o objeto document e usar
-   ele para interagir com a página através dos métodos e propriedades dele.
 
    Dentro do DOM a página HTML é descrita dentro de uma "árvore hierárquica",
    chamada de "árvore de nodes". A raiz dessa página é a tag HTML, chamada de
@@ -260,7 +243,7 @@ internalFunc() // internal is not defined
    desejado para podermos executar métodos e propriedades e realizar alterações 
    nesse "node".
 
-   === QUERY SELECTOR E QUERY SELECTOR ALL =======================
+   ==================== QUERY SELECTOR E QUERY SELECTOR ALL ====================
 
    A ação de buscar e selecionar um elemento do DOM é chamada de query do DOM,
    ou seja, é feita uma consulta do DOM em busca de um elemento.
@@ -309,7 +292,7 @@ paragraphs.forEach(paragraph => {
 console.log(errors)
 
 /*
-   === OUTRAS MANEIRAS DE FAZER QUERYE'S NO DOM =======================
+   ================= OUTRAS MANEIRAS DE FAZER QUERYE'S NO DOM =================
 
    Existem maneiras alternativas de obter queries do DOM para obter referências
    dos elementos buscados.
@@ -331,10 +314,9 @@ console.log(errors)
    inseridas como string no argumento do método.
 
    Obs: Dê preferência de busca usando querySelector e querySelectorAll, devido 
-   a sua flexibilidade e capacidade de buscar qualquer tipo de seletor CSS e 
-   gerar nodeList's que são mais completos, invés de HTMLCollection que são mais
+   a sua flexibilidade e capacidade de buscar qualquer tipo de seletor e gerar 
+   nodeList's que são mais completos, invés de HTMLCollection que são mais 
    limitados.
-
 */
 
 // 1) obter um elemento através do ID
@@ -347,7 +329,7 @@ const texto = document.getElementsByClassName('error')
 const paragrafo = document.getElementsByTagName('p')
 
 /*
-   === DESTRUCTURING ASSIGNMENT =======================
+   ========================= DESTRUCTURING ASSIGNMENT =========================
 
    Desestruturação por atribuição, essa sintaxe é uma expressão Javascript que 
    faz com que seja possível desempacotar valores de arrays ou propriedades de 
@@ -373,7 +355,7 @@ const obj = {
 
 // destructuring assignment com objetos
 const { name, age, color } = getCatInfo() // desestruturando objeto
-const { prop1: { innerProp1 } } = obj
+const { prop1: { innerProp1 } } = obj // destruturando objeto dentro de outro objeto
 
 // name // Pintada
 // age // 4
@@ -385,8 +367,8 @@ const { prop1: { innerProp1 } } = obj
 const myName = ['Roger', 'Santos', 'Campelo']
 
 // destructuring assignment com arrays
-const [ firstName, lastName, ...rest ] = myName
-const [ firstName, , lastName ] = myName // ignorando item 'Santos'
+const [firstName, lastName, ...rest] = myName // usando rest parameters
+const [firstName, , lastName] = myName // ignorando item 'Santos'
 
 /* 
    a variável precedida de reticências "..." significa que o restante dos itens
@@ -405,7 +387,7 @@ const [ firstName, , lastName ] = myName // ignorando item 'Santos'
    deixando-as apenas para o CSS. Portanto, evite referenciar um elemento do DOM 
    utilizando classes ou ID's.
 
-   o attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
+   O attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
    variável global que aponta para o elemento que tem aquele ID. Se na marcação 
    HTML for declarado um atributo 'id' com o 'valor x', se você inserir 'window.x' 
    (ou simplesmente x) como argumento de um console.log(), o retorno será a 
@@ -418,7 +400,7 @@ const [ firstName, , lastName ] = myName // ignorando item 'Santos'
 
    Então, para não gerar variáveis globais desnecessárias, o ideal é usar o 
    attributo 'data' para manipulação de DOM via JS, e usar IDs somente para 
-   inputs, por conta da acessibilidade do atributo for das labels ou quando 
+   inputs, por conta da acessibilidade do atributo "for" das labels ou quando 
    você quiser fazer âncoras na sua página, aí você também precisa do ID. Para 
    todos os outros casos, evite. 
    
@@ -430,4 +412,11 @@ const [ firstName, , lastName ] = myName // ignorando item 'Santos'
 
    A forma mais confiável de identificar elementos e manipulá-los em JavaScript 
    (puro) é usar o atributo 'data'
+*/
+
+/*
+      Pesquisar sobre:
+
+      - renomear variável desestruturada. ex: const { name: firstName } = fullname
+
 */

@@ -118,7 +118,7 @@ myFunc(number => {
    console.log(number)
 })
 
-myFunc2(() => {})
+myFunc2(() => { })
 
 // === forEach ===
 const socialNetworks = ['youtube', 'twitter', 'instagram', 'facebook']
@@ -152,17 +152,45 @@ socialNetworks.forEach(socialNetwork => {
 
 ul.innerHTML = HTMLTemplate
 
+   /*
+      ================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
+   
+      Function expressions invocadas imediatamente após sua declaração é uma forma de 
+      proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
+      a função entre parênteses e a invocamos ao mesmo tempo.
+   
+      Mais sobre IIFE na Etapa-14 - Aula 03.02
+   
+   */
+
+   (function (parameter) {
+      console.log('Função invocada automaticamente.')
+   })()
+
 /*
-   ================ IIFE - IMMEDIATLY INVOKED FUNCTION EXPRESSION =================
 
-   Function expressions invocadas imediatamente após sua declaração é uma forma de 
-   proteger o código para que ele não fique exposto ao escopo global. Nós envolvemos 
-   a função entre parênteses e a invocamos ao mesmo tempo.
+============================== FUNÇÕES RECURSIVAS ==============================
 
-   Mais sobre IIFE na Etapa-14 - Aula 03.02
 
+https://www.javascripttutorial.net/javascript-recursive-function/
+https://www.geeksforgeeks.org/what-is-the-call-stack-in-javascript/
 */
 
-(function (parameter) {
-   console.log('Função invocada automaticamente.')
-})()
+function recursiva(max) {
+   if (max > 10) {
+      return;
+   }
+
+   console.log(max);
+
+   max = max + 1;
+   recursiva(max);
+}
+
+/*
+
+============================== FUNÇÕES GERADORAS ==============================
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
+*/

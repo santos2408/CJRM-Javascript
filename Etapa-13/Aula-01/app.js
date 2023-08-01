@@ -17,7 +17,7 @@
    browser mesmo que o browser seja fechado ou atualizado posteriormente.
 
    O browser possui uma API chamada Web Storage API, ela torna possível salvarmos 
-   dados no browser do usuário e esse dados são salvos através de pares de chaves 
+   dados no browser do usuário e esses dados são salvos através de pares de chaves 
    e valor, portanto, o local storage é um mecanismo interno da Web Storage API
    que salva dados no browser.
 
@@ -38,7 +38,7 @@
    aplicação e do browser, cerca de 5mb de armazenamento.
 
    Existem mais formas de salvar dados no browser: cookies, Web Storage API e 
-   indexedDB para grande volumes de dados como videos, imagens, áudios, etc. E 
+   indexedDB para grandes volumes de dados como videos, imagens, áudios, etc. E 
    também a cache API, para armazenar dados para que a aplicação funcione offline.
 
    O local storage NÃO substitui um banco de dados, podemos usa-los em conjunto, 
@@ -57,9 +57,6 @@
    * Cookies, indexedDB, cache API e segurança no front-end são assuntos mais 
    avançados que serão mostrados posterioremente.
 
-*/
-
-/*
    ============= ARMAZENANDO E OBTENDO DADOS =============
 
    localStorage é uma propriedade do objeto window, seu retorno será um objeto 
@@ -121,7 +118,7 @@ localStorage.clear() // limpa todos os dados
    Os dados que armazenamos na local storage devem sempre ser strings, mesmo se 
    passarmos um number como valor de uma chave, esse number será convertido 
    para string antes de ser armazenado, já que ele é convertido para string, 
-   escreve entre aspas direto mesmo que seja um número, assim mantém a consistência.
+   escreva entre aspas direto mesmo que seja um número, assim mantém a consistência.
 
    Para armazenarmos um array de objetos na local storage (lembrando que um array 
    também é um objeto) primeiro devemos converter esse array de objetos em uma 
@@ -157,9 +154,9 @@ localStorage.clear() // limpa todos os dados
 */
 
 const myArray = [
-   {a: 1, b: 2},
-   {c: 3, d: 4},
-   {e: 5, f: 6}
+   { a: 1, b: 2 },
+   { c: 3, d: 4 },
+   { e: 5, f: 6 }
 ]
 
 localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para JSON/string
@@ -167,12 +164,11 @@ localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para JSO
 const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo/retornando string/JSON
 const JSONToJavascriptObject = JSON.parse(JSONFromLocalStorage) // convertendo json para objeto javascript
 
-// ============= PROGRAMAÇÃO FUNCIONAL PIPELINE =============
-
 /*
+   ============= PROGRAMAÇÃO FUNCIONAL PIPELINE =============
+
    Um pipe é um encadeamento de elementos de processamento, como por exemplo 
    funções, que são organizadas para que o output de uma função seja o input 
    de uma próxima. Ou seja, o resultado de uma função seja inserido na próxima 
    função e assim por diante.
 */
-
