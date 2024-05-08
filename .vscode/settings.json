@@ -1,5 +1,11 @@
 {
-  "liveServer.settings.port": 5501,
-  "liveServer.settings.host": "localhost",
-  "prettier.enable": false
+  "files.autoSave": "onFocusChange",
+  "css.lint.unknownAtRules": "ignore",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.triggerExpansionOnTab": true
 }
