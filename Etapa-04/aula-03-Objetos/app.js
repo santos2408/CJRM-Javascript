@@ -186,4 +186,8 @@ userFour.name = 'Campelo'
 
 console.log(userThree, userFour) // { name: 'Santos', age: 26 }, { name: 'Campelo', age: 26 }
 
+/*
+   Pesquisar sobre:
+      - Object.defineProperty()
 
+*/

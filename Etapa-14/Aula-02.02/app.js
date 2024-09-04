@@ -97,7 +97,7 @@ console.log(counter.count) // acessando diretamente o valor da count
 
 /*
   Veja que, o código que escrevemos fora da classe consegue acessar e modificar 
-  o valor da propriedade count dentro da classe. Isso pode parecer normal, mas é 
+  o valor da propriedade 'count' dentro da classe. Isso pode parecer normal, mas é 
   um problema de segurança.
 
   Isso acontece porque a propriedade count é uma propriedade pública. Normalmente 
@@ -130,7 +130,7 @@ class Counter {
   #count = 0 // propriedade privada, precisa usar '#' (private class fields)
 
   constructor(value) {
-    // atribuindo valor recebido por parâmetro na propriedade privada
+    // atribuindo na propriedade privada o valor recebido por parâmetro
     // pode usar o constructor normalmente
     this.#count = value
   }

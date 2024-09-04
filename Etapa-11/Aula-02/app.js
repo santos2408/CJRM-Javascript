@@ -2,7 +2,8 @@
 
 /*
    Para iniciarmos uma requisição HTTP precisamos primeiramente criar um objeto 
-   de request através de uma instância do objeto XMLHttpRequest utilizando new.
+   de request através de uma instância(constructor) do objeto XMLHttpRequest (XHR) utilizando a 
+   palavra chave 'new'.
 
    Antes do JSON se tornar o padrão usado para troca e armazenamento de informações 
    entre sistemas, o XML que é um outro padrão também para troca de informações 
@@ -16,15 +17,22 @@
    já existente, mas ao fazer isso vai cancelar qualquer requisição pendente por 
    meio desse objeto.
 
-   A requisição HTTP consiste em 4 partes:
-      - o método ou 'verbo' da requisição HTTP
-      - a URL que está sendo solicitada
-      - um conjunto opcional de cabeçalhos de pedido
-      - um corpo de requisição opcional
+   Objetos XMLHttpRequest são usados para interagirmos com servidores, podermos 
+   obter dados de uma URL sem precisar atualizar a página, podendo atualizar 
+   apenas uma parte do conteúdo de uma aplicação.
 
-   A resposta HTPP consiste em 3 partes:
+   Essa interface também herdará propriedades do XMLHttpRequestEventTarget e do 
+   EventTarget.
+
+   A 'requisição' HTTP consiste em 4 partes:
+      - o método ou 'verbo' da requisição HTTP
+      - a URL que está sendo solicitada (endpoint)
+      - um conjunto opcional de cabeçalhos de pedido (opcional)
+      - um corpo de requisição opcional (opcional)
+
+   A 'resposta' HTTP consiste em 3 partes:
       - um código de status númerico e textual indicando o sucesso ou falha da requisição
-      - um conjunto de cabeçados de resposta
+      - um conjunto de cabeçalhos de resposta
       - o corpo da resposta
 
    ======= MÉTODO OPEN() =======
@@ -101,7 +109,18 @@ request.send()
 */
 
 request.addEventListener('readystatechange', () => {
+   // verificando se a requisição terminou e se deu tudo certo com ela
    if (request.readyState === 4 && request.status === 200) { // checking status
       console.log(request, request.responseText)
    }
 })
+
+/*
+   Referências:
+
+   https://developer.mozilla.org/en-US/docs/Web/HTTP
+   https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+   https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget
+   https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
+
+*/

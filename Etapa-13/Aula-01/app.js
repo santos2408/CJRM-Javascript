@@ -89,14 +89,14 @@
    
 */
 
-localStorage.setItem('name', 'Roger') // inserindo valor
-localStorage.setItem('age', '25') // inserindo valor
+localStorage.setItem("name", "Roger"); // inserindo valor
+localStorage.setItem("age", "25"); // inserindo valor
 
-let name = localStorage.getItem('name') // obtendo valor
-let age = localStorage.getItem('age') // obtendo valor
+let name = localStorage.getItem("name"); // obtendo valor
+let age = localStorage.getItem("age"); // obtendo valor
 
-name = localStorage.setItem('name', 'Santos') // alterando valor
-age = localStorage.setItem('age', '26') // alterando valor
+name = localStorage.setItem("name", "Santos"); // alterando valor
+age = localStorage.setItem("age", "26"); // alterando valor
 
 /*
    ============= REMOVENDO DADOS =============
@@ -109,8 +109,8 @@ age = localStorage.setItem('age', '26') // alterando valor
 
 */
 
-localStorage.removeItem('name') // remove item específico
-localStorage.clear() // limpa todos os dados
+localStorage.removeItem("name"); // remove item específico
+localStorage.clear(); // limpa todos os dados
 
 /*
    ============= STRINGNIFICANDO E PARSEANDO DADOS =============
@@ -136,7 +136,7 @@ localStorage.clear() // limpa todos os dados
    
    Portanto:
 
-   JSON.stringfy() => converte array/objeto para JSON (string)
+   JSON.stringify() => converte array/objeto para JSON (string)
    JSON.parse() => converte JSON para array/objeto javascript
 
    Com esses métodos é possível também realizarmos cópias de objetos quando 
@@ -154,15 +154,15 @@ localStorage.clear() // limpa todos os dados
 */
 
 const myArray = [
-   { a: 1, b: 2 },
-   { c: 3, d: 4 },
-   { e: 5, f: 6 }
-]
+  { a: 1, b: 2 },
+  { c: 3, d: 4 },
+  { e: 5, f: 6 },
+];
 
-localStorage.setItem('myArray', JSON.stringify(myArray)) // convertendo para JSON/string
+localStorage.setItem("myArray", JSON.stringify(myArray)); // convertendo para JSON/string
 
-const JSONFromLocalStorage = localStorage.getItem('myArray') // obtendo/retornando string/JSON
-const JSONToJavascriptObject = JSON.parse(JSONFromLocalStorage) // convertendo json para objeto javascript
+const JSONFromLocalStorage = localStorage.getItem("myArray"); // obtendo/retornando string/JSON
+const JSONToJavascriptObject = JSON.parse(JSONFromLocalStorage); // convertendo json para objeto javascript
 
 /*
    ============= PROGRAMAÇÃO FUNCIONAL PIPELINE =============
@@ -171,4 +171,9 @@ const JSONToJavascriptObject = JSON.parse(JSONFromLocalStorage) // convertendo j
    funções, que são organizadas para que o output de uma função seja o input 
    de uma próxima. Ou seja, o resultado de uma função seja inserido na próxima 
    função e assim por diante.
+
+   PESQUISAR SOBRE:
+
+   Pipeline functions
+   https://wavelop.com/en/story/javascript-pipe-function/#:~:text=A%20pipe%20function%20is%20a,input%20for%20the%20next%20function.
 */

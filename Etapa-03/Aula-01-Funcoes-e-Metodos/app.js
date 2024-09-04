@@ -23,8 +23,7 @@
    * Tecla F12 localiza a outra ocorrência desse nome no documento JS
 */
 
-// showMessage() = invocação de função
-
+// showMessage() -> invocação de função
 
 /*
    ====== FUNCTION DECLARATION / COM HOISTING ======
@@ -48,7 +47,7 @@
 sayHi()
 
 // declaração da function declaration
-function sayHi () {
+function sayHi() {
    console.log('Olá')
 }
 
@@ -167,6 +166,7 @@ console.log(showResult(result))
  */
 
 /*
+
 ================================================================================
 ============================== CONTEÚDO ADICIONAL ==============================
 
@@ -176,7 +176,7 @@ chamada 'arguments' que armazena todos os argumentos passados na invocação, me
 que não tenha parâmetros declarados para armazenar esses valores.
 
 Mesmo que seja declarado parâmetros para receber os argumentos, essa variável 
-'arguments' continua existindo implicitamente que armazena todos os argumentos 
+'arguments' continua existindo implicitamente e armazena todos os argumentos 
 enviados.
 
 Em algumas linguagens de programção esse comportamente irá gerar um erro, mas no 
@@ -185,7 +185,7 @@ existe quando usamos function declaration, em arrow function não existe.
 
 */
 
-function funcao () {
+function funcao() {
    console.log(arguments) // 1, 2, 3 varíavel arguments implícita
 }
 

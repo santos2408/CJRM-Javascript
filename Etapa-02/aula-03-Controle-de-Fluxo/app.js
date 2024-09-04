@@ -1,30 +1,30 @@
-// === OPERADOR NOT (!) ==========
-
 /*
+
+   ========== OPERADOR NOT (!) ==========
+
    A condicional IF só executa o bloco de código que for verdadeiro. O operador
    NOT (!) será usado quando se quer executar a condicional que resulte em false.
 
-   // !"" = true 
-   // !true = false
-   // !'Cat' = false
-   // !0 = true
-   // !null = true
-   // !false = true
-*/
+   !"" = true 
+   !true = false
+   !'Cat' = false
+   !0 = true
+   !null = true
+   !false = true
 
-/*
    É possível também adicionar múltiplos operadores NOT numa mesma expressão,
    a cada NOT inserido o valor será invertido.
-*/
 
-// !!false = false
-// !!"" = false
-// !!true = true
-// !!'Cat' = true
-
-// === BREAK E CONTINUE ==========
+   !!false = false
+   !!"" = false
+   !!true = true
+   !!'Cat' = true
 
 /*
+
+/*
+   ========== BREAK E CONTINUE ==========
+
    'Break' é utilizado para parar/quebrar a execução do loop caso certa condição 
    seja verdadeira. Quando isso acontece, mesmo que os itens iterados até aquele 
    momento seja menor do que a quantidade de itens do array, o break irá parar 
@@ -33,7 +33,9 @@
    'Continue' é utilizado para continuar a execução do código caso determinada 
    condição de um bloco de código seja verdadeira. Se for true, o bloco de 
    código onde se encontra o 'continue' será executado e toda expressão após 
-   será ignorada. O 'continue' irá pular para a próxima iteração do loop.
+   será ignorada. O 'continue' irá pular para a próxima iteração do loop. Se 
+   houver código logo após onde foi inserido o 'continue', esse código não será 
+   executado.
 
    'Continue' pula uma iteração em particular e faz o loop continuar a ser 
    executado, se o bloco for true, os blocos seguintes serão ignorados e o loop 
@@ -56,9 +58,10 @@ for (let i = 0; i < scores.length; i++) {
    }
 }
 
-// === SWITCH ==========
-
 /*
+
+   ========== SWITCH ==========
+   
    Sendo também um controle de fluxo, muitas vezes é utilizado como alternativa 
    no lugar de if para evitar a repetição de condições. Usado para verificar 
    múltiplos valores diferentes de uma variável ou constante, e para cada valor 
@@ -86,6 +89,7 @@ switch (grade) {
    case 'A':
       console.log('você tirou nota A')
       break
+      return // 'return' no lugar de 'break' caso seja uma função
    case 'B':
       console.log('você tirou nota B')
       break

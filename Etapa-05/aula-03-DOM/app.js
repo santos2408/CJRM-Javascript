@@ -307,6 +307,12 @@ button.addEventListener('click', () => {
    scrollIntoView()
    removeEventListener()
    getComputedStyles()
+   intersectionObserver()
+   
+   setProperty
+      - element.setProperty("color", "#fff")
+      - element.style.color = "#fff"
+      - pesquisar diferença entre essas duas propriedades
 */
 
 

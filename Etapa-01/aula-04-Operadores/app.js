@@ -6,6 +6,10 @@
     - CONVERSÃO DE TIPOS
     - VALORES TRUTHY E FALSY
 
+    ===================================
+*/
+
+/*
    ===== BOOLEANS E OPERADORES DE COMPARAÇÃO =================================
 
    Booleans representam dois valores especiais em javascript: true e false.
@@ -14,7 +18,8 @@
 */
 
 // Alguns métodos que retornam true ou false
-const email = "roger.santos33@gmail.com";
+const email = "roger.santos33@gmail.com"; // true
+const empty = ""; // false
 
 const includes = email.includes("@"); // true
 // método de array, também funciona em strings
@@ -125,8 +130,8 @@ score = Number(score);
 console.log(score + 1);
 console.log(typeof score); // exibe o tipo da variável
 
-const crazyConvertion = Number("Maçã"); // NaN, pois não faz sentido
-const crazyConvertion = String(97); // '97' string
+const crazyConvertionNumber = Number("Maçã"); // NaN, pois não faz sentido (Not a Number)
+const crazyConvertionString = String(97); // '97' string
 const booleanConvertion = Boolean(10); // true, tipo boolean
 
 // Number(), Boolean(), String() são funções construtoras que apesar de serem
@@ -134,7 +139,7 @@ const booleanConvertion = Boolean(10); // true, tipo boolean
 // seus valores
 
 /*
-   - concatenação de string e número terá resultado uma string
+   - concatenação de string e número terá como resultado uma string
    - função construtura a princípio converte um valor para outro
    - typeof verifica o tipo de dado, em algumas situações não é a melhor escolha
    - tentar converter strings em número ou vice-versa resulta em NaN quando a

@@ -37,10 +37,10 @@
 */
 
 for (let i = 0; i < 5; i++) {
-   console.log(`Dentro do loop: ${i}`)
+  console.log(`Dentro do loop: ${i}`);
 }
 
-console.log('Loop concluído')
+console.log("Loop concluído");
 
 /*
    É possível percorrer um array simples ou vindo de um banco de dados onde
@@ -52,11 +52,11 @@ console.log('Loop concluído')
    de uma tag HTML.
 */
 
-const names = ['Linus', 'Ada', 'Bill']
+const names = ["Linus", "Ada", "Bill"];
 
 for (let i = 0; i < names.length; i++) {
-   const HTMLTemplate = `<p>${names[i]}</p>`
-   console.log(HTMLTemplate)
+  const HTMLTemplate = `<p>${names[i]}</p>`;
+  console.log(HTMLTemplate);
 }
 
 /*
@@ -64,29 +64,34 @@ for (let i = 0; i < names.length; i++) {
 
    Esse tipo de loop é semelhante ao clássico, no entanto ao declararmos, ele 
    irá iterar pelo 'índice' de um array ou 'chave' de um objeto e podemos obter o valor. 
-   Diferente do for clássico que é um tipo de contatador que percorre os elementos, 
+   Diferente do for clássico que é um tipo de contador que percorre os elementos, 
    o for in irá percorrer todos os elementos e irá obter seus respectivos índices.
+
+   Com esse loop ainda é possível usar o controles de fluxo: break e continue. 
+   Pode-se utilizar a variável como 'let', 'const' ou 'var', mas sabendo que 'const' 
+   não pode ser redeclarada dentro do bloco de declaração.
 
    Quando desejar percorrer por um objeto, experimente usar o for in.
 
 */
 
-const frutas = ['Banana', 'Maçã', 'Pera', 'Laranja']
-const pessoa = { nome: 'Roger', idade: 25, estado: 'Rio de Janeiro' }
+const frutas = ["Banana", "Maçã", "Pera", "Laranja"];
+const pessoa = { nome: "Roger", idade: 25, estado: "Rio de Janeiro" };
 
 // percorrendo os índices com for..in
 for (let indice in frutas) {
-   console.log(frutas[indice])
+  // indice = 0,1,2,3,4...
+  console.log(frutas[indice]);
 }
 
 // percorre as chaves com for..in
 for (let chave in pessoa) {
-   console.log(pessoa[chave])
+  console.log(pessoa[chave]);
 }
 
 // percorrendo os índices com for loop clássico
 for (let i = 0; i < frutas.length; i++) {
-   console.log(frutas[i])
+  console.log(frutas[i]);
 }
 
 /*
@@ -99,19 +104,12 @@ for (let i = 0; i < frutas.length; i++) {
 
 */
 
-const frutas = ['Banana', 'Maçã', 'Pera', 'Laranha']
+const frutas = ["Banana", "Maçã", "Pera", "Laranha"];
 
 // percorre os elementos
 for (let elemento of frutas) {
-   console.log(elemento)
+  console.log(elemento);
 }
-
-/*
-   Repare que, diferente do for clássico que podemos controlar até onde o loop 
-   pode ir, declarando um limite, no for in e for of não temos esse controle, 
-   ou seja, eles irão percorrer todos os itens do array ou objeto sem termos a 
-   possibilidade de parar o loop em determinado momento.
-*/
 
 /*
    === WHILE LOOP ==========
@@ -135,15 +133,15 @@ for (let elemento of frutas) {
    sempre que ela entra no loop. Ex: Caso essa expressão esteja dentro de uma 
    variável, essa variável deve estar fora do loop e dentro dele algum código 
    deve alterar o seu valor, para que quando o loop testar a expressão novamente, 
-   ele teste o novo valor da variável e verifique se aidna é true ou false.
+   ele teste o novo valor da variável e verifique se ainda é true ou false.
 
    Da mesma forma do for, é possível iterar sobre um array
 
 */
 
-let i = 0
+let i = 0;
 
 while (i < 5) {
-   console.log(`Dentro do loop: ${i}`)
-   i++
+  console.log(`Dentro do loop: ${i}`);
+  i++;
 }

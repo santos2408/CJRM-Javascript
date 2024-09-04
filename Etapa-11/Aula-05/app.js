@@ -9,7 +9,7 @@
 
   Mas atualmente existe uma forma mais moderna e rápida de realizar requests 
   http, que é usando a FETCH API, uma interface nativa do Javascript para 
-  fazermos requests.
+  fazermos requisições.
 
   A FETCH API utiliza Promises por baixo dos panos, facilitando a escrita do 
   código tanto quando ele for bem sucedido ou mal sucedido na resposta.
@@ -54,10 +54,10 @@
 
 */
 
-fetch('https://anapioficeandfire.com/api/houses')
-  .then(response => response.json()) // parseando response da promise / retorna promise do JSON
-  .then(houses => console.log(houses)) // desempacota e obtem resposta da promise anterior
-  .catch(error => console.log(error))
+fetch("https://anapioficeandfire.com/api/houses")
+  .then((response) => response.json()) // parseando response da promise / retorna promise do JSON
+  .then((houses) => console.log(houses)) // desempacota e obtem resposta da promise anterior
+  .catch((error) => console.log(error));
 
 /*
   ================= ASYNC / AWAIT =================
@@ -97,7 +97,7 @@ fetch('https://anapioficeandfire.com/api/houses')
     e logo em seguida o await irá pegar essa promise e retornar o valor resolvido 
     dela (desempacotar), que é o objeto Response. Após isso as linhas abaixo dele 
     serão executadas. Ou seja, além de impedir a execução do restante do código 
-    da função antes de obter a resposta da requisição, o await também irá 
+    do bloco da função antes de obter a resposta da requisição, o await também irá 
     desempacotar a Promise para obter apenas a resposta/valor resolvido dela.
 
   Para obtermos os dados da resposta do request, precisaremos encadear no objeto 
@@ -109,17 +109,84 @@ fetch('https://anapioficeandfire.com/api/houses')
   Veja abaixo:
 */
 
-const getUsers = async () => { // tornando a função assíncrona / também aceita function declaration / retorna uma promise
-  const response = await fetch('https://anapioficeandfire.com/api/houses') // fetch retorna objeto promise / await pega a resposta e desempacota
-  const users = await response.json() // json() retorna promise e await desempacota pegando apenas a reposta json
-  return users // retorna apenas o objeto json, mas ainda dentro de uma promise
+const getUsers = async () => {
+  // tornando a função assíncrona / também aceita function declaration / retorna uma promise
+  const response = await fetch("https://anapioficeandfire.com/api/houses"); // fetch retorna objeto promise / await pega a resposta e desempacota
+  const users = await response.json(); // json() retorna promise e await desempacota pegando apenas a reposta json
+  return users; // retorna apenas o objeto json, mas ainda dentro de uma promise
+};
+
+const logUsers = async () => {
+  // retorna promise porque é async
+  const users = await getUsers(); // desempacota promise e pega resposta json
+  console.log(users);
+};
+
+logUsers();
+
+/*
+  ================= IMPLEMENTING A PROMISE-BASED API =================
+
+  Já vimos como usar API's baseadas em promises, por exemplo, a FETCH API. Agora 
+  veremos como implementar nossas próprias API's baseadas em promessas, uma 
+  prática pouco comum mas que vale a pena conhecer.
+  
+  Implementares uma API de alarme baseada em promises, que receberá como argumento 
+  o nome da pessoa a ser acordada e o delay em milisegundos para aguardar antes 
+  do alarme disparar. Usaremos a API setTimeout() para implementar o alarme.
+
+  A vantagem de usarmos uma função baseada em Promise para alguma operação 
+  assíncrona é termos o controle do fluxo, tratar o erro corretamente e poder 
+  definir quando a operação deu certo ou errado, além de ter um controle maior 
+  sobre cada etapa da operação.
+
+  Vale lembrar que, se um erro é lançado dentro da callback da Promise, a função 
+  "rejected" é automaticamente chamada, não sendo necessário invocá-la diretamente.
+
+  O Que Define uma API em JavaScript:
+
+  Em termos técnicos, qualquer função em JavaScript pode ser considerada uma API 
+  se ela fornece uma interface para realizar uma operação ou tarefa específica. 
+  
+  Interface Programática: Qualquer função que expõe uma operação que pode ser 
+  usada por outras partes de um programa é uma interface programática, ou API. 
+  Essa operação pode ser simples ou complexa, mas a função oferece uma maneira 
+  de interagir com ela.
+
+  Reutilização e Abstração: Funções que encapsulam lógica para serem reutilizadas 
+  em diferentes partes de um programa ou em diferentes projetos são consideradas 
+  APIs porque oferecem uma abstração sobre um conjunto de operações.
+
+  Conceito de API: No nível mais básico, uma API é qualquer coisa que fornece 
+  uma interface para interação. Em JavaScript, isso pode ser uma única função, 
+  um conjunto de funções, uma classe, ou um módulo.
+
+  API abaixo é baseada em Promise, por isso chamamos de "Promise-based API", no 
+  entanto, qualquer função pode ser uma API, já que ela se enquada na definição 
+  de API, mesmo que simples.
+
+  No entanto, vale lembrar que esse tipo de API javascript é simples e difere das 
+  API's mais complexas que lidam com ENDPOINTS, REST, etc.
+
+*/
+
+function alarm(person, delay) {
+  return new Promise((resolve, reject) => {
+    if (delay < 0) {
+      throw new Error("Alarm delay must not be negative");
+      // chama 'rejected' automaticamente
+    }
+
+    setTimeout(() => {
+      resolve(`Wake up, ${person}!`);
+    }, delay);
+  });
 }
 
-const logUsers = async () => { // retorna promise porque é async
-  const users = await getUsers() // desempacota promise e pega resposta json
-  console.log(users)
-}
+/*
+  [X] - Implementing a promise-based API
+  [ ] - Promise() constructor
+  [ ] - API
 
-logUsers()
-
-// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
+  https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
+*/

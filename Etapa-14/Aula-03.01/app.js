@@ -27,10 +27,10 @@ função pai, porque o this de uma arrow function referencia o escopo de onde el
 foi declarada. Ou seja, o this da função filha referencia o mesmo objeto do this 
 da função pai e o this da função pai será o Objeto Window caso ela esteja declarada
 como arrow function, caso contrário, se for uma função construtora, ela irá 
-referenciar o objeto que está sendo craido.
+referenciar o objeto que está sendo criado.
 
 Portanto, por baixo dos panos o que a declaração de uma classe faz é criar uma 
-função construtora para gerar e setar um objeto, portando, a classe é uma abstração 
+função construtora para gerar e setar um objeto. Portanto, a classe é uma abstração 
 de uma função construtora. Dentro da função construtora não precisamos do método 
 constructor, diferente da classe.
 
@@ -43,10 +43,12 @@ os métodos dentro dela provavelmente estarão sendo usados com function declara
 e não arrow functions, isso porque provavelmente a arrow function é mais recente e 
 não funciona em browsers mais antigos, portanto os desenvolvedores deixam com 
 function declaration para não quebrar o código para browsers antigos. Mas podemos 
-usar arrow functions também, sempre tendo atenção ao binding da palavra 'this'.
+usar arrow functions também, sempre tendo atenção ao binding da palavra 'this', 
+ou seja, se a arrow function dentro da função construtora usar a palavra 'this', 
+então a função não poderá ser arrow function.
 
 * Devido a constructor function ser uma feature antiga do JS, não é recomendado 
-utilziar arrow function dentro dela, visto que arrow function é uma feature 
+utilizar arrow function dentro dela, visto que arrow function é uma feature 
 recente.
 
 * Lembrando também que a constructor function deve ser escrita com a primeira 
@@ -73,7 +75,7 @@ function Student (name, email) {
     console.log(this) // referencia objeto do escopo onde foi declarada / Objeto Student
   }, 1000)
 
-  this.login = function () { // método declarado dentro da função construtora / isso não é recomendado / função anônima
+  this.login = function () { // método declarado dentro da função construtora não é recomendado / função anônima
     return `${this.name} logou na aplicação.`
   }
 }
@@ -139,8 +141,8 @@ prototype é criado para cada tipo de objeto, na verdade o prototype é um objet
 Isso significa que se tivermos dois arrays diferentes na memória, eles estarão 
 apontando para o mesmo prototype do objeto Array na memória, isso diminui o 
 consumo de memória. Portanto cada tipo de objeto tem seus métodos armazenados no 
-seu prototype. Portanto, todos os prototypes dos objetos já existem no JS, eles 
-não são criados toda vez que criamos um novo objeto, mas são apenas referenciados.
+seu prototype. Todos os prototypes dos objetos já existem no JS, eles não são 
+criados toda vez que criamos um novo objeto, mas são apenas referenciados.
 
 Faremos isso com a nossa função construtora, vamos adicionar os métodos dentro do 
 prototype do objeto criado, em vez de adicionar dentro da própria função construtora.

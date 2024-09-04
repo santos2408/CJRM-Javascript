@@ -18,9 +18,9 @@ form.addEventListener('submit', event => {
    feedback.textContent = 'o username deve conter entre 6 a 12 caracteres e deve conter apenas letras.'
 })
 
-// ========== EVENTOS DO TECLADO ==========
-
 /*
+   ========== EVENTOS DO TECLADO ==========
+
    Um dos eventos que podemos reagir é chamado de 'keyup'. Ele executa uma 
    função de callback no momento exato em que uma tecla pressionada for 
    liberada.

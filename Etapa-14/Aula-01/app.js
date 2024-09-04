@@ -206,6 +206,7 @@ Math.max(...numbers) //
   [ ] - return early
   [ ] - Optional chaining (?.)
   [ ] - efeito colateral
+  [ ] - nullish coalescing operator
 
   const to = promise => promise
     .then(result => [null, result])

@@ -58,7 +58,7 @@ console.log(joinHeroes)
 // retorna uma nova string com todos os itens concatenados e separados por vírgula
 // recebe como argumento opcional um separador, vírgula é o padrão
 
-const indexOf25 = ages.indexOf(25)
+const indexOf25 = ages.indexOf(25) // busca por 25 dentro do array
 console.log(indexOf25)
 // assim como na string, busca a primeira ocorrência do valor inserido
 // caso o valor informado não exista no array o retorno será sempre -1.
@@ -66,7 +66,7 @@ console.log(indexOf25)
 
 const moreHeroes = heroes.concat(['Superman', 'Wolverine'])
 console.log(moreHeroes)
-// irá concatenar dois ou mais arrays
+// irá concatenar dois ou mais arrays e retornar esse novo array
 // não modifica o array original
 // no ES6 surgiu o spread operator que realiza a mesma operação (recomendado)
 

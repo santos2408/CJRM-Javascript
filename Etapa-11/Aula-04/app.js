@@ -82,30 +82,30 @@ getData() // retornou uma promise com a resposta dentro
 
 const getPokemon = url => new Promise((resolve, reject) => {
   const request = new XMLHttpRequest()
-  
+
   request.addEventListener('readystatechange', () => {
     const isRequestOk = request.readyState === 4 && request.status === 200
     const isRequestNotOk = request.readyState === 4
-    
+
     if (isRequestOk) { // checking status
       const data = JSON.parse(request.responseText) // convertendo para JSON
       resolve(data.name)
       // não precasa de return pois a resolve já contem um implícito
     }
-  
+
     if (isRequestNotOk) {
       reject('Não foi possível obter os dados da API')
       // não precasa de return pois a resolve já contem um implícito
     }
   })
-  
+
   request.open('GET', url)
   request.send()
 })
 
 // getPokemon('https://pokeapi.co/api/v2/pokemon/1')
-  // .then(pokemon => console.log(pokemon))
-  // .catch(error => console.log(error))
+// .then(pokemon => console.log(pokemon))
+// .catch(error => console.log(error))
 
 // executando e encadeando promises
 getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
@@ -156,4 +156,11 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/1') // promise / bulbasaur
    [ ] - Implementing a promise-based API
    [ ] - Introducing workers
    [ ] - Sequencing animations
+
+   Why using “setTimeout” is not a good practice, and how to workaround?
+   https://medium.com/@gildniy/why-using-settimeout-is-not-a-good-practice-and-how-to-work-around-da44f81117f0#:~:text=Instead%20of%20using%20setTimeout%20%2C%20it,easier%20to%20read%20and%20understand.
+
+   https://medium.com/@idineshgarg/let-us-consider-an-example-a58bb1c11f55
+
+   https://www.encora.com/insights/javascript-settimeout-and-promise-under-the-hood
 */
