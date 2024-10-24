@@ -34,7 +34,7 @@ Mesmo sendo uma das formas de criar objetos no dia dia, dê preferência para
 a criação de objetos literais, isso porque o resultado será sempre o mesmo e um 
 objeto literal dá menos trabalho.
 
-Se precisarmos converter um valor, aí pode ser necessário usarmos um construtor, 
+Se precisarmos converter um valor, aí pode ser necessário usar um construtor, 
 mas sem utilizar a palavra chave 'new', pois não queremos gerar um novo objeto 
 mas apenas retornar o valor convertido.
 
@@ -65,10 +65,10 @@ já existem nativamente na linguagem.
 
 // criando objetos com 'constructors'
 
-const string = new String('Roger') // objeto wrapper do tipo string
-const number = new Number(10) // objeto wrapper do tipo number
-const array = new Array(1, 2, 3) // objeto wrapper do tipo array
-const object = new Object() // objeto wrapper do tipo object
+const string = new String("Roger"); // objeto wrapper do tipo string
+const number = new Number(10); // objeto wrapper do tipo number
+const array = new Array(1, 2, 3); // objeto wrapper do tipo array
+const object = new Object(); // objeto wrapper do tipo object
 
 /*
   Isso que foi feito logo acima é exatamente o que o javascript faz 
@@ -105,19 +105,19 @@ const user1 = {
   email: "roger@gmail.com",
   login: () => "O usuário logou",
   logout: () => "O usuário deslogou",
-}
+};
 
 const user2 = {
   ...user1, // copiando os valores que são padrões para todo objeto
   name: "Alessandra",
   email: "alessandra@gmail.com",
-}
+};
 
 const user3 = {
   ...user1, // copiando os valores que são padrões para todo objeto
   name: "Maria",
   email: "maria@gmail.com",
-}
+};
 
 /*
   Além dos construtores embutidos na linguagem: Array, Number, String, Object, 
@@ -179,15 +179,15 @@ class User {
   // setando as propriedades do novo objeto
   constructor(name, lastName, age) {
     // criando as propriedades
-    this.name = name, // this referencia esse novo objeto que está sendo criado (User)
-      this.lastName = lastName,
-      this.age = age
+    this.name = name; // this referencia esse novo objeto que está sendo criado (User)
+    this.lastName = lastName;
+    this.age = age;
   }
 }
 
 // invocando classe construtora
-const user = new User("Roger", "Santos", 25) // criando instância do objeto User
-const user2 = new User("Alessandra", "Carvalho", 44)
+const user = new User("Roger", "Santos", 25); // criando instância do objeto User
+const user2 = new User("Alessandra", "Carvalho", 44);
 
 /*
   =============== MÉTODOS EM CLASSES ===============
@@ -210,15 +210,15 @@ const user2 = new User("Alessandra", "Carvalho", 44)
 
 class Usuario {
   constructor(name, lastName, age) {
-    this.name = name,
-      this.lastName = lastName,
-      this.age = age,
-      this.points = 0
+    this.name = name;
+    this.lastName = lastName;
+    this.age = age;
+    this.points = 0;
   }
 
   login() {
-    console.log(`${this.name} logou na aplicação.`)
-    return this // retornando objeto para encadear outro método
+    console.log(`${this.name} logou na aplicação.`);
+    return this; // retornando objeto para encadear outro método
 
     /*
       se na invocação do método desejarmos encadear outro método, então 
@@ -232,19 +232,19 @@ class Usuario {
   }
 
   logout() {
-    return `${this.name} deslogou da aplicação.`
+    return `${this.name} deslogou da aplicação.`;
   }
 
   addPoint() {
-    this.points++
-    return `${this.name} agora tem ${this.points} ${this.points > 1 ? "pontos" : "ponto"}`
+    this.points++;
+    return `${this.name} agora tem ${this.points} ${this.points > 1 ? "pontos" : "ponto"}`;
   }
 }
 
-const usuario = new Usuario("Roger", "Santos", 25)
+const usuario = new Usuario("Roger", "Santos", 25);
 
-usuario.login().addPoint() // encadeando métodos
-console.log(usuario)
+usuario.login().addPoint(); // encadeando métodos
+console.log(usuario);
 
 /*
   =============== HERANÇA ENTRE CLASSES ===============
@@ -265,18 +265,18 @@ console.log(usuario)
 
   Quando uma subclasse não contém um constructor declarado, essa subclasse irá usar 
   o constructor da classe que ela está herdando e consequentemente irá obter as 
-  propriedades dessa classe herdade. 
+  propriedades dessa classe herdada. 
   
   Quando criamos um novo constructor na subclasse, a subclasse não conseguirá 
   obter as propriedades da classe herdada, isso porque, existindo dois constructor's, 
   eles entram em conflito. Para resolver esse problema, como não podem haver dois 
-  constructor's existindo (na subclasse e na superclass), na subclass nós iremos 
+  constructor's existindo (na subclass e na superclass), na subclass nós iremos 
   invocar o método 'super', esse método irá invocar o método 'constructor' da 
   superclass e assim, dentro da subclass, será criada as mesmas propriedades 
   da superclass.
 
   Lembre-se que, não conseguiremos usar o this na subclass sem antes chamar o 
-  constructor da classe herdada (supercclas) utilizando o método 'super'.
+  constructor da classe herdada (superclas) utilizando o método 'super'.
 
   O constructor da classe herdada (superclass) só é executado quando não existe 
   um constructor na classe filho, se passar a existir, o constructor da classe 
@@ -304,40 +304,46 @@ console.log(usuario)
 
 */
 
-class Mammal { // superclass / classe pai / será herdada
+class Mammal {
+  // superclass / classe pai / será herdada
   constructor(species, name, age) {
-    this.species = species
-    this.name = name
-    this.age = age
-    this.mammaryGland = true
+    this.species = species;
+    this.name = name;
+    this.age = age;
+    this.mammaryGland = true;
   }
 
   incrementAge() {
-    this.age++
+    this.age++;
   }
 }
 
-class Lion extends Mammal { // subclass / classe filha / herdando propriedades e métodos de Mammal (superclass / classe pai)
-  constructor(species, name, age, manEater) { // constructor da subclass
-    super(species, name, age) // invocando constructor da superclass com 'super' e obtendo e setando propriedades
-    this.manEater = manEater // propriedade única da subclass Lion
+class Lion extends Mammal {
+  // subclass / classe filha / herdando propriedades e métodos de Mammal (superclass / classe pai)
+  constructor(species, name, age, manEater) {
+    // constructor da subclass
+    super(species, name, age); // invocando constructor da superclass com 'super' e obtendo e setando propriedades
+    this.manEater = manEater; // propriedade única da subclass Lion
   }
 
-  eatZebras(animals) { // método único da subclass Lion
-    return animals.filter((animal) => animal.species !== 'zebra')
+  eatZebras(animals) {
+    // método único da subclass Lion
+    return animals.filter((animal) => animal.species !== "zebra");
   }
 }
 
-const zeca = new Mammal('zebra', 'Zeca', 6)
-const pompeu = new Mammal('gnu', 'Pompeu', 5)
-const cesar = new Mammal('macaco', 'Cesar', 8)
-const mufasa = new Lion('leão', 'mufasa', 4, false)
-const scar = new Lion('leão', 'scar', 10, true)
+const zeca = new Mammal("zebra", "Zeca", 6);
+const pompeu = new Mammal("gnu", "Pompeu", 5);
+const cesar = new Mammal("macaco", "Cesar", 8);
+const mufasa = new Lion("leão", "mufasa", 4, false);
+const scar = new Lion("leão", "scar", 10, true);
 
-const animals = [zeca, pompeu, cesar]
+const animals = [zeca, pompeu, cesar];
 
-scar.eatZebras(animals)
-console.log(mufasa, scar)
+scar.incrementAge();
+scar.eatZebras(animals);
+
+console.log(mufasa, scar);
 
 /*
   PESQUISAR SOBRE:

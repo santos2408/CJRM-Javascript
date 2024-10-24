@@ -45,14 +45,14 @@
    do array original, aí sim será criada uma cópia independente.
 */
 
-const numbers = [1, 2, 3]
+const numbers = [1, 2, 3];
 
-const doubleNumbers = numbers.map(item => item * 2)
+const doubleNumbers = numbers.map((item) => item * 2);
 // toda a expressão do map retornou um novo array e foi armazenado na const
 
-const prices = [20, 10, 30, 25, 15, 40, 80, 5]
+const prices = [20, 10, 30, 25, 15, 40, 80, 5];
 
-const salePrices = prices.map(price => price / 2)
+const salePrices = prices.map((price) => price / 2);
 
 // ======================================================
 
@@ -65,28 +65,28 @@ const salePrices = prices.map(price => price / 2)
 */
 
 const products = [
-   {name: 'Mouse Sem Fio', price: 30},
-   {name: 'Pen Drive', price: 25},
-   {name: 'Cartucho de Tinta', price: 50},
-   {name: 'Suporte Ergonômico para Notebook', price: 23},
-   {name: 'Repetidor de Sinal Wi-Fi', price: 44}
-]
+  { name: "Mouse Sem Fio", price: 30 },
+  { name: "Pen Drive", price: 25 },
+  { name: "Cartucho de Tinta", price: 50 },
+  { name: "Suporte Ergonômico para Notebook", price: 23 },
+  { name: "Repetidor de Sinal Wi-Fi", price: 44 },
+];
 
-const saleProducts = products.map(product => {
-   if (product.price > 30) {
-      return { name: product.name, price: product.price / 2 }
-      // retornando um novo objeto, pois não queremos criar uma cópia do array original
-      // isso porque objetos são tipo referência, se retornarmos o item diretamente
-      // os dois array's estarão "sincronizados", não queremos isso
-   }
+const saleProducts = products.map((product) => {
+  if (product.price > 30) {
+    return { name: product.name, price: product.price / 2 };
+    // retornando um novo objeto, pois não queremos criar uma cópia do array original
+    // isso porque objetos são tipo referência, se retornarmos o item diretamente
+    // os dois array's estarão "sincronizados", não queremos isso
+  }
 
-   return product
-})
+  return product;
+});
 
 /*
    Pode surgir a seguinte dúvida: Porque criamos e retornamos um novo objeto 
    sendo que podemos simplesmente modificar o valor da propriedade do objeto 
-   recebido por parâmetro e retorná-lo. Invés de criar um novo objeto com nome 
+   recebido por parâmetro e retorná-lo em vez de criar um novo objeto com nome 
    e preço e alterar o preço desse objeto?
    
    Se fizermos esse tipo de atribuição, estaremos modificando diretamente esse 
@@ -94,7 +94,7 @@ const saleProducts = products.map(product => {
    e não é isso que queremos. Nós queremos usar o map para criar um novo array 
    com novos itens modificados.
 
-   Sempre prefira esse tipo de comportamento, evite a mutabilidade de valores, 
+   Sempre prefira esse tipo de comportamento, evite a 'mutabilidade' de valores, 
    sempre prefira armazenar a modificação de um valor em outra variável e deixar 
    o original intacto.
 
@@ -119,23 +119,23 @@ const saleProducts = products.map(product => {
    maiores que 37. Veja:
 */
 
-const randomNumbers = [36, 99, 37, 63]
+const randomNumbers = [36, 99, 37, 63];
 
-const numbersGreaterThan37 = randomNumbers.filter(number => number > 37)
+const numbersGreaterThan37 = randomNumbers.filter((number) => number > 37);
 
 // =====================================================
 
 // Filtrando apenas os usuários que são premium
 
 const users = [
-   { name: 'Ada Lovelace', premium: true },
-   { name: 'Grace Hopper', premium: false },
-   { name: 'Alan Turing', premium: true },
-   { name: 'Linus Torvalds', premium: false },
-   { name: 'Margaret Hamilton', premium: true }
-]
+  { name: "Ada Lovelace", premium: true },
+  { name: "Grace Hopper", premium: false },
+  { name: "Alan Turing", premium: true },
+  { name: "Linus Torvalds", premium: false },
+  { name: "Margaret Hamilton", premium: true },
+];
 
-const premiumUsers = users.filter(user => user.premium)
+const premiumUsers = users.filter((user) => user.premium);
 
 /*
    ============ MÉTODO REDUCE() ============
@@ -153,9 +153,9 @@ const premiumUsers = users.filter(user => user.premium)
 
    No exemplo abaixo a função é executada para cada item do array e apenas na 
    primeira vez que a função for executada, o parâmetro 'accumulator' receberá o 
-   segundo argumento do reduce que é o '0' que será o valor inicial do accumulator. 
-   O parâmetro 'item' recebe o primeiro item do array e a função retornará o 
-   resultado da expressão.
+   segundo argumento do reduce que é o '0' que será o valor inicial do accumulator, 
+   mas que pode ser qualquer outro tipo de dados como '{}' ou 'string'. O parâmetro 
+   'item' recebe o primeiro item do array e a função retornará o resultado da expressão.
 
    O resultado da expressão será atribuído implicitamente no parâmetro 
    'accumulator', depois disso a função será executada novamente e o parâmetro 
@@ -175,32 +175,32 @@ const premiumUsers = users.filter(user => user.premium)
    no final da execução do método.
 */
 
-const allNumbers = [1, 2, 3, 4, 5]
+const allNumbers = [1, 2, 3, 4, 5];
 
-const sumResult = allNumbers.reduce((accumulator, item) => accumulator + item, 0) // 15
+const sumResult = allNumbers.reduce((accumulator, item) => accumulator + item, 0); // 15
 
 // ==================================
 
 const phaseScores = [
-   { name: 'Vinicius Costa', score: 337 },
-   { name: 'Roger Melo', score: 43 },
-   { name: 'Alfredo Braga', score: 234 },
-   { name: 'Pedro H. Silva', score: 261 },
-   { name: 'Ana Paula Rocha', score: 491 },
-   { name: 'Vinicius Costa', score: 167 },
-   { name: 'Roger Melo', score: 137 },
-   { name: 'Alfredo Braga', score: 135 },
-   { name: 'Ana Paula Rocha', score: 359 },
-   { name: 'Pedro H. Silva', score: 133 }
-]
+  { name: "Vinicius Costa", score: 337 },
+  { name: "Roger Melo", score: 43 },
+  { name: "Alfredo Braga", score: 234 },
+  { name: "Pedro H. Silva", score: 261 },
+  { name: "Ana Paula Rocha", score: 491 },
+  { name: "Vinicius Costa", score: 167 },
+  { name: "Roger Melo", score: 137 },
+  { name: "Alfredo Braga", score: 135 },
+  { name: "Ana Paula Rocha", score: 359 },
+  { name: "Pedro H. Silva", score: 133 },
+];
 
 const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
-   if (phaseScore.name === 'Roger Melo') {
-      accumulator += phaseScore.score
-   }
+  if (phaseScore.name === "Roger Melo") {
+    accumulator += phaseScore.score;
+  }
 
-   return accumulator
-}, 0)
+  return accumulator;
+}, 0);
 
 // rogerScore === 180
 
@@ -226,7 +226,7 @@ const rogerScore = phaseScores.reduce((accumulator, phaseScore) => {
    qualquer mudança de estado que pode ser percebida do lado de fora de uma função 
    e que não é um valor retornado pela função.
 
-   Os métodos 'map', 'filter' e 'reduce' são consideradas 'Higher-Order Functions', 
+   Os métodos 'map', 'filter' e 'reduce' são considerados 'Higher-Order Functions', 
    ou seja, 'funções de ordem superior'. São funções que recebem outras funções 
    como argumento ou retornam uma função como valor. Elas nos permitem escrever 
    códigos mais abstratos, reutilizáveis e com propósitos gerais que podem ser 

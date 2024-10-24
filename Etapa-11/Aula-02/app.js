@@ -17,7 +17,7 @@
    já existente, mas ao fazer isso vai cancelar qualquer requisição pendente por 
    meio desse objeto.
 
-   Objetos XMLHttpRequest são usados para interagirmos com servidores, podermos 
+   Objetos XMLHttpRequest são usados para interagirmos com servidores e podermos 
    obter dados de uma URL sem precisar atualizar a página, podendo atualizar 
    apenas uma parte do conteúdo de uma aplicação.
 
@@ -76,24 +76,24 @@
       - 4: DONE
 */
 
-const request = new XMLHttpRequest() // instanciando
+const request = new XMLHttpRequest(); // instanciando
 
-request.addEventListener('readystatechange', () => {
-   // verificando o estado do XMLHttpRequest para ver se foi finalizado
-   if (request.readyState === 4) {
-      console.log(request, request.responseText)
-   }
-})
+request.addEventListener("readystatechange", () => {
+  // verificando o estado do XMLHttpRequest para ver se foi finalizado
+  if (request.readyState === 4) {
+    console.log(request, request.responseText);
+  }
+});
 
-request.open('GET', 'https://anapioficeandfire.com/api/characters/583')
-request.send()
+request.open("GET", "https://anapioficeandfire.com/api/characters/583");
+request.send();
 
 /* 
    ======= STATUS DE REQUEST =======
 
    Ao verificarmos se a resposta foi obtida através do readyState === 4 ficamos 
    sabendo se tudo ocorreu bem. No entanto, só isso não é o suficiente, porque 
-   mesmo que a requisição venha a ocorrer algum tipo de erro, por exemplo um 
+   mesmo que na requisição venha a ocorrer algum tipo de erro, por exemplo um 
    endpoint inválido, mesmo assim o request passará por todos os status de resposta
    chegando no último que é o 4 (DONE).
 
@@ -104,16 +104,17 @@ request.send()
    requisição.
 
    Geralmente nas API's da internet, o status da requisição é verificado 
-   através de uma propriedade "ok" do objeto retornado. Continuam se 
+   através de uma propriedade "ok" do objeto retornado e continuam se 
    comportando implicitamente da mesma forma mas o seu retorno é um boolean.
 */
 
-request.addEventListener('readystatechange', () => {
-   // verificando se a requisição terminou e se deu tudo certo com ela
-   if (request.readyState === 4 && request.status === 200) { // checking status
-      console.log(request, request.responseText)
-   }
-})
+request.addEventListener("readystatechange", () => {
+  // verificando se a requisição terminou e se deu tudo certo com ela
+  if (request.readyState === 4 && request.status === 200) {
+    // checking status
+    console.log(request, request.responseText);
+  }
+});
 
 /*
    Referências:

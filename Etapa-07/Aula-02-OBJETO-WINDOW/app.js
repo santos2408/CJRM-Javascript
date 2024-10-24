@@ -23,8 +23,8 @@
 
    =============================================================================
 
-   outerWidth: essa propriedade obtém a largura total da janela
-   do browser em que o HTML está sendo exibido.
+   outerWidth: essa propriedade obtém a largura total da janela do browser em 
+   que o HTML está sendo exibido.
 
    setTimeOut(): esse método executa uma função após uma certa quantidade de 
    tempo que for especificada. Ele faz isso recebendo dois argumentos, o primeiro 
@@ -46,8 +46,8 @@
 */
 
 setTimeOut(() => {
-   alert('Executou!')
-}, 2000)
+  alert("Executou!");
+}, 2000);
 
 /*
    Depois de dois segundos da página carregada, o alert será exibido na tela. 
@@ -56,8 +56,8 @@ setTimeOut(() => {
 */
 
 setInterval(() => {
-   console.log('Passou 1 segundo')
-}, 1000)
+  console.log("Passou 1 segundo");
+}, 1000);
 
 /*
    Depois de um segundo que a página for carregada, o console será exibido e 
@@ -65,7 +65,7 @@ setInterval(() => {
    que a página seja recarregada.
 */
 
-scrollTo(0, 0)
+scrollTo(0, 0);
 
 /*
    Irá rolar a página para a posição 0 do eixo X e 0 do eixo Y. A posição 0 do 
@@ -80,7 +80,7 @@ scrollTo(0, 0)
    deixando-as apenas para o CSS. Portanto, evite referenciar um elemento do DOM
    utilizando classes ou ID's.
 
-   o attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
+   O attributo 'id' tem o efeito colateral nos browsers em que ele gera uma 
    variável global que aponta para o elemento que tem aquele ID. Se na marcação 
    HTML for declarado um atributo 'id' com o 'valor x', se você inserir 'window.x' 
    (ou simplesmente x) como argumento de um console.log(), o retorno será a 
@@ -92,16 +92,17 @@ scrollTo(0, 0)
    retirar o id="x", as execuções dos console.log() acima resultarão em undefined.
 
    Então, para não gerar variáveis globais desnecessárias, o ideal é usar o 
-   attributo 'data' para manipulação de DOM via JS, e usar IDs somente para 
-   inputs, por conta da acessibilidade do atributo for das labels ou quando 
+   atributo 'data' para manipulação de DOM via JS, e usar IDs somente para 
+   inputs, por conta da acessibilidade do atributo "for" das labels ou quando 
    você quiser fazer âncoras na sua página, aí você também precisa do ID. Para 
-   todos os outros casos, evite. 
+   todos os outros casos, evite e dê preferência aos atributos "data".
    
    Outra questão de organização é que se você comparar, lado a lado, duas 
-   versões do mesmo arquivo .html, uma com 'data' e class e outra apenas com 
-   class, verá que ao bater o olho no arquivo com data-js e class, você distingue 
-   rapidamente quais elementos estão sendo manipulados pelo JavaScript. Isso não 
-   é possível ao bater o olho na versão do arquivo que usa apenas class.
+   versões do mesmo arquivo .html, uma com 'data' e 'class' e outra apenas com 
+   'class', você verá que, ao bater o olho no arquivo com 'data' e 'class', 
+   você distingue rapidamente quais elementos estão sendo manipulados pelo 
+   JavaScript. Isso não é possível ao bater o olho na versão do arquivo que usa 
+   apenas 'class'.
 
    A forma mais confiável de identificar elementos e manipulá-los em JavaScript 
    (puro) é usar o atributo 'data'.

@@ -50,16 +50,16 @@
    devido a sua hierarquia.
 */
 
-const ul = document.querySelector('ul')
-const button = document.querySelector('button')
+const ul = document.querySelector("ul");
+const button = document.querySelector("button");
 
 // evento de clique padrão
-button.addEventListener('click', () => {
-   const li = document.createElement('li')
+button.addEventListener("click", () => {
+  const li = document.createElement("li");
 
-   li.textContent = 'Novo item'
-   ul.prepend(li)
-})
+  li.textContent = "Novo item";
+  ul.prepend(li);
+});
 
 /*
    === código SEM a utilização de event delegation ===
@@ -68,27 +68,28 @@ button.addEventListener('click', () => {
    eventListener. Para aplicações maiores esse tipo de abordagem pode resultar 
    em problema de performance.
 */
-const lis = document.querySelectorAll('li')
+const lis = document.querySelectorAll("li");
 
-lis.forEach(li => {
-   li.addEventListener('click', event => { // função de callback
-      const clickedElement = event.target
+lis.forEach((li) => {
+  li.addEventListener("click", (event) => {
+    // função de callback
+    const clickedElement = event.target;
 
-      // comprovando a propagação de eventos*
-      console.log('clicou na li')
+    // comprovando a propagação de eventos*
+    console.log("clicou na li");
 
-      // interrompendo propagação do evento
-      event.stopPropagation()
+    // interrompendo propagação do evento
+    event.stopPropagation();
 
-      clickedElement.remove()
-   })
-})
+    clickedElement.remove();
+  });
+});
 
 // comprovando a propagação de eventos*
-ul.addEventListener('click', () => {
-   console.log('Evento propagado a partir do target da li')
-   // comente o stopPropagation() acima
-})
+ul.addEventListener("click", () => {
+  console.log("Evento propagado a partir do target da li");
+  // comente o stopPropagation() acima
+});
 
 /*
    Na comprovação da propagação do evento vemos que mesmo clicando no elemento
@@ -103,23 +104,23 @@ ul.addEventListener('click', () => {
    usando o event delegation, nós colocamos o eventListener no pai de todos os 
    elementos que queremos que tenha o event e ao clicarmos em algum item dentro 
    desse elemento pai poderemos pegar o target específico do elemento clicado.
-   Dessa forma passa a existir apenas um eventListener invés de vários para todos 
+   Dessa forma passa a existir apenas um eventListener em vez de vários para todos 
    os elementos.
 
 */
 
-ul.addEventListener('click', event => {
-   const clickedElement = event.target
+ul.addEventListener("click", (event) => {
+  const clickedElement = event.target;
 
-   if (clickedElement.tagName === 'LI') {
-      clickedElement.remove()
-   }
+  if (clickedElement.tagName === "LI") {
+    clickedElement.remove();
+  }
 
-   if (clickedElement.tagName === 'SPAN') {
-      clickedElement.parentElement.remove() // removendo LI
-      clickedElement.remove() // removendo SPAN
-   }
-})
+  if (clickedElement.tagName === "SPAN") {
+    clickedElement.parentElement.remove(); // removendo LI
+    clickedElement.remove(); // removendo SPAN
+  }
+});
 
 /*
    a propriedade 'target' refere-se ao exato elemento onde ocorreu o clique do 
@@ -142,11 +143,11 @@ ul.addEventListener('click', event => {
    cópia acontece, o evento é disparado.
 */
 
-const paragraph = document.querySelector('.copy-me')
+const paragraph = document.querySelector(".copy-me");
 
-paragraph.addEventListener('copy', () => {
-   console.log(`O texto foi copiado!`)
-})
+paragraph.addEventListener("copy", () => {
+  console.log(`O texto foi copiado!`);
+});
 
 /*
    MOUSEMOVE EVENT: Esse evento acontece quando o usuário movimenta o mouse 
@@ -162,11 +163,11 @@ paragraph.addEventListener('copy', () => {
    pixel do topo para baixo do elemento referenciado.
 */
 
-const div = document.querySelector('.box')
+const div = document.querySelector(".box");
 
-div.addEventListener('mousemove', event => {
-   div.innerText = `X ${event.offsetX} | ${event.offsetY}`
-})
+div.addEventListener("mousemove", (event) => {
+  div.innerText = `X ${event.offsetX} | ${event.offsetY}`;
+});
 
 /*
    WHEEL EVENT: ocorre quando rolamos a página. Adicionamos esse evento 
@@ -180,8 +181,8 @@ div.addEventListener('mousemove', event => {
    para baixo, esses valores mudam com base na posição atual da barra de rolagem.
 */
 
-document.addEventListener('wheel', event => {
-   console.log(event.pageX, event.pageY)
-})
+document.addEventListener("wheel", (event) => {
+  console.log(event.pageX, event.pageY);
+});
 
 // mais eventos em: https://developer.mozilla.org/en-US/docs/Web/Events

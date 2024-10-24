@@ -42,20 +42,20 @@
    passará para a próxima iteração, ou seja, para o próximo índice.
 */
 
-const scores = [50, 25, 0, 30, 100, 20, 10]
+const scores = [50, 25, 0, 30, 100, 20, 10];
 
 for (let i = 0; i < scores.length; i++) {
-   if (scores[i] === 0) {
-      continue
-   }
+  if (scores[i] === 0) {
+    continue;
+  }
 
-   console.log(`Sua pontuação: ${scores[i]}`)
+  console.log(`Sua pontuação: ${scores[i]}`);
 
-   if (scores[i] === 100) {
-      console.log('Parabéns, você atingiu a pontuação máxima!')
+  if (scores[i] === 100) {
+    console.log("Parabéns, você atingiu a pontuação máxima!");
 
-      break // quebra o loop
-   }
+    break; // quebra o loop
+  }
 }
 
 /*
@@ -83,25 +83,25 @@ for (let i = 0; i < scores.length; i++) {
    lugar o 'return'.
 */
 
-const grade = 'B'
+const grade = "B";
 
 switch (grade) {
-   case 'A':
-      console.log('você tirou nota A')
-      break
-      return // 'return' no lugar de 'break' caso seja uma função
-   case 'B':
-      console.log('você tirou nota B')
-      break
-   case 'C':
-      console.log('você tirou nota C')
-      break
-   case 'D':
-      console.log('você tirou nota D')
-      break
-   case 'E':
-      console.log('você tirou nota E')
-      break
-   default:
-      console.log('nota inválida')
+  case "A":
+    console.log("você tirou nota A");
+    break;
+    return; // 'return' no lugar de 'break' caso esteja dentro de uma função
+  case "B":
+    console.log("você tirou nota B");
+    break;
+  case "C":
+    console.log("você tirou nota C");
+    break;
+  case "D":
+    console.log("você tirou nota D");
+    break;
+  case "E":
+    console.log("você tirou nota E");
+    break;
+  default:
+    console.log("nota inválida");
 }

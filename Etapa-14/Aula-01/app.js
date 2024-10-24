@@ -36,7 +36,8 @@ Então para de fato clonarmos objetos mesmo que eles tenham objetos aninhados,
 devemos criar um novo objeto com todas as propriedades do objeto original, 
 utilizando 'spread operator', em seguida sobrescrevemos a propriedade que contém 
 um objeto aninhado e atribuímos para ela um novo objeto e espalhamos as propriedades 
-do objeto aninhado dentro desse novo objeto. Veja o exemplo para ficar mais claro.
+do objeto aninhado dentro desse novo objeto também. Veja o exemplo para ficar mais 
+claro.
 
 Arrays aninhados também são referenciados, porque arrays também são objetos.
 Portanto, caso haja um array no objeto também devemos espalhar os seus elementos 
@@ -55,31 +56,34 @@ console.dir(elemento)
 
 */
 
-const objeto = { // objeto
+const objeto = {
+  // objeto
   prop0: () => {}, // função / objeto
-  prop1: 'a',
-  prop2: 'b',
-  prop3: { a: 'x', b: 'y', c: 'z' }, // objeto
-  prop4: [1, { x: 2, y: 3 }] // array / objeto + objeto
-}
+  prop1: "a",
+  prop2: "b",
+  prop3: { a: "x", b: "y", c: "z" }, // objeto
+  prop4: [1, { x: 2, y: 3 }], // array / objeto + objeto
+};
 
 // lembrando que array é também um objeto: array = objeto
 
 const objetoCopia = {
   ...objeto, // espalhando todas as propriedades / criando cópia do objeto acima
   prop0: () => {}, // cópia da função e não referência / deve-se reescrever a função
-  prop3: { // sobrescrevendo prop3
-    ...objeto.prop3 // espalhando propriedades para criar cópia e não referência
+  prop3: {
+    // sobrescrevendo prop3
+    ...objeto.prop3, // espalhando propriedades para criar cópia e não referência
   },
-  prop4: [ // sobreescrevendo prop4
+  prop4: [
+    // sobreescrevendo prop4
     objeto.prop4[0],
-    { ...objeto.prop4[1] } // criando cópia de objeto dentro do array
-  ]
-}
+    { ...objeto.prop4[1] }, // criando cópia de objeto dentro do array
+  ],
+};
 
-const arr1 = [1, 2, 3]
-const arr2 = [4, 5, 6]
-const newArray = [...arr1, ...arr2]
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const newArray = [...arr1, ...arr2];
 
 // repare que o spread operator é uma forma mais moderna de concatenar arrays
 // no ES5 usávamos o método concat()
@@ -90,7 +94,8 @@ const newArray = [...arr1, ...arr2]
   de fora de uma função e que não é um valor retornado pela função. São ações 
   que vão além do cálculo e retorno de um valor pela função. No paradigma 
   funcional, evite efeitos colaterais, pois eles podem tornar o código mais 
-  difícil de entender, testar e depurar.
+  difícil de entender, testar e depura, ou seja, no paradigma funciona, procure 
+  escrever funções que retornam um valor.
 
   Efeitos colaterais podem incluir alterações em variáveis globais, modificações 
   no estado do documento html ou do navegador, requisições de rede, manipulação 
@@ -125,11 +130,11 @@ const newArray = [...arr1, ...arr2]
   novo objeto.
 */
 
-const obj1 = { prop1: 1, prop2: 2 }
-const obj2 = { pro3: 3, prop4: 4 }
+const obj1 = { prop1: 1, prop2: 2 };
+const obj2 = { pro3: 3, prop4: 4 };
 
-const obj3 = Object.assign({}, obj1, obj2) // essa operação gera
-const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
+const obj3 = Object.assign({}, obj1, obj2); // essa operação gera
+const obj3 = { ...obj1, ...obj2 }; // o mesmo resultado que essa
 
 /*
   Surge uma dúvida sobre a diferença entre as duas abordagens, já que estão 
@@ -149,7 +154,7 @@ const obj3 = { ...obj1, ...obj2 } // o mesmo resultado que essa
   intenção em determinados momentos.
 */
 
-const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
+const obj4 = Object.assign(obj1, obj2); // inserindo num objeto já existente
 
 /*
   =============== USANDO SPREAD OPERATOR EM STRINGS E FUNÇÕES ===============
@@ -169,22 +174,22 @@ const obj4 = Object.assign(obj1, obj2) // inserindo num objeto já existente
   isso nos permite inserir arrays em métodos que só aceitam números. Veja:
 */
 
-const numbers = [1, 2, 3, 4, 5]
+const numbers = [1, 2, 3, 4, 5];
 
-Math.min(numbers) // NaN, porque é array e esse método só aceita números 
+Math.min(numbers); // NaN, porque é array e esse método só aceita números
 
-Math.min(...numbers) // espalhando os itens do array com spread operator
-Math.max(...numbers) // 
+Math.min(...numbers); // espalhando os itens do array com spread operator
+Math.max(...numbers); //
 
 /*
   =============== EXPRESSÕES E INSTRUÇÕES ===============
   
   Diferente de um statement (instrução/declaração), expressão é um pedaço de 
   código que resulta em um valor, ela pode ser inserida em qualquer lugar do 
-  código em que um valor é esperado. 1 + 1 = 2, typeof 'oi' = string ou um 
+  código em que um valor é esperado. 1 + 1 = 2, typeof 'oi' === string ou um 
   operador ternário, são exemplos de expressões que retornam um valor.
 
-  Uma instruçãoé um pedaço de código que não resulta em um valor. A declaração 
+  Uma instrução é um pedaço de código que não resulta em um valor. A declaração 
   de if else, switch ou for loop são exemplos de instruções que não retornam 
   um valor. Por isso não conseguimos declarar um if como argumento de uma função.
 
@@ -204,7 +209,6 @@ Math.max(...numbers) //
   [ ] - Imutabilidade
   [ ] - Mutabilidade
   [ ] - return early
-  [ ] - Optional chaining (?.)
   [ ] - efeito colateral
   [ ] - nullish coalescing operator
 

@@ -49,41 +49,41 @@ a palavra chave 'class' e criamos uma subclasse com 'extends'.
 */
 
 // função construtora
-function Aluno (name, email) {
-  this.name = name
-  this.email = email
+function Aluno(name, email) {
+  this.name = name;
+  this.email = email;
   // depois da invocação da call(), esse this passa a ser o TeacherAssistant
 }
 
-Aluno.prototype.login = function login () {
-  return `${this.name} fez login.`
-}
+Aluno.prototype.login = function login() {
+  return `${this.name} fez login.`;
+};
 
-Aluno.prototype.comment = function comment () {
-  return `${this.name} comentou no post`
-}
+Aluno.prototype.comment = function comment() {
+  return `${this.name} comentou no post`;
+};
 
 // trabalhando com herença em funções construtoras
-function TeacherAssistant (name, email, scheduleWeekPosts) {
+function TeacherAssistant(name, email, scheduleWeekPosts) {
   // invocando construtor Aluno e
   // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this dele
-  Aluno.call(this, name, email) // this = TeacherAssistant e parâmetros para Aluno
-  this.scheduleWeekPosts = scheduleWeekPosts // propriedade única de TeacherAssistant
+  Aluno.call(this, name, email); // this = TeacherAssistant e parâmetros para Aluno
+  this.scheduleWeekPosts = scheduleWeekPosts; // propriedade única de TeacherAssistant
 }
 
-// criando novo objeto com as propriedades do prototype do objeto Aluno 
+// criando novo objeto com as propriedades do prototype do objeto Aluno
 // e inserindo dentro do prototype do objeto TeacherAssistant
 // TeacherAssistant agora terá acesso aos métodos que estão dentro do prototype de Aluno
 // TeacherAssistant.prototype.Object.create(Aluno.prototype)
 
 // método exclusivo de TeacherAssistant
-TeacherAssistant.prototype.giveBadge = function giveBadge ({ name }) {
-  return `${this.name} deu uma medalha para ${name}`
-}
+TeacherAssistant.prototype.giveBadge = function giveBadge({ name }) {
+  return `${this.name} deu uma medalha para ${name}`;
+};
 
-const maria = new Aluno('Maria', 'maria@gmail.com')
-const jose = new Aluno('Jose', 'jose@gmail.com')
-const arthurSouza = new TeacherAssistant('Arthur Souza', 'arthursouza@rogermelo.com.br', false)
+const maria = new Aluno("Maria", "maria@gmail.com");
+const jose = new Aluno("Jose", "jose@gmail.com");
+const arthurSouza = new TeacherAssistant("Arthur Souza", "arthursouza@rogermelo.com.br", false);
 
 // console.log(maria, jose)
 // console.log(arthurSouza.giveBadge(maria))
@@ -145,32 +145,34 @@ Isso nos tenderá a escrever menos 'this', o que o tornará menos previsível.
 
 // criando objeto user com classe
 class User {
-  #counter = 0 // propriedade privada
+  #counter = 0; // propriedade privada
 
-  constructor (name, email) {
-    this.name = name
-    this.email = email
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
   }
 
-  incrementCounter () {
-    return ++this.#counter
+  incrementCounter() {
+    return ++this.#counter;
   }
 }
 
 // criando objeto user com factory function
-const createUser = (name, email) => { // escopo léxico
-  let counter = 0 // informação privada / só código interno acessa
+const createUser = (name, email) => {
+  // escopo léxico
+  let counter = 0; // informação privada / só código interno acessa
 
-  return { // retorna um objeto // caracteriza uma factory function
+  return {
+    // retorna um objeto // caracteriza uma factory function
     name,
     email,
-    incrementCounter: () => ++counter // closure / combinação de uma função com seu escopo léxico
-  }
-}
+    incrementCounter: () => ++counter, // closure / combinação de uma função com seu escopo léxico
+  };
+};
 
-const user = new User('Roger', 'roger.santos36@gmail.com')
-const user2 = createUser('Roger', 'roger.santos36@gmail.com')
-const user3 = createUser('Roger', 'roger.santos36@gmail.com')
+const user = new User("Roger", "roger.santos36@gmail.com");
+const user2 = createUser("Roger", "roger.santos36@gmail.com");
+const user3 = createUser("Roger", "roger.santos36@gmail.com");
 
 /*
     repare que createUser está sendo invocado duas vezes para dois objetos 
@@ -184,10 +186,10 @@ const user3 = createUser('Roger', 'roger.santos36@gmail.com')
     o valor será determinado com base em como ela é invocada.
 */
 
-console.log(user) // Objeto User
-console.log(user.incrementCounter()) // Objeto User
-console.log(user2) // Objeto 'createUser'
-console.log(user2.incrementCounter()) // Objeto 'createUser'
+console.log(user); // Objeto User
+console.log(user.incrementCounter()); // Objeto User
+console.log(user2); // Objeto 'createUser'
+console.log(user2.incrementCounter()); // Objeto 'createUser'
 
 /*
 
@@ -205,7 +207,7 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
   a função é executada para obter um valor, ou seja, retornar um valor dela, podemos 
   colocar a palavra 'get' junto do nome dela, por convenção.
 
-*/ 
+*/
 
 /*
   ==================== CLOSURES ====================
@@ -222,16 +224,17 @@ console.log(user2.incrementCounter()) // Objeto 'createUser'
 */
 
 const init = () => {
-  let name = 'Roger' // variável local criada pela função init
+  let name = "Roger"; // variável local criada pela função init
 
-  function displayName () { // função interna / é uma closure
+  function displayName() {
+    // função interna / é uma closure
     // está disponível apenas dentro da init
-    console.log(name) // usando variável da função pai dela
+    console.log(name); // usando variável da função pai dela
   }
-  displayName()
-}
+  displayName();
+};
 
-init()
+init();
 
 /*
   ==================== ESTADOS ====================
@@ -285,25 +288,26 @@ init()
 
 */
 
-const state = (() => { // IIFE
-  let exchangeRate = {}
+const state = (() => {
+  // IIFE
+  let exchangeRate = {};
 
-  const checkIfIsAObject = newExchangeRate => typeof newExchangeRate === 'object'
+  const checkIfIsAObject = (newExchangeRate) => typeof newExchangeRate === "object";
 
   return {
     getExchangeRate: () => exchangeRate,
-    setExchangeRate: newExchangeRate => {
-      const isAObject = checkIfIsAObject(newExchangeRate) // impedindo retribuição de tipo diferente
+    setExchangeRate: (newExchangeRate) => {
+      const isAObject = checkIfIsAObject(newExchangeRate); // impedindo retribuição de tipo diferente
 
       if (isAObject) {
-        exchangeRate = newExchangeRate
-        return exchangeRate
+        exchangeRate = newExchangeRate;
+        return exchangeRate;
       }
 
-      return 'Desculpe, mas o valor inserido não é um objeto e eu não posso alterar o tipo de dado dessa variável.'
-    }    
-  }
-})()
+      return "Desculpe, mas o valor inserido não é um objeto e eu não posso alterar o tipo de dado dessa variável.";
+    },
+  };
+})();
 
 // console.log(state.getExchangeRate())
 // console.log(state.setExchangeRate({ x: 1 }))
