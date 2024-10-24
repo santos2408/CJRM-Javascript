@@ -1,0 +1,24 @@
+{
+  "name": "conteudo-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:dev": "npx mocha -w src/*.test.js",
+    "test": "npx mocha -w src/*.test.js",
+    "test:cov": "npx nyc mocha -w src/*.test.js",
+    "start": "node --watch src/api.js"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "keywords": [],
+  "author": "Roger",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.7.3",
+    "nyc": "^17.1.0",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
+  }
+}

@@ -7,5 +7,10 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+<<<<<<< HEAD
 	"emmet.triggerExpansionOnTab": true
 }
+=======
+  "emmet.triggerExpansionOnTab": true
+}
+>>>>>>> 2380c7184d357b7726de116b8348997df3559fd7

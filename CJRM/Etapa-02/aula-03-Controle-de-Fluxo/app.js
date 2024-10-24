@@ -86,6 +86,7 @@ for (let i = 0; i < scores.length; i++) {
 const grade = "B";
 
 switch (grade) {
+<<<<<<< HEAD:Etapa-02/aula-03-Controle-de-Fluxo/app.js
   case "A":
     console.log("você tirou nota A");
     break;
@@ -105,3 +106,24 @@ switch (grade) {
   default:
     console.log("nota inválida");
 }
+=======
+   case 'A':
+      console.log('você tirou nota A')
+      break
+      return // 'return' no lugar de 'break' caso seja uma função
+   case 'B':
+      console.log('você tirou nota B')
+      break
+   case 'C':
+      console.log('você tirou nota C')
+      break
+   case 'D':
+      console.log('você tirou nota D')
+      break
+   case 'E':
+      console.log('você tirou nota E')
+      break
+   default:
+      console.log('nota inválida')
+}
+>>>>>>> 2380c7184d357b7726de116b8348997df3559fd7:CJRM/Etapa-02/aula-03-Controle-de-Fluxo/app.js

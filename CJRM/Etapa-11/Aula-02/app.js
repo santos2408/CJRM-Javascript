@@ -17,7 +17,11 @@
    já existente, mas ao fazer isso vai cancelar qualquer requisição pendente por 
    meio desse objeto.
 
+<<<<<<< HEAD:Etapa-11/Aula-02/app.js
    Objetos XMLHttpRequest são usados para interagirmos com servidores e podermos 
+=======
+   Objetos XMLHttpRequest são usados para interagirmos com servidores, podermos 
+>>>>>>> 2380c7184d357b7726de116b8348997df3559fd7:CJRM/Etapa-11/Aula-02/app.js
    obter dados de uma URL sem precisar atualizar a página, podendo atualizar 
    apenas uma parte do conteúdo de uma aplicação.
 
@@ -108,6 +112,7 @@ request.send();
    comportando implicitamente da mesma forma mas o seu retorno é um boolean.
 */
 
+<<<<<<< HEAD:Etapa-11/Aula-02/app.js
 request.addEventListener("readystatechange", () => {
   // verificando se a requisição terminou e se deu tudo certo com ela
   if (request.readyState === 4 && request.status === 200) {
@@ -115,6 +120,14 @@ request.addEventListener("readystatechange", () => {
     console.log(request, request.responseText);
   }
 });
+=======
+request.addEventListener('readystatechange', () => {
+   // verificando se a requisição terminou e se deu tudo certo com ela
+   if (request.readyState === 4 && request.status === 200) { // checking status
+      console.log(request, request.responseText)
+   }
+})
+>>>>>>> 2380c7184d357b7726de116b8348997df3559fd7:CJRM/Etapa-11/Aula-02/app.js
 
 /*
    Referências:
@@ -124,4 +137,8 @@ request.addEventListener("readystatechange", () => {
    https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget
    https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
 
+<<<<<<< HEAD:Etapa-11/Aula-02/app.js
 */
+=======
+*/
+>>>>>>> 2380c7184d357b7726de116b8348997df3559fd7:CJRM/Etapa-11/Aula-02/app.js
