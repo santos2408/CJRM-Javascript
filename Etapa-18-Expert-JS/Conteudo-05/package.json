@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "",
+    "test": "npx mocha -w --parallel ./tests/**/**/*.test.js",
+    "test:cov": "npx nyc mocha -w --parallel ./tests/**/**/*.test.js",
     "start": "",
     "seed": "node ./seed"
   },

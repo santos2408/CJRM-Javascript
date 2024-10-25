@@ -1,10 +1,10 @@
-const { join } = require("path");
-const { faker } = require("@faker-js/faker");
-const { writeFile } = require("fs/promises");
+import { join } from "path";
+import { faker } from "@faker-js/faker";
+import { writeFile } from "fs/promises";
 
-const Car = require("../src/entities/car");
-const CarCategory = require("../src/entities/carCategory");
-const Customer = require("../src/entities/customer");
+import Car from "../src/entities/car.js";
+import CarCategory from "../src/entities/carCategory.js";
+import Customer from "../src/entities/customer.js";
 
 const seederBaseFolder = join(__dirname, "../", "database");
 

@@ -1,4 +1,4 @@
-const Base = require("./base/base");
+import Base from "./base/base.js";
 
 class Car extends Base {
   constructor({ id, name, releaseYear, available, gasAvailable }) {
@@ -10,4 +10,4 @@ class Car extends Base {
   }
 }
 
-module.exports = Car;
+export default Base;

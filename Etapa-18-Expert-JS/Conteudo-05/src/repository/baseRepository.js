@@ -1,4 +1,4 @@
-const { readFile } = require("fs/promises");
+import { readFile } from "fs/promises";
 
 class BaseRepository {
   constructor({ filename }) {
@@ -8,7 +8,7 @@ class BaseRepository {
   async find(itemId) {
     const content = JSON.parse(await readFile(this.filename));
 
-    if (!id) {
+    if (!itemId) {
       return content;
     }
 
@@ -16,4 +16,4 @@ class BaseRepository {
   }
 }
 
-module.exports = BaseRepository;
+export default BaseRepository;

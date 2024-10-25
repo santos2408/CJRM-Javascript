@@ -1,1 +1,5 @@
-[{"id":"5acafc8d-f98a-46a2-b8bc-33279a0719b8","name":"Bobbie Harvey","age":50},{"id":"1495f019-1f8f-4afa-a16d-229b5a5566a3","name":"Josephine Rempel","age":43},{"id":"3d2615fb-e457-492d-9dcf-cb15164a2152","name":"Lillie Mueller","age":20}]
+[
+  { "id": "5acafc8d-f98a-46a2-b8bc-33279a0719b8", "name": "Bobbie Harvey", "age": 50 },
+  { "id": "1495f019-1f8f-4afa-a16d-229b5a5566a3", "name": "Josephine Rempel", "age": 43 },
+  { "id": "3d2615fb-e457-492d-9dcf-cb15164a2152", "name": "Lillie Mueller", "age": 20 }
+]

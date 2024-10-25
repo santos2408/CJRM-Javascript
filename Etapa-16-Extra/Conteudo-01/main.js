@@ -5,4 +5,5 @@
   Set
   Map
   DOMTokenList
+  Coercitive types
 */
