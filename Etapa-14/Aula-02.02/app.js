@@ -25,35 +25,35 @@
   palavra chave 'set' a esquerda do método.
 
   Pode parecer estranho invocar métodos como se fossem propriedades, e é sim. 
-  Mas quando nos depararmos com um código semelhante em um projeto real, deveremos 
+  Mas quando nos depararmos com um código semelhante em um projeto real, devemos 
   saber o que está acontecendo. Então, saber que isso é possível é uma maneira 
   de evitar consequências no futuro e se for viável poderemos refatorar o código.
 */
 
 class Counter {
   constructor() {
-    this.count = 0 // propriedade pública
+    this.count = 0; // propriedade pública
   }
 
   get value() {
     // método get usando sintaxe de abreviação
-    return this.count
+    return this.count;
   }
 
   increment() {
-    this.count++
+    this.count++;
   }
 
   set newValue(aNumber) {
     // método set usando sintaxe de abreviação
-    this.count = aNumber
+    this.count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.value // invocando método get usando sintaxe de propriedade
-counter.newValue = 7 // setando um valor usando sintaxe de propriedade
+counter.value; // invocando método get usando sintaxe de propriedade
+counter.newValue = 7; // setando um valor usando sintaxe de propriedade
 
 /*
   =============== ENCAPSULAMENTO ===============
@@ -73,27 +73,27 @@ counter.newValue = 7 // setando um valor usando sintaxe de propriedade
 */
 
 class Counter {
-  count = 0 // propriedade pública (public class fields)
+  count = 0; // propriedade pública (public class fields)
 
   get value() {
     // método get usando sintaxe de abreviação
-    return this.count
+    return this.count;
   }
 
   increment() {
-    this.count++
+    this.count++;
   }
 
   set newValue(aNumber) {
     // método set usando sintaxe de abreviação
-    this.count = aNumber
+    this.count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.count = "Olá" // atribuindo string à count
-console.log(counter.count) // acessando diretamente o valor da count
+counter.count = "Olá"; // atribuindo string à count
+console.log(counter.count); // acessando diretamente o valor da count
 
 /*
   Veja que, o código que escrevemos fora da classe consegue acessar e modificar 
@@ -107,7 +107,7 @@ console.log(counter.count) // acessando diretamente o valor da count
   o método constructor é chamada de 'public class fields'.
 
   Fields é um termo alternativo para 'propriedades dentro de uma classe'. Propriedade 
-  e fields significam a mesma coisa nesse contexto.
+  e fields significam a mesma coisa nesse contexto de classe.
 
   Mas se desejarmos que apenas os códigos internos da classe possam acessar e 
   modificar as propriedades dela, para isso devemos declarar a propriedade como 
@@ -123,40 +123,40 @@ console.log(counter.count) // acessando diretamente o valor da count
   por parâmetro ou o objeto precisa de outras propriedades que são únicas, você pode, 
   abaixo da propriedade privada, criar o método constructor e reatribuir o valor 
   da propriedade recebendo o valor do parâmetro e trabalhar normalmente com o 
-  constructor
+  constructor, pois ela continuará privada.
 */
 
 class Counter {
-  #count = 0 // propriedade privada, precisa usar '#' (private class fields)
+  #count = 0; // propriedade privada, precisa usar '#' (private class fields)
 
   constructor(value) {
     // atribuindo na propriedade privada o valor recebido por parâmetro
     // pode usar o constructor normalmente
-    this.#count = value
+    this.#count = value;
   }
 
   get value() {
     // método get usando sintaxe de abreviação
-    return this.#count
+    return this.#count;
   }
 
   increment() {
-    this.#count++
+    this.#count++;
   }
 
   set newValue(aNumber) {
     // método set usando sintaxe de abreviação
-    this.#count = aNumber
+    this.#count = aNumber;
   }
 }
 
-const counter = new Counter()
+const counter = new Counter();
 
-counter.#count = "Olá" // não tem permissão para modificar a propriedade
-console.log(counter.count) // não tem permissão para acessar a propriedade
+counter.#count = "Olá"; // não tem permissão para modificar a propriedade
+console.log(counter.count); // não tem permissão para acessar/consultar a propriedade
 
-counter.newValue = 5 // modificando propriedades através do método que existe na classe
-counter.value // acessando propriedade através do método que existe na classe
+counter.newValue = 5; // modificando propriedades através do método que existe na classe
+counter.value; // acessando propriedade através do método que existe na classe
 
 /*
   Em classes que herdam propriedades de outras classes, se as propriedades dessa 
@@ -188,6 +188,6 @@ counter.value // acessando propriedade através do método que existe na classe
   modificações numa nova 'const' e não reatribuir para as lets existentes.
 
   Mesmo criando objetos, se você sabe que esse objeto irá ser modificado, recebendo 
-  novos dados, procure declara-lo então como 'let' para indificar explicitamente 
+  novos dados, procure declara-lo então como 'let' para indicar explicitamente 
   que as propriedades daquele objeto serão mutáveis.
 */

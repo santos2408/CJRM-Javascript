@@ -20,13 +20,13 @@ No entanto, isso não é suficiente, pois precisaremos fazer com que o this da
 função construtora (pai) seja o mesmo this da função construtora (filha), pois 
 se não fizermos isso, o this da função construtora (filha) irá referenciar o novo 
 objeto criado e não queremos isso, queremos referenciar o pai. Para isso precisamos 
-passar como argumentos do método call o this da função filha que é o próprio objeto 
+passar como argumento do método 'call' o 'this' da função filha que é o próprio objeto 
 criado por ela. Agora o this da função pai será o objeto da função filha.
 
 Portanto, usamos o call() para invocar uma determinada função construtora e forçar
 que o this dessa função invocada armazene o valor que quisermos que ele armazene.
 
-Mas ainda não é só isso, o método call() pode receber também, depois do primeiro 
+Mas não é só isso, o método call() pode receber também, depois do primeiro 
 parâmetro, os valores que a função pai pode receber como parâmetros
 
 Agora, para inserirmos propriedades únicas para a função construtora filha, é só 
@@ -43,8 +43,10 @@ poderão acessar os métodos de outros objetos.
 Essa cadeia de prototypes é o que faz com que um objeto possa acessar propriedades 
 de qualquer outro objeto que esteja nessa cadeia. Essa é a forma com que o JS 
 faz herança e essa é a forma que o diferencia de linguagens em que a herança é 
-baseada em classes. É essa cadeia de protótipos que entram em ação quando usamos 
-a palavra chave 'class' e criamos uma subclasse com 'extends'.
+baseada em classes. 
+
+É essa cadeia de protótipos que entra em ação quando usamos a palavra chave 
+'class' e criamos uma subclasse com 'extends'.
 
 */
 
@@ -52,7 +54,7 @@ a palavra chave 'class' e criamos uma subclasse com 'extends'.
 function Aluno(name, email) {
   this.name = name;
   this.email = email;
-  // depois da invocação da call(), esse this passa a ser o TeacherAssistant
+  // depois da invocação da call(), esse this passa a ser o TeacherAssistent
 }
 
 Aluno.prototype.login = function login() {
@@ -63,37 +65,58 @@ Aluno.prototype.comment = function comment() {
   return `${this.name} comentou no post`;
 };
 
-// trabalhando com herença em funções construtoras
-function TeacherAssistant(name, email, scheduleWeekPosts) {
-  // invocando construtor Aluno e
-  // forçando Aluno a armazenar o objeto TeacherAssistant dentro do this dele
-  Aluno.call(this, name, email); // this = TeacherAssistant e parâmetros para Aluno
-  this.scheduleWeekPosts = scheduleWeekPosts; // propriedade única de TeacherAssistant
+// ==========================================================================
+
+// trabalhando com herença em funções construtoras:
+function TeacherAssistent(name, email, scheduleWeekPosts) {
+  Aluno.call(this, name, email); // invocando construtor Aluno e passando os parâmetros
+  this.scheduleWeekPosts = scheduleWeekPosts; // propriedade única de TeacherAssistent
 }
 
-// criando novo objeto com as propriedades do prototype do objeto Aluno
-// e inserindo dentro do prototype do objeto TeacherAssistant
-// TeacherAssistant agora terá acesso aos métodos que estão dentro do prototype de Aluno
-// TeacherAssistant.prototype.Object.create(Aluno.prototype)
+TeacherAssistent.prototype = Object.create(Aluno.prototype); // necessário para herdar os métodos de Aluno
+TeacherAssistent.prototype.constructor = TeacherAssistent; // restaurando o constructor para o correto
 
-// método exclusivo de TeacherAssistant
-TeacherAssistant.prototype.giveBadge = function giveBadge({ name }) {
+/*
+  Obs: devemos restaurar o 'constructor' porque quando herdamos o prototype do Aluno 
+  porque mesmo querendo herdar apenas os métodos, todos os itens do prototype vem junto, 
+  incluindo o constructor, como só queremos os métodos, nós precisamos restaurar 
+  o constructor para "valor original"
+*/
+
+// ====== MESMO CÓDIGO USANDO 'CLASS' ======
+class TeacherAssistent extends Aluno {
+  constructor(name, email, scheduleWeekPosts) {
+    super(name, email);
+    this.scheduleWeekPosts = scheduleWeekPosts;
+  }
+}
+
+/*
+  Obs:
+
+  - Ambas criam objetos com instâncias corretas (Class e Constructor Function)
+  - TeacherAssistent tem acesso aos métodos que estão dentro do prototype de Aluno, igual a Class
+  - Ao contrário da função construtora, a classe garante que 'instanceof' funcione sem configurações adicionais.
+
+*/
+
+// ==========================================================================
+
+// método exclusivo de TeacherAssistent
+TeacherAssistent.prototype.giveBadge = function giveBadge({ name }) {
   return `${this.name} deu uma medalha para ${name}`;
 };
 
 const maria = new Aluno("Maria", "maria@gmail.com");
 const jose = new Aluno("Jose", "jose@gmail.com");
-const arthurSouza = new TeacherAssistant("Arthur Souza", "arthursouza@rogermelo.com.br", false);
-
-// console.log(maria, jose)
-// console.log(arthurSouza.giveBadge(maria))
+const arthurSouza = new TeacherAssistent("Arthur Souza", "arthursouza@rogermelo.com.br", false);
 
 /*
 
   Quando precisaremos usar classes ou funções construtoras ? 
 
   Usaremos classes quando precisarmos criar objetos específicos que compartilham 
-  métodos, isso ajudará a economizar mémória. Além de serem mais simples do que 
+  métodos, isso ajudará a economizar memória. Além de serem mais simples do que 
   funções construtoras. As funções construtoras eram usadas antes da chegada das 
   classes, por isso é importante entendermos funções construtoras e heranças 
   prototipais, pois ainda existem códigos usando essas features e sabendo como 
@@ -139,7 +162,7 @@ functions.
 
 Uma das vantagens da factory functions, é que ao invés de o 'this' referenciar o 
 objeto que está sendo criado, ele irá referenciar quem ele tiver que referenciar. 
-Isso nos tenderá a escrever menos 'this', o que o tornará menos previsível.
+Isso nos tenderá a escrever menos 'this', o que o tornará mais previsível.
 
 */
 
@@ -157,22 +180,22 @@ class User {
   }
 }
 
-// criando objeto user com factory function
+// criando o mesmo objeto user agora com factory function
 const createUser = (name, email) => {
-  // escopo léxico
+  // escopo externo
   let counter = 0; // informação privada / só código interno acessa
 
   return {
     // retorna um objeto // caracteriza uma factory function
     name,
     email,
-    incrementCounter: () => ++counter, // closure / combinação de uma função com seu escopo léxico
+    incrementCounter: () => ++counter, // caracteriza a closure
   };
 };
 
 const user = new User("Roger", "roger.santos36@gmail.com");
-const user2 = createUser("Roger", "roger.santos36@gmail.com");
-const user3 = createUser("Roger", "roger.santos36@gmail.com");
+const user2 = createUser("Roger", "roger.santos36@gmail.com"); // cria a closure
+const user3 = createUser("Roger", "roger.santos36@gmail.com"); // cria a closure
 
 /*
     repare que createUser está sendo invocado duas vezes para dois objetos 
@@ -213,24 +236,34 @@ console.log(user2.incrementCounter()); // Objeto 'createUser'
   ==================== CLOSURES ====================
 
   Quando uma função interna (uma função que está dentro de outra), acessa uma 
-  variável que foi declarada no escopo léxico dela, essa função será conhecida 
-  como 'closure'. Closure é a combinação de uma função com o seu escopo 
-  léxico. Funções aninhadas tem acesso a suas funções externas, em 'degraus'.
+  variável que foi declarada no escopo léxico dela, ou seja, que ela ainda consiga 
+  acessar, essa função será conhecida como 'closure'. Closure é a combinação de 
+  uma função com o seu escopo léxico. Funções aninhadas tem acesso a suas funções
+  externas, em 'degraus'.
 
-  Repare abaixo que a displayName() tem acesso a variável da função externa init(), 
-  a displayName() tem referências do seu estado circundante, portanto, a displayName() 
-  é uma closure porque é uma função agrupada (incluída).
+  Vale lembrar que uma função não é uma closure, porque closure não é um tipo, 
+  mas sim uma característica que uma função pode acabar tendo com base no seu 
+  escopo e funções interna. Então podemos dizer que determina função está 
+  formando uma closure.
 
 */
 
 const init = () => {
-  let name = "Roger"; // variável local criada pela função init
+  /*
+    Repare abaixo que a displayName() tem acesso a variável da função externa init(), 
+    a displayName() tem referências do seu estado circundante, portanto, a displayName() 
+    forma forma uma closure porque é uma função aninhada.
+  */
+
+  let name = "Roger"; // variável local criada pela função init / escopo externo
 
   function displayName() {
-    // função interna / é uma closure
+    // função interna / forma uma closure
     // está disponível apenas dentro da init
-    console.log(name); // usando variável da função pai dela
+    // tem acesso ao seu escopo léxico (circundante), ex: variável 'name'
+    console.log(name); // usando variável da função pai
   }
+
   displayName();
 };
 
@@ -249,6 +282,8 @@ init();
   um objeto que é usado por funções e partes de código durante a aplicação é 
   chamado de objeto com 'estado compartilhado'.
 
+  Estados são muito utilizados por frameworks como 'Vue', 'React' e 'Angular'.
+
   Sempre que possível evite expor objetos globais na aplicação, isso porque pode 
   haver colisão de nomenclatura, que é quando duas váriaveis de mesmo nome são 
   declaradas no mesmo escopo, isso pode resultar em bugs caso um pedaço de código 
@@ -257,7 +292,7 @@ init();
   Outra coisa é que variáveis globais podem deixar o código imprevisível, visto 
   que elas não delimitam qual tipo de valor pode ser atribuído a ela. Exemplo:
 
-    let internalExchangeRate = {} // variável global armazenando obejto
+    let internalExchangeRate = {} // variável global armazenando objeto
 
     ...
 
@@ -272,6 +307,7 @@ init();
   Para resolver esse problema, poderíamos pensar em armazenar esse estado 
   compartilhado em uma localStorage, mas lembre-se que localStorage é para 
   persistir dados mesmo quando fechamos a aplicação e não é isso que queremos.
+  Nosso objetivo é preservar os dados durante o uso da aplicação apenas.
   Para armazenar esses dados e evitar que estejam expostos no escopo global, 
   devemos usar 'closures' e 'IIFE'.
 
@@ -281,15 +317,15 @@ init();
   escopos locais, ou seja, escopos de funções, porque como funções tem escopo 
   próprio, tudo que fosse escrito dentro delas não sairia dalí. Como o JS hoje 
   em dia contém um sistema de 'módulos' as IIFF não são mais necessárias para 
-  evitar o escopo global entre arquivos .JS diferentes. Quando se usa o sistema
+  evitar o escopo global entre arquivos '.JS' diferentes. Quando se usa o sistema
   de módulos não precisamos mais pendurar uma variável no escopo global ou usar 
-  IIFE para usar essa variável em dois ou mais arquivos .JS. Caso não usemos 
+  IIFE para usar essa variável em dois ou mais arquivos '.JS'. Caso não usemos 
   módulos, podemos usar IIFE normalmente.
 
 */
 
+// IIFE
 const state = (() => {
-  // IIFE
   let exchangeRate = {};
 
   const checkIfIsAObject = (newExchangeRate) => typeof newExchangeRate === "object";
